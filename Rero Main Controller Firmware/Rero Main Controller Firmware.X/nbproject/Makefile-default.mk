@@ -73,7 +73,7 @@ FIXDEPS=fixDeps
 
 # The following macros may be used in the pre and post step lines
 Device=PIC32MX575F512L
-ProjectDir="F:\Projects\ReRo GC06 (G15 Controller)\Source Code\Embedded\Rero Main Controller Firmware\Rero Main Controller Firmware.X"
+ProjectDir="F:\GitHub Projects\Rero-Main-Controller-Firmware\trunk\Rero Main Controller Firmware\Rero Main Controller Firmware.X"
 ConfName=default
 ImagePath="dist\default\${IMAGE_TYPE}\Rero_Main_Controller_Firmware.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}"
 ImageDir="dist\default\${IMAGE_TYPE}"
