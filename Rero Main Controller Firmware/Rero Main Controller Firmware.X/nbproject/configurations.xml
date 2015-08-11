@@ -73,6 +73,7 @@
         <itemPath>../include/GUI/PopUpMessagePage.h</itemPath>
         <itemPath>../include/GUI/BluetoothPage.h</itemPath>
         <itemPath>../include/GUI/MotionPage.h</itemPath>
+        <itemPath>../include/GUI/UserProgramPage.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f8" displayName="IMU" projectFiles="true">
         <itemPath>../include/IMU/dmpKey.h</itemPath>
@@ -239,6 +240,7 @@
         <itemPath>../src/GUI/PopUpMessagePage.c</itemPath>
         <itemPath>../src/GUI/BluetoothPage.c</itemPath>
         <itemPath>../src/GUI/MotionPage.c</itemPath>
+        <itemPath>../src/GUI/UserProgramPage.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f8" displayName="IMU" projectFiles="true">
         <itemPath>../src/IMU/i2c1.c</itemPath>
