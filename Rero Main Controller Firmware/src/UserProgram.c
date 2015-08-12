@@ -20,10 +20,10 @@
 
 
 /*******************************************************************************
-* TASK: taskBluetoothProgram
+* TASK: taskUserProgram
 *
 * DESCRIPTIONS:
-* Task for the bluetooth programming.
+* Task for custom user program.
 *
 *******************************************************************************/
 void taskUserProgram(void *pvParameters)
