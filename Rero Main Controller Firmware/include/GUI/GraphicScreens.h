@@ -344,6 +344,7 @@ void vSliderUpdatePosition(SLIDER *pxSlider, short sNewPosition);
 
 void vSetGuiPage(GUI_PAGE eGuiPage);
 GUI_PAGE eGetGuiPage(void);
+void vCaptureScreenshot(void);
 void vLockScreen(void);
 void vUnlockScreen(void);
 

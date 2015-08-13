@@ -241,6 +241,7 @@
         <itemPath>../src/GUI/BluetoothPage.c</itemPath>
         <itemPath>../src/GUI/MotionPage.c</itemPath>
         <itemPath>../src/GUI/UserProgramPage.c</itemPath>
+        <itemPath>../src/GUI/Screenshot.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f8" displayName="IMU" projectFiles="true">
         <itemPath>../src/IMU/i2c1.c</itemPath>

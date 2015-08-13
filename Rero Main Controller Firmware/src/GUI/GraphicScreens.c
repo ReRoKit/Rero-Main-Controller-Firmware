@@ -63,6 +63,7 @@
  * PRIVATE GLOBAL VARIABLES
  *******************************************************************************/
 
+static unsigned char prv_ucCaptureScreenshot = 0;
 static unsigned char prv_ucRedrawGui = 1;
 static GUI_PAGE prv_eGuiPage = PAGE_MAIN_MENU;
 
@@ -494,6 +495,26 @@ GUI_PAGE eGetGuiPage(void)
 
 
 /*******************************************************************************
+ * FUNCTION: vCaptureScreenshot
+ *
+ * PARAMETERS:
+ * ~ void
+ *
+ * RETURN:
+ * ~ void
+ *
+ * DESCRIPTIONS:
+ * Set the flag to capture the screenshot.
+ *
+ *******************************************************************************/
+void vCaptureScreenshot(void)
+{
+    prv_ucCaptureScreenshot = 1;
+}
+
+
+
+/*******************************************************************************
  * FUNCTION: vLockScreen
  *
  * PARAMETERS:
@@ -654,6 +675,20 @@ WORD GOLDrawCallback(void)
         }
     
     }   // End of "Screen is not locked".
+    
+    
+    
+    // Capture screenshot if the flag is set.
+    if (prv_ucCaptureScreenshot == 1) {
+        prv_ucCaptureScreenshot = 0;
+        
+        // Only play the sound effect if no sound is playing.
+        if (ucIsAudioPlaying() == 0) {
+            vPlaySoundStream(&xTouchTone);
+        }
+        
+        vCreateScreenshot();
+    }
     
     return 1;
 }

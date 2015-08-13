@@ -20,6 +20,7 @@
 #include "AudioAmp.h"
 #include "Sound Stream/Shutdown.h"
 #include "Sound Stream/Error.h"
+#include "Sound Stream/TouchTone.h"
 
 #include "Graphics/Graphics.h"
 #include "GUI/Custom Graphic Object/Battery.h"
@@ -413,11 +414,17 @@ void __ISR(_TIMER_1_VECTOR, IPL6AUTO) TMR1Interrupt(void)
 #ifndef RUN_USER_PROGRAM
         // Make sure the RTOS is already running and the shutdown task is not running.
         if ((xSystemState.bRtosRunning == 1) && (ucShuttingDown == 0)) {
-            // Lock the screen.
-            vLockScreen();
-            
-            // Reset the taskStandbyWatchdog.
-            xSemaphoreGive(xTouchSemaphore);
+            // If the program button is pressed, save the screenshot.
+            if (PROGRAM_BUTTON == 0) {
+                vCaptureScreenshot();
+            }
+            else {
+                // Lock the screen.
+                vLockScreen();
+
+                // Reset the taskStandbyWatchdog.
+                xSemaphoreGive(xTouchSemaphore);
+            }
         }
 #endif
     }
