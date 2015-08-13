@@ -326,6 +326,47 @@ void PutPixel(SHORT x, SHORT y)
 
 
 /*********************************************************************
+ * Function: WORD GetPixel(SHORT x, SHORT y)
+ *
+ * PreCondition: none
+ *
+ * Input: x,y - pixel coordinates
+ *
+ * Output: pixel color
+ *
+ * Side Effects: none
+ *
+ * Overview: returns pixel color at x,y position
+ *
+ * Note: none
+ *
+ ********************************************************************/
+WORD GetPixel(SHORT x, SHORT y)
+{
+    DisplayEnable();
+    
+    SetAddress(x, y);
+    LCD_Write_COM(0x2E);
+    DisplaySetData();
+    
+    // Read 2 words of dummy data.
+    SingleDeviceRead();
+    SingleDeviceRead();
+    
+    WORD data1 = SingleDeviceRead();
+    WORD data2 = SingleDeviceRead();
+    
+    DisplayDisable();
+    
+    unsigned char red = (unsigned char)(data1 >> 8);
+    unsigned char green = (unsigned char)(data1 & 0xff);
+    unsigned char blue = (unsigned char)(data2 >> 8);
+    return (RGBConvert(red, green, blue));
+}
+
+
+
+/*********************************************************************
 * Function: void vPutPixelRow(SHORT x, SHORT y, WORD *pixel, WORD length)
 *
 * Overview: Puts pixel in a row with the given x,y coordinate position.
