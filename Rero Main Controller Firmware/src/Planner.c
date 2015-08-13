@@ -471,8 +471,8 @@ void taskPlanner(void *pvParameters)
                 unsigned short usSensorThreshold = ((unsigned short)pucBuffer[2] << 8) + (unsigned short)pucBuffer[3];
 
                 // Read the sensor value.
-                EM_ERROR eErrorCode;
-                unsigned short usSensorValue;
+                EM_ERROR eErrorCode = EM_ERR_INVALID_MODULE;
+                unsigned short usSensorValue = 0;
                 switch (ucBlockType) {
                     case SENSOR_BLOCK_IR:           eErrorCode = eInfraredSensorGetValue(ucSensorId, (unsigned char*)&usSensorValue);   break;
                     case SENSOR_BLOCK_ULTRASONIC:   eErrorCode = eUltrasonicSensorGetValue(ucSensorId, &usSensorValue);                 break;

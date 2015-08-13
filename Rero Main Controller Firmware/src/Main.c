@@ -179,7 +179,6 @@ void main(void)
 
 #ifdef RUN_USER_PROGRAM
     vSetGuiPage(PAGE_USER_PROGRAM);
-    xTaskCreate( taskUserProgram, "USER", 512, NULL, tskIDLE_PRIORITY + 2, NULL );
 #else
     // USB is connected.
     if(USB_BUS_SENSE == 1) {
@@ -209,13 +208,11 @@ void main(void)
     xTaskCreate( taskStandbyWatchdog, "Standby",configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 2, NULL );
     xTaskCreate( taskBlinkLed, "Blink", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, NULL );
     xTaskCreate( taskMonitorUsb, "USBMon", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL );
-
-
+    
+#endif
 
     // Play startup sound.
     vPlaySoundStream(&xStartupSound);
-    
-#endif
     
     // Indicate the RTOS is running.
     xSystemState.bRtosRunning = 1;

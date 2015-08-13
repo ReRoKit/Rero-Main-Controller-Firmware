@@ -19,36 +19,37 @@
 
 
 
-#ifdef RUN_USER_PROGRAM
 /*******************************************************************************
-* TASK: taskBluetoothProgram
+* TASK: taskUserProgram
 *
 * DESCRIPTIONS:
-* Task for the bluetooth programming.
+* Task for custom user program.
 *
 *******************************************************************************/
 void taskUserProgram(void *pvParameters)
 {
+    unsigned char ucG15Id = 18;
+    unsigned char ucIrSensorId = 101;
+    
     // Set the G15 angle limit (0 - 1087).
-    eG15SetAngleLimit(11, 0, 1087);
+    eG15SetAngleLimit(ucG15Id, 0, 1087);
 
     // Turn on torque for G15.
-    eG15SetTorqueLed(11, WRITE_NOW, 1, 1);
+    eG15SetTorqueLed(ucG15Id, WRITE_NOW, 1, 1);
 
     
 
     while (1) {
         // Read from IR sensor.
         unsigned char ucSensorValue;
-        eInfraredSensorGetValue(101, &ucSensorValue);
+        eInfraredSensorGetValue(ucIrSensorId, &ucSensorValue);
 
         // Set the G15 position according to the sensor value.
-        eG15SetPositionSpeed(11, WRITE_NOW, ucSensorValue, NORMAL_POSITIONING, 0, POSITION_SPEED_CONTROL);
+        eG15SetPositionSpeed(ucG15Id, WRITE_NOW, ucSensorValue, NORMAL_POSITIONING, 0, POSITION_SPEED_CONTROL);
 
-//        // Toggle blue LED.
-//        LEDB ^= 1;
-//        vTaskDelay(50 / portTICK_RATE_MS);
+        // Toggle blue LED.
+        LEDB ^= 1;
+        vTaskDelay(50 / portTICK_RATE_MS);
     }
     
 }
-#endif

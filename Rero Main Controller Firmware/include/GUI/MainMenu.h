@@ -18,7 +18,7 @@
  *******************************************************************************/
 
 void vCreateMainMenu(void);
-WORD usMsgMainMenu(WORD objMsg, OBJ_HEADER *pObj);
+WORD usMsgMainMenu(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg);
 
 
 

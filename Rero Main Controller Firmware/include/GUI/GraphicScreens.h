@@ -307,6 +307,12 @@ typedef enum __attribute__((packed)) {
 
     // Wallpaper page.
     GID_IMG_WALLPAPPER,
+            
+            
+    // User program page.
+    GID_USER_TXT_TITLE,
+    GID_USER_BTN_PLAY,
+    GID_USER_BTN_STOP,
 
 
     // Lock screen.

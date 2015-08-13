@@ -28,6 +28,7 @@
 #include "GUI/BluetoothPage.h"
 #include "GUI/SetBtPinPage.h"
 #include "GUI/WallpaperPage.h"
+#include "GUI/UserProgramPage.h"
 
 // FreeRTOS include.
 #include "FreeRTOS.h"
@@ -639,13 +640,7 @@ WORD GOLDrawCallback(void)
                 case PAGE_SET_BT_PIN:   vCreateSetBtPinPage();      break;
                 
                 case PAGE_USB:          vCreateUsbPage();           break;
-                
-                case PAGE_USER_PROGRAM:
-                    // Clear the GOL objects and screen.
-                    GOLFree();
-                    SetColor(BLACK);
-                    ClearDevice();
-                    break;
+                case PAGE_USER_PROGRAM: vCreateUserProgramPage();   break;
             }   // End of switch-case.
             
         }
@@ -692,7 +687,7 @@ WORD GOLMsgCallback(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
     }
     else {
         switch (prv_eGuiPage) {
-            case PAGE_MAIN_MENU:    return usMsgMainMenu(objMsg, pObj);
+            case PAGE_MAIN_MENU:    return usMsgMainMenu(objMsg, pObj, pMsg);
             case PAGE_USB:          return usMsgUsbPage(objMsg, pObj, pMsg);
             
             case PAGE_BT_REMOTE:
@@ -709,6 +704,8 @@ WORD GOLMsgCallback(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
             case PAGE_SET_ID:       return usMsgSetIdPage(objMsg, pObj, pMsg);
             case PAGE_BT_SETTINGS:  return usMsgBtSettingsPage(objMsg, pObj, pMsg);
             case PAGE_SET_BT_PIN:   return usMsgSetBtPinPage(objMsg, pObj, pMsg);
+            
+            case PAGE_USER_PROGRAM: return usMsgUserProgramPage(objMsg, pObj, pMsg);
             
             default:                return 1;
         }

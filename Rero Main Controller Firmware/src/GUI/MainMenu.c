@@ -107,7 +107,7 @@
  * ~ void
  *
  * DESCRIPTIONS:
- * Create the Bluetooth settings page.
+ * Create the main menu.
  *
  *******************************************************************************/
 void vCreateMainMenu(void)
@@ -200,7 +200,7 @@ void vCreateMainMenu(void)
  * Handle the touchscreen event of the main menu.
  *
  *******************************************************************************/
-WORD usMsgMainMenu(WORD objMsg, OBJ_HEADER *pObj)
+WORD usMsgMainMenu(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
 {
     // When the button is released...
     if (objMsg == BTN_MSG_RELEASED) {

@@ -7,6 +7,7 @@
  *******************************************************************************/
 
 #include "Power.h"
+#include "UserProgram.h"
 #include "TimeDelay.h"
 #include "Variables.h"
 #include "HardwareProfile.h"
@@ -409,6 +410,7 @@ void __ISR(_TIMER_1_VECTOR, IPL6AUTO) TMR1Interrupt(void)
         i = 0;
         mT1IntEnable(0);
         
+#ifndef RUN_USER_PROGRAM
         // Make sure the RTOS is already running and the shutdown task is not running.
         if ((xSystemState.bRtosRunning == 1) && (ucShuttingDown == 0)) {
             // Lock the screen.
@@ -417,5 +419,6 @@ void __ISR(_TIMER_1_VECTOR, IPL6AUTO) TMR1Interrupt(void)
             // Reset the taskStandbyWatchdog.
             xSemaphoreGive(xTouchSemaphore);
         }
+#endif
     }
 }
