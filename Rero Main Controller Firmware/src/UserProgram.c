@@ -45,11 +45,11 @@ void taskUserProgram(void *pvParameters)
         eInfraredSensorGetValue(ucIrSensorId, &ucSensorValue);
 
         // Set the G15 position according to the sensor value.
-        eG15SetPositionSpeed(ucG15Id, WRITE_NOW, ucSensorValue, NORMAL_POSITIONING, 0, POSITION_SPEED_CONTROL);
+        eG15SetPositionSpeed(ucG15Id, WRITE_NOW, ucSensorValue, NORMAL_POSITIONING, 350, POSITION_SPEED_CONTROL);
 
         // Toggle blue LED.
         LEDB ^= 1;
-        vTaskDelay(50 / portTICK_RATE_MS);
+        vTaskDelay(20 / portTICK_RATE_MS);
     }
     
 }
