@@ -7,8 +7,15 @@
  *******************************************************************************/
 
 #include "GUI/Screenshot.h"
+#include "Variables.h"
 #include "FatFs/FatFsWrapper.h"
 #include "Microchip/Graphics/Graphics.h"
+
+// FreeRTOS includes
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "semphr.h"
 
 
 
@@ -42,6 +49,8 @@ void vCreateScreenshot(void)
 {
     // File handle.
     FSFILE *pxFile;
+    
+    xSemaphoreTake(xSdCardMutex, portMAX_DELAY);
     
     // Filename.
     char szFilename[] = "Screenshot999.bmp";
@@ -79,13 +88,15 @@ void vCreateScreenshot(void)
                     FSfwrite(&usColour, 1, sizeof(usColour), pxFile);
                 }
                 
-                LEDR = L_OFF;
-                LEDG = L_OFF;
-                LEDB ^= 1;
+                LEDR ^= 1;
+                LEDG ^= 1;
+                LEDB = L_OFF;
             }
             
             // Close the opened file.
             FSfclose(pxFile);
         }
     }
+    
+    xSemaphoreGive(xSdCardMutex);
 }

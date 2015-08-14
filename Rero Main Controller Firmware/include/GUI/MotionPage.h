@@ -18,9 +18,7 @@
  *******************************************************************************/
 
 void vCreateMotionPage(void);
-
-
-
+WORD usMsgMotionPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg);
 
 
 

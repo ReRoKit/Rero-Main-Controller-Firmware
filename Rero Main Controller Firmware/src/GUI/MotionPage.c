@@ -23,6 +23,7 @@
  *******************************************************************************/
 
 // Position and size for graphic objects.
+#define TXT_HEIGHT              20
 #define RB_HEIGHT               26
 #define RB_WIDTH                (RB_HEIGHT + (RB_INDENT * 2))
 
@@ -131,6 +132,48 @@
 
 
 
+// Select button.
+#define BTN_SELECT_WIDTH        65
+#define BTN_SELECT_HEIGHT       20
+#define BTN_SELECT_L            ((WND_LIMIT_LEFT + WND_LIMIT_RIGHT) / 2 - (BTN_SELECT_WIDTH / 2))
+#define BTN_SELECT_R            (BTN_SELECT_L + BTN_SELECT_WIDTH)
+#define BTN_SELECT_T            (GAMEPAD_T + 75)
+#define BTN_SELECT_B            (BTN_SELECT_T + BTN_SELECT_HEIGHT)
+
+
+
+// File type.
+#define TXT_FILETYPE_WIDTH      85
+#define TXT_FILETYPE_L          WND_LIMIT_LEFT
+#define TXT_FILETYPE_R          (TXT_FILETYPE_L + TXT_FILETYPE_WIDTH)
+#define TXT_FILETYPE_B          (WND_SUBPAGE_BOTTOM - 10)
+#define TXT_FILETYPE_T          (TXT_FILETYPE_B - TXT_HEIGHT)
+
+// File name.
+#define TXT_FILENAME_WIDTH      115
+#define TXT_FILENAME_L          TXT_FILETYPE_R
+#define TXT_FILENAME_R          (TXT_FILENAME_L + TXT_FILENAME_WIDTH)
+#define TXT_FILENAME_T          TXT_FILETYPE_T
+#define TXT_FILENAME_B          TXT_FILETYPE_B
+
+// Edit lock button.
+#define BTN_LOCK_WIDTH          45
+#define BTN_LOCK_HEIGHT         20
+#define BTN_LOCK_R              (WND_SUBPAGE_RIGHT - 15)
+#define BTN_LOCK_L              (BTN_LOCK_R - BTN_LOCK_WIDTH)
+#define BTN_LOCK_B              TXT_FILETYPE_B
+#define BTN_LOCK_T              (BTN_LOCK_B - BTN_LOCK_HEIGHT)
+
+// Lock icon.
+#define IMG_LOCK_WIDTH          40
+#define IMG_LOCK_HEIGHT         40
+#define IMG_LOCK_R              BTN_LOCK_L
+#define IMG_LOCK_L              (IMG_LOCK_R - IMG_LOCK_WIDTH)
+#define IMG_LOCK_T              (BTN_LOCK_T - 11)
+#define IMG_LOCK_B              (IMG_LOCK_T + IMG_LOCK_HEIGHT)
+
+
+
 /*******************************************************************************
  * FUNCTION: vCreateMotionPage
  *
@@ -228,4 +271,71 @@ void vCreateMotionPage(void)
               RB_F5_R, RB_F5_B,
               RB_DRAW, NULL, pxRadioBtnScheme );
     
+    
+    
+    // Select button.
+    BtnCreate( GID_MOTION_BTN_SELECT,
+               BTN_SELECT_L, BTN_SELECT_T,
+               BTN_SELECT_R, BTN_SELECT_B,
+               BTN_RADIUS, BTN_DRAW, NULL, "Select", pxTransBtnScheme );
+    
+    
+    
+    // File type.
+    StCreate( GID_MOTION_TXT_FILETYPE,
+              TXT_FILETYPE_L, TXT_FILETYPE_T,
+              TXT_FILETYPE_R, TXT_FILETYPE_B,
+              ST_DRAW, "Planner File:", pxDefaultScheme );
+    
+    // Filename.
+    StCreate( GID_MOTION_TXT_FILENAME,
+              TXT_FILENAME_L, TXT_FILENAME_T,
+              TXT_FILENAME_R, TXT_FILENAME_B,
+              ST_DRAW, "PlannerFileName", pxLightBlueTxtScheme );
+    
+    
+    
+    // Lock image.
+    PictCreate( GID_MOTION_IMG_LOCK,
+                IMG_LOCK_L, IMG_LOCK_T,
+                IMG_LOCK_R, IMG_LOCK_B,
+                PICT_DRAW | PICT_DISABLED, 1, "/theme/icon/lock.ico", pxDefaultScheme );
+    
+    // Edit lock button.
+    BtnCreate( GID_MOTION_BTN_LOCK,
+               BTN_LOCK_L, BTN_LOCK_T,
+               BTN_LOCK_R, BTN_LOCK_B,
+               1, BTN_DRAW, NULL, "Edit", pxTransBtnScheme );
+    
+}
+
+
+
+/*******************************************************************************
+ * FUNCTION: usMsgMotionPage
+ *
+ * PARAMETERS:
+ * ~ objMsg     - Translated message for the object.
+ * ~ pObj       - Pointer to the object.
+ * ~ pMsg       - Pointer to the non-translated, raw GOL message.
+ *
+ * RETURN:
+ * ~ If the function returns non-zero, the message will be processed by default.
+ *
+ * DESCRIPTIONS:
+ * Handle the touchscreen event of the Play page.
+ *
+ *******************************************************************************/
+WORD usMsgMotionPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
+{
+    // Button is released.
+    if (objMsg == BTN_MSG_RELEASED) {
+        switch (GetObjID(pObj)) {
+            // Exit button.
+            case GID_BTN_EXIT:
+                // Back to main screen.
+                vSetGuiPage(PAGE_MAIN_MENU);
+                break;
+        }
+    }
 }

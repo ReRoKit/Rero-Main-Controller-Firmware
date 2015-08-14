@@ -161,6 +161,14 @@ typedef enum __attribute__((packed)) {
             GID_MOTION_RB_F3,
             GID_MOTION_RB_F4,
             GID_MOTION_RB_F5,
+            
+            GID_MOTION_BTN_SELECT,
+            
+            GID_MOTION_TXT_FILETYPE,
+            GID_MOTION_TXT_FILENAME,
+            
+            GID_MOTION_IMG_LOCK,
+            GID_MOTION_BTN_LOCK,
 
 
     // Common objects for Servo and Sensor page.

@@ -654,7 +654,8 @@ WORD GOLDrawCallback(void)
                 case PAGE_TEACH:        vCreateTeach();             break;
                 case PAGE_PLAY:         vCreatePlay();              break;
                 
-                case PAGE_WALLPAPER:    vCreateWallpaperPage();     break;
+                case PAGE_WALLPAPER:    vCreateMotionPage();     break;
+//                case PAGE_WALLPAPER:    vCreateWallpaperPage();     break;
                 case PAGE_SETTINGS:     vCreateSettingsPage();      break;
                 case PAGE_SET_ID:       vCreateSetIdPage();         break;
                 case PAGE_BT_SETTINGS:  vCreateBtSettingsPage();    break;
@@ -734,7 +735,8 @@ WORD GOLMsgCallback(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
             case PAGE_TEACH:        return usMsgTeach(objMsg, pObj, pMsg);
             case PAGE_PLAY:         return usMsgPlay(objMsg, pObj, pMsg);
             
-            case PAGE_WALLPAPER:    return usMsgWallpaperPage(objMsg, pObj, pMsg);
+            case PAGE_WALLPAPER:    return usMsgMotionPage(objMsg, pObj, pMsg);
+//            case PAGE_WALLPAPER:    return usMsgWallpaperPage(objMsg, pObj, pMsg);
             case PAGE_SETTINGS:     return usMsgSettingsPage(objMsg, pObj, pMsg);
             case PAGE_SET_ID:       return usMsgSetIdPage(objMsg, pObj, pMsg);
             case PAGE_BT_SETTINGS:  return usMsgBtSettingsPage(objMsg, pObj, pMsg);
