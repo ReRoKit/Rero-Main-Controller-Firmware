@@ -144,24 +144,33 @@ typedef enum __attribute__((packed)) {
             
             
             // Motion page.
-            GID_MOTION_GAMEPAD,
+            GID_MOTION_IMG_LEFTPAD,
+            GID_MOTION_IMG_RIGHTPAD,
             
-            GID_MOTION_RB_XU,
-            GID_MOTION_RB_XD,
-            GID_MOTION_RB_XL,
-            GID_MOTION_RB_XR,
+            GID_MOTION_BTN_F1,
+            GID_MOTION_BTN_F2,
+            GID_MOTION_BTN_F3,
+            GID_MOTION_BTN_F4,
+            GID_MOTION_BTN_F5,
             
-            GID_MOTION_RB_CU,
-            GID_MOTION_RB_CD,
-            GID_MOTION_RB_CL,
-            GID_MOTION_RB_CR,
-            
-            GID_MOTION_RB_F1,
-            GID_MOTION_RB_F2,
-            GID_MOTION_RB_F3,
-            GID_MOTION_RB_F4,
-            GID_MOTION_RB_F5,
-            
+//            GID_MOTION_GAMEPAD,
+//            
+//            GID_MOTION_RB_XU,
+//            GID_MOTION_RB_XD,
+//            GID_MOTION_RB_XL,
+//            GID_MOTION_RB_XR,
+//            
+//            GID_MOTION_RB_CU,
+//            GID_MOTION_RB_CD,
+//            GID_MOTION_RB_CL,
+//            GID_MOTION_RB_CR,
+//            
+//            GID_MOTION_RB_F1,
+//            GID_MOTION_RB_F2,
+//            GID_MOTION_RB_F3,
+//            GID_MOTION_RB_F4,
+//            GID_MOTION_RB_F5,
+//            
             GID_MOTION_BTN_SELECT,
             
             GID_MOTION_TXT_FILETYPE,

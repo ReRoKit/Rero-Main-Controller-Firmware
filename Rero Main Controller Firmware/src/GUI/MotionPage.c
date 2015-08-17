@@ -24,121 +24,188 @@
 
 // Position and size for graphic objects.
 #define TXT_HEIGHT              20
-#define RB_HEIGHT               26
-#define RB_WIDTH                (RB_HEIGHT + (RB_INDENT * 2))
+//#define RB_HEIGHT               26
+//#define RB_WIDTH                (RB_HEIGHT + (RB_INDENT * 2))
 
-// Game pad.
-#define GAMEPAD_HEIGHT          140
-#define GAMEPAD_PAD_RADIUS      48
-#define GAMEPAD_ROW_BTN_HEIGHT  32
-#define GAMEPAD_L               (WND_SUBPAGE_LEFT + 25)
-#define GAMEPAD_R               (WND_SUBPAGE_RIGHT - 25)
-#define GAMEPAD_T               (WND_SUBPAGE_TOP + 5)
-#define GAMEPAD_B               (GAMEPAD_T + GAMEPAD_HEIGHT)
+// Gamepad.
+#define IMG_GAMEPAD_WIDTH       90
+#define IMG_GAMEPAD_HEIGHT      90
+#define IMG_GAMEPAD_C2C_X       190
 
+// Left gamepad.
+#define IMG_GAMEPAD_LEFT_L      ((WND_LIMIT_LEFT + WND_LIMIT_RIGHT) / 2 - (IMG_GAMEPAD_C2C_X / 2) - (IMG_GAMEPAD_WIDTH / 2))
+#define IMG_GAMEPAD_LEFT_R      (IMG_GAMEPAD_LEFT_L + IMG_GAMEPAD_WIDTH)
+#define IMG_GAMEPAD_LEFT_T      (WND_SUBPAGE_TOP + 13)
+#define IMG_GAMEPAD_LEFT_B      (IMG_GAMEPAD_LEFT_T + IMG_GAMEPAD_HEIGHT)
 
-// Common parameters for round pad.
-#define PAD_CENTER_Y            (GAMEPAD_T + GAMEPAD_PAD_RADIUS)
-#define PAD_RADIUS              (GAMEPAD_PAD_RADIUS - 5)
-
-#define LEFT_PAD_CENTER_X       (GAMEPAD_L + GAMEPAD_PAD_RADIUS)
-#define RIGHT_PAD_CENTER_X      (GAMEPAD_R - GAMEPAD_PAD_RADIUS)
-
-
-// Left pad up button.
-#define RB_XU_L                 (LEFT_PAD_CENTER_X - (RB_WIDTH / 2))
-#define RB_XU_R                 (RB_XU_L + RB_WIDTH)
-#define RB_XU_T                 (PAD_CENTER_Y - PAD_RADIUS)
-#define RB_XU_B                 (RB_XU_T + RB_HEIGHT)
-
-// Left pad down button.
-#define RB_XD_L                 RB_XU_L
-#define RB_XD_R                 RB_XU_R
-#define RB_XD_B                 (PAD_CENTER_Y + PAD_RADIUS)
-#define RB_XD_T                 (RB_XD_B - RB_HEIGHT)
-
-// Left pad left button.
-#define RB_XL_L                 (LEFT_PAD_CENTER_X - PAD_RADIUS)
-#define RB_XL_R                 (RB_XL_L + RB_WIDTH)
-#define RB_XL_T                 (PAD_CENTER_Y - (RB_HEIGHT / 2))
-#define RB_XL_B                 (RB_XL_T + RB_HEIGHT)
-
-// Left pad right button.
-#define RB_XR_R                 (LEFT_PAD_CENTER_X + PAD_RADIUS)
-#define RB_XR_L                 (RB_XR_R - RB_WIDTH)
-#define RB_XR_T                 RB_XL_T
-#define RB_XR_B                 RB_XL_B
+// Right gamepad.
+#define IMG_GAMEPAD_RIGHT_L     ((WND_LIMIT_LEFT + WND_LIMIT_RIGHT) / 2 + (IMG_GAMEPAD_C2C_X / 2) - (IMG_GAMEPAD_WIDTH / 2))
+#define IMG_GAMEPAD_RIGHT_R     (IMG_GAMEPAD_RIGHT_L + IMG_GAMEPAD_WIDTH)
+#define IMG_GAMEPAD_RIGHT_T     IMG_GAMEPAD_LEFT_T
+#define IMG_GAMEPAD_RIGHT_B     IMG_GAMEPAD_LEFT_B
 
 
 
-// Right pad up button.
-#define RB_CU_L                 (RIGHT_PAD_CENTER_X - (RB_WIDTH / 2))
-#define RB_CU_R                 (RB_CU_L + RB_WIDTH)
-#define RB_CU_T                 (PAD_CENTER_Y - PAD_RADIUS)
-#define RB_CU_B                 (RB_CU_T + RB_HEIGHT)
-
-// Right pad down button.
-#define RB_CD_L                 RB_CU_L
-#define RB_CD_R                 RB_CU_R
-#define RB_CD_B                 (PAD_CENTER_Y + PAD_RADIUS)
-#define RB_CD_T                 (RB_CD_B - RB_HEIGHT)
-
-// Right pad left button.
-#define RB_CL_L                 (RIGHT_PAD_CENTER_X - PAD_RADIUS)
-#define RB_CL_R                 (RB_CL_L + RB_WIDTH)
-#define RB_CL_T                 (PAD_CENTER_Y - (RB_HEIGHT / 2))
-#define RB_CL_B                 (RB_CL_T + RB_HEIGHT)
-
-// Right pad right button.
-#define RB_CR_R                 (RIGHT_PAD_CENTER_X + PAD_RADIUS)
-#define RB_CR_L                 (RB_CR_R - RB_WIDTH)
-#define RB_CR_T                 RB_CL_T
-#define RB_CR_B                 RB_CL_B
-
-
-
-// Bottom button common parameters.
-#define ROW_BTN_C2C             ((GAMEPAD_R - GAMEPAD_L) / 5)
+// Bottom button row.
+#define BTN_BOTTOM_WIDTH        52
+#define BTN_BOTTOM_HEIGHT       26
+#define BTN_BOTTOM_C2C_X        ((IMG_GAMEPAD_RIGHT_R - IMG_GAMEPAD_LEFT_L) / 5)
 
 // Bottom button 1.
-#define RB_F1_L                 (GAMEPAD_L + (ROW_BTN_C2C / 2) - (RB_WIDTH / 2))
-#define RB_F1_R                 (RB_F1_L + RB_WIDTH)
-#define RB_F1_T                 (GAMEPAD_B - (GAMEPAD_ROW_BTN_HEIGHT / 2) - (RB_HEIGHT / 2))
-#define RB_F1_B                 (RB_F1_T + RB_HEIGHT)
+#define BTN_F1_L                (IMG_GAMEPAD_LEFT_L + (BTN_BOTTOM_C2C_X / 2) - (BTN_BOTTOM_WIDTH / 2))
+#define BTN_F1_R                (BTN_F1_L + BTN_BOTTOM_WIDTH)
+#define BTN_F1_T                (IMG_GAMEPAD_LEFT_B + 15)
+#define BTN_F1_B                (BTN_F1_T + BTN_BOTTOM_HEIGHT)
 
 // Bottom button 2.
-#define RB_F2_L                 (RB_F1_L + ROW_BTN_C2C)
-#define RB_F2_R                 (RB_F2_L + RB_WIDTH)
-#define RB_F2_T                 RB_F1_T
-#define RB_F2_B                 RB_F1_B
+#define BTN_F2_L                (BTN_F1_L + BTN_BOTTOM_C2C_X)
+#define BTN_F2_R                (BTN_F2_L + BTN_BOTTOM_WIDTH)
+#define BTN_F2_T                BTN_F1_T
+#define BTN_F2_B                BTN_F1_B
 
 // Bottom button 3.
-#define RB_F3_L                 (RB_F2_L + ROW_BTN_C2C)
-#define RB_F3_R                 (RB_F3_L + RB_WIDTH)
-#define RB_F3_T                 RB_F1_T
-#define RB_F3_B                 RB_F1_B
+#define BTN_F3_L                (BTN_F2_L + BTN_BOTTOM_C2C_X)
+#define BTN_F3_R                (BTN_F3_L + BTN_BOTTOM_WIDTH)
+#define BTN_F3_T                BTN_F1_T
+#define BTN_F3_B                BTN_F1_B
 
 // Bottom button 4.
-#define RB_F4_L                 (RB_F3_L + ROW_BTN_C2C)
-#define RB_F4_R                 (RB_F4_L + RB_WIDTH)
-#define RB_F4_T                 RB_F1_T
-#define RB_F4_B                 RB_F1_B
+#define BTN_F4_L                (BTN_F3_L + BTN_BOTTOM_C2C_X)
+#define BTN_F4_R                (BTN_F4_L + BTN_BOTTOM_WIDTH)
+#define BTN_F4_T                BTN_F1_T
+#define BTN_F4_B                BTN_F1_B
 
 // Bottom button 5.
-#define RB_F5_L                 (RB_F4_L + ROW_BTN_C2C)
-#define RB_F5_R                 (RB_F5_L + RB_WIDTH)
-#define RB_F5_T                 RB_F1_T
-#define RB_F5_B                 RB_F1_B
+#define BTN_F5_L                (BTN_F4_L + BTN_BOTTOM_C2C_X)
+#define BTN_F5_R                (BTN_F5_L + BTN_BOTTOM_WIDTH)
+#define BTN_F5_T                BTN_F1_T
+#define BTN_F5_B                BTN_F1_B
 
 
 
 // Select button.
-#define BTN_SELECT_WIDTH        65
-#define BTN_SELECT_HEIGHT       20
-#define BTN_SELECT_L            ((WND_LIMIT_LEFT + WND_LIMIT_RIGHT) / 2 - (BTN_SELECT_WIDTH / 2))
+#define BTN_SELECT_WIDTH        80
+#define BTN_SELECT_HEIGHT       25
+#define BTN_SELECT_L            ((IMG_GAMEPAD_LEFT_R + IMG_GAMEPAD_RIGHT_L) / 2 - (BTN_SELECT_WIDTH / 2))
 #define BTN_SELECT_R            (BTN_SELECT_L + BTN_SELECT_WIDTH)
-#define BTN_SELECT_T            (GAMEPAD_T + 75)
-#define BTN_SELECT_B            (BTN_SELECT_T + BTN_SELECT_HEIGHT)
+#define BTN_SELECT_B            IMG_GAMEPAD_LEFT_B
+#define BTN_SELECT_T            (BTN_SELECT_B - BTN_SELECT_HEIGHT)
+
+
+
+
+//// Game pad.
+//#define GAMEPAD_HEIGHT          140
+//#define GAMEPAD_PAD_RADIUS      48
+//#define GAMEPAD_ROW_BTN_HEIGHT  32
+//#define GAMEPAD_L               (WND_SUBPAGE_LEFT + 25)
+//#define GAMEPAD_R               (WND_SUBPAGE_RIGHT - 25)
+//#define GAMEPAD_T               (WND_SUBPAGE_TOP + 5)
+//#define GAMEPAD_B               (GAMEPAD_T + GAMEPAD_HEIGHT)
+//
+//
+//// Common parameters for round pad.
+//#define PAD_CENTER_Y            (GAMEPAD_T + GAMEPAD_PAD_RADIUS)
+//#define PAD_RADIUS              (GAMEPAD_PAD_RADIUS - 5)
+//
+//#define LEFT_PAD_CENTER_X       (GAMEPAD_L + GAMEPAD_PAD_RADIUS)
+//#define RIGHT_PAD_CENTER_X      (GAMEPAD_R - GAMEPAD_PAD_RADIUS)
+//
+//
+//// Left pad up button.
+//#define RB_XU_L                 (LEFT_PAD_CENTER_X - (RB_WIDTH / 2))
+//#define RB_XU_R                 (RB_XU_L + RB_WIDTH)
+//#define RB_XU_T                 (PAD_CENTER_Y - PAD_RADIUS)
+//#define RB_XU_B                 (RB_XU_T + RB_HEIGHT)
+//
+//// Left pad down button.
+//#define RB_XD_L                 RB_XU_L
+//#define RB_XD_R                 RB_XU_R
+//#define RB_XD_B                 (PAD_CENTER_Y + PAD_RADIUS)
+//#define RB_XD_T                 (RB_XD_B - RB_HEIGHT)
+//
+//// Left pad left button.
+//#define RB_XL_L                 (LEFT_PAD_CENTER_X - PAD_RADIUS)
+//#define RB_XL_R                 (RB_XL_L + RB_WIDTH)
+//#define RB_XL_T                 (PAD_CENTER_Y - (RB_HEIGHT / 2))
+//#define RB_XL_B                 (RB_XL_T + RB_HEIGHT)
+//
+//// Left pad right button.
+//#define RB_XR_R                 (LEFT_PAD_CENTER_X + PAD_RADIUS)
+//#define RB_XR_L                 (RB_XR_R - RB_WIDTH)
+//#define RB_XR_T                 RB_XL_T
+//#define RB_XR_B                 RB_XL_B
+//
+//
+//
+//// Right pad up button.
+//#define RB_CU_L                 (RIGHT_PAD_CENTER_X - (RB_WIDTH / 2))
+//#define RB_CU_R                 (RB_CU_L + RB_WIDTH)
+//#define RB_CU_T                 (PAD_CENTER_Y - PAD_RADIUS)
+//#define RB_CU_B                 (RB_CU_T + RB_HEIGHT)
+//
+//// Right pad down button.
+//#define RB_CD_L                 RB_CU_L
+//#define RB_CD_R                 RB_CU_R
+//#define RB_CD_B                 (PAD_CENTER_Y + PAD_RADIUS)
+//#define RB_CD_T                 (RB_CD_B - RB_HEIGHT)
+//
+//// Right pad left button.
+//#define RB_CL_L                 (RIGHT_PAD_CENTER_X - PAD_RADIUS)
+//#define RB_CL_R                 (RB_CL_L + RB_WIDTH)
+//#define RB_CL_T                 (PAD_CENTER_Y - (RB_HEIGHT / 2))
+//#define RB_CL_B                 (RB_CL_T + RB_HEIGHT)
+//
+//// Right pad right button.
+//#define RB_CR_R                 (RIGHT_PAD_CENTER_X + PAD_RADIUS)
+//#define RB_CR_L                 (RB_CR_R - RB_WIDTH)
+//#define RB_CR_T                 RB_CL_T
+//#define RB_CR_B                 RB_CL_B
+//
+//
+//
+//// Bottom button common parameters.
+//#define ROW_BTN_C2C             ((GAMEPAD_R - GAMEPAD_L) / 5)
+//
+//// Bottom button 1.
+//#define RB_F1_L                 (GAMEPAD_L + (ROW_BTN_C2C / 2) - (RB_WIDTH / 2))
+//#define RB_F1_R                 (RB_F1_L + RB_WIDTH)
+//#define RB_F1_T                 (GAMEPAD_B - (GAMEPAD_ROW_BTN_HEIGHT / 2) - (RB_HEIGHT / 2))
+//#define RB_F1_B                 (RB_F1_T + RB_HEIGHT)
+//
+//// Bottom button 2.
+//#define RB_F2_L                 (RB_F1_L + ROW_BTN_C2C)
+//#define RB_F2_R                 (RB_F2_L + RB_WIDTH)
+//#define RB_F2_T                 RB_F1_T
+//#define RB_F2_B                 RB_F1_B
+//
+//// Bottom button 3.
+//#define RB_F3_L                 (RB_F2_L + ROW_BTN_C2C)
+//#define RB_F3_R                 (RB_F3_L + RB_WIDTH)
+//#define RB_F3_T                 RB_F1_T
+//#define RB_F3_B                 RB_F1_B
+//
+//// Bottom button 4.
+//#define RB_F4_L                 (RB_F3_L + ROW_BTN_C2C)
+//#define RB_F4_R                 (RB_F4_L + RB_WIDTH)
+//#define RB_F4_T                 RB_F1_T
+//#define RB_F4_B                 RB_F1_B
+//
+//// Bottom button 5.
+//#define RB_F5_L                 (RB_F4_L + ROW_BTN_C2C)
+//#define RB_F5_R                 (RB_F5_L + RB_WIDTH)
+//#define RB_F5_T                 RB_F1_T
+//#define RB_F5_B                 RB_F1_B
+
+
+
+//// Select button.
+//#define BTN_SELECT_WIDTH        65
+//#define BTN_SELECT_HEIGHT       20
+//#define BTN_SELECT_L            ((WND_LIMIT_LEFT + WND_LIMIT_RIGHT) / 2 - (BTN_SELECT_WIDTH / 2))
+//#define BTN_SELECT_R            (BTN_SELECT_L + BTN_SELECT_WIDTH)
+//#define BTN_SELECT_T            (IMG_GAMEPAD_LEFT_T + 75)
+//#define BTN_SELECT_B            (BTN_SELECT_T + BTN_SELECT_HEIGHT)
 
 
 
@@ -192,84 +259,130 @@ void vCreateMotionPage(void)
     GOLFree();
     vCreatePageWindow("MOTION");
     
-    // Game pad outline.
-    GamePadCreate( GID_MOTION_GAMEPAD,
-                   GAMEPAD_L, GAMEPAD_T,
-                   GAMEPAD_R, GAMEPAD_B,
-                   GAMEPAD_PAD_RADIUS, GAMEPAD_ROW_BTN_HEIGHT, GAMEPAD_DRAW, RERO_LIGHT_GREEN);
+    // Left gamepad image.
+    PictCreate( GID_MOTION_IMG_LEFTPAD,
+                IMG_GAMEPAD_LEFT_L, IMG_GAMEPAD_LEFT_T,
+                IMG_GAMEPAD_LEFT_R, IMG_GAMEPAD_LEFT_B,
+                PICT_DRAW, 1, "/theme/icon/LeftPad-Up.ico", pxDefaultScheme );
     
-    
-    // Radio buttons for left pad.
-    RbCreate( GID_MOTION_RB_XU,
-              RB_XU_L, RB_XU_T,
-              RB_XU_R, RB_XU_B,
-              RB_DRAW | RB_GROUP, NULL, pxRadioBtnScheme );
-    
-    RbCreate( GID_MOTION_RB_XD,
-              RB_XD_L, RB_XD_T,
-              RB_XD_R, RB_XD_B,
-              RB_DRAW, NULL, pxRadioBtnScheme );
-    
-    RbCreate( GID_MOTION_RB_XL,
-              RB_XL_L, RB_XL_T,
-              RB_XL_R, RB_XL_B,
-              RB_DRAW, NULL, pxRadioBtnScheme );
-    
-    RbCreate( GID_MOTION_RB_XR,
-              RB_XR_L, RB_XR_T,
-              RB_XR_R, RB_XR_B,
-              RB_DRAW, NULL, pxRadioBtnScheme );
+    // Right gamepad image.
+    PictCreate( GID_MOTION_IMG_RIGHTPAD,
+                IMG_GAMEPAD_RIGHT_L, IMG_GAMEPAD_RIGHT_T,
+                IMG_GAMEPAD_RIGHT_R, IMG_GAMEPAD_RIGHT_B,
+                PICT_DRAW, 1, "/theme/icon/RightPad-None.ico", pxDefaultScheme );
     
     
     
-    // Radio buttons for right pad.
-    RbCreate( GID_MOTION_RB_CU,
-              RB_CU_L, RB_CU_T,
-              RB_CU_R, RB_CU_B,
-              RB_DRAW, NULL, pxRadioBtnScheme );
+    // Bottom button 1.
+    BtnCreate( GID_MOTION_BTN_F1,
+               BTN_F1_L, BTN_F1_T,
+               BTN_F1_R, BTN_F1_B,
+               0, BTN_DRAW | BTN_NOPANEL, "/theme/icon/BottomButton-Released.ico", NULL, pxImgBtnScheme );
     
-    RbCreate( GID_MOTION_RB_CD,
-              RB_CD_L, RB_CD_T,
-              RB_CD_R, RB_CD_B,
-              RB_DRAW, NULL, pxRadioBtnScheme );
+    // Bottom button 2.
+    BtnCreate( GID_MOTION_BTN_F2,
+               BTN_F2_L, BTN_F2_T,
+               BTN_F2_R, BTN_F2_B,
+               0, BTN_DRAW | BTN_NOPANEL, "/theme/icon/BottomButton-Released.ico", NULL, pxImgBtnScheme );
     
-    RbCreate( GID_MOTION_RB_CL,
-              RB_CL_L, RB_CL_T,
-              RB_CL_R, RB_CL_B,
-              RB_DRAW, NULL, pxRadioBtnScheme );
+    // Bottom button 3.
+    BtnCreate( GID_MOTION_BTN_F3,
+               BTN_F3_L, BTN_F3_T,
+               BTN_F3_R, BTN_F3_B,
+               0, BTN_DRAW | BTN_NOPANEL, "/theme/icon/BottomButton-Released.ico", NULL, pxImgBtnScheme );
     
-    RbCreate( GID_MOTION_RB_CR,
-              RB_CR_L, RB_CR_T,
-              RB_CR_R, RB_CR_B,
-              RB_DRAW, NULL, pxRadioBtnScheme );
+    // Bottom button 4.
+    BtnCreate( GID_MOTION_BTN_F4,
+               BTN_F4_L, BTN_F4_T,
+               BTN_F4_R, BTN_F4_B,
+               0, BTN_DRAW | BTN_NOPANEL, "/theme/icon/BottomButton-Released.ico", NULL, pxImgBtnScheme );
+    
+    // Bottom button 5.
+    BtnCreate( GID_MOTION_BTN_F5,
+               BTN_F5_L, BTN_F5_T,
+               BTN_F5_R, BTN_F5_B,
+               0, BTN_DRAW | BTN_NOPANEL, "/theme/icon/BottomButton-Released.ico", NULL, pxImgBtnScheme );
     
     
     
-    // Radio button for the bottom row.
-    RbCreate( GID_MOTION_RB_F1,
-              RB_F1_L, RB_F1_T,
-              RB_F1_R, RB_F1_B,
-              RB_DRAW, NULL, pxRadioBtnScheme );
-    
-    RbCreate( GID_MOTION_RB_F2,
-              RB_F2_L, RB_F2_T,
-              RB_F2_R, RB_F2_B,
-              RB_DRAW, NULL, pxRadioBtnScheme );
-    
-    RbCreate( GID_MOTION_RB_F3,
-              RB_F3_L, RB_F3_T,
-              RB_F3_R, RB_F3_B,
-              RB_DRAW, NULL, pxRadioBtnScheme );
-    
-    RbCreate( GID_MOTION_RB_F4,
-              RB_F4_L, RB_F4_T,
-              RB_F4_R, RB_F4_B,
-              RB_DRAW, NULL, pxRadioBtnScheme );
-    
-    RbCreate( GID_MOTION_RB_F5,
-              RB_F5_L, RB_F5_T,
-              RB_F5_R, RB_F5_B,
-              RB_DRAW, NULL, pxRadioBtnScheme );
+//    // Game pad outline.
+//    GamePadCreate( GID_MOTION_GAMEPAD,
+//                   GAMEPAD_L, GAMEPAD_T,
+//                   GAMEPAD_R, GAMEPAD_B,
+//                   GAMEPAD_PAD_RADIUS, GAMEPAD_ROW_BTN_HEIGHT, GAMEPAD_DRAW, RERO_LIGHT_GREEN);
+//    
+//    
+//    // Radio buttons for left pad.
+//    RbCreate( GID_MOTION_RB_XU,
+//              RB_XU_L, RB_XU_T,
+//              RB_XU_R, RB_XU_B,
+//              RB_DRAW | RB_GROUP, NULL, pxRadioBtnScheme );
+//    
+//    RbCreate( GID_MOTION_RB_XD,
+//              RB_XD_L, RB_XD_T,
+//              RB_XD_R, RB_XD_B,
+//              RB_DRAW, NULL, pxRadioBtnScheme );
+//    
+//    RbCreate( GID_MOTION_RB_XL,
+//              RB_XL_L, RB_XL_T,
+//              RB_XL_R, RB_XL_B,
+//              RB_DRAW, NULL, pxRadioBtnScheme );
+//    
+//    RbCreate( GID_MOTION_RB_XR,
+//              RB_XR_L, RB_XR_T,
+//              RB_XR_R, RB_XR_B,
+//              RB_DRAW, NULL, pxRadioBtnScheme );
+//    
+//    
+//    
+//    // Radio buttons for right pad.
+//    RbCreate( GID_MOTION_RB_CU,
+//              RB_CU_L, RB_CU_T,
+//              RB_CU_R, RB_CU_B,
+//              RB_DRAW, NULL, pxRadioBtnScheme );
+//    
+//    RbCreate( GID_MOTION_RB_CD,
+//              RB_CD_L, RB_CD_T,
+//              RB_CD_R, RB_CD_B,
+//              RB_DRAW, NULL, pxRadioBtnScheme );
+//    
+//    RbCreate( GID_MOTION_RB_CL,
+//              RB_CL_L, RB_CL_T,
+//              RB_CL_R, RB_CL_B,
+//              RB_DRAW, NULL, pxRadioBtnScheme );
+//    
+//    RbCreate( GID_MOTION_RB_CR,
+//              RB_CR_L, RB_CR_T,
+//              RB_CR_R, RB_CR_B,
+//              RB_DRAW, NULL, pxRadioBtnScheme );
+//    
+//    
+//    
+//    // Radio button for the bottom row.
+//    RbCreate( GID_MOTION_RB_F1,
+//              RB_F1_L, RB_F1_T,
+//              RB_F1_R, RB_F1_B,
+//              RB_DRAW, NULL, pxRadioBtnScheme );
+//    
+//    RbCreate( GID_MOTION_RB_F2,
+//              RB_F2_L, RB_F2_T,
+//              RB_F2_R, RB_F2_B,
+//              RB_DRAW, NULL, pxRadioBtnScheme );
+//    
+//    RbCreate( GID_MOTION_RB_F3,
+//              RB_F3_L, RB_F3_T,
+//              RB_F3_R, RB_F3_B,
+//              RB_DRAW, NULL, pxRadioBtnScheme );
+//    
+//    RbCreate( GID_MOTION_RB_F4,
+//              RB_F4_L, RB_F4_T,
+//              RB_F4_R, RB_F4_B,
+//              RB_DRAW, NULL, pxRadioBtnScheme );
+//    
+//    RbCreate( GID_MOTION_RB_F5,
+//              RB_F5_L, RB_F5_T,
+//              RB_F5_R, RB_F5_B,
+//              RB_DRAW, NULL, pxRadioBtnScheme );
     
     
     
