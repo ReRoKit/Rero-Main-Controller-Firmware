@@ -56,12 +56,10 @@ typedef enum __attribute__((packed)) {
     PAGE_MAIN_MENU,
     
     PAGE_BT_PROGRAM,
+    PAGE_BT_REMOTE,
+
     PAGE_SERVO,
     PAGE_SENSOR,
-    
-    PAGE_TEACH,
-    PAGE_PLAY,
-    PAGE_BT_REMOTE,
     PAGE_MOTION,
     
     PAGE_WALLPAPER,
@@ -91,9 +89,8 @@ typedef enum __attribute__((packed)) {
     GID_MAIN_BTN_BTPROGRAM,
     GID_MAIN_BTN_SERVO,
     GID_MAIN_BTN_SENSOR,
-    GID_MAIN_BTN_TEACH,
-    GID_MAIN_BTN_PLAY,
     GID_MAIN_BTN_REMOTE,
+    GID_MAIN_BTN_MOTION,
     GID_MAIN_BTN_SETTINGS,
 
 
@@ -144,70 +141,70 @@ typedef enum __attribute__((packed)) {
     GID_TEACH_BTN_STOP,
             
             
-            // Motion page.
-            GID_MOTION_IMG_LEFTPAD,
-            GID_MOTION_IMG_RIGHTPAD,
-            
-            GID_MOTION_BTN_UP,
-            GID_MOTION_BTN_DOWN,
-            GID_MOTION_BTN_LEFT,
-            GID_MOTION_BTN_RIGHT,
-            
-            GID_MOTION_BTN_LOCK_UP,
-            GID_MOTION_BTN_LOCK_DOWN,
-            GID_MOTION_BTN_LOCK_LEFT,
-            GID_MOTION_BTN_LOCK_RIGHT,
-            
-            GID_MOTION_IMG_LOCK_UP,
-            GID_MOTION_IMG_LOCK_DOWN,
-            GID_MOTION_IMG_LOCK_LEFT,
-            GID_MOTION_IMG_LOCK_RIGHT,
-            
-            GID_MOTION_BTN_X,
-            GID_MOTION_BTN_Y,
-            GID_MOTION_BTN_A,
-            GID_MOTION_BTN_B,
-            
-            GID_MOTION_BTN_LOCK_X,
-            GID_MOTION_BTN_LOCK_Y,
-            GID_MOTION_BTN_LOCK_A,
-            GID_MOTION_BTN_LOCK_B,
-            
-            GID_MOTION_IMG_LOCK_X,
-            GID_MOTION_IMG_LOCK_Y,
-            GID_MOTION_IMG_LOCK_A,
-            GID_MOTION_IMG_LOCK_B,
-            
-            GID_MOTION_BTN_1,
-            GID_MOTION_BTN_2,
-            GID_MOTION_BTN_3,
-            GID_MOTION_BTN_4,
-            GID_MOTION_BTN_5,
-            
-            GID_MOTION_BTN_LOCK_1,
-            GID_MOTION_BTN_LOCK_2,
-            GID_MOTION_BTN_LOCK_3,
-            GID_MOTION_BTN_LOCK_4,
-            GID_MOTION_BTN_LOCK_5,
-            
-            GID_MOTION_BTN_TEACH,
-            GID_MOTION_BTN_PLAY,
-            GID_MOTION_BTN_NEXT,
-            GID_MOTION_BTN_STOPTEACH,
-            GID_MOTION_BTN_STOPPLAY,
-            
-            GID_MOTION_TXT_MSG1,
-            GID_MOTION_TXT_MSG2,
-            
-            GID_MOTION_TXT_FRAME_LABEL,
-            GID_MOTION_DM_FRAME_VALUE,
-            
-            GID_MOTION_TXT_TIME_LABEL,
-            GID_MOTION_DM_TIME_VALUE,
-            
-            GID_MOTION_IMG_LOCK,
-            GID_MOTION_BTN_EDIT,
-            GID_MOTION_BTN_DONE,
+    // Motion page.
+    GID_MOTION_IMG_LEFTPAD,
+    GID_MOTION_IMG_RIGHTPAD,
+
+    GID_MOTION_BTN_UP,
+    GID_MOTION_BTN_DOWN,
+    GID_MOTION_BTN_LEFT,
+    GID_MOTION_BTN_RIGHT,
+
+    GID_MOTION_BTN_LOCK_UP,
+    GID_MOTION_BTN_LOCK_DOWN,
+    GID_MOTION_BTN_LOCK_LEFT,
+    GID_MOTION_BTN_LOCK_RIGHT,
+
+    GID_MOTION_IMG_LOCK_UP,
+    GID_MOTION_IMG_LOCK_DOWN,
+    GID_MOTION_IMG_LOCK_LEFT,
+    GID_MOTION_IMG_LOCK_RIGHT,
+
+    GID_MOTION_BTN_X,
+    GID_MOTION_BTN_Y,
+    GID_MOTION_BTN_A,
+    GID_MOTION_BTN_B,
+
+    GID_MOTION_BTN_LOCK_X,
+    GID_MOTION_BTN_LOCK_Y,
+    GID_MOTION_BTN_LOCK_A,
+    GID_MOTION_BTN_LOCK_B,
+
+    GID_MOTION_IMG_LOCK_X,
+    GID_MOTION_IMG_LOCK_Y,
+    GID_MOTION_IMG_LOCK_A,
+    GID_MOTION_IMG_LOCK_B,
+
+    GID_MOTION_BTN_1,
+    GID_MOTION_BTN_2,
+    GID_MOTION_BTN_3,
+    GID_MOTION_BTN_4,
+    GID_MOTION_BTN_5,
+
+    GID_MOTION_BTN_LOCK_1,
+    GID_MOTION_BTN_LOCK_2,
+    GID_MOTION_BTN_LOCK_3,
+    GID_MOTION_BTN_LOCK_4,
+    GID_MOTION_BTN_LOCK_5,
+
+    GID_MOTION_BTN_TEACH,
+    GID_MOTION_BTN_PLAY,
+    GID_MOTION_BTN_NEXT,
+    GID_MOTION_BTN_STOPTEACH,
+    GID_MOTION_BTN_STOPPLAY,
+
+    GID_MOTION_TXT_MSG1,
+    GID_MOTION_TXT_MSG2,
+
+    GID_MOTION_TXT_FRAME_LABEL,
+    GID_MOTION_DM_FRAME_VALUE,
+
+    GID_MOTION_TXT_TIME_LABEL,
+    GID_MOTION_DM_TIME_VALUE,
+
+    GID_MOTION_IMG_LOCK,
+    GID_MOTION_BTN_EDIT,
+    GID_MOTION_BTN_DONE,
 
 
     // Common objects for Servo and Sensor page.

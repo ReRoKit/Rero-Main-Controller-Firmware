@@ -380,6 +380,15 @@ static void prv_vToggleFileLock(SELECTED_BUTTON eSelectedButton)
     xSemaphoreTake(xSdCardMutex, portMAX_DELAY);
     if (xFSSetReadOnlyFlag(prv_xSelectedFileInfo.szFullFilePath, !prv_xSelectedFileInfo.ucLock) == FR_OK) {
         prv_xSelectedFileInfo.ucLock ^= 1;
+        
+        // Clear the error message.
+        vUpdateMotionPageMsg1("");
+        vUpdateMotionPageMsg2("");
+    }
+    else {
+        // Show the error message if failed to toggle the flag.
+        vUpdateMotionPageMsg1("Error:");
+        vUpdateMotionPageMsg2("Empty file");
     }
     xSemaphoreGive(xSdCardMutex);
 }
@@ -518,10 +527,10 @@ static void prv_vSelectButton(SELECTED_BUTTON eNewSelectedButton)
     if (eNewSelectedButton != prv_eSelectedButton) {
         // Update the button state for left gamepad.
         switch (eNewSelectedButton) {
-            case BUTTON_UP:     vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_LEFTPAD), "/theme/icon/motion/LeftPad-Up.ico");     break;
-            case BUTTON_DOWN:   vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_LEFTPAD), "/theme/icon/motion/LeftPad-Down.ico");   break;
-            case BUTTON_LEFT:   vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_LEFTPAD), "/theme/icon/motion/LeftPad-Left.ico");   break;
-            case BUTTON_RIGHT:  vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_LEFTPAD), "/theme/icon/motion/LeftPad-Right.ico");  break;
+            case BUTTON_UP:     vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_LEFTPAD), "/Theme/MotionPage/LeftPad-Up.bmp");     break;
+            case BUTTON_DOWN:   vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_LEFTPAD), "/Theme/MotionPage/LeftPad-Down.bmp");   break;
+            case BUTTON_LEFT:   vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_LEFTPAD), "/Theme/MotionPage/LeftPad-Left.bmp");   break;
+            case BUTTON_RIGHT:  vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_LEFTPAD), "/Theme/MotionPage/LeftPad-Right.bmp");  break;
             
             default:
                 // Only clear the gamepad if one of the button was selected previously.
@@ -530,7 +539,7 @@ static void prv_vSelectButton(SELECTED_BUTTON eNewSelectedButton)
                     case BUTTON_DOWN:
                     case BUTTON_LEFT:
                     case BUTTON_RIGHT:
-                        vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_LEFTPAD), "/theme/icon/motion/LeftPad-None.ico");
+                        vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_LEFTPAD), "/Theme/MotionPage/LeftPad-None.bmp");
                         break;
                 }
                 break;
@@ -538,10 +547,10 @@ static void prv_vSelectButton(SELECTED_BUTTON eNewSelectedButton)
 
         // Update the button state for right gamepad.
         switch (eNewSelectedButton) {
-            case BUTTON_X:  vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_RIGHTPAD), "/theme/icon/motion/RightPad-X.ico");    break;
-            case BUTTON_Y:  vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_RIGHTPAD), "/theme/icon/motion/RightPad-Y.ico");    break;
-            case BUTTON_A:  vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_RIGHTPAD), "/theme/icon/motion/RightPad-A.ico");    break;
-            case BUTTON_B:  vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_RIGHTPAD), "/theme/icon/motion/RightPad-B.ico");    break;
+            case BUTTON_X:  vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_RIGHTPAD), "/Theme/MotionPage/RightPad-X.bmp");    break;
+            case BUTTON_Y:  vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_RIGHTPAD), "/Theme/MotionPage/RightPad-Y.bmp");    break;
+            case BUTTON_A:  vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_RIGHTPAD), "/Theme/MotionPage/RightPad-A.bmp");    break;
+            case BUTTON_B:  vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_RIGHTPAD), "/Theme/MotionPage/RightPad-B.bmp");    break;
             
             default:
                 // Only clear the gamepad if one of the button was selected previously.
@@ -550,7 +559,7 @@ static void prv_vSelectButton(SELECTED_BUTTON eNewSelectedButton)
                     case BUTTON_Y:
                     case BUTTON_A:
                     case BUTTON_B:
-                        vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_RIGHTPAD), "/theme/icon/motion/RightPad-None.ico");
+                        vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_RIGHTPAD), "/Theme/MotionPage/RightPad-None.bmp");
                         break;
                 }
                 break;
@@ -558,19 +567,19 @@ static void prv_vSelectButton(SELECTED_BUTTON eNewSelectedButton)
 
         // Highlight the selected button for bottom button row.
         switch (eNewSelectedButton) {
-            case BUTTON_1:  vButtonUpdateBitmap((BUTTON*)GOLFindObject(GID_MOTION_BTN_1), "/theme/icon/motion/Button1-Pressed.ico");    break;
-            case BUTTON_2:  vButtonUpdateBitmap((BUTTON*)GOLFindObject(GID_MOTION_BTN_2), "/theme/icon/motion/Button2-Pressed.ico");    break;
-            case BUTTON_3:  vButtonUpdateBitmap((BUTTON*)GOLFindObject(GID_MOTION_BTN_3), "/theme/icon/motion/Button3-Pressed.ico");    break;
-            case BUTTON_4:  vButtonUpdateBitmap((BUTTON*)GOLFindObject(GID_MOTION_BTN_4), "/theme/icon/motion/Button4-Pressed.ico");    break;
-            case BUTTON_5:  vButtonUpdateBitmap((BUTTON*)GOLFindObject(GID_MOTION_BTN_5), "/theme/icon/motion/Button5-Pressed.ico");    break;
+            case BUTTON_1:  vButtonUpdateBitmap((BUTTON*)GOLFindObject(GID_MOTION_BTN_1), "/Theme/MotionPage/Button1-Pressed.bmp");    break;
+            case BUTTON_2:  vButtonUpdateBitmap((BUTTON*)GOLFindObject(GID_MOTION_BTN_2), "/Theme/MotionPage/Button2-Pressed.bmp");    break;
+            case BUTTON_3:  vButtonUpdateBitmap((BUTTON*)GOLFindObject(GID_MOTION_BTN_3), "/Theme/MotionPage/Button3-Pressed.bmp");    break;
+            case BUTTON_4:  vButtonUpdateBitmap((BUTTON*)GOLFindObject(GID_MOTION_BTN_4), "/Theme/MotionPage/Button4-Pressed.bmp");    break;
+            case BUTTON_5:  vButtonUpdateBitmap((BUTTON*)GOLFindObject(GID_MOTION_BTN_5), "/Theme/MotionPage/Button5-Pressed.bmp");    break;
         }
 
         // Clear the deselected button for bottom button row.
-        if (prv_eSelectedButton == BUTTON_1) vButtonUpdateBitmap((BUTTON*)GOLFindObject(GID_MOTION_BTN_1), "/theme/icon/motion/Button1-Released.ico");
-        if (prv_eSelectedButton == BUTTON_2) vButtonUpdateBitmap((BUTTON*)GOLFindObject(GID_MOTION_BTN_2), "/theme/icon/motion/Button2-Released.ico");
-        if (prv_eSelectedButton == BUTTON_3) vButtonUpdateBitmap((BUTTON*)GOLFindObject(GID_MOTION_BTN_3), "/theme/icon/motion/Button3-Released.ico");
-        if (prv_eSelectedButton == BUTTON_4) vButtonUpdateBitmap((BUTTON*)GOLFindObject(GID_MOTION_BTN_4), "/theme/icon/motion/Button4-Released.ico");
-        if (prv_eSelectedButton == BUTTON_5) vButtonUpdateBitmap((BUTTON*)GOLFindObject(GID_MOTION_BTN_5), "/theme/icon/motion/Button5-Released.ico");
+        if (prv_eSelectedButton == BUTTON_1) vButtonUpdateBitmap((BUTTON*)GOLFindObject(GID_MOTION_BTN_1), "/Theme/MotionPage/Button1-Released.bmp");
+        if (prv_eSelectedButton == BUTTON_2) vButtonUpdateBitmap((BUTTON*)GOLFindObject(GID_MOTION_BTN_2), "/Theme/MotionPage/Button2-Released.bmp");
+        if (prv_eSelectedButton == BUTTON_3) vButtonUpdateBitmap((BUTTON*)GOLFindObject(GID_MOTION_BTN_3), "/Theme/MotionPage/Button3-Released.bmp");
+        if (prv_eSelectedButton == BUTTON_4) vButtonUpdateBitmap((BUTTON*)GOLFindObject(GID_MOTION_BTN_4), "/Theme/MotionPage/Button4-Released.bmp");
+        if (prv_eSelectedButton == BUTTON_5) vButtonUpdateBitmap((BUTTON*)GOLFindObject(GID_MOTION_BTN_5), "/Theme/MotionPage/Button5-Released.bmp");
         
     }
     
@@ -612,7 +621,7 @@ static void prv_vSelectButton(SELECTED_BUTTON eNewSelectedButton)
     // If the file is locked, disable the teach button and show the locked icon.
     if (prv_xSelectedFileInfo.ucLock != 0) {
         vGraphicsObjectDisable((BUTTON*)GOLFindObject(GID_MOTION_BTN_TEACH));
-        vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_LOCK), "/theme/icon/motion/Locked.ico");
+        vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_LOCK), "/Theme/MotionPage/Locked.bmp");
     }
     // Else, enable the teach button and show the unlocked icon.
     else {
@@ -621,7 +630,7 @@ static void prv_vSelectButton(SELECTED_BUTTON eNewSelectedButton)
         } else {
             vGraphicsObjectEnable((BUTTON*)GOLFindObject(GID_MOTION_BTN_TEACH));
         }
-        vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_LOCK), "/theme/icon/motion/Unlocked.ico");
+        vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_LOCK), "/Theme/MotionPage/Unlocked.bmp");
     }
         
     
@@ -653,7 +662,7 @@ static void prv_vCreateMainPage(void)
     PictCreate( GID_MOTION_IMG_LEFTPAD,
                 IMG_GAMEPAD_LEFT_L, IMG_GAMEPAD_LEFT_T,
                 IMG_GAMEPAD_LEFT_R, IMG_GAMEPAD_LEFT_B,
-                PICT_DRAW, 1, "/theme/icon/motion/LeftPad-None.ico", pxDefaultScheme );
+                PICT_DRAW, 1, "/Theme/MotionPage/LeftPad-None.bmp", pxDefaultScheme );
     
     // Up button.
     BtnCreate( GID_MOTION_BTN_UP,
@@ -685,7 +694,7 @@ static void prv_vCreateMainPage(void)
     PictCreate( GID_MOTION_IMG_RIGHTPAD,
                 IMG_GAMEPAD_RIGHT_L, IMG_GAMEPAD_RIGHT_T,
                 IMG_GAMEPAD_RIGHT_R, IMG_GAMEPAD_RIGHT_B,
-                PICT_DRAW, 1, "/theme/icon/motion/RightPad-None.ico", pxDefaultScheme );
+                PICT_DRAW, 1, "/Theme/MotionPage/RightPad-None.bmp", pxDefaultScheme );
     
     // X button.
     BtnCreate( GID_MOTION_BTN_X,
@@ -717,31 +726,31 @@ static void prv_vCreateMainPage(void)
     BtnCreate( GID_MOTION_BTN_1,
                BTN_1_L, BTN_1_T,
                BTN_1_R, BTN_1_B,
-               0, BTN_DRAW | BTN_NOPANEL, "/theme/icon/motion/Button1-Released.ico", NULL, pxImgBtnScheme );
+               0, BTN_DRAW | BTN_NOPANEL, "/Theme/MotionPage/Button1-Released.bmp", NULL, pxImgBtnScheme );
     
     // Bottom button 2.
     BtnCreate( GID_MOTION_BTN_2,
                BTN_2_L, BTN_2_T,
                BTN_2_R, BTN_2_B,
-               0, BTN_DRAW | BTN_NOPANEL, "/theme/icon/motion/Button2-Released.ico", NULL, pxImgBtnScheme );
+               0, BTN_DRAW | BTN_NOPANEL, "/Theme/MotionPage/Button2-Released.bmp", NULL, pxImgBtnScheme );
     
     // Bottom button 3.
     BtnCreate( GID_MOTION_BTN_3,
                BTN_3_L, BTN_3_T,
                BTN_3_R, BTN_3_B,
-               0, BTN_DRAW | BTN_NOPANEL, "/theme/icon/motion/Button3-Released.ico", NULL, pxImgBtnScheme );
+               0, BTN_DRAW | BTN_NOPANEL, "/Theme/MotionPage/Button3-Released.bmp", NULL, pxImgBtnScheme );
     
     // Bottom button 4.
     BtnCreate( GID_MOTION_BTN_4,
                BTN_4_L, BTN_4_T,
                BTN_4_R, BTN_4_B,
-               0, BTN_DRAW | BTN_NOPANEL, "/theme/icon/motion/Button4-Released.ico", NULL, pxImgBtnScheme );
+               0, BTN_DRAW | BTN_NOPANEL, "/Theme/MotionPage/Button4-Released.bmp", NULL, pxImgBtnScheme );
     
     // Bottom button 5.
     BtnCreate( GID_MOTION_BTN_5,
                BTN_5_L, BTN_5_T,
                BTN_5_R, BTN_5_B,
-               0, BTN_DRAW | BTN_NOPANEL, "/theme/icon/motion/Button5-Released.ico", NULL, pxImgBtnScheme );
+               0, BTN_DRAW | BTN_NOPANEL, "/Theme/MotionPage/Button5-Released.bmp", NULL, pxImgBtnScheme );
     
     
     
@@ -791,7 +800,7 @@ static void prv_vCreateEditLockPage(void)
     PictCreate( GID_MOTION_IMG_LEFTPAD,
                 IMG_GAMEPAD_LEFT_L, IMG_GAMEPAD_LEFT_T,
                 IMG_GAMEPAD_LEFT_R, IMG_GAMEPAD_LEFT_B,
-                PICT_DRAW, 1, "/theme/icon/motion/PadOutline.ico", pxDefaultScheme );
+                PICT_DRAW, 1, "/Theme/MotionPage/PadOutline.bmp", pxDefaultScheme );
     
     // Up button.
     PictCreate( GID_MOTION_IMG_LOCK_UP,
@@ -843,7 +852,7 @@ static void prv_vCreateEditLockPage(void)
     PictCreate( GID_MOTION_IMG_RIGHTPAD,
                 IMG_GAMEPAD_RIGHT_L, IMG_GAMEPAD_RIGHT_T,
                 IMG_GAMEPAD_RIGHT_R, IMG_GAMEPAD_RIGHT_B,
-                PICT_DRAW, 1, "/theme/icon/motion/PadOutline.ico", pxDefaultScheme );
+                PICT_DRAW, 1, "/Theme/MotionPage/PadOutline.bmp", pxDefaultScheme );
     
     // X button.
     PictCreate( GID_MOTION_IMG_LOCK_X,
@@ -920,6 +929,20 @@ static void prv_vCreateEditLockPage(void)
                BTN_5_L, BTN_5_T,
                BTN_5_R, BTN_5_B,
                0, BTN_DRAW | BTN_NOPANEL, NULL, NULL, pxImgBtnScheme );
+    
+    
+    
+    // Message 1.
+    StCreate( GID_MOTION_TXT_MSG1,
+              TXT_MSG1_L, TXT_MSG1_T,
+              TXT_MSG1_R, TXT_MSG1_B,
+              ST_DRAW, "", pxDefaultScheme );
+    
+    // Message 2.
+    StCreate( GID_MOTION_TXT_MSG2,
+              TXT_MSG2_L, TXT_MSG2_T,
+              TXT_MSG2_R, TXT_MSG2_B,
+              ST_DRAW, "", pxLightBlueTxtScheme );
     
     
     
@@ -1002,9 +1025,9 @@ static void prv_vUpdateEditLockIcon(SELECTED_BUTTON eSelectedButton)
         case BUTTON_A:
         case BUTTON_B:
             if (prv_xSelectedFileInfo.ucLock == 0) {
-                vPictureUpdateBitmap((PICTURE*)GOLFindObject(eObjectId), "/theme/icon/motion/Unlocked.ico");
+                vPictureUpdateBitmap((PICTURE*)GOLFindObject(eObjectId), "/Theme/MotionPage/Unlocked.bmp");
             } else {
-                vPictureUpdateBitmap((PICTURE*)GOLFindObject(eObjectId), "/theme/icon/motion/Locked.ico");
+                vPictureUpdateBitmap((PICTURE*)GOLFindObject(eObjectId), "/Theme/MotionPage/Locked.bmp");
             }
             break;
             
@@ -1014,9 +1037,9 @@ static void prv_vUpdateEditLockIcon(SELECTED_BUTTON eSelectedButton)
         case BUTTON_4:
         case BUTTON_5:
             if (prv_xSelectedFileInfo.ucLock == 0) {
-                vButtonUpdateBitmap((BUTTON*)GOLFindObject(eObjectId), "/theme/icon/motion/BottomButtonUnlocked.ico");
+                vButtonUpdateBitmap((BUTTON*)GOLFindObject(eObjectId), "/Theme/MotionPage/ButtonUnlocked.bmp");
             } else {
-                vButtonUpdateBitmap((BUTTON*)GOLFindObject(eObjectId), "/theme/icon/motion/BottomButtonLocked.ico");
+                vButtonUpdateBitmap((BUTTON*)GOLFindObject(eObjectId), "/Theme/MotionPage/ButtonLocked.bmp");
             }
             break;
     }
@@ -1123,7 +1146,7 @@ static void prv_vCreateMainPageButton(void)
     PictCreate( GID_MOTION_IMG_LOCK,
                 IMG_LOCK_L, IMG_LOCK_T,
                 IMG_LOCK_R, IMG_LOCK_B,
-                PICT_DRAW, 1, "/theme/icon/motion/Unlocked.ico", pxDefaultScheme );
+                PICT_DRAW, 1, "/Theme/MotionPage/Unlocked.bmp", pxDefaultScheme );
     
     // Edit button.
     BtnCreate( GID_MOTION_BTN_EDIT,

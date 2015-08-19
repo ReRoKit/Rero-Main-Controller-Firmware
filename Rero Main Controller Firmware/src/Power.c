@@ -269,7 +269,7 @@ void taskPowerOff (void *pvParameters)
 
     // Show the rero logo.
     xSemaphoreTake(xSdCardMutex, portMAX_DELAY);
-    FSFILE *pImageFile = FSfopen("/theme/icon/rero.ico", "r");
+    FSFILE *pImageFile = FSfopen("/Theme/Rero.bmp", "r");
     if (pImageFile != NULL) {
         WORD wWidth = 98;
         WORD wHeight = 24;

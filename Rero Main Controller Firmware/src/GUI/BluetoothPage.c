@@ -87,7 +87,7 @@ void vCreateBluetoothPage(void)
     PictCreate( GID_BT_IMG_LOGO,
                 IMG_BTLOGO_X1, IMG_BTLOGO_Y1,
                 IMG_BTLOGO_X2, IMG_BTLOGO_Y2,
-                PICT_DRAW, 1, "/theme/bluetooth.bmp", pxDefaultScheme );
+                PICT_DRAW, 1, "/Theme/BluetoothPage/BluetoothBackground.bmp", pxDefaultScheme );
     
     
     // Create text for robot name.

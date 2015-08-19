@@ -37,7 +37,7 @@ void vCreateWallpaperPage (void)
     PictCreate( GID_IMG_WALLPAPPER,
                 0,         0,
                 GetMaxX(), GetMaxY(),
-                PICT_DRAW, 1, "/theme/wallpaper.bmp", pxDefaultScheme );
+                PICT_DRAW, 1, "/Theme/Wallpaper.bmp", pxDefaultScheme );
 }
 
 

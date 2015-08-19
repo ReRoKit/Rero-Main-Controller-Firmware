@@ -90,13 +90,13 @@ void vCreateUserProgramPage(void)
     BtnCreate( GID_USER_BTN_PLAY,
                BTN_PLAY_L, BTN_PLAY_T,
                BTN_PLAY_R, BTN_PLAY_B,
-               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/theme/icon/play.ico", "PLAY", pxImgBtnScheme );
+               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/UserProgramPage/Play.bmp", "PLAY", pxImgBtnScheme );
     
     // Stop button.
     BtnCreate( GID_USER_BTN_STOP,
                BTN_STOP_L, BTN_STOP_T,
                BTN_STOP_R, BTN_STOP_B,
-               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL | BTN_DISABLED, "/theme/icon/stop.ico", "STOP", pxImgBtnScheme );
+               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL | BTN_DISABLED, "/Theme/UserProgramPage/Stop.bmp", "STOP", pxImgBtnScheme );
 }
 
 

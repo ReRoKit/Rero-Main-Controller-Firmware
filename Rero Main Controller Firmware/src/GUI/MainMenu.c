@@ -16,7 +16,7 @@
  * PRIVATE DEFINITION
  *******************************************************************************/
 
-// Center line for rero button, settings button and battery icon.
+// Center line for rero button and battery icon.
 #define GRID_Y1                 28
 
 // Center line for the menu button.
@@ -48,14 +48,6 @@
 #define BATT_L                  (BATT_R - BATT_WIDTH)
 #define BATT_T                  (GRID_Y1 - (BATT_HEIGHT / 2))
 #define BATT_B                  (BATT_T + BATT_HEIGHT)
-
-// Settings button.
-#define BTN_SETTINGS_WIDTH      32
-#define BTN_SETTINGS_HEIGHT     32
-#define BTN_SETTINGS_R          (BATT_L - 15)
-#define BTN_SETTINGS_L          (BTN_SETTINGS_R - BTN_SETTINGS_WIDTH)
-#define BTN_SETTINGS_T          (GRID_Y1 - (BTN_SETTINGS_HEIGHT / 2))
-#define BTN_SETTINGS_B          (BTN_SETTINGS_T + BTN_SETTINGS_HEIGHT)
 
 
 
@@ -130,13 +122,7 @@ void vCreateMainMenu(void)
     BtnCreate( GID_MAIN_BTN_RERO,
                BTN_RERO_L, BTN_RERO_T,
                BTN_RERO_R, BTN_RERO_B,
-               0, BTN_DRAW | BTN_NOPANEL, "/theme/icon/rero.ico", NULL, pxImgBtnScheme );
-    
-    // Create Settings button.
-    BtnCreate( GID_MAIN_BTN_SETTINGS,
-               BTN_SETTINGS_L, BTN_SETTINGS_T,
-               BTN_SETTINGS_R, BTN_SETTINGS_B,
-               0, BTN_DRAW | BTN_NOPANEL, "/theme/icon/settings.ico", NULL, pxImgBtnScheme );
+               0, BTN_DRAW | BTN_NOPANEL, "/Theme/MainMenu/Rero.bmp", NULL, pxImgBtnScheme );
 
     // Create battery indicator.
     BattCreate( GID_BATT_ICON,
@@ -150,37 +136,37 @@ void vCreateMainMenu(void)
     BtnCreate( GID_MAIN_BTN_BTPROGRAM,
                BTN_MENU1_L, BTN_MENU1_T,
                BTN_MENU1_R, BTN_MENU1_B,
-               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/theme/icon/bluetooth.ico", "PROGRAM", pxImgBtnScheme );
+               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Bluetooth.bmp", "PROGRAM", pxImgBtnScheme );
 
     // Create Servo button.
     BtnCreate( GID_MAIN_BTN_SERVO,
                BTN_MENU2_L, BTN_MENU2_T,
                BTN_MENU2_R, BTN_MENU2_B,
-               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/theme/icon/servo.ico", "SERVO", pxImgBtnScheme );
+               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Servo.bmp", "SERVO", pxImgBtnScheme );
 
     // Create Sensor button.
     BtnCreate( GID_MAIN_BTN_SENSOR,
                BTN_MENU3_L, BTN_MENU3_T,
                BTN_MENU3_R, BTN_MENU3_B,
-               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/theme/icon/sensor.ico", "SENSOR", pxImgBtnScheme );
-
-    // Create Teach button.
-    BtnCreate( GID_MAIN_BTN_TEACH,
-               BTN_MENU4_L, BTN_MENU4_T,
-               BTN_MENU4_R, BTN_MENU4_B,
-               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/theme/icon/teach.ico", "TEACH", pxImgBtnScheme );
-
-    // Create Play button.
-    BtnCreate( GID_MAIN_BTN_PLAY,
-               BTN_MENU5_L, BTN_MENU5_T,
-               BTN_MENU5_R, BTN_MENU5_B,
-               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/theme/icon/play.ico", "PLAY", pxImgBtnScheme );
+               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Sensor.bmp", "SENSOR", pxImgBtnScheme );
 
     // Create Remote button.
     BtnCreate( GID_MAIN_BTN_REMOTE,
+               BTN_MENU4_L, BTN_MENU4_T,
+               BTN_MENU4_R, BTN_MENU4_B,
+               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Remote.bmp", "REMOTE", pxImgBtnScheme );
+
+    // Create Motion button.
+    BtnCreate( GID_MAIN_BTN_MOTION,
+               BTN_MENU5_L, BTN_MENU5_T,
+               BTN_MENU5_R, BTN_MENU5_B,
+               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Motion.bmp", "MOTION", pxImgBtnScheme );
+
+    // Create Settings button.
+    BtnCreate( GID_MAIN_BTN_SETTINGS,
                BTN_MENU6_L, BTN_MENU6_T,
                BTN_MENU6_R, BTN_MENU6_B,
-               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/theme/icon/remote.ico", "REMOTE", pxImgBtnScheme );
+               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Settings.bmp", "SETTINGS", pxImgBtnScheme );
 }
 
 
@@ -205,15 +191,13 @@ WORD usMsgMainMenu(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
     // When the button is released...
     if (objMsg == BTN_MSG_RELEASED) {
         switch(GetObjID(pObj)) {
-            case GID_MAIN_BTN_RERO:         vSetGuiPage(PAGE_MOTION);       break;
-//            case GID_MAIN_BTN_RERO:         vSetGuiPage(PAGE_WALLPAPER);    break;
+            case GID_MAIN_BTN_RERO:         vSetGuiPage(PAGE_WALLPAPER);    break;
             case GID_MAIN_BTN_BTPROGRAM:    vSetGuiPage(PAGE_BT_PROGRAM);   break;
-            case GID_MAIN_BTN_SENSOR:       vSetGuiPage(PAGE_SENSOR);       break;
-            case GID_MAIN_BTN_PLAY:         vSetGuiPage(PAGE_PLAY);         break;
-            case GID_MAIN_BTN_TEACH:        vSetGuiPage(PAGE_TEACH);        break;
-            case GID_MAIN_BTN_SETTINGS:     vSetGuiPage(PAGE_SETTINGS);     break;
             case GID_MAIN_BTN_SERVO:        vSetGuiPage(PAGE_SERVO);        break;
+            case GID_MAIN_BTN_SENSOR:       vSetGuiPage(PAGE_SENSOR);       break;
             case GID_MAIN_BTN_REMOTE:       vSetGuiPage(PAGE_BT_REMOTE);    break;
+            case GID_MAIN_BTN_MOTION:       vSetGuiPage(PAGE_MOTION);       break;
+            case GID_MAIN_BTN_SETTINGS:     vSetGuiPage(PAGE_SETTINGS);     break;
         }
     }
 

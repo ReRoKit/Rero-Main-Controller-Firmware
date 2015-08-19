@@ -279,7 +279,7 @@ static void prv_vCreateMeterOrWheel(void)
             PictCreate( GID_G15_IMG_WHEEL,
                         MTR_X1, MTR_Y1,
                         MTR_X2, MTR_Y2,
-                        PICT_DRAW | PICT_DISABLED, 1, "/theme/icon/wheel.ico", pxDefaultScheme );
+                        PICT_DRAW | PICT_DISABLED, 1, "/Theme/ServoPage/Wheel.bmp", pxDefaultScheme );
         }
     }
 }

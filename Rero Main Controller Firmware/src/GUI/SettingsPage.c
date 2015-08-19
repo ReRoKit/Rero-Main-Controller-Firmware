@@ -268,14 +268,14 @@ static void prv_vCreateSubpage1(void)
     BtnCreate( GID_SETTINGS_BTN_SETID,
                SETTINGS_SUBPAGE_CENTER_X - (PAGE1_BTN_GAP / 2) - PAGE1_BTN_WIDTH, SETTINGS_SUBPAGE_CENTER_Y - (PAGE1_BTN_HEIGHT / 2),
                SETTINGS_SUBPAGE_CENTER_X - (PAGE1_BTN_GAP / 2),                   SETTINGS_SUBPAGE_CENTER_Y + (PAGE1_BTN_HEIGHT / 2),
-               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/theme/icon/setid.ico", "SET ID", pxImgBtnScheme );
+               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/SettingsPage/Id.bmp", "SET ID", pxImgBtnScheme );
     
     
     // Bluetooth settings button.
     BtnCreate( GID_SETTINGS_BTN_BLUETOOTH,
                SETTINGS_SUBPAGE_CENTER_X + (PAGE1_BTN_GAP / 2),                   SETTINGS_SUBPAGE_CENTER_Y - (PAGE1_BTN_HEIGHT / 2),
                SETTINGS_SUBPAGE_CENTER_X + (PAGE1_BTN_GAP / 2) + PAGE1_BTN_WIDTH, SETTINGS_SUBPAGE_CENTER_Y + (PAGE1_BTN_HEIGHT / 2),
-               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/theme/icon/bluetooth.ico", "BLUETOOTH", pxImgBtnScheme );
+               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/SettingsPage/Bluetooth.bmp", "BLUETOOTH", pxImgBtnScheme );
 }
 
 
@@ -299,7 +299,7 @@ static void prv_vCreateSubpage2(void)
     BtnCreate( GID_SETTINGS_BTN_BLIGHT,
                MARGIN_LEFT,                   PAGE2_SLD_CENTER_Y1 - (PAGE2_BTN_HEIGHT / 2),
                MARGIN_LEFT + PAGE2_BTN_WIDTH, PAGE2_SLD_CENTER_Y1 + (PAGE2_BTN_HEIGHT / 2),
-               0, BTN_DRAW | BTN_NOPANEL, "/theme/icon/brightness.ico", NULL, pxDefaultScheme );
+               0, BTN_DRAW | BTN_NOPANEL, "/Theme/SettingsPage/Brightness.bmp", NULL, pxDefaultScheme );
     
     StCreate( GID_SETTINGS_TXT_BLIGHT,
               MARGIN_LEFT + PAGE2_BTN_WIDTH + PAGE2_BTN_SLD_GAP, PAGE2_SLD_CENTER_Y1 - (PAGE2_SLD_HEIGHT / 2) - PAGE2_TXT_SLD_GAP - PAGE2_TXT_HEIGHT,
@@ -317,7 +317,7 @@ static void prv_vCreateSubpage2(void)
     BtnCreate( GID_SETTINGS_BTN_VOLUME,
                MARGIN_LEFT,                   PAGE2_SLD_CENTER_Y2 - (PAGE2_BTN_HEIGHT / 2),
                MARGIN_LEFT + PAGE2_BTN_WIDTH, PAGE2_SLD_CENTER_Y2 + (PAGE2_BTN_HEIGHT / 2),
-               0, BTN_DRAW | BTN_NOPANEL, "/theme/icon/volume.ico", NULL, pxDefaultScheme );
+               0, BTN_DRAW | BTN_NOPANEL, "/Theme/SettingsPage/Volume.bmp", NULL, pxDefaultScheme );
     
     StCreate( GID_SETTINGS_TXT_VOLUME,
               MARGIN_LEFT + PAGE2_BTN_WIDTH + PAGE2_BTN_SLD_GAP, PAGE2_SLD_CENTER_Y2 - (PAGE2_SLD_HEIGHT / 2) - PAGE2_TXT_SLD_GAP - PAGE2_TXT_HEIGHT,
@@ -351,7 +351,7 @@ static void prv_vCreateSubpage3(void)
     BtnCreate( GID_SETTINGS_BTN_SLEEP,
                MARGIN_LEFT,                   PAGE3_SLD_CENTER_Y1 - (PAGE3_BTN_HEIGHT / 2),
                MARGIN_LEFT + PAGE3_BTN_WIDTH, PAGE3_SLD_CENTER_Y1 + (PAGE3_BTN_HEIGHT / 2),
-               0, BTN_DRAW | BTN_NOPANEL, "/theme/icon/sleep.ico", NULL, pxDefaultScheme );
+               0, BTN_DRAW | BTN_NOPANEL, "/Theme/SettingsPage/Sleep.bmp", NULL, pxDefaultScheme );
     
     StCreate( GID_SETTINGS_TXT_SLEEP,
               MARGIN_LEFT + PAGE3_BTN_WIDTH + PAGE3_BTN_SLD_GAP, PAGE3_SLD_CENTER_Y1 - (PAGE3_SLD_HEIGHT / 2) - PAGE3_TXT_SLD_GAP - PAGE3_TXT_HEIGHT,
@@ -369,7 +369,7 @@ static void prv_vCreateSubpage3(void)
     BtnCreate( GID_SETTINGS_BTN_SHUTDOWN,
                MARGIN_LEFT,                   PAGE3_SLD_CENTER_Y2 - (PAGE3_BTN_HEIGHT / 2),
                MARGIN_LEFT + PAGE3_BTN_WIDTH, PAGE3_SLD_CENTER_Y2 + (PAGE3_BTN_HEIGHT / 2),
-               0, BTN_DRAW | BTN_NOPANEL, "/theme/icon/shutdown.ico", NULL, pxDefaultScheme );
+               0, BTN_DRAW | BTN_NOPANEL, "/Theme/SettingsPage/Shutdown.bmp", NULL, pxDefaultScheme );
     
     StCreate( GID_SETTINGS_TXT_SHUTDOWN,
               MARGIN_LEFT + PAGE3_BTN_WIDTH + PAGE3_BTN_SLD_GAP, PAGE3_SLD_CENTER_Y2 - (PAGE3_SLD_HEIGHT / 2) - PAGE3_TXT_SLD_GAP - PAGE3_TXT_HEIGHT,
@@ -409,7 +409,7 @@ static void prv_vCreateSubpage4(void)
     PictCreate( GID_SETTINGS_IMG_RERO,
                 SETTINGS_SUBPAGE_CENTER_X - (PAGE4_IMG_WIDTH / 2), PAGE4_IMG_Y,
                 SETTINGS_SUBPAGE_CENTER_X + (PAGE4_IMG_WIDTH / 2), PAGE4_IMG_Y + PAGE4_IMG_HEIGHT,
-                PICT_DRAW | PICT_DISABLED, 1, "/theme/icon/rero.ico", pxDefaultScheme );
+                PICT_DRAW | PICT_DISABLED, 1, "/Theme/SettingsPage/Rero.bmp", pxDefaultScheme );
     
     // Title.
     StCreate( GID_SETTINGS_TXT_FIRMWARE,

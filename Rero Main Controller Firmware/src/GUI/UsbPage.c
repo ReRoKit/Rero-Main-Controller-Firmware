@@ -67,7 +67,7 @@ void vCreateUsbPage(void)
     PictCreate( GID_USB_IMG_USB,
                 IMG_USB_L, IMG_USB_T,
                 IMG_USB_R, IMG_USB_B,
-                PICT_HIDE | PICT_DRAW, 1, "/theme/icon/usb.ico", pxDefaultScheme );
+                PICT_HIDE | PICT_DRAW, 1, "/Theme/UsbPage/Usb.bmp", pxDefaultScheme );
 
     // Create the mass storage button.
     BtnCreate( GID_USB_BTN_MSD,
