@@ -17,7 +17,6 @@
 #include "GUI/MainMenu.h"
 #include "GUI/SetIdPage.h"
 #include "GUI/MotionPage.h"
-#include "GUI/PlayPage.h"
 #include "GUI/TeachPage.h"
 #include "GUI/SettingsPage.h"
 #include "GUI/G15Page.h"
@@ -399,7 +398,35 @@ void vStaticTextUpdateText(STATICTEXT *pxStaticText, char *szText)
 {
     if ((pxStaticText != NULL) && (szText != NULL)) {
         StSetText(pxStaticText, szText);
-        SetState(pxStaticText, ST_UPDATE);
+        if (GetState(pxStaticText, ST_DRAW) == 0) {
+            SetState(pxStaticText, ST_UPDATE);
+        }
+    }
+}
+
+
+
+/*******************************************************************************
+ * FUNCTION: vDigitalMeterUpdateValue
+ *
+ * PARAMETERS:
+ * ~ pxDigitalMeter - The digital meter to update.
+ * ~ ulValue        - New value.
+ *
+ * RETURN:
+ * ~ void
+ *
+ * DESCRIPTIONS:
+ * Update the value and redraw the digital meter.
+ *
+ *******************************************************************************/
+void vDigitalMeterUpdateValue(DIGITALMETER *pxDigitalMeter, unsigned long ulValue)
+{
+    if (pxDigitalMeter != NULL) {
+        DmSetValue(pxDigitalMeter, ulValue);
+        if (GetState(pxDigitalMeter, DM_DRAW) == 0) {
+            SetState(pxDigitalMeter, DM_UPDATE);
+        }
     }
 }
 
@@ -447,7 +474,57 @@ void vSliderUpdatePosition(SLIDER *pxSlider, short sNewPosition)
 {
     if (pxSlider != NULL) {
         SldSetPos(pxSlider, sNewPosition);
-        SetState(pxSlider, SLD_DRAW_THUMB);
+        if (GetState(pxSlider, SLD_DRAW) == 0) {
+            SetState(pxSlider, SLD_DRAW_THUMB);
+        }
+    }
+}
+
+
+
+/*******************************************************************************
+ * FUNCTION: vPictureUpdateImage
+ *
+ * PARAMETERS:
+ * ~ pxPicture      - The picture to update.
+ * ~ pBitmap        - New bitmap.
+ *
+ * RETURN:
+ * ~ void
+ *
+ * DESCRIPTIONS:
+ * Change the bitmap and redraw the picture.
+ *
+ *******************************************************************************/
+void vPictureUpdateBitmap(PICTURE *pxPicture, void *pBitmap)
+{
+    if (pxPicture != NULL) {
+        PictSetBitmap(pxPicture, pBitmap);
+        SetState(pxPicture, PICT_DRAW);
+    }
+}
+
+
+
+/*******************************************************************************
+ * FUNCTION: vButtonUpdateBitmap
+ *
+ * PARAMETERS:
+ * ~ pxButton       - The button to update.
+ * ~ pBitmap        - New bitmap.
+ *
+ * RETURN:
+ * ~ void
+ *
+ * DESCRIPTIONS:
+ * Change the bitmap and redraw the button.
+ *
+ *******************************************************************************/
+void vButtonUpdateBitmap(BUTTON *pxButton, void *pBitmap)
+{
+    if (pxButton != NULL) {
+        ((BUTTON*)pxButton)->pBitmap = pBitmap;
+        SetState(pxButton, BTN_DRAW);
     }
 }
 
@@ -652,10 +729,10 @@ WORD GOLDrawCallback(void)
                 case PAGE_SENSOR:       vCreateSensorPage();        break;
                 
                 case PAGE_TEACH:        vCreateTeach();             break;
-                case PAGE_PLAY:         vCreatePlay();              break;
+//                case PAGE_PLAY:         vCreatePlay();              break;
+                case PAGE_MOTION:       vCreateMotionPage();        break;
                 
-                case PAGE_WALLPAPER:    vCreateMotionPage();     break;
-//                case PAGE_WALLPAPER:    vCreateWallpaperPage();     break;
+                case PAGE_WALLPAPER:    vCreateWallpaperPage();     break;
                 case PAGE_SETTINGS:     vCreateSettingsPage();      break;
                 case PAGE_SET_ID:       vCreateSetIdPage();         break;
                 case PAGE_BT_SETTINGS:  vCreateBtSettingsPage();    break;
@@ -733,10 +810,10 @@ WORD GOLMsgCallback(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
             case PAGE_SENSOR:       return usMsgSensorPage(objMsg, pObj, pMsg);
             
             case PAGE_TEACH:        return usMsgTeach(objMsg, pObj, pMsg);
-            case PAGE_PLAY:         return usMsgPlay(objMsg, pObj, pMsg);
+//            case PAGE_PLAY:         return usMsgPlay(objMsg, pObj, pMsg);
+            case PAGE_MOTION:       return usMsgMotionPage(objMsg, pObj, pMsg);
             
-            case PAGE_WALLPAPER:    return usMsgMotionPage(objMsg, pObj, pMsg);
-//            case PAGE_WALLPAPER:    return usMsgWallpaperPage(objMsg, pObj, pMsg);
+            case PAGE_WALLPAPER:    return usMsgWallpaperPage(objMsg, pObj, pMsg);
             case PAGE_SETTINGS:     return usMsgSettingsPage(objMsg, pObj, pMsg);
             case PAGE_SET_ID:       return usMsgSetIdPage(objMsg, pObj, pMsg);
             case PAGE_BT_SETTINGS:  return usMsgBtSettingsPage(objMsg, pObj, pMsg);

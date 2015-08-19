@@ -15,7 +15,7 @@
 #include "FatFs/FatFsWrapper.h"
 #include "G15 and Sensors/Sensors.h"
 #include "G15 and Sensors/G15.h"
-#include "GUI/PlayPage.h"
+#include "GUI/MotionPage.h"
 #include "GUI/GraphicScreens.h"
 
 // Header files for FreeRTOS.
@@ -87,11 +87,10 @@ static void prv_vDisableUsedOutput(void);
 static void prv_vTrapSensorError(unsigned char ucId)
 {
     static char cIdText[] = "ID: 000";
-    sprintf(cIdText, "ID: %03u", ucId);
+    sprintf(cIdText, "ID = %03u", ucId);
 
-    vUpdatePlayPageMsg1("Sensor Error");
-    vUpdatePlayPageMsg2(cIdText);
-    vUpdatePlayPageMsg3("");
+    vUpdateMotionPageMsg1("SensorError:");
+    vUpdateMotionPageMsg2(cIdText);
 
     // Turn off torque and LED for used output modules.
     prv_vDisableUsedOutput();
@@ -422,23 +421,23 @@ void taskPlanner(void *pvParameters)
                 strcpy(szMotionFilename, prv_szOpenedFilename);
                 strcat(szMotionFilename, "_");
                 strcat(szMotionFilename, szMotionBlockName);
-
-                // Update the message text in play page.
-                vUpdatePlayPageMsg2("Motion :");
-
+                
+                // Save the motion file name.
                 prv_szMotionFilename = szMotionFilename;
+                
+                // Update the message text in play page.
+                vUpdateMotionPageMsg2(szMotionBlockName);
 
                 // Play the motion file.
                 // If successful to open the motion file, wait until the motion finish playing.
                 if (ePlayMotionStart(szMotionFilename) == PLAY_NO_ERROR) {
-                    // Update the message text in play page.
-                    vUpdatePlayPageMsg3(szMotionBlockName);
-
                     xSemaphoreTake(xPlayingMotionSemaphore, portMAX_DELAY);
-                }
-                else {
+                    
+                    // Clear the time and frame.
+                    vUpdateMotionPageTimeFrame(0, 0);
+                } else {
                     // Update the message text in play page.
-                    vUpdatePlayPageMsg3("Not Found");
+                    vUpdateMotionPageMsg1("MotionError:");
 
                     // Turn off torque and LED for used output modules.
                     prv_vDisableUsedOutput();
@@ -463,8 +462,7 @@ void taskPlanner(void *pvParameters)
             case SENSOR_BLOCK_HEAD_MIC:
             case SENSOR_BLOCK_CL_AMBIENT: {
                 // Update the message text in play page.
-                vUpdatePlayPageMsg2("Reading");
-                vUpdatePlayPageMsg3("Sensor");
+                vUpdateMotionPageMsg2("Reading sensor");
 
                 // Get the sensor ID and threshold.
                 unsigned char ucSensorId = pucBuffer[1];
@@ -501,8 +499,7 @@ void taskPlanner(void *pvParameters)
             // Sensor block for colour sensor.
             case SENSOR_BLOCK_COLOUR: {
                 // Update the message text in play page.
-                vUpdatePlayPageMsg2("Reading");
-                vUpdatePlayPageMsg3("Sensor");
+                vUpdateMotionPageMsg2("Reading sensor");
 
                 // Get the sensor ID and target colour.
                 unsigned char ucSensorId = pucBuffer[1];
@@ -531,8 +528,7 @@ void taskPlanner(void *pvParameters)
             // Sensor block for line sensor.
             case SENSOR_BLOCK_LINE: {
                 // Update the message text in play page.
-                vUpdatePlayPageMsg2("Reading");
-                vUpdatePlayPageMsg3("Sensor");
+                vUpdateMotionPageMsg2("Reading sensor");
 
                 // Get the sensor ID and target sensor value.
                 unsigned char ucSensorId = pucBuffer[1];
@@ -561,8 +557,7 @@ void taskPlanner(void *pvParameters)
             // Sensor block for tactile sensor.
             case SENSOR_BLOCK_TACTILE: {
                 // Update the message text in play page.
-                vUpdatePlayPageMsg2("Reading");
-                vUpdatePlayPageMsg3("Sensor");
+                vUpdateMotionPageMsg2("Reading sensor");
 
                 // Get the sensor ID.
                 unsigned char ucSensorId = pucBuffer[1];
@@ -589,8 +584,7 @@ void taskPlanner(void *pvParameters)
             // Delay block.
             case DELAY_BLOCK: {
                 // Update the message text in play page.
-                vUpdatePlayPageMsg2("Delay");
-                vUpdatePlayPageMsg3("");
+                vUpdateMotionPageMsg2("Delay");
 
                 // Get the delay period. It's in multiple of 0.1 second.
                 unsigned long ulDelay = ((unsigned long)pucBuffer[1] << 8) + (unsigned long)pucBuffer[2];
@@ -615,8 +609,7 @@ void taskPlanner(void *pvParameters)
             // Control Servo block.
             case CONTROL_SERVO_BLOCK: {
                 // Update the message text in play page.
-                vUpdatePlayPageMsg2("Controlling");
-                vUpdatePlayPageMsg3("Servo");
+                vUpdateMotionPageMsg2("Control servo");
 
                 // Get the servo ID and indicate that it's used.
                 unsigned char ucServoId = pucBuffer[1];
@@ -657,8 +650,7 @@ void taskPlanner(void *pvParameters)
             // Control Head Module LED block.
             case CONTROL_HEAD_BLOCK: {
                 // Update the message text in play page.
-                vUpdatePlayPageMsg2("Controlling");
-                vUpdatePlayPageMsg3("Head Module");
+                vUpdateMotionPageMsg2("Control head LED");
 
                 // Get the head module ID and indicate that it's used.
                 unsigned char ucHeadId = pucBuffer[1];
@@ -715,7 +707,7 @@ void taskPlanner(void *pvParameters)
     xSemaphoreGive(xSdCardMutex);
 
     // Update the play page GUI when finish playing.
-    vUpdatePlayPageEndPlaying(PLANNER_FILE);
+    vUpdateMotionPageEndPlaying(PLANNER_FILE);
 
     // Indicate stop playing.
     prv_ucPlaying = 0;

@@ -205,7 +205,8 @@ WORD usMsgMainMenu(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
     // When the button is released...
     if (objMsg == BTN_MSG_RELEASED) {
         switch(GetObjID(pObj)) {
-            case GID_MAIN_BTN_RERO:         vSetGuiPage(PAGE_WALLPAPER);    break;
+            case GID_MAIN_BTN_RERO:         vSetGuiPage(PAGE_MOTION);       break;
+//            case GID_MAIN_BTN_RERO:         vSetGuiPage(PAGE_WALLPAPER);    break;
             case GID_MAIN_BTN_BTPROGRAM:    vSetGuiPage(PAGE_BT_PROGRAM);   break;
             case GID_MAIN_BTN_SENSOR:       vSetGuiPage(PAGE_SENSOR);       break;
             case GID_MAIN_BTN_PLAY:         vSetGuiPage(PAGE_PLAY);         break;

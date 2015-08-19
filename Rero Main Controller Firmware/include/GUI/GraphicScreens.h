@@ -62,6 +62,7 @@ typedef enum __attribute__((packed)) {
     PAGE_TEACH,
     PAGE_PLAY,
     PAGE_BT_REMOTE,
+    PAGE_MOTION,
     
     PAGE_WALLPAPER,
     PAGE_SETTINGS,
@@ -147,37 +148,65 @@ typedef enum __attribute__((packed)) {
             GID_MOTION_IMG_LEFTPAD,
             GID_MOTION_IMG_RIGHTPAD,
             
-            GID_MOTION_BTN_F1,
-            GID_MOTION_BTN_F2,
-            GID_MOTION_BTN_F3,
-            GID_MOTION_BTN_F4,
-            GID_MOTION_BTN_F5,
+            GID_MOTION_BTN_UP,
+            GID_MOTION_BTN_DOWN,
+            GID_MOTION_BTN_LEFT,
+            GID_MOTION_BTN_RIGHT,
             
-//            GID_MOTION_GAMEPAD,
-//            
-//            GID_MOTION_RB_XU,
-//            GID_MOTION_RB_XD,
-//            GID_MOTION_RB_XL,
-//            GID_MOTION_RB_XR,
-//            
-//            GID_MOTION_RB_CU,
-//            GID_MOTION_RB_CD,
-//            GID_MOTION_RB_CL,
-//            GID_MOTION_RB_CR,
-//            
-//            GID_MOTION_RB_F1,
-//            GID_MOTION_RB_F2,
-//            GID_MOTION_RB_F3,
-//            GID_MOTION_RB_F4,
-//            GID_MOTION_RB_F5,
-//            
-            GID_MOTION_BTN_SELECT,
+            GID_MOTION_BTN_LOCK_UP,
+            GID_MOTION_BTN_LOCK_DOWN,
+            GID_MOTION_BTN_LOCK_LEFT,
+            GID_MOTION_BTN_LOCK_RIGHT,
             
-            GID_MOTION_TXT_FILETYPE,
-            GID_MOTION_TXT_FILENAME,
+            GID_MOTION_IMG_LOCK_UP,
+            GID_MOTION_IMG_LOCK_DOWN,
+            GID_MOTION_IMG_LOCK_LEFT,
+            GID_MOTION_IMG_LOCK_RIGHT,
+            
+            GID_MOTION_BTN_X,
+            GID_MOTION_BTN_Y,
+            GID_MOTION_BTN_A,
+            GID_MOTION_BTN_B,
+            
+            GID_MOTION_BTN_LOCK_X,
+            GID_MOTION_BTN_LOCK_Y,
+            GID_MOTION_BTN_LOCK_A,
+            GID_MOTION_BTN_LOCK_B,
+            
+            GID_MOTION_IMG_LOCK_X,
+            GID_MOTION_IMG_LOCK_Y,
+            GID_MOTION_IMG_LOCK_A,
+            GID_MOTION_IMG_LOCK_B,
+            
+            GID_MOTION_BTN_1,
+            GID_MOTION_BTN_2,
+            GID_MOTION_BTN_3,
+            GID_MOTION_BTN_4,
+            GID_MOTION_BTN_5,
+            
+            GID_MOTION_BTN_LOCK_1,
+            GID_MOTION_BTN_LOCK_2,
+            GID_MOTION_BTN_LOCK_3,
+            GID_MOTION_BTN_LOCK_4,
+            GID_MOTION_BTN_LOCK_5,
+            
+            GID_MOTION_BTN_TEACH,
+            GID_MOTION_BTN_PLAY,
+            GID_MOTION_BTN_NEXT,
+            GID_MOTION_BTN_STOPPLAY,
+            
+            GID_MOTION_TXT_MSG1,
+            GID_MOTION_TXT_MSG2,
+            
+            GID_MOTION_TXT_FRAME_LABEL,
+            GID_MOTION_DM_FRAME_VALUE,
+            
+            GID_MOTION_TXT_TIME_LABEL,
+            GID_MOTION_DM_TIME_VALUE,
             
             GID_MOTION_IMG_LOCK,
-            GID_MOTION_BTN_LOCK,
+            GID_MOTION_BTN_EDIT,
+            GID_MOTION_BTN_DONE,
 
 
     // Common objects for Servo and Sensor page.
@@ -356,8 +385,11 @@ void vGraphicsObjectDisable(void *pxObject);
 void vGraphicsObjectUnhide(void *pxObject);
 void vGraphicsObjectHide(void *pxObject);
 void vStaticTextUpdateText(STATICTEXT *pxStaticText, char *szText);
+void vDigitalMeterUpdateValue(DIGITALMETER *pxDigitalMeter, unsigned long ulValue);
 void vEditBoxUpdateText(EDITBOX *pxEditBox, char *szText);
 void vSliderUpdatePosition(SLIDER *pxSlider, short sNewPosition);
+void vPictureUpdateBitmap(PICTURE *pxPicture, void *pBitmap);
+void vButtonUpdateBitmap(BUTTON *pxButton, void *pBitmap);
 
 void vSetGuiPage(GUI_PAGE eGuiPage);
 GUI_PAGE eGetGuiPage(void);

@@ -51,12 +51,10 @@
                        displayName="Custom Graphic Object"
                        projectFiles="true">
           <itemPath>../include/GUI/Custom Graphic Object/Battery.h</itemPath>
-          <itemPath>../include/GUI/Custom Graphic Object/GamePadOutline.h</itemPath>
         </logicalFolder>
         <itemPath>../include/GUI/SensorPage.h</itemPath>
         <itemPath>../include/GUI/GraphicScreens.h</itemPath>
         <itemPath>../include/GUI/G15Page.h</itemPath>
-        <itemPath>../include/GUI/PlayPage.h</itemPath>
         <itemPath>../include/GUI/SetIdPage.h</itemPath>
         <itemPath>../include/GUI/TeachPage.h</itemPath>
         <itemPath>../include/GUI/SettingsPage.h</itemPath>
@@ -218,12 +216,10 @@
                        displayName="Custom Graphic Object"
                        projectFiles="true">
           <itemPath>../src/GUI/Custom Graphic Object/Battery.c</itemPath>
-          <itemPath>../src/GUI/Custom Graphic Object/GamePadOutline.c</itemPath>
         </logicalFolder>
         <itemPath>../src/GUI/SensorPage.c</itemPath>
         <itemPath>../src/GUI/GraphicScreens.c</itemPath>
         <itemPath>../src/GUI/G15Page.c</itemPath>
-        <itemPath>../src/GUI/PlayPage.c</itemPath>
         <itemPath>../src/GUI/SetIdPage.c</itemPath>
         <itemPath>../src/GUI/TeachPage.c</itemPath>
         <itemPath>../src/GUI/SettingsPage.c</itemPath>

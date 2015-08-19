@@ -15,7 +15,7 @@
 #include "AudioAmp.h"
 #include "Log.h"
 #include "GUI/GraphicScreens.h"
-#include "GUI/PlayPage.h"
+#include "GUI/MotionPage.h"
 #include "G15 and Sensors/G15.h"
 #include "G15 and Sensors/Sensors.h"
 
@@ -395,7 +395,7 @@ void taskPlayMotion (void *pvParameters)
         prv_vRemoveMotionObj(pxMotionObject);
 
         // Update the play page GUI when finish playing.
-        vUpdatePlayPageEndPlaying(MOTION_FILE);
+        vUpdateMotionPageEndPlaying(MOTION_FILE);
 
         // Give the semaphore to indicate finish playing the motion.
         xSemaphoreGive(xPlayingMotionSemaphore);
@@ -423,7 +423,7 @@ void taskPlayMotion (void *pvParameters)
         prv_vRemoveMotionObj(pxMotionObject);
 
         // Update the play page GUI when finish playing.
-        vUpdatePlayPageEndPlaying(MOTION_FILE);
+        vUpdateMotionPageEndPlaying(MOTION_FILE);
 
         // Give the semaphore to indicate finish playing the motion.
         xSemaphoreGive(xPlayingMotionSemaphore);
@@ -446,7 +446,7 @@ void taskPlayMotion (void *pvParameters)
         prv_vRemoveMotionObj(pxMotionObject);
 
         // Update the play page GUI when finish playing.
-        vUpdatePlayPageEndPlaying(MOTION_FILE);
+        vUpdateMotionPageEndPlaying(MOTION_FILE);
 
         // Give the semaphore to indicate finish playing the motion.
         xSemaphoreGive(xPlayingMotionSemaphore);
@@ -676,7 +676,7 @@ void taskPlayMotion (void *pvParameters)
                 }
 
                 //Display the time frame and time.
-                vUpdatePlayPageTimeFrame(usTimeFrameCount + 1, usPlayTimer / 10);
+                vUpdateMotionPageTimeFrame(usTimeFrameCount + 1, usPlayTimer / 10);
 
                 // Increase the timer tick.
                 usPlayTimer++;
@@ -776,7 +776,7 @@ void taskPlayMotion (void *pvParameters)
     prv_vRemoveMotionObj(pxMotionObject);
 
     // Update the play page GUI when finish playing.
-    vUpdatePlayPageEndPlaying(MOTION_FILE);
+    vUpdateMotionPageEndPlaying(MOTION_FILE);
 
     // Give the semaphore to indicate finish playing the motion.
     xSemaphoreGive(xPlayingMotionSemaphore);
