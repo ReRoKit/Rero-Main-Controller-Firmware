@@ -56,7 +56,6 @@
         <itemPath>../include/GUI/GraphicScreens.h</itemPath>
         <itemPath>../include/GUI/G15Page.h</itemPath>
         <itemPath>../include/GUI/SetIdPage.h</itemPath>
-        <itemPath>../include/GUI/TeachPage.h</itemPath>
         <itemPath>../include/GUI/SettingsPage.h</itemPath>
         <itemPath>../include/GUI/UsbPage.h</itemPath>
         <itemPath>../include/GUI/SetBtPinPage.h</itemPath>
@@ -167,6 +166,7 @@
       <itemPath>../include/AudioAmp.h</itemPath>
       <itemPath>../include/UserProgram.h</itemPath>
       <itemPath>../include/Configuration.h</itemPath>
+      <itemPath>../include/TeachMotion.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -221,7 +221,6 @@
         <itemPath>../src/GUI/GraphicScreens.c</itemPath>
         <itemPath>../src/GUI/G15Page.c</itemPath>
         <itemPath>../src/GUI/SetIdPage.c</itemPath>
-        <itemPath>../src/GUI/TeachPage.c</itemPath>
         <itemPath>../src/GUI/SettingsPage.c</itemPath>
         <itemPath>../src/GUI/UsbPage.c</itemPath>
         <itemPath>../src/GUI/SetBtPinPage.c</itemPath>
@@ -317,6 +316,7 @@
       <itemPath>../src/AudioAmp.c</itemPath>
       <itemPath>../src/UserProgram.c</itemPath>
       <itemPath>../src/Configuration.c</itemPath>
+      <itemPath>../src/TeachMotion.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

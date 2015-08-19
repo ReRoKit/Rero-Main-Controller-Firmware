@@ -10,6 +10,7 @@
 #include "GUI/GraphicScreens.h"
 #include "Variables.h"
 #include "PlayMotion.h"
+#include "TeachMotion.h"
 #include "Planner.h"
 #include "FatFs/FatFsWrapper.h"
 
@@ -201,6 +202,20 @@
 #define BTN_PLAY_R              BTN_TEACH_R
 #define BTN_PLAY_T              (BTN_TEACH_B + BTN_TEACH_PLAY_GAP)
 #define BTN_PLAY_B              (BTN_PLAY_T + BTN_PLAY_HEIGHT)
+
+// Next button.
+#define BTN_NEXT_HEIGHT         BTN_TEACH_HEIGHT
+#define BTN_NEXT_L              BTN_TEACH_L
+#define BTN_NEXT_R              BTN_TEACH_R
+#define BTN_NEXT_T              BTN_TEACH_T
+#define BTN_NEXT_B              BTN_TEACH_B
+
+// Stop teaching button.
+#define BTN_STOPTEACH_HEIGHT    BTN_TEACH_HEIGHT
+#define BTN_STOPTEACH_L         BTN_TEACH_L
+#define BTN_STOPTEACH_R         BTN_TEACH_R
+#define BTN_STOPTEACH_T         BTN_PLAY_T
+#define BTN_STOPTEACH_B         BTN_PLAY_B
 
 // Stop playing button.
 #define BTN_STOPPLAY_HEIGHT     BTN_TEACH_HEIGHT
@@ -1351,6 +1366,70 @@ WORD usMsgMotionPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
         PLAY_RESULT ePlayResult;
         
         switch (GetObjID(pObj)) {
+            // Teach button.
+            case GID_MOTION_BTN_TEACH:
+                // Creating the motion file and start the teaching process.
+                vStartTeaching(prv_xSelectedFileInfo.szFileName);
+                
+                // Show playing motion message.
+                vUpdateMotionPageMsg1("Teaching . . .");
+                vUpdateMotionPageMsg2("");
+
+                // Disable the gamepad button.
+                prv_vDisableGamepadButton();
+
+                // Delete the teach, play, and edit button.
+                prv_vRemoveMainPageButton();
+
+                // Create the label and value for time and frame.
+                prv_vCreateTimeFrame();
+                
+                // Create the next button.
+                BtnCreate( GID_MOTION_BTN_NEXT,
+                           BTN_NEXT_L, BTN_NEXT_T,
+                           BTN_NEXT_R, BTN_NEXT_B,
+                           BTN_RADIUS, BTN_DRAW, NULL, "NEXT", pxBtnScheme );
+
+                // Create the stop teaching button.
+                BtnCreate( GID_MOTION_BTN_STOPTEACH,
+                           BTN_STOPTEACH_L, BTN_STOPTEACH_T,
+                           BTN_STOPTEACH_R, BTN_STOPTEACH_B,
+                           BTN_RADIUS, BTN_DRAW, NULL, "STOP", pxBtnScheme );
+                
+                break;
+                
+            // Next button.
+            case GID_MOTION_BTN_NEXT:
+                // Record the servo position.
+                vTeachAddPosition(prv_xSelectedFileInfo.szFileName);
+                break;
+                
+            // Stop teaching button.
+            case GID_MOTION_BTN_STOPTEACH:
+                // Turn off all servo LED.
+                vTeachTurnOffServoLed();
+                
+                // Remove the next and stop button.
+                GOLDeleteObjectByID(GID_MOTION_BTN_NEXT);
+                GOLDeleteObjectByID(GID_MOTION_BTN_STOPTEACH);
+                
+                SetColor(pxDefaultScheme->CommonBkColor);
+                Bar(BTN_NEXT_L, BTN_NEXT_T, BTN_NEXT_R, BTN_NEXT_B);
+                Bar(BTN_STOPTEACH_L, BTN_STOPTEACH_T, BTN_STOPTEACH_R, BTN_STOPTEACH_B);
+
+                // Remove the label and value for time and frame.
+                prv_vRemoveTimeFrame();
+
+                // Create the teach, play, and edit button.
+                prv_vCreateMainPageButton();
+
+                // Enable the gamepad button.
+                prv_vEnableGamepadButton();
+
+                // Update the state of the buttons and file information.
+                prv_vSelectButton(prv_eSelectedButton);
+                break;
+                
             // Play button.
             case GID_MOTION_BTN_PLAY:
                 // Play the planner or motion file.
@@ -1380,7 +1459,6 @@ WORD usMsgMotionPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                                BTN_STOPPLAY_R, BTN_STOPPLAY_B,
                                BTN_RADIUS, BTN_DRAW, NULL, "STOP", pxBtnScheme );
                 }
-                
                 break;
                 
             // Stop playing button.
@@ -1529,7 +1607,6 @@ void vUpdateMotionPageEndPlaying(FILE_TYPE ePlayingType)
             
             // Enable the gamepad button.
             prv_vEnableGamepadButton();
-            
             
             
             // Update the state of the buttons and file information.

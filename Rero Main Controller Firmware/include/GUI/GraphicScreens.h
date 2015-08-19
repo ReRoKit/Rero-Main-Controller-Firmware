@@ -193,6 +193,7 @@ typedef enum __attribute__((packed)) {
             GID_MOTION_BTN_TEACH,
             GID_MOTION_BTN_PLAY,
             GID_MOTION_BTN_NEXT,
+            GID_MOTION_BTN_STOPTEACH,
             GID_MOTION_BTN_STOPPLAY,
             
             GID_MOTION_TXT_MSG1,

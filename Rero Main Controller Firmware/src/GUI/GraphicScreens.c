@@ -17,7 +17,6 @@
 #include "GUI/MainMenu.h"
 #include "GUI/SetIdPage.h"
 #include "GUI/MotionPage.h"
-#include "GUI/TeachPage.h"
 #include "GUI/SettingsPage.h"
 #include "GUI/G15Page.h"
 #include "GUI/SensorPage.h"
@@ -728,7 +727,7 @@ WORD GOLDrawCallback(void)
                 case PAGE_SERVO:        vCreateG15Page();           break;
                 case PAGE_SENSOR:       vCreateSensorPage();        break;
                 
-                case PAGE_TEACH:        vCreateTeach();             break;
+//                case PAGE_TEACH:        vCreateTeach();             break;
 //                case PAGE_PLAY:         vCreatePlay();              break;
                 case PAGE_MOTION:       vCreateMotionPage();        break;
                 
@@ -809,7 +808,7 @@ WORD GOLMsgCallback(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
             case PAGE_SERVO:        return usMsgG15Page(objMsg, pObj, pMsg);
             case PAGE_SENSOR:       return usMsgSensorPage(objMsg, pObj, pMsg);
             
-            case PAGE_TEACH:        return usMsgTeach(objMsg, pObj, pMsg);
+//            case PAGE_TEACH:        return usMsgTeach(objMsg, pObj, pMsg);
 //            case PAGE_PLAY:         return usMsgPlay(objMsg, pObj, pMsg);
             case PAGE_MOTION:       return usMsgMotionPage(objMsg, pObj, pMsg);
             
