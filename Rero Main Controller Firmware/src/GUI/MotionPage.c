@@ -344,6 +344,7 @@ static FILE_INFO prv_xSelectedFileInfo = {0};
  *******************************************************************************/
 
 static void prv_vToggleFileLock(SELECTED_BUTTON eSelectedButton);
+static unsigned char prv_ucGetFileLockState(SELECTED_BUTTON eSelectedButton);
 static void prv_vUpdateFileInfo(SELECTED_BUTTON eSelectedButton);
 static void prv_vSelectButton(SELECTED_BUTTON eNewSelectedButton);
 static void prv_vCreateMainPage(void);
@@ -396,6 +397,81 @@ static void prv_vToggleFileLock(SELECTED_BUTTON eSelectedButton)
 
 
 /*******************************************************************************
+ * FUNCTION: prv_ucGetFileLockState
+ *
+ * PARAMETERS:
+ * ~ eSelectedButton    - The selected button.
+ *
+ * RETURN:
+ * ~ The state of the file.
+ * ~ 0 = Unlocked.
+ * ~ 1 = Locked.
+ *
+ * DESCRIPTIONS:
+ * Get the lock/unlock state of a file.
+ * Planner file has the highest priority.
+ *
+ *******************************************************************************/
+static unsigned char prv_ucGetFileLockState(SELECTED_BUTTON eSelectedButton)
+{
+    char szFullFilePath[MAX_FILENAME_LENGTH * 3];
+    char *szFileName;
+    unsigned char ucLock = 0;
+    
+    switch (eSelectedButton) {
+        case BUTTON_UP:     szFileName = "XU";      break;
+        case BUTTON_DOWN:   szFileName = "XD";      break;
+        case BUTTON_LEFT:   szFileName = "XL";      break;
+        case BUTTON_RIGHT:  szFileName = "XR";      break;
+        
+        case BUTTON_X:      szFileName = "CL";      break;
+        case BUTTON_Y:      szFileName = "CU";      break;
+        case BUTTON_A:      szFileName = "CD";      break;
+        case BUTTON_B:      szFileName = "CR";      break;
+        
+        case BUTTON_1:      szFileName = "File1";   break;
+        case BUTTON_2:      szFileName = "File2";   break;
+        case BUTTON_3:      szFileName = "File3";   break;
+        case BUTTON_4:      szFileName = "File4";   break;
+        case BUTTON_5:      szFileName = "File5";   break;
+        
+        default:            szFileName = "";        break;
+    }
+    
+    xSemaphoreTake(xSdCardMutex, portMAX_DELAY);
+
+    // Get the full file path and add the extension for planner file.
+    strcpy(szFullFilePath, szProgramFolder);
+    strcat(szFullFilePath, "/");
+    strcat(szFullFilePath, szFileName);
+    strcat(szFullFilePath, szPlannerFileExt);
+    
+    // Try to read the file attributes and check whether the file is locked.
+    if (xFSGetReadOnlyFlag(szFullFilePath, &ucLock) != FR_OK) {
+        // Failed to get the attributes for planner file.
+        // Try again with motion file.
+        
+        // Get the full file path and add the extension for motion file.
+        strcpy(szFullFilePath, szProgramFolder);
+        strcat(szFullFilePath, "/");
+        strcat(szFullFilePath, szFileName);
+        strcat(szFullFilePath, szMotionFileExt);
+        
+        // Try to read the file attributes and check whether the file is locked.
+        if (xFSGetReadOnlyFlag(szFullFilePath, &ucLock) != FR_OK) {
+            // Failed again. This means the file does not exist.
+            // Clear the lock bit.
+            ucLock = 0;
+        }
+    }
+    xSemaphoreGive(xSdCardMutex);
+    
+    return ucLock;
+}
+
+
+
+/*******************************************************************************
  * FUNCTION: prv_vUpdateFileInfo
  *
  * PARAMETERS:
@@ -434,8 +510,7 @@ static void prv_vUpdateFileInfo(SELECTED_BUTTON eSelectedButton)
         default:            prv_xSelectedFileInfo.szFileName = "";          break;
     }
     
-
-    FSFILE* pxFile;
+    
 
     xSemaphoreTake(xSdCardMutex, portMAX_DELAY);
 
@@ -447,7 +522,7 @@ static void prv_vUpdateFileInfo(SELECTED_BUTTON eSelectedButton)
     strcat(prv_xSelectedFileInfo.szFullFilePath, szPlannerFileExt);
 
     // Open the planner file.
-    pxFile = FSfopen(prv_xSelectedFileInfo.szFullFilePath, "r");
+    FSFILE *pxFile = FSfopen(prv_xSelectedFileInfo.szFullFilePath, "r");
 
     // File type is planner file if the file can be opened.
     if (pxFile != NULL) {
@@ -1011,8 +1086,8 @@ static void prv_vUpdateEditLockIcon(SELECTED_BUTTON eSelectedButton)
     
     
     
-    // Update the file information.
-    prv_vUpdateFileInfo(eSelectedButton);
+    // Get the lock state.
+    unsigned char ucLock = prv_ucGetFileLockState(eSelectedButton);
     
     // Update the icon based on the read-only flag of the file.
     switch (eSelectedButton) {
@@ -1024,7 +1099,7 @@ static void prv_vUpdateEditLockIcon(SELECTED_BUTTON eSelectedButton)
         case BUTTON_Y:
         case BUTTON_A:
         case BUTTON_B:
-            if (prv_xSelectedFileInfo.ucLock == 0) {
+            if (ucLock == 0) {
                 vPictureUpdateBitmap((PICTURE*)GOLFindObject(eObjectId), "/Theme/MotionPage/Unlocked.bmp");
             } else {
                 vPictureUpdateBitmap((PICTURE*)GOLFindObject(eObjectId), "/Theme/MotionPage/Locked.bmp");
@@ -1036,7 +1111,7 @@ static void prv_vUpdateEditLockIcon(SELECTED_BUTTON eSelectedButton)
         case BUTTON_3:
         case BUTTON_4:
         case BUTTON_5:
-            if (prv_xSelectedFileInfo.ucLock == 0) {
+            if (ucLock == 0) {
                 vButtonUpdateBitmap((BUTTON*)GOLFindObject(eObjectId), "/Theme/MotionPage/ButtonUnlocked.bmp");
             } else {
                 vButtonUpdateBitmap((BUTTON*)GOLFindObject(eObjectId), "/Theme/MotionPage/ButtonLocked.bmp");
