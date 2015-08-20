@@ -1278,52 +1278,6 @@ void vCreateMotionPage(void)
     vCreatePageWindow("MOTION");
     
     prv_vCreateMainPage();
-    
-    
-//    // Frame label.
-//    StCreate( GID_MOTION_TXT_FILETYPE,
-//              TXT_FRAME_LABEL_L, TXT_FRAME_LABEL_T,
-//              TXT_FRAME_LABEL_R, TXT_FRAME_LABEL_B,
-//              ST_DRAW, "Frame :", pxDefaultScheme );
-//    
-//    // Frame value.
-//    StCreate( GID_MOTION_TXT_FILETYPE,
-//              TXT_FRAME_VALUE_L, TXT_FRAME_VALUE_T,
-//              TXT_FRAME_VALUE_R, TXT_FRAME_VALUE_B,
-//              ST_DRAW | ST_RIGHT_ALIGN, "8888", pxLightGreenTxtScheme );
-    
-    
-    
-//    // Time label.
-//    StCreate( GID_MOTION_TXT_FILETYPE,
-//              TXT_TIME_LABEL_L, TXT_TIME_LABEL_T,
-//              TXT_TIME_LABEL_R, TXT_TIME_LABEL_B,
-//              ST_DRAW, "Frame :", pxDefaultScheme );
-//    
-//    // Time value.
-//    StCreate( GID_MOTION_TXT_FILETYPE,
-//              TXT_TIME_VALUE_L, TXT_TIME_VALUE_T,
-//              TXT_TIME_VALUE_R, TXT_TIME_VALUE_B,
-//              ST_DRAW | ST_RIGHT_ALIGN, "8888", pxLightGreenTxtScheme );
-//    
-//    
-//    
-//    
-//    // Message 1.
-//    StCreate( GID_MOTION_TXT_FILETYPE,
-//              TXT_MSG1_L, TXT_MSG1_T,
-//              TXT_MSG1_R, TXT_MSG1_B,
-//              ST_DRAW | ST_CENTER_ALIGN, "Press NEXT", pxLightBlueTxtScheme );
-//    
-//    // Message 2.
-//    StCreate( GID_MOTION_TXT_FILETYPE,
-//              TXT_MSG2_L, TXT_MSG2_T,
-//              TXT_MSG2_R, TXT_MSG2_B,
-//              ST_DRAW  | ST_CENTER_ALIGN, "to add position", pxLightBlueTxtScheme );
-    
-    
-    
-    
 }
 
 
@@ -1392,7 +1346,7 @@ WORD usMsgMotionPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
             // Teach button.
             case GID_MOTION_BTN_TEACH:
                 // Creating the motion file and start the teaching process.
-                vStartTeaching(prv_xSelectedFileInfo.szFileName);
+                vStartTeaching();
                 
                 // Show playing motion message.
                 vUpdateMotionPageMsg1("Teaching . . .");

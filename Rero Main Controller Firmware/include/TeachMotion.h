@@ -15,7 +15,7 @@
  * PUBLIC FUNCTION PROTOTYPES
  *******************************************************************************/
 
-void vStartTeaching(char *szSelectedFileName);
+void vStartTeaching(void);
 void vTeachAddPosition(char *szSelectedFileName);
 void vTeachTurnOffServoLed(void);
 

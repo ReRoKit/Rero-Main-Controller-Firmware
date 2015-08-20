@@ -53,25 +53,81 @@ static unsigned short prv_usStartTime = 0;
 
 
 /*******************************************************************************
- * FUNCTION: vStartTeaching
+ * PRIVATE FUNCTION PROTOTYPES
+ *******************************************************************************/
+
+static void prv_vWriteMotionFileHeader(FSFILE *pxMotionFile);
+
+
+
+/*******************************************************************************
+ * FUNCTION: prv_vWriteMotionFileHeader
  *
  * PARAMETERS:
- * ~ szSelectedFileName     - Selected filename without extension.
+ * ~ pxMotionFile     - The new motion file.
  *
  * RETURN:
  * ~ void
  *
  * DESCRIPTIONS:
- * Start the teaching process by searching for all G15, delete all the
- * files in the selected memory and create a new motion file.
+ * Write the header information to the newly created motion file.
  *
  *******************************************************************************/
-void vStartTeaching(char *szSelectedFileName)
+static void prv_vWriteMotionFileHeader(FSFILE *pxMotionFile)
 {
-    // Delete all the program files in the selected memory.
-    ucDeleteProgramFiles(szSelectedFileName);
-    
-    
+    // Make sure the motion file is available.
+    if (pxMotionFile != NULL) {
+        unsigned char pucBuffer[16];
+        
+        // Write the header byte and command.
+        pucBuffer[0] = 0xfa;      // Header.
+        pucBuffer[1] = 0x13;      // Command: Animator_Teach = 1, Loop = 1, RD_WR = 1.
+        FSfwrite (pucBuffer, 1, 2, pxMotionFile);
+        
+        // Write the file comment.
+        char *szFileComment = "Teach Mode";
+        FSfwrite (szFileComment, 1, strlen(szFileComment), pxMotionFile);
+        
+        // Tail-pad the file comment with null.
+        unsigned char ucPadSize = MAX_FILENAME_LENGTH - strlen(szFileComment);
+        unsigned char i;
+        for (i = 0; i < ucPadSize; i++) {
+            pucBuffer[i] = 0;
+        }
+        FSfwrite (pucBuffer, 1, ucPadSize, pxMotionFile);
+        
+        // Write servo count and servo ID.
+        FSfwrite (&prv_ucServoCount, 1, 1, pxMotionFile);
+        for (i = 0; i < prv_ucServoCount; i++) {
+            FSfwrite (&prv_pxServoInfo[i].ucServoId, 1, 1, pxMotionFile);
+        }
+        
+        // Write the time frame count.
+        // Initialize it to 0 first.
+        pucBuffer[0] = 0;
+        pucBuffer[1] = 0;
+        FSfwrite (pucBuffer, 1, 2, pxMotionFile);
+    }
+}
+
+
+
+/*******************************************************************************
+ * FUNCTION: vStartTeaching
+ *
+ * PARAMETERS:
+ * ~ void
+ *
+ * RETURN:
+ * ~ void
+ *
+ * DESCRIPTIONS:
+ * Start the teaching process by searching for all G15.
+ * Do not overwrite the selected memory yet.
+ *
+ *******************************************************************************/
+void vStartTeaching(void)
+{
     // Reset the servo count, time frame count and start time.
     prv_ucServoCount = 0;
     prv_usTimeframeCount = 0;
@@ -115,59 +171,6 @@ void vStartTeaching(char *szSelectedFileName)
             }
         }
     }
-    
-    
-    // Get the full file path and add the extension for motion file.
-    static char szFullFilePath[MAX_FILENAME_LENGTH * 3];
-    strcpy(szFullFilePath, szProgramFolder);
-    strcat(szFullFilePath, "/");
-    strcat(szFullFilePath, szSelectedFileName);
-    strcat(szFullFilePath, szMotionFileExt);
-
-    // Take control of SD card.
-    xSemaphoreTake(xSdCardMutex,portMAX_DELAY);
-
-    // Open the motion file for write.
-    FSFILE *pxMotionFile = FSfopen(szFullFilePath, "w");
-    
-    // Make sure it's opened successfully.
-    if (pxMotionFile != NULL) {
-        unsigned char pucBuffer[16];
-        
-        // Write the header byte and command.
-        pucBuffer[0] = 0xfa;      // Header.
-        pucBuffer[1] = 0x13;      // Command: Animator_Teach = 1, Loop = 1, RD_WR = 1.
-        FSfwrite (pucBuffer, 1, 2, pxMotionFile);
-        
-        // Write the file comment.
-        char *szFileComment = "Teach Mode";
-        FSfwrite (szFileComment, 1, strlen(szFileComment), pxMotionFile);
-        
-        // Tail-pad the file comment with null.
-        unsigned char ucPadSize = MAX_FILENAME_LENGTH - strlen(szFileComment);
-        for (i = 0; i < ucPadSize; i++) {
-            pucBuffer[i] = 0;
-        }
-        FSfwrite (pucBuffer, 1, ucPadSize, pxMotionFile);
-        
-        // Write servo count and servo ID.
-        FSfwrite (&prv_ucServoCount, 1, 1, pxMotionFile);
-        for (i = 0; i < prv_ucServoCount; i++) {
-            FSfwrite (&prv_pxServoInfo[i].ucServoId, 1, 1, pxMotionFile);
-        }
-        
-        // Write the time frame count.
-        // Initialize it to 0 first.
-        pucBuffer[0] = 0;
-        pucBuffer[1] = 0;
-        FSfwrite (pucBuffer, 1, 2, pxMotionFile);
-        
-        // Close the file.
-        FSfclose(pxMotionFile);
-    }
-
-    // Release control of SD card.
-    xSemaphoreGive(xSdCardMutex);
 }
 
 
@@ -194,11 +197,31 @@ void vTeachAddPosition(char *szSelectedFileName)
     strcat(szFullFilePath, szSelectedFileName);
     strcat(szFullFilePath, szMotionFileExt);
     
+    // Delete all program files in the selected memory if this is the first frame.
+    if (prv_usTimeframeCount == 0) {
+        ucDeleteProgramFiles(szSelectedFileName);
+    }
+        
     // Take control of SD card.
     xSemaphoreTake(xSdCardMutex, portMAX_DELAY);
     
-    // Open the motion file for appending.
-    FSFILE *pxMotionFile = FSfopen(szFullFilePath, "a");
+    
+    // Create a new motion file and write the header if this is the first frame.
+    FSFILE *pxMotionFile = NULL;
+    if (prv_usTimeframeCount == 0) {
+        // Open the motion file for write.
+        pxMotionFile = FSfopen(szFullFilePath, "w");
+        
+        // Write the header to the new motion file.
+        prv_vWriteMotionFileHeader(pxMotionFile);
+    }
+    
+    // Else, open the motion file for appending.
+    else {
+        pxMotionFile = FSfopen(szFullFilePath, "a");
+    }
+    
+    
     
     // Make sure it's opened successfully.
     if (pxMotionFile != NULL) {
