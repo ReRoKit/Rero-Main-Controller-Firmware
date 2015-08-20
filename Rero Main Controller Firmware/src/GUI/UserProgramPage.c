@@ -8,6 +8,7 @@
 
 #include "GUI/UserProgramPage.h"
 #include "GUI/GraphicScreens.h"
+#include "GUI/Custom Graphic Object/Battery.h"
 #include "UserProgram.h"
 #include "HardwareProfile.h"
 
@@ -29,7 +30,7 @@
 #define TXT_TITLE_HEIGHT    20
 #define TXT_TITLE_L         ((GetMaxX() - TXT_TITLE_WIDTH) / 2)
 #define TXT_TITLE_R         (TXT_TITLE_L + TXT_TITLE_WIDTH)
-#define TXT_TITLE_T         25
+#define TXT_TITLE_T         60
 #define TXT_TITLE_B         (TXT_TITLE_T + TXT_TITLE_HEIGHT)
 
 // Size for the button.
@@ -50,6 +51,12 @@
 #define BTN_STOP_R          (BTN_STOP_L + BTN_WIDTH)
 #define BTN_STOP_T          BTN_PLAY_T
 #define BTN_STOP_B          BTN_PLAY_B
+
+// Battery icon.
+#define BATT_R              (GetMaxX() - 15)
+#define BATT_L              (BATT_R - BATT_WIDTH)
+#define BATT_T              15
+#define BATT_B              (BATT_T + BATT_HEIGHT)
 
 
 
@@ -97,6 +104,13 @@ void vCreateUserProgramPage(void)
                BTN_STOP_L, BTN_STOP_T,
                BTN_STOP_R, BTN_STOP_B,
                0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL | BTN_DISABLED, "/Theme/UserProgramPage/Stop.bmp", "STOP", pxImgBtnScheme );
+    
+    
+    // Create the battery level indicator.
+    BattCreate ( GID_BATT_ICON,
+                 BATT_L, BATT_T,
+                 BATT_R, BATT_B,
+                 BATT_DRAW, pxDefaultScheme );
 }
 
 
