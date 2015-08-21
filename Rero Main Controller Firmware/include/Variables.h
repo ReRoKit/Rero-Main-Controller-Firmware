@@ -159,6 +159,7 @@ extern xQueueHandle xTouchMsgQueue;
 extern xSemaphoreHandle xTouchSemaphore;
 extern xSemaphoreHandle xBluetoothRxSemaphore;
 extern xSemaphoreHandle xPlayingMotionSemaphore;
+extern xSemaphoreHandle xSeekExtModuleSemaphore;
 extern xSemaphoreHandle xLoadAudioBufferSemaphore;
 extern xSemaphoreHandle xSdCardMutex;
 extern xSemaphoreHandle xExternalUartMutex;

@@ -1137,6 +1137,9 @@ WORD usMsgSensorPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                     }
                 }
                 
+                // Wait for the searching to complete.
+                xSemaphoreTake(xSeekExtModuleSemaphore, portMAX_DELAY);
+                
                 // Clear the list box.
                 LbDelItemsList(pxListbox);
 

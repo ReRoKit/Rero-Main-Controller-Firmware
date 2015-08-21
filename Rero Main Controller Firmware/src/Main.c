@@ -58,6 +58,7 @@ void main(void)
     vSemaphoreCreateBinary(xTouchSemaphore);
     vSemaphoreCreateBinary(xBluetoothRxSemaphore);
     vSemaphoreCreateBinary(xPlayingMotionSemaphore);
+    vSemaphoreCreateBinary(xSeekExtModuleSemaphore);
     vSemaphoreCreateBinary(xLoadAudioBufferSemaphore);
     xSdCardMutex = xSemaphoreCreateMutex();
     xExternalUartMutex = xSemaphoreCreateMutex();

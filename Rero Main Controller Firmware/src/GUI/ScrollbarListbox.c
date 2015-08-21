@@ -432,6 +432,11 @@ void taskSeekExtModule(void *pvParameters)
 {
     const unsigned char ucTextLength = 3;
     
+    // Make sure the semaphore is taken.
+    xSemaphoreTake(xSeekExtModuleSemaphore, 0);
+    
+    
+    
     LB_FILTER eListboxFilter = *((LB_FILTER*)pvParameters);
 
     LISTBOX *pxListbox = (LISTBOX*)GOLFindObject(GID_EXTMODULE_LB);
@@ -440,6 +445,9 @@ void taskSeekExtModule(void *pvParameters)
     
     // Make sure the listbox components are available.
     if ( (pxListbox == NULL) || (pxSlider == NULL) || (pxMsgText == NULL) ) {
+        // Give the semaphore.
+        xSemaphoreGive(xSeekExtModuleSemaphore);
+    
         vTaskDelete(NULL);
     }
 
@@ -582,6 +590,8 @@ void taskSeekExtModule(void *pvParameters)
     }
     
     
-    
+    // Give the semaphore.
+    xSemaphoreGive(xSeekExtModuleSemaphore);
+        
     vTaskDelete(NULL);
 }

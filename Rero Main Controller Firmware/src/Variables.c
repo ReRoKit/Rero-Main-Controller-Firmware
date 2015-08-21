@@ -60,6 +60,7 @@ xQueueHandle xTouchMsgQueue;
 xSemaphoreHandle xTouchSemaphore;
 xSemaphoreHandle xBluetoothRxSemaphore;
 xSemaphoreHandle xPlayingMotionSemaphore;
+xSemaphoreHandle xSeekExtModuleSemaphore;
 xSemaphoreHandle xLoadAudioBufferSemaphore;
 xSemaphoreHandle xSdCardMutex;
 xSemaphoreHandle xExternalUartMutex;

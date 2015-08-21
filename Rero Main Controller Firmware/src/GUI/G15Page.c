@@ -823,6 +823,9 @@ WORD usMsgG15Page(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                 
                 // Deselect the servo.
                 prv_vSelectServo(0xff);
+                
+                // Wait for the searching to complete.
+                xSemaphoreTake(xSeekExtModuleSemaphore, portMAX_DELAY);
 
                 // Clear the list box.
                 LISTBOX *pxListBox = (LISTBOX*)GOLFindObject(GID_EXTMODULE_LB);
