@@ -68,7 +68,7 @@ void vCreateLockScreen(void)
     StCreate( GID_LOCKSCREEN_TXT_RERO,
               0,         TXT_RERO_Y1,
               GetMaxX(), TXT_RERO_Y2,
-              ST_CENTER_ALIGN | ST_DRAW, "REconfigurable RObot", pxDefaultScheme );
+              ST_CENTER_ALIGN | ST_DRAW, "reconfigurable robot", pxDefaultScheme );
 
     // Create the unlock slider.
     SLIDER *pSld = SldCreate( GID_LOCKSCREEN_SLD_UNLOCK,
