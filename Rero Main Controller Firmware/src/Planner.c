@@ -55,7 +55,9 @@ typedef enum __attribute__((packed)) {
 
 static const char *prv_szMotionFilename = NULL;
 static const char *prv_szOpenedFilename = NULL;
+static char prv_szFullFilePath[MAX_FILENAME_LENGTH * 3];
 static FSFILE *prv_pxOpenedFile = NULL;
+static unsigned char prv_ucLock = 0;
 static unsigned char prv_ucPlaying = 0;
 static EM_MODEL prv_peUsedOutputModule[EM_MAX_ID + 1] = {0};
 
@@ -162,26 +164,45 @@ PLAY_RESULT ePlannerRun(const char* szPlannerFileName)
     prv_szOpenedFilename = szPlannerFileName;
 
     // Get the planner file name and add the extension.
-    static char szFullFilePath[MAX_FILENAME_LENGTH * 3];
-    strcpy(szFullFilePath, szProgramFolder);
-    strcat(szFullFilePath, "/");
-    strcat(szFullFilePath, szPlannerFileName);
-    strcat(szFullFilePath, szPlannerFileExt);
+    strcpy(prv_szFullFilePath, szProgramFolder);
+    strcat(prv_szFullFilePath, "/");
+    strcat(prv_szFullFilePath, szPlannerFileName);
+    strcat(prv_szFullFilePath, szPlannerFileExt);
 
-    // Open the planner file.
+    
+    
     xSemaphoreTake(xSdCardMutex,portMAX_DELAY);
-    prv_pxOpenedFile = FSfopen(szFullFilePath, "r+");
+    // Save the planner file lock state.
+    if (xFSGetReadOnlyFlag(prv_szFullFilePath, &prv_ucLock) != FR_OK) {
+        prv_ucLock = 0;
+    }
+    
+    // Clear the read-only flag.
+    xFSSetReadOnlyFlag(prv_szFullFilePath, 0);
+    
+    // Open the planner file.
+    prv_pxOpenedFile = FSfopen(prv_szFullFilePath, "r+");
     xSemaphoreGive(xSdCardMutex);
 
+    
+    
     // Return error code if fail to open the planner file.
     if (prv_pxOpenedFile == NULL) {
+        // Restore the original read-only flag.
+        xSemaphoreTake(xSdCardMutex,portMAX_DELAY);
+        xFSSetReadOnlyFlag(prv_szFullFilePath, prv_ucLock);
+        xSemaphoreGive(xSdCardMutex);
+        
         return PLAY_CANT_OPEN_FILE;
     }
 
     // Return error code if can't create the planner task.
     if (xTaskCreate(taskPlanner, "Planner", 400, NULL, tskIDLE_PRIORITY, NULL) == pdFALSE) {
-        // Close the planner file.
         xSemaphoreTake(xSdCardMutex,portMAX_DELAY);
+        // Restore the original read-only flag.
+        xFSSetReadOnlyFlag(prv_szFullFilePath, prv_ucLock);
+        
+        // Close the planner file.
         FSfclose(prv_pxOpenedFile);
         prv_pxOpenedFile = NULL;
         xSemaphoreGive(xSdCardMutex);
@@ -383,8 +404,11 @@ void taskPlanner(void *pvParameters)
     // Make sure the header is 0xFB.
     // Exit task if it's not.
     if(pucBuffer[0] != 0xFB) {
-        // Close the planner file and set the state to closed.
         xSemaphoreTake(xSdCardMutex, portMAX_DELAY);
+        // Restore the original read-only flag.
+        xFSSetReadOnlyFlag(prv_szFullFilePath, prv_ucLock);
+        
+        // Close the planner file and set the state to closed.
         FSfclose(prv_pxOpenedFile);
         prv_pxOpenedFile = NULL;
         xSemaphoreGive(xSdCardMutex);
@@ -730,11 +754,14 @@ void taskPlanner(void *pvParameters)
 
     // Turn off torque and LED for used output modules.
     prv_vDisableUsedOutput();
-
-
-
-    // Close the planner file.
+    
+    
+    
     xSemaphoreTake(xSdCardMutex,portMAX_DELAY);
+    // Restore the original read-only flag.
+    xFSSetReadOnlyFlag(prv_szFullFilePath, prv_ucLock);
+    
+    // Close the planner file.
     FSfclose(prv_pxOpenedFile);
     prv_pxOpenedFile = NULL;
     xSemaphoreGive(xSdCardMutex);
