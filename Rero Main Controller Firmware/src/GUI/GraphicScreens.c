@@ -397,9 +397,7 @@ void vStaticTextUpdateText(STATICTEXT *pxStaticText, char *szText)
 {
     if ((pxStaticText != NULL) && (szText != NULL)) {
         StSetText(pxStaticText, szText);
-        if (GetState(pxStaticText, ST_DRAW) == 0) {
-            SetState(pxStaticText, ST_UPDATE);
-        }
+        SetState(pxStaticText, ST_DRAW);
     }
 }
 
@@ -423,9 +421,7 @@ void vDigitalMeterUpdateValue(DIGITALMETER *pxDigitalMeter, unsigned long ulValu
 {
     if (pxDigitalMeter != NULL) {
         DmSetValue(pxDigitalMeter, ulValue);
-        if (GetState(pxDigitalMeter, DM_DRAW) == 0) {
-            SetState(pxDigitalMeter, DM_UPDATE);
-        }
+        SetState(pxDigitalMeter, DM_DRAW);
     }
 }
 
