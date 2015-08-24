@@ -170,7 +170,7 @@ PLAY_RESULT ePlannerRun(const char* szPlannerFileName)
 
     // Open the planner file.
     xSemaphoreTake(xSdCardMutex,portMAX_DELAY);
-    prv_pxOpenedFile = FSfopen(szFullFilePath, "r");
+    prv_pxOpenedFile = FSfopen(szFullFilePath, "r+");
     xSemaphoreGive(xSdCardMutex);
 
     // Return error code if fail to open the planner file.
@@ -575,6 +575,39 @@ void taskPlanner(void *pvParameters)
                 } else {
                     ulBlockAddress = ((unsigned long)pucBuffer[5] << 16) + ((unsigned long)pucBuffer[6] << 8) + (unsigned long)pucBuffer[7];
                 }
+                
+                break;
+            }
+            
+            
+            
+            // Counter block.
+            case COUNTER_BLOCK: {
+                // Update the message text in play page.
+                vUpdateMotionPageMsg2("Counter");
+                
+                // Get the counter limit and value.
+                unsigned short usLimit = ((unsigned short)pucBuffer[1] << 8) + (unsigned short)pucBuffer[2];
+                unsigned short usValue = ((unsigned short)pucBuffer[3] << 8) + (unsigned short)pucBuffer[4];
+                
+                // Increase the counter value.
+                usValue++;
+                
+                // Get the next block address.
+                if (usValue > usLimit) {
+                    ulBlockAddress = ((unsigned long)pucBuffer[5] << 16) + ((unsigned long)pucBuffer[6] << 8) + (unsigned long)pucBuffer[7];
+                    
+                    // Reset the counter value.
+                    usValue = 0;
+                } else {
+                    ulBlockAddress = ((unsigned long)pucBuffer[8] << 16) + ((unsigned long)pucBuffer[9] << 8) + (unsigned long)pucBuffer[10];
+                }
+                
+                // Write back the new counter value to file.
+                xSemaphoreTake(xSdCardMutex, portMAX_DELAY);
+                FSfseek(prv_pxOpenedFile, -17, SEEK_CUR);
+                FSfwrite(&usValue, 1, 2, prv_pxOpenedFile);
+                xSemaphoreGive(xSdCardMutex);
                 
                 break;
             }
