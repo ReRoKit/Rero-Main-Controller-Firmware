@@ -187,14 +187,20 @@
 
 
 // Teach, play, next and stop button.
-#define BTN_TEACH_PLAY_GAP      15
+#define BTN_TEACH_PLAY_GAP      10
 
 // Teach button.
-#define BTN_TEACH_HEIGHT        25
-#define BTN_TEACH_L             (IMG_GAMEPAD_LEFT_R + 15)
-#define BTN_TEACH_R             (IMG_GAMEPAD_RIGHT_L - 15)
+#define BTN_TEACH_HEIGHT        40
+#define BTN_TEACH_L             (IMG_GAMEPAD_LEFT_R + 13)
+#define BTN_TEACH_R             (IMG_GAMEPAD_RIGHT_L - 13)
 #define BTN_TEACH_B             (GAMEPAD_LEFT_CENTER_Y - (BTN_TEACH_PLAY_GAP / 2))
 #define BTN_TEACH_T             (BTN_TEACH_B - BTN_TEACH_HEIGHT)
+
+#define IMG_TEACH_HEIGHT        20
+#define IMG_TEACH_L             BTN_TEACH_L
+#define IMG_TEACH_R             BTN_TEACH_R
+#define IMG_TEACH_B             BTN_TEACH_B
+#define IMG_TEACH_T             (IMG_TEACH_B - IMG_TEACH_HEIGHT)
 
 // Play button.
 #define BTN_PLAY_HEIGHT         BTN_TEACH_HEIGHT
@@ -203,12 +209,24 @@
 #define BTN_PLAY_T              (BTN_TEACH_B + BTN_TEACH_PLAY_GAP)
 #define BTN_PLAY_B              (BTN_PLAY_T + BTN_PLAY_HEIGHT)
 
+#define IMG_PLAY_HEIGHT         IMG_TEACH_HEIGHT
+#define IMG_PLAY_L              BTN_PLAY_L
+#define IMG_PLAY_R              BTN_PLAY_R
+#define IMG_PLAY_T              BTN_PLAY_T
+#define IMG_PLAY_B              (IMG_PLAY_T + IMG_PLAY_HEIGHT)
+
 // Next button.
 #define BTN_NEXT_HEIGHT         BTN_TEACH_HEIGHT
 #define BTN_NEXT_L              BTN_TEACH_L
 #define BTN_NEXT_R              BTN_TEACH_R
 #define BTN_NEXT_T              BTN_TEACH_T
 #define BTN_NEXT_B              BTN_TEACH_B
+
+#define IMG_NEXT_HEIGHT         IMG_TEACH_HEIGHT
+#define IMG_NEXT_L              BTN_NEXT_L
+#define IMG_NEXT_R              BTN_NEXT_R
+#define IMG_NEXT_B              BTN_NEXT_B
+#define IMG_NEXT_T              (IMG_NEXT_B - IMG_NEXT_HEIGHT)
 
 // Stop teaching button.
 #define BTN_STOPTEACH_HEIGHT    BTN_TEACH_HEIGHT
@@ -217,12 +235,24 @@
 #define BTN_STOPTEACH_T         BTN_PLAY_T
 #define BTN_STOPTEACH_B         BTN_PLAY_B
 
+#define IMG_STOPTEACH_HEIGHT    IMG_TEACH_HEIGHT
+#define IMG_STOPTEACH_L         BTN_STOPTEACH_L
+#define IMG_STOPTEACH_R         BTN_STOPTEACH_R
+#define IMG_STOPTEACH_T         BTN_STOPTEACH_T
+#define IMG_STOPTEACH_B         (IMG_STOPTEACH_T + IMG_STOPTEACH_HEIGHT)
+
 // Stop playing button.
 #define BTN_STOPPLAY_HEIGHT     BTN_TEACH_HEIGHT
 #define BTN_STOPPLAY_L          BTN_TEACH_L
 #define BTN_STOPPLAY_R          BTN_TEACH_R
 #define BTN_STOPPLAY_T          (GAMEPAD_LEFT_CENTER_Y - (BTN_STOPPLAY_HEIGHT / 2))
 #define BTN_STOPPLAY_B          (BTN_STOPPLAY_T + BTN_STOPPLAY_HEIGHT)
+
+#define IMG_STOPPLAY_HEIGHT     IMG_TEACH_HEIGHT
+#define IMG_STOPPLAY_L          BTN_STOPPLAY_L
+#define IMG_STOPPLAY_R          BTN_STOPPLAY_R
+#define IMG_STOPPLAY_T          (GAMEPAD_LEFT_CENTER_Y - (IMG_STOPPLAY_HEIGHT / 2))
+#define IMG_STOPPLAY_B          (IMG_STOPPLAY_T + IMG_STOPPLAY_HEIGHT)
 
 
 
@@ -667,6 +697,7 @@ static void prv_vSelectButton(SELECTED_BUTTON eNewSelectedButton)
     // If the file is not available.
     if (prv_xSelectedFileInfo.eFileType == NOT_AVAILABLE) {
         // Disable the play button.
+        vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_PLAY), "/Theme/MotionPage/Play-Disabled.bmp");
         vGraphicsObjectDisable((BUTTON*)GOLFindObject(GID_MOTION_BTN_PLAY));
 
         // Update the file type and comment.
@@ -681,6 +712,7 @@ static void prv_vSelectButton(SELECTED_BUTTON eNewSelectedButton)
     // File is available.
     else {
         // Enable the play button.
+        vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_PLAY), "/Theme/MotionPage/Play-Released.bmp");
         vGraphicsObjectEnable((BUTTON*)GOLFindObject(GID_MOTION_BTN_PLAY));
 
         // Update the file type and comment.
@@ -695,14 +727,18 @@ static void prv_vSelectButton(SELECTED_BUTTON eNewSelectedButton)
 
     // If the file is locked, disable the teach button and show the locked icon.
     if (prv_xSelectedFileInfo.ucLock != 0) {
+        vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_TEACH), "/Theme/MotionPage/Teach-Disabled.bmp");
         vGraphicsObjectDisable((BUTTON*)GOLFindObject(GID_MOTION_BTN_TEACH));
+        
         vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_LOCK), "/Theme/MotionPage/Locked.bmp");
     }
     // Else, enable the teach button and show the unlocked icon.
     else {
         if (eNewSelectedButton == BUTTON_NONE) {
+            vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_TEACH), "/Theme/MotionPage/Teach-Disabled.bmp");
             vGraphicsObjectDisable((BUTTON*)GOLFindObject(GID_MOTION_BTN_TEACH));
         } else {
+            vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_TEACH), "/Theme/MotionPage/Teach-Released.bmp");
             vGraphicsObjectEnable((BUTTON*)GOLFindObject(GID_MOTION_BTN_TEACH));
         }
         vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_LOCK), "/Theme/MotionPage/Unlocked.bmp");
@@ -1206,16 +1242,26 @@ static void prv_vDisableGamepadButton(void)
 static void prv_vCreateMainPageButton(void)
 {
     // Teach button.
+    PictCreate( GID_MOTION_IMG_TEACH,
+                IMG_TEACH_L, IMG_TEACH_T,
+                IMG_TEACH_R, IMG_TEACH_B,
+                PICT_DRAW, 1, "/Theme/MotionPage/Teach-Disabled.bmp", pxDefaultScheme );
+    
     BtnCreate( GID_MOTION_BTN_TEACH,
                BTN_TEACH_L, BTN_TEACH_T,
                BTN_TEACH_R, BTN_TEACH_B,
-               BTN_RADIUS, BTN_DRAW | BTN_DISABLED, NULL, "TEACH", pxBtnScheme );
+               BTN_RADIUS, BTN_DRAW | BTN_NOPANEL | BTN_DISABLED, NULL, NULL, pxBtnScheme );
     
     // Play button.
+    PictCreate( GID_MOTION_IMG_PLAY,
+                IMG_PLAY_L, IMG_PLAY_T,
+                IMG_PLAY_R, IMG_PLAY_B,
+                PICT_DRAW, 1, "/Theme/MotionPage/Play-Disabled.bmp", pxDefaultScheme );
+    
     BtnCreate( GID_MOTION_BTN_PLAY,
                BTN_PLAY_L, BTN_PLAY_T,
                BTN_PLAY_R, BTN_PLAY_B,
-               BTN_RADIUS, BTN_DRAW | BTN_DISABLED, NULL, "PLAY", pxBtnScheme );
+               BTN_RADIUS, BTN_DRAW | BTN_NOPANEL | BTN_DISABLED, NULL, NULL, pxBtnScheme );
                
     // Lock image.
     PictCreate( GID_MOTION_IMG_LOCK,
@@ -1247,8 +1293,12 @@ static void prv_vCreateMainPageButton(void)
  *******************************************************************************/
 static void prv_vRemoveMainPageButton(void)
 {
+    GOLDeleteObjectByID(GID_MOTION_IMG_TEACH);
     GOLDeleteObjectByID(GID_MOTION_BTN_TEACH);
+    
+    GOLDeleteObjectByID(GID_MOTION_IMG_PLAY);
     GOLDeleteObjectByID(GID_MOTION_BTN_PLAY);
+    
     GOLDeleteObjectByID(GID_MOTION_IMG_LOCK);
     GOLDeleteObjectByID(GID_MOTION_BTN_EDIT);
 
@@ -1410,6 +1460,15 @@ WORD usMsgMotionPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
             case GID_MOTION_BTN_LOCK_3:     prv_vToggleFileLock(BUTTON_3);      prv_vUpdateEditLockIcon(BUTTON_3);      break;
             case GID_MOTION_BTN_LOCK_4:     prv_vToggleFileLock(BUTTON_4);      prv_vUpdateEditLockIcon(BUTTON_4);      break;
             case GID_MOTION_BTN_LOCK_5:     prv_vToggleFileLock(BUTTON_5);      prv_vUpdateEditLockIcon(BUTTON_5);      break;
+            
+            
+            
+            case GID_MOTION_BTN_TEACH:      vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_TEACH), "/Theme/MotionPage/Teach-Pressed.bmp");     break;
+            case GID_MOTION_BTN_NEXT:       vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_NEXT), "/Theme/MotionPage/Next-Pressed.bmp");       break;
+            case GID_MOTION_BTN_STOPTEACH:  vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_STOPTEACH), "/Theme/MotionPage/Stop-Pressed.bmp");  break;
+            
+            case GID_MOTION_BTN_PLAY:       vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_PLAY), "/Theme/MotionPage/Play-Pressed.bmp");       break;
+            case GID_MOTION_BTN_STOPPLAY:   vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_STOPPLAY), "/Theme/MotionPage/Stop-Pressed.bmp");   break;
         }
     }
     
@@ -1437,21 +1496,34 @@ WORD usMsgMotionPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                 prv_vCreateTimeFrame();
                 
                 // Create the next button.
+                PictCreate( GID_MOTION_IMG_NEXT,
+                            IMG_NEXT_L, IMG_NEXT_T,
+                            IMG_NEXT_R, IMG_NEXT_B,
+                            PICT_DRAW, 1, "/Theme/MotionPage/Next-Released.bmp", pxDefaultScheme );
+                
                 BtnCreate( GID_MOTION_BTN_NEXT,
                            BTN_NEXT_L, BTN_NEXT_T,
                            BTN_NEXT_R, BTN_NEXT_B,
-                           BTN_RADIUS, BTN_DRAW, NULL, "NEXT", pxBtnScheme );
+                           BTN_RADIUS, BTN_DRAW | BTN_NOPANEL, NULL, NULL, pxBtnScheme );
 
                 // Create the stop teaching button.
+                PictCreate( GID_MOTION_IMG_STOPTEACH,
+                            IMG_STOPTEACH_L, IMG_STOPTEACH_T,
+                            IMG_STOPTEACH_R, IMG_STOPTEACH_B,
+                            PICT_DRAW, 1, "/Theme/MotionPage/Stop-Released.bmp", pxDefaultScheme );
+                
                 BtnCreate( GID_MOTION_BTN_STOPTEACH,
                            BTN_STOPTEACH_L, BTN_STOPTEACH_T,
                            BTN_STOPTEACH_R, BTN_STOPTEACH_B,
-                           BTN_RADIUS, BTN_DRAW, NULL, "STOP", pxBtnScheme );
+                           BTN_RADIUS, BTN_DRAW | BTN_NOPANEL, NULL, NULL, pxBtnScheme );
                 
                 break;
                 
             // Next button.
             case GID_MOTION_BTN_NEXT:
+                // Update the button image.
+                vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_NEXT), "/Theme/MotionPage/Next-Released.bmp");
+                
                 // Record the servo position.
                 vTeachAddPosition(prv_xSelectedFileInfo.szFileName);
                 break;
@@ -1462,7 +1534,10 @@ WORD usMsgMotionPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                 vTeachTurnOffServoLed();
                 
                 // Remove the next and stop button.
+                GOLDeleteObjectByID(GID_MOTION_IMG_NEXT);
                 GOLDeleteObjectByID(GID_MOTION_BTN_NEXT);
+                
+                GOLDeleteObjectByID(GID_MOTION_IMG_STOPTEACH);
                 GOLDeleteObjectByID(GID_MOTION_BTN_STOPTEACH);
                 
                 SetColor(pxDefaultScheme->CommonBkColor);
@@ -1506,10 +1581,15 @@ WORD usMsgMotionPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                     prv_vCreateTimeFrame();
                     
                     // Create the stop playing button.
+                    PictCreate( GID_MOTION_IMG_STOPPLAY,
+                                IMG_STOPPLAY_L, IMG_STOPPLAY_T,
+                                IMG_STOPPLAY_R, IMG_STOPPLAY_B,
+                                PICT_DRAW, 1, "/Theme/MotionPage/Stop-Released.bmp", pxDefaultScheme );
+                    
                     BtnCreate( GID_MOTION_BTN_STOPPLAY,
                                BTN_STOPPLAY_L, BTN_STOPPLAY_T,
                                BTN_STOPPLAY_R, BTN_STOPPLAY_B,
-                               BTN_RADIUS, BTN_DRAW, NULL, "STOP", pxBtnScheme );
+                               BTN_RADIUS, BTN_DRAW | BTN_NOPANEL, NULL, NULL, pxBtnScheme );
                 }
                 break;
                 
@@ -1555,6 +1635,20 @@ WORD usMsgMotionPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                 // Back to main screen.
                 vSetGuiPage(PAGE_MAIN_MENU);
                 break;
+        }
+    }
+    
+    
+    
+    // Button is cancelled.
+    else if (objMsg == BTN_MSG_CANCELPRESS) {
+        switch (GetObjID(pObj)) {
+            case GID_MOTION_BTN_TEACH:      vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_TEACH), "/Theme/MotionPage/Teach-Released.bmp");    break;
+            case GID_MOTION_BTN_NEXT:       vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_NEXT), "/Theme/MotionPage/Next-Released.bmp");      break;
+            case GID_MOTION_BTN_STOPTEACH:  vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_STOPTEACH), "/Theme/MotionPage/Stop-Released.bmp"); break;
+            
+            case GID_MOTION_BTN_PLAY:       vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_PLAY), "/Theme/MotionPage/Play-Released.bmp");      break;
+            case GID_MOTION_BTN_STOPPLAY:   vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_STOPPLAY), "/Theme/MotionPage/Stop-Released.bmp");  break;
         }
     }
 }
@@ -1647,6 +1741,7 @@ void vUpdateMotionPageEndPlaying(FILE_TYPE ePlayingType)
         // Make sure the selected file type is same with the playing type.
         if (prv_xSelectedFileInfo.eFileType == ePlayingType) {
             // Remove the stop button.
+            GOLDeleteObjectByID(GID_MOTION_IMG_STOPPLAY);
             GOLDeleteObjectByID(GID_MOTION_BTN_STOPPLAY);
             SetColor(pxDefaultScheme->CommonBkColor);
             Bar(BTN_STOPPLAY_L, BTN_STOPPLAY_T, BTN_STOPPLAY_R, BTN_STOPPLAY_B);
