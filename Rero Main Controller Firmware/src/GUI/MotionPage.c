@@ -187,10 +187,10 @@
 
 
 // Teach, play, next and stop button.
-#define BTN_TEACH_PLAY_GAP      10
+#define BTN_TEACH_PLAY_GAP      15
 
 // Teach button.
-#define BTN_TEACH_HEIGHT        20
+#define BTN_TEACH_HEIGHT        25
 #define BTN_TEACH_L             (IMG_GAMEPAD_LEFT_R + 15)
 #define BTN_TEACH_R             (IMG_GAMEPAD_RIGHT_L - 15)
 #define BTN_TEACH_B             (GAMEPAD_LEFT_CENTER_Y - (BTN_TEACH_PLAY_GAP / 2))
