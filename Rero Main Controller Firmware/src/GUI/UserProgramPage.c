@@ -11,6 +11,7 @@
 #include "GUI/Custom Graphic Object/Battery.h"
 #include "UserProgram.h"
 #include "HardwareProfile.h"
+#include "Variables.h"
 
 // FreeRTOS includes
 #include "FreeRTOS.h"
@@ -155,6 +156,14 @@ WORD usMsgUserProgramPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                 // Stop the user program.
                 if (xUserProgramTask != NULL) {
                     vTaskDelete(xUserProgramTask);
+                    
+                    // Wait until the task is deleted.
+                    vTaskDelay(50 / portTICK_RATE_MS);
+                    
+                    // Release the mutex in case of they are taken.
+                    xSemaphoreGive(xSdCardMutex);
+                    xSemaphoreGive(xExternalUartMutex);
+                    xSemaphoreGive(xBluetoothMutex);
                 }
                 
                 // Clear the LED on main controller.
