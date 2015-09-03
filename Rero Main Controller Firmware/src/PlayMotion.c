@@ -352,7 +352,7 @@ void vPlayMotionStopAll(MOTION_STATE eStopMode)
 *******************************************************************************/
 void taskPlayMotion (void *pvParameters)
 {
-    unsigned char i;
+    unsigned short i;
 
     MOTION_OBJ* pxMotionObject = (MOTION_OBJ*)pvParameters;
     unsigned short usDelay = 0;
@@ -568,16 +568,16 @@ void taskPlayMotion (void *pvParameters)
                     }
                 }
                 
-//                // Play wave file 0 if servo ID < 5 and LED is on.
-//                if ((pucG15Id[ucServoCount] < 5) && (xControl.LED != 0)) {
-//                    switch (pucG15Id[ucServoCount]) {
-//                        case 0: vPlayWaveFile("/Program/Wave0.wav");    break;
-//                        case 1: vPlayWaveFile("/Program/Wave1.wav");    break;
-//                        case 2: vPlayWaveFile("/Program/Wave2.wav");    break;
-//                        case 3: vPlayWaveFile("/Program/Wave3.wav");    break;
-//                        case 4: vPlayWaveFile("/Program/Wave4.wav");    break;
-//                    }
-//                }
+                // Play wave file 0-4 if servo ID < 5 and LED is on.
+                if ((pucG15Id[ucServoCount] < 5) && (xControl.LED != 0)) {
+                    switch (pucG15Id[ucServoCount]) {
+                        case 0: vPlayWaveFile("/Program/Wave0.wav");    break;
+                        case 1: vPlayWaveFile("/Program/Wave1.wav");    break;
+                        case 2: vPlayWaveFile("/Program/Wave2.wav");    break;
+                        case 3: vPlayWaveFile("/Program/Wave3.wav");    break;
+                        case 4: vPlayWaveFile("/Program/Wave4.wav");    break;
+                    }
+                }
                 
                 
 
@@ -747,9 +747,12 @@ void taskPlayMotion (void *pvParameters)
 
         if (eModel == EM_MODEL_G15) {
             // Set the target position to the current position.
-            unsigned short usPosition;
-            eG15GetPosition(pucG15Id[i], &usPosition);
-            eG15SetPosition(pucG15Id[i], WRITE_NOW, usPosition, NORMAL_POSITIONING);
+            // Only do this if the motion is not yet finish playing.
+            if (pxMotionObject->eMotionState != PLAY) {
+                unsigned short usPosition;
+                eG15GetPosition(pucG15Id[i], &usPosition);
+                eG15SetPosition(pucG15Id[i], WRITE_NOW, usPosition, NORMAL_POSITIONING);
+            }
             
             // Set speed to 0. This is to stop the G15 if it's wheel mode.
             eG15SetSpeed(pucG15Id[i], WRITE_NOW, 0, POSITION_SPEED_CONTROL);
