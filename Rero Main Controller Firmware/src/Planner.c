@@ -529,12 +529,37 @@ void taskPlanner(void *pvParameters)
                 unsigned char ucSensorId = pucBuffer[1];
                 CL_SENSOR_COLOUR eTargetColour = pucBuffer[2];
                 
-                // Read the colour from the sensor.
-                // If there is error reading the sensor, stop playing and display error message until stop button is pressed.
+                
+                
+                // Read the colour sensor for a few times and make sure the reading is consistent.
                 CL_SENSOR_COLOUR eDetectedColour;
-                if (eColourSensorGetColour(ucSensorId, &eDetectedColour) != EM_NO_ERROR) {
-                    prv_vTrapSensorError(ucSensorId);
+                CL_SENSOR_COLOUR eLastDetectedColour;
+                unsigned char i;
+                for (i = 0; i < 10; i++) {
+                    // Read the colour from the sensor.
+                    // If there is error reading the sensor, stop playing and display error message until stop button is pressed.
+                    if (eColourSensorGetColour(ucSensorId, &eDetectedColour) != EM_NO_ERROR) {
+                        prv_vTrapSensorError(ucSensorId);
+                    }
+                    
+                    // Ignore the first reading.
+                    // For the remaining reading, make sure it's the same.
+                    if (i > 0) {
+                        // If the colour is not consistent, assume nothing is detected.
+                        if (eDetectedColour != eLastDetectedColour) {
+                            eDetectedColour = CL_BLACK;
+                            break;
+                        }
+                    }
+                    
+                    // Save the current reading as last reading.
+                    eLastDetectedColour = eDetectedColour;
+                    
+                    // Delay before taking the next reading.
+                    vTaskDelay(20 / portTICK_RATE_MS);
                 }
+                
+                
                 
                 // Get the next block address.
                 if ( (eDetectedColour == eTargetColour) ||

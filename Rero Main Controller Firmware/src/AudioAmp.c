@@ -37,7 +37,7 @@ typedef enum __attribute__((packed)) {
 
 
 #define DEFAULT_SAMPLE_RATE 8000
-#define AUDIO_BUFFER_SIZE   512
+#define AUDIO_BUFFER_SIZE   1024
 
 
 
