@@ -794,7 +794,7 @@ EM_ERROR eColourSensorGetColour(unsigned char ucId, CL_SENSOR_COLOUR *peColour)
         // Make sure the colour is detected.
         if (ucMax > CL_SENSOR_THRESHOLD) {
             // Calculate the threshold.
-            unsigned char ucThreshold = (unsigned char)((unsigned int)ucMax * 2 / 3);
+            unsigned char ucThreshold = (unsigned char)((unsigned int)ucMax * 3 / 5);
 
             // Determine the colour.
             if (ucRed > ucThreshold) {

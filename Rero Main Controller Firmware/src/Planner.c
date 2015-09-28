@@ -556,7 +556,7 @@ void taskPlanner(void *pvParameters)
                     eLastDetectedColour = eDetectedColour;
                     
                     // Delay before taking the next reading.
-                    vTaskDelay(20 / portTICK_RATE_MS);
+                    vTaskDelay(10 / portTICK_RATE_MS);
                 }
                 
                 
