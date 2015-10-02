@@ -1559,6 +1559,30 @@ WORD usMsgMotionPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                 
             // Play button.
             case GID_MOTION_BTN_PLAY:
+                // Show playing motion message.
+                vUpdateMotionPageMsg1("Running . . .");
+
+                // Disable the gamepad button.
+                prv_vDisableGamepadButton();
+
+                // Delete the teach, play, and edit button.
+                prv_vRemoveMainPageButton();
+
+                // Create the label and value for time and frame.
+                prv_vCreateTimeFrame();
+
+                // Create the stop playing button.
+                PictCreate( GID_MOTION_IMG_STOPPLAY,
+                            IMG_STOPPLAY_L, IMG_STOPPLAY_T,
+                            IMG_STOPPLAY_R, IMG_STOPPLAY_B,
+                            PICT_DRAW, 1, "/Theme/MotionPage/Stop-Released.bmp", pxDefaultScheme );
+
+                BtnCreate( GID_MOTION_BTN_STOPPLAY,
+                           BTN_STOPPLAY_L, BTN_STOPPLAY_T,
+                           BTN_STOPPLAY_R, BTN_STOPPLAY_B,
+                           BTN_RADIUS, BTN_DRAW | BTN_NOPANEL, NULL, NULL, pxBtnScheme );
+
+
                 // Play the planner or motion file.
                 if (prv_xSelectedFileInfo.eFileType == PLANNER_FILE) {
                     ePlayResult = ePlannerRun(prv_xSelectedFileInfo.szFileName);
@@ -1566,30 +1590,9 @@ WORD usMsgMotionPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                     ePlayResult = ePlayMotionStart(prv_xSelectedFileInfo.szFileName);
                 }
                 
-                // If successfully open the file for play.
-                if (ePlayResult == PLAY_NO_ERROR) {
-                    // Show playing motion message.
-                    vUpdateMotionPageMsg1("Running . . .");
-                    
-                    // Disable the gamepad button.
-                    prv_vDisableGamepadButton();
-                    
-                    // Delete the teach, play, and edit button.
-                    prv_vRemoveMainPageButton();
-                    
-                    // Create the label and value for time and frame.
-                    prv_vCreateTimeFrame();
-                    
-                    // Create the stop playing button.
-                    PictCreate( GID_MOTION_IMG_STOPPLAY,
-                                IMG_STOPPLAY_L, IMG_STOPPLAY_T,
-                                IMG_STOPPLAY_R, IMG_STOPPLAY_B,
-                                PICT_DRAW, 1, "/Theme/MotionPage/Stop-Released.bmp", pxDefaultScheme );
-                    
-                    BtnCreate( GID_MOTION_BTN_STOPPLAY,
-                               BTN_STOPPLAY_L, BTN_STOPPLAY_T,
-                               BTN_STOPPLAY_R, BTN_STOPPLAY_B,
-                               BTN_RADIUS, BTN_DRAW | BTN_NOPANEL, NULL, NULL, pxBtnScheme );
+                // If failed to open the file for play.
+                if (ePlayResult != PLAY_NO_ERROR) {
+                    vUpdateMotionPageEndPlaying(prv_xSelectedFileInfo.eFileType);
                 }
                 break;
                 
@@ -1733,13 +1736,13 @@ void vUpdateMotionPageTimeFrame(unsigned short usFrame, unsigned short usTime)
  *******************************************************************************/
 void vUpdateMotionPageEndPlaying(FILE_TYPE ePlayingType)
 {
-    // If the screen is locked, wake it up.
-    vUnlockScreen();
-
     // Make sure the current screen is motion page.
     if (eGetGuiPage() == PAGE_MOTION) {
         // Make sure the selected file type is same with the playing type.
         if (prv_xSelectedFileInfo.eFileType == ePlayingType) {
+            // If the screen is locked, wake it up.
+            vUnlockScreen();
+
             // Remove the stop button.
             GOLDeleteObjectByID(GID_MOTION_IMG_STOPPLAY);
             GOLDeleteObjectByID(GID_MOTION_BTN_STOPPLAY);
