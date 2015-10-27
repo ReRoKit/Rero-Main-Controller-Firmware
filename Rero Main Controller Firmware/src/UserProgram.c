@@ -46,9 +46,8 @@ void taskUserProgram(void *pvParameters)
 
         // Set the G15 position according to the sensor value.
         eG15SetPositionSpeed(ucG15Id, WRITE_NOW, ucSensorValue, NORMAL_POSITIONING, 350, POSITION_SPEED_CONTROL);
-
-        // Toggle blue LED.
-        LEDB ^= 1;
+        
+        // Delay for 20ms.
         vTaskDelay(20 / portTICK_RATE_MS);
     }
     

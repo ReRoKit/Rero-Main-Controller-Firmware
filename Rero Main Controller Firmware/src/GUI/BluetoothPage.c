@@ -75,11 +75,7 @@ void vCreateBluetoothPage(void)
     
     
     GOLFree();
-    if (eGetGuiPage() == PAGE_BT_PROGRAM) {
-        vCreatePageWindow("BLUETOOTH PROGRAMMING");
-    } else {
-        vCreatePageWindow("REMOTE");
-    }
+    vCreatePageWindow("BLUETOOTH");
     
     
 

@@ -26,14 +26,6 @@
  *******************************************************************************/
 
 // Position and size for graphic objects.
-// Title.
-#define TXT_TITLE_WIDTH     190
-#define TXT_TITLE_HEIGHT    20
-#define TXT_TITLE_L         ((GetMaxX() - TXT_TITLE_WIDTH) / 2)
-#define TXT_TITLE_R         (TXT_TITLE_L + TXT_TITLE_WIDTH)
-#define TXT_TITLE_T         60
-#define TXT_TITLE_B         (TXT_TITLE_T + TXT_TITLE_HEIGHT)
-
 // Size for the button.
 #define BTN_WIDTH           72
 #define BTN_HEIGHT          72
@@ -44,7 +36,7 @@
 // Play button.
 #define BTN_PLAY_R          (GetMaxX() / 2 - (BTN_GAP / 2))
 #define BTN_PLAY_L          (BTN_PLAY_R - BTN_WIDTH)
-#define BTN_PLAY_T          ((GetMaxY() + TXT_TITLE_B) / 2 - (BTN_HEIGHT / 2))
+#define BTN_PLAY_T          ((WND_SUBPAGE_TOP + WND_SUBPAGE_BOTTOM) / 2 - (BTN_HEIGHT / 2))
 #define BTN_PLAY_B          (BTN_PLAY_T + BTN_HEIGHT)
 
 // Stop button.
@@ -83,16 +75,7 @@ void vCreateUserProgramPage(void)
 
 
     // Create the window frame outline.
-    WndCreate( GID_WINDOW,
-               0,         0,
-               GetMaxX(), GetMaxY(),
-               WND_DRAW, NULL, NULL, pxMainWndScheme );
-    
-    // Title.
-    StCreate( GID_USER_TXT_TITLE,
-              TXT_TITLE_L, TXT_TITLE_T,
-              TXT_TITLE_R, TXT_TITLE_B,
-              ST_DRAW | ST_CENTER_ALIGN | ST_FRAME, "CUSTOM USER PROGRAM", pxDefaultScheme );
+    vCreatePageWindow("CUSTOM C PROGRAM");
     
     // Play button.
     BtnCreate( GID_USER_BTN_PLAY,
@@ -107,11 +90,11 @@ void vCreateUserProgramPage(void)
                0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL | BTN_DISABLED, "/Theme/UserProgramPage/Stop.bmp", "STOP", pxImgBtnScheme );
     
     
-    // Create the battery level indicator.
-    BattCreate ( GID_BATT_ICON,
-                 BATT_L, BATT_T,
-                 BATT_R, BATT_B,
-                 BATT_DRAW, pxDefaultScheme );
+    
+    // Disable the play button if the RUN_USER_PROGRAM is not defined.
+#ifndef RUN_USER_PROGRAM
+    vGraphicsObjectDisable((void*)GOLFindObject(GID_USER_BTN_PLAY));
+#endif
 }
 
 
@@ -144,7 +127,7 @@ WORD usMsgUserProgramPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                 vGraphicsObjectEnable(GOLFindObject(GID_USER_BTN_STOP));
                 
                 // Run the user program.
-                xTaskCreate( taskUserProgram, "USER", 512, NULL, tskIDLE_PRIORITY + 2, &xUserProgramTask );
+                xTaskCreate( taskUserProgram, "USER", 512, NULL, tskIDLE_PRIORITY, &xUserProgramTask );
                 
                 break;
                 
@@ -156,6 +139,7 @@ WORD usMsgUserProgramPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                 // Stop the user program.
                 if (xUserProgramTask != NULL) {
                     vTaskDelete(xUserProgramTask);
+                    xUserProgramTask = NULL;
                     
                     // Wait until the task is deleted.
                     vTaskDelay(50 / portTICK_RATE_MS);
@@ -175,6 +159,29 @@ WORD usMsgUserProgramPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                 // Disable all output.
                 vEMDisableAllOutput();
                 
+                break;
+                
+                // Exit button.
+            case GID_BTN_EXIT:
+                // Stop the user program.
+                if (xUserProgramTask != NULL) {
+                    vTaskDelete(xUserProgramTask);
+                    xUserProgramTask = NULL;
+                    
+                    // Wait until the task is deleted.
+                    vTaskDelay(50 / portTICK_RATE_MS);
+                    
+                    // Release the mutex in case of they are taken.
+                    xSemaphoreGive(xSdCardMutex);
+                    xSemaphoreGive(xExternalUartMutex);
+                    xSemaphoreGive(xBluetoothMutex);
+                }
+                
+                // Disable all output.
+                vEMDisableAllOutput();
+                
+                // Back to main screen.
+                vSetGuiPage(PAGE_MAIN_MENU);
                 break;
         }
     }

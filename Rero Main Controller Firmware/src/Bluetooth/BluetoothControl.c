@@ -1086,101 +1086,7 @@ void taskBluetoothProgram(void *pvParameters)
             vTaskDelay(200 / portTICK_RATE_MS);
         }
         
-
-
-        // Bluetooth Remote Page.
-        else if (eGetGuiPage() == PAGE_BT_REMOTE) {
-
-            static const char* szFileNameB1 = "File1";
-            static const char* szFileNameB2 = "File2";
-            static const char* szFileNameB3 = "File3";
-            static const char* szFileNameB4 = "File4";
-            static const char* szFileNameB5 = "File5";
-
-            static const char* szFileNameXU = "XU";
-            static const char* szFileNameXD = "XD";
-            static const char* szFileNameXL = "XL";
-            static const char* szFileNameXR = "XR";
-
-            static const char* szFileNameCU = "CU";
-            static const char* szFileNameCD = "CD";
-            static const char* szFileNameCL = "CL";
-            static const char* szFileNameCR = "CR";
-
-
-            const char* szSelectedFileName;
-
-
-
-            // Read the 1st byte.
-            // Loop back if the value is not 0xff or timeout.
-            if (prv_uiReadBluetooth(&prv_pucRxBuffer[0], 1, BT_RX_TIMEOUT) < 1) continue;
-            if (prv_pucRxBuffer[0] != 0xff) continue;
-
-            // Read the 2nd byte.
-            // Loop back if the value is not 0xff or timeout.
-            if (prv_uiReadBluetooth(&prv_pucRxBuffer[1], 1, BT_RX_TIMEOUT) < 1) continue;
-            if (prv_pucRxBuffer[1] != 0xff) continue;
-
-            // Read the remaining 3 bytes.
-            // Loop back if timeout occured.
-            if (prv_uiReadBluetooth(&prv_pucRxBuffer[2], 3, BT_RX_TIMEOUT) < 3) continue;
-
-
-
-            // Select the motion file.
-            // Cross buttons.
-            if (prv_pucRxBuffer[2] == 'x') {
-                switch(prv_pucRxBuffer[3]) {
-                    case 'u': szSelectedFileName = szFileNameXU; break;
-                    case 'd': szSelectedFileName = szFileNameXD; break;
-                    case 'l': szSelectedFileName = szFileNameXL; break;
-                    case 'r': szSelectedFileName = szFileNameXR; break;
-                }
-            }
-            // Circle buttons.
-            else if (prv_pucRxBuffer[2] == 'c') {
-                switch(prv_pucRxBuffer[3]) {
-                    case 'u': szSelectedFileName = szFileNameCU; break;
-                    case 'd': szSelectedFileName = szFileNameCD; break;
-                    case 'l': szSelectedFileName = szFileNameCL; break;
-                    case 'r': szSelectedFileName = szFileNameCR; break;
-                }
-            }
-            // Square buttons.
-            else if (prv_pucRxBuffer[2] == 'b') {
-                switch(prv_pucRxBuffer[3]) {
-                    case '1': szSelectedFileName = szFileNameB1; break;
-                    case '2': szSelectedFileName = szFileNameB2; break;
-                    case '3': szSelectedFileName = szFileNameB3; break;
-                    case '4': szSelectedFileName = szFileNameB4; break;
-                    case '5': szSelectedFileName = szFileNameB5; break;
-                }
-            }
-            // Request battery level.
-            else if ((prv_pucRxBuffer[2] == 'B') && (prv_pucRxBuffer[3] == 'B') && (prv_pucRxBuffer[4] == 'B')) {
-                static unsigned char pucBattTxPacket[] = {0xff, 0xff, 'B', 0};
-                pucBattTxPacket[3] = (unsigned char)(uiBattPercentage * 5 / 100);
-                uiUART2Write(pucBattTxPacket, sizeof(pucBattTxPacket));
-            }
-
-
-            // Determine to play or stop the file.
-            // Button is pressed.
-            if(prv_pucRxBuffer[4] == 'p') {
-                ePlayMotionStart(szSelectedFileName);
-                ePlannerRun(szSelectedFileName);
-            }
-            // Button is released.
-            else if(prv_pucRxBuffer[4] == 'r') {
-                vPlayMotionStop(szSelectedFileName, STOP_BT);
-                vPlannerStop(szSelectedFileName, STOP_BT);
-            }
-        }
-
-
-
-        // Other page.
+        // In transparent mode.
         else {
 
             // Read the 1st header.
@@ -1196,96 +1102,187 @@ void taskBluetoothProgram(void *pvParameters)
             // Read the Length.
             // Loop back if timeout.
             if (prv_uiReadBluetooth(&ucLength, 1, BT_RX_TIMEOUT) < 1) continue;
+            
+            
+            
+            // If the length is > 65, means that it's using legacy rero remote protocol.
+            if (ucLength > 65) {
+                
+                static const char* szFileNameB1 = "File1";
+                static const char* szFileNameB2 = "File2";
+                static const char* szFileNameB3 = "File3";
+                static const char* szFileNameB4 = "File4";
+                static const char* szFileNameB5 = "File5";
 
-            // Read the data packet.
-            // Loop back if timeout.
-            if (prv_uiReadBluetooth(prv_pucRxBuffer, ucLength - 1, BT_RX_TIMEOUT) < (ucLength - 1)) continue;
+                static const char* szFileNameXU = "XU";
+                static const char* szFileNameXD = "XD";
+                static const char* szFileNameXL = "XL";
+                static const char* szFileNameXR = "XR";
 
-            // Read the Checksum.
-            // Loop back if timeout.
-            if (prv_uiReadBluetooth(&ucReceivedChecksum, 1, BT_RX_TIMEOUT) < 1) continue;
+                static const char* szFileNameCU = "CU";
+                static const char* szFileNameCD = "CD";
+                static const char* szFileNameCL = "CL";
+                static const char* szFileNameCR = "CR";
+
+
+                const char* szSelectedFileName;
+                
+                
+                // The lenght is part of the data.
+                prv_pucRxBuffer[2] = ucLength;
+
+                // Read the remaining 2 bytes.
+                // Loop back if timeout occured.
+                if (prv_uiReadBluetooth(&prv_pucRxBuffer[3], 2, BT_RX_TIMEOUT) < 2) continue;
 
 
 
-            // Calculate the checksum.
-            ucCalculatedChecksum = ucLength;
-            for (i = 0; i < (ucLength - 1); i++) {
-                ucCalculatedChecksum += prv_pucRxBuffer[i];
-            }
-            ucCalculatedChecksum = ~ucCalculatedChecksum;
+                // Select the motion file.
+                // Cross buttons.
+                if (prv_pucRxBuffer[2] == 'x') {
+                    switch(prv_pucRxBuffer[3]) {
+                        case 'u': szSelectedFileName = szFileNameXU; break;
+                        case 'd': szSelectedFileName = szFileNameXD; break;
+                        case 'l': szSelectedFileName = szFileNameXL; break;
+                        case 'r': szSelectedFileName = szFileNameXR; break;
+                    }
+                }
+                // Circle buttons.
+                else if (prv_pucRxBuffer[2] == 'c') {
+                    switch(prv_pucRxBuffer[3]) {
+                        case 'u': szSelectedFileName = szFileNameCU; break;
+                        case 'd': szSelectedFileName = szFileNameCD; break;
+                        case 'l': szSelectedFileName = szFileNameCL; break;
+                        case 'r': szSelectedFileName = szFileNameCR; break;
+                    }
+                }
+                // Square buttons.
+                else if (prv_pucRxBuffer[2] == 'b') {
+                    switch(prv_pucRxBuffer[3]) {
+                        case '1': szSelectedFileName = szFileNameB1; break;
+                        case '2': szSelectedFileName = szFileNameB2; break;
+                        case '3': szSelectedFileName = szFileNameB3; break;
+                        case '4': szSelectedFileName = szFileNameB4; break;
+                        case '5': szSelectedFileName = szFileNameB5; break;
+                    }
+                }
+                // Request battery level.
+                else if ((prv_pucRxBuffer[2] == 'B') && (prv_pucRxBuffer[3] == 'B') && (prv_pucRxBuffer[4] == 'B')) {
+                    static unsigned char pucBattTxPacket[] = {0xff, 0xff, 'B', 0};
+                    pucBattTxPacket[3] = (unsigned char)(uiBattPercentage * 5 / 100);
+                    uiUART2Write(pucBattTxPacket, sizeof(pucBattTxPacket));
+                }
 
-            // Send acknowledgement and loop back if the checksum is incorrect.
-            if (ucReceivedChecksum != ucCalculatedChecksum) {
-                prv_vSendAcknowledge(BT_ACK_CHECKSUM_ERROR);
-                continue;
-            }
 
-            // Send the acknowledgement.
-            if (eGetGuiPage() == PAGE_BT_PROGRAM) {
-                prv_vSendAcknowledge(BT_ACK_READY);
-            }
+                // Determine to play or stop the file.
+                // Button is pressed.
+                if(prv_pucRxBuffer[4] == 'p') {
+                    ePlayMotionStart(szSelectedFileName);
+                    ePlannerRun(szSelectedFileName);
+                }
+                // Button is released.
+                else if(prv_pucRxBuffer[4] == 'r') {
+                    vPlayMotionStop(szSelectedFileName, STOP_BT);
+                    vPlannerStop(szSelectedFileName, STOP_BT);
+                }
+                
+            }   // End of legacy rero remote protocol.
+            
+            
+            
+            // Else, it's using latest bluetooth protocol.
             else {
-                prv_vSendAcknowledge(BT_ACK_NOT_READY);
-            }
+                // Read the data packet.
+                // Loop back if timeout.
+                if (prv_uiReadBluetooth(prv_pucRxBuffer, ucLength - 1, BT_RX_TIMEOUT) < (ucLength - 1)) continue;
+
+                // Read the Checksum.
+                // Loop back if timeout.
+                if (prv_uiReadBluetooth(&ucReceivedChecksum, 1, BT_RX_TIMEOUT) < 1) continue;
 
 
-
-            // Fill the remaining bytes with 0xff if it's not full.
-            for (i = (ucLength - 1); i < 64; i++) {
-                prv_pucRxBuffer[i] = 0;
-            }
-
-            // Process the data only if we are in the correct GUI page.
-            unsigned char ucTransmitDataLength;
-            if (eGetGuiPage() == PAGE_BT_PROGRAM) {
-                ucTransmitDataLength = ucProcessCommandPacket(prv_pucRxBuffer, prv_pucTxBuffer);
-            }
-            else {
-                ucTransmitDataLength = 0;
-            }
-
-            // Send the data if there is any.
-            while (ucTransmitDataLength > 0) {
 
                 // Calculate the checksum.
-                ucCalculatedChecksum = ucTransmitDataLength + 1;
-                for (i = 0; i < ucTransmitDataLength; i++) {
-                    ucCalculatedChecksum += prv_pucTxBuffer[i];
+                ucCalculatedChecksum = ucLength;
+                for (i = 0; i < (ucLength - 1); i++) {
+                    ucCalculatedChecksum += prv_pucRxBuffer[i];
                 }
                 ucCalculatedChecksum = ~ucCalculatedChecksum;
 
+                // Send acknowledgement and loop back if the checksum is incorrect.
+                if (ucReceivedChecksum != ucCalculatedChecksum) {
+                    prv_vSendAcknowledge(BT_ACK_CHECKSUM_ERROR);
+                    continue;
+                }
 
-                // Retry until no error.
-                // Exit if timeout.
-                do {
-                    // Make sure there is enough space in the UART Tx buffer and transmit the data.
-                    while (uiUART2GetTxSpace() < (ucTransmitDataLength + 4)) {
-                        vTaskDelay(50 / portTICK_RATE_MS);
+                // Send the acknowledgement.
+                if (eGetGuiPage() == PAGE_BLUETOOTH) {
+                    prv_vSendAcknowledge(BT_ACK_READY);
+                }
+                else {
+                    prv_vSendAcknowledge(BT_ACK_NOT_READY);
+                }
+
+
+
+                // Fill the remaining bytes with 0xff if it's not full.
+                for (i = (ucLength - 1); i < 64; i++) {
+                    prv_pucRxBuffer[i] = 0;
+                }
+
+                // Process the data only if we are in the correct GUI page.
+                unsigned char ucTransmitDataLength;
+                if (eGetGuiPage() == PAGE_BLUETOOTH) {
+                    ucTransmitDataLength = ucProcessCommandPacket(prv_pucRxBuffer, prv_pucTxBuffer);
+                }
+                else {
+                    ucTransmitDataLength = 0;
+                }
+
+                // Send the data if there is any.
+                while (ucTransmitDataLength > 0) {
+
+                    // Calculate the checksum.
+                    ucCalculatedChecksum = ucTransmitDataLength + 1;
+                    for (i = 0; i < ucTransmitDataLength; i++) {
+                        ucCalculatedChecksum += prv_pucTxBuffer[i];
                     }
+                    ucCalculatedChecksum = ~ucCalculatedChecksum;
 
-                    // Send the header.
-                    ucHeader = 0xff;
-                    uiUART2Write(&ucHeader, 1);
-                    uiUART2Write(&ucHeader, 1);
 
-                    // Send the data length.
-                    ucLength = ucTransmitDataLength + 1;
-                    uiUART2Write(&ucLength, 1);
+                    // Retry until no error.
+                    // Exit if timeout.
+                    do {
+                        // Make sure there is enough space in the UART Tx buffer and transmit the data.
+                        while (uiUART2GetTxSpace() < (ucTransmitDataLength + 4)) {
+                            vTaskDelay(50 / portTICK_RATE_MS);
+                        }
 
-                    // Send the data packet.
-                    uiUART2Write(prv_pucTxBuffer, ucTransmitDataLength);
+                        // Send the header.
+                        ucHeader = 0xff;
+                        uiUART2Write(&ucHeader, 1);
+                        uiUART2Write(&ucHeader, 1);
 
-                    // Send the checksum.
-                    uiUART2Write(&ucCalculatedChecksum, 1);
+                        // Send the data length.
+                        ucLength = ucTransmitDataLength + 1;
+                        uiUART2Write(&ucLength, 1);
 
-                    // Read the acknowledgement.
-                    // Break if timeout.
-                    if (prv_uiReadBluetooth(&ucReceivedAck, 1, BT_RX_TIMEOUT) < 1) break;
-                } while (ucReceivedAck != BT_ACK_READY);
+                        // Send the data packet.
+                        uiUART2Write(prv_pucTxBuffer, ucTransmitDataLength);
 
-                // Process the data again in case there is more data to send.
-                ucTransmitDataLength = ucProcessCommandPacket(prv_pucRxBuffer, prv_pucTxBuffer);
-            }
+                        // Send the checksum.
+                        uiUART2Write(&ucCalculatedChecksum, 1);
+
+                        // Read the acknowledgement.
+                        // Break if timeout.
+                        if (prv_uiReadBluetooth(&ucReceivedAck, 1, BT_RX_TIMEOUT) < 1) break;
+                    } while (ucReceivedAck != BT_ACK_READY);
+
+                    // Process the data again in case there is more data to send.
+                    ucTransmitDataLength = ucProcessCommandPacket(prv_pucRxBuffer, prv_pucTxBuffer);
+                }
+                
+            }   // End of latest bluetooth protocol.
 
         }
 

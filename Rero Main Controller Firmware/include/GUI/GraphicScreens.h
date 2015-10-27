@@ -55,8 +55,7 @@
 typedef enum __attribute__((packed)) {
     PAGE_MAIN_MENU,
     
-    PAGE_BT_PROGRAM,
-    PAGE_BT_REMOTE,
+    PAGE_BLUETOOTH,
 
     PAGE_SERVO,
     PAGE_SENSOR,
@@ -86,11 +85,11 @@ typedef enum __attribute__((packed)) {
 
     // Main menu.
     GID_MAIN_BTN_RERO,
-    GID_MAIN_BTN_BTPROGRAM,
+    GID_MAIN_BTN_BLUETOOTH,
     GID_MAIN_BTN_SERVO,
     GID_MAIN_BTN_SENSOR,
-    GID_MAIN_BTN_REMOTE,
     GID_MAIN_BTN_MOTION,
+    GID_MAIN_BTN_API,
     GID_MAIN_BTN_SETTINGS,
 
 

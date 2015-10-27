@@ -133,10 +133,10 @@ void vCreateMainMenu(void)
     
 
     // Create bluetooth programming button.
-    BtnCreate( GID_MAIN_BTN_BTPROGRAM,
+    BtnCreate( GID_MAIN_BTN_BLUETOOTH,
                BTN_MENU1_L, BTN_MENU1_T,
                BTN_MENU1_R, BTN_MENU1_B,
-               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Bluetooth.bmp", "PROGRAM", pxImgBtnScheme );
+               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Bluetooth.bmp", "BLUETOOTH", pxImgBtnScheme );
 
     // Create Servo button.
     BtnCreate( GID_MAIN_BTN_SERVO,
@@ -150,17 +150,17 @@ void vCreateMainMenu(void)
                BTN_MENU3_R, BTN_MENU3_B,
                0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Sensor.bmp", "SENSOR", pxImgBtnScheme );
 
-    // Create Remote button.
-    BtnCreate( GID_MAIN_BTN_REMOTE,
-               BTN_MENU4_L, BTN_MENU4_T,
-               BTN_MENU4_R, BTN_MENU4_B,
-               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Remote.bmp", "REMOTE", pxImgBtnScheme );
-
     // Create Motion button.
     BtnCreate( GID_MAIN_BTN_MOTION,
+               BTN_MENU4_L, BTN_MENU4_T,
+               BTN_MENU4_R, BTN_MENU4_B,
+               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Motion.bmp", "MOTION", pxImgBtnScheme );
+
+    // Create API button.
+    BtnCreate( GID_MAIN_BTN_API,
                BTN_MENU5_L, BTN_MENU5_T,
                BTN_MENU5_R, BTN_MENU5_B,
-               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Motion.bmp", "MOTION", pxImgBtnScheme );
+               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Api.bmp", "C PROGRAM", pxImgBtnScheme );
 
     // Create Settings button.
     BtnCreate( GID_MAIN_BTN_SETTINGS,
@@ -192,11 +192,11 @@ WORD usMsgMainMenu(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
     if (objMsg == BTN_MSG_RELEASED) {
         switch(GetObjID(pObj)) {
             case GID_MAIN_BTN_RERO:         vSetGuiPage(PAGE_WALLPAPER);    break;
-            case GID_MAIN_BTN_BTPROGRAM:    vSetGuiPage(PAGE_BT_PROGRAM);   break;
+            case GID_MAIN_BTN_BLUETOOTH:    vSetGuiPage(PAGE_BLUETOOTH);    break;
             case GID_MAIN_BTN_SERVO:        vSetGuiPage(PAGE_SERVO);        break;
             case GID_MAIN_BTN_SENSOR:       vSetGuiPage(PAGE_SENSOR);       break;
-            case GID_MAIN_BTN_REMOTE:       vSetGuiPage(PAGE_BT_REMOTE);    break;
             case GID_MAIN_BTN_MOTION:       vSetGuiPage(PAGE_MOTION);       break;
+            case GID_MAIN_BTN_API:          vSetGuiPage(PAGE_USER_PROGRAM); break;
             case GID_MAIN_BTN_SETTINGS:     vSetGuiPage(PAGE_SETTINGS);     break;
         }
     }

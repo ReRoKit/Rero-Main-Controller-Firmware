@@ -178,9 +178,6 @@ void main(void)
 
 
 
-#ifdef RUN_USER_PROGRAM
-    vSetGuiPage(PAGE_USER_PROGRAM);
-#else
     // USB is connected.
     if(USB_BUS_SENSE == 1) {
         // Indicate that we are in USB mode.
@@ -210,7 +207,7 @@ void main(void)
     xTaskCreate( taskBlinkLed, "Blink", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, NULL );
     xTaskCreate( taskMonitorUsb, "USBMon", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL );
     
-#endif
+    
 
     // Play startup sound.
     vPlaySoundStream(&xStartupSound);

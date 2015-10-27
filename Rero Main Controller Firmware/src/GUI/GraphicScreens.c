@@ -717,8 +717,7 @@ WORD GOLDrawCallback(void)
             switch (prv_eGuiPage) {
                 case PAGE_MAIN_MENU:    vCreateMainMenu();          break;
                 
-                case PAGE_BT_REMOTE:
-                case PAGE_BT_PROGRAM:   vCreateBluetoothPage();     break;
+                case PAGE_BLUETOOTH:   vCreateBluetoothPage();     break;
                 
                 case PAGE_SERVO:        vCreateG15Page();           break;
                 case PAGE_SENSOR:       vCreateSensorPage();        break;
@@ -795,8 +794,7 @@ WORD GOLMsgCallback(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
             case PAGE_MAIN_MENU:    return usMsgMainMenu(objMsg, pObj, pMsg);
             case PAGE_USB:          return usMsgUsbPage(objMsg, pObj, pMsg);
             
-            case PAGE_BT_REMOTE:
-            case PAGE_BT_PROGRAM:   return usMsgBluetoothPage(objMsg, pObj, pMsg);
+            case PAGE_BLUETOOTH:   return usMsgBluetoothPage(objMsg, pObj, pMsg);
             
             case PAGE_SERVO:        return usMsgG15Page(objMsg, pObj, pMsg);
             case PAGE_SENSOR:       return usMsgSensorPage(objMsg, pObj, pMsg);
