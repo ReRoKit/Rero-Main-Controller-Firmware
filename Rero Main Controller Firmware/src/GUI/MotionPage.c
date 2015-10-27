@@ -1654,6 +1654,8 @@ WORD usMsgMotionPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
             case GID_MOTION_BTN_STOPPLAY:   vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_STOPPLAY), "/Theme/MotionPage/Stop-Released.bmp");  break;
         }
     }
+    
+    return 1;
 }
 
 
