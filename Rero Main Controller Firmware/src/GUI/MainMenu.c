@@ -132,29 +132,29 @@ void vCreateMainMenu(void)
     
     
     
-    // Create Servo button.
-    BtnCreate( GID_MAIN_BTN_SERVO,
+    // Create Sensor button.
+    BtnCreate( GID_MAIN_BTN_SENSOR,
                BTN_MENU1_L, BTN_MENU1_T,
                BTN_MENU1_R, BTN_MENU1_B,
-               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Servo.bmp", "SERVO", pxImgBtnScheme );
+               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Sensor.bmp", "SENSOR", pxImgBtnScheme );
     
-    // Create Bluetooth button.
-    BtnCreate( GID_MAIN_BTN_BLUETOOTH,
+    // Create Servo button.
+    BtnCreate( GID_MAIN_BTN_SERVO,
                BTN_MENU2_L, BTN_MENU2_T,
                BTN_MENU2_R, BTN_MENU2_B,
-               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Bluetooth.bmp", "BLUETOOTH", pxImgBtnScheme );
+               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Servo.bmp", "SERVO", pxImgBtnScheme );
 
     // Create Settings button.
     BtnCreate( GID_MAIN_BTN_SETTINGS,
                BTN_MENU3_L, BTN_MENU3_T,
                BTN_MENU3_R, BTN_MENU3_B,
                0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Settings.bmp", "SETTINGS", pxImgBtnScheme );
-
-    // Create Sensor button.
-    BtnCreate( GID_MAIN_BTN_SENSOR,
+    
+    // Create Bluetooth button.
+    BtnCreate( GID_MAIN_BTN_BLUETOOTH,
                BTN_MENU4_L, BTN_MENU4_T,
                BTN_MENU4_R, BTN_MENU4_B,
-               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Sensor.bmp", "SENSOR", pxImgBtnScheme );
+               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Bluetooth.bmp", "BLUETOOTH", pxImgBtnScheme );
 
     // Create Motion button.
     BtnCreate( GID_MAIN_BTN_MOTION,
