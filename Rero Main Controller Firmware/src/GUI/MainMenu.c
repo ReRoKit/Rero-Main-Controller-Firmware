@@ -131,42 +131,43 @@ void vCreateMainMenu(void)
                 BATT_DRAW, pxDefaultScheme );
     
     
-
-    // Create bluetooth programming button.
-    BtnCreate( GID_MAIN_BTN_BLUETOOTH,
-               BTN_MENU1_L, BTN_MENU1_T,
-               BTN_MENU1_R, BTN_MENU1_B,
-               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Bluetooth.bmp", "BLUETOOTH", pxImgBtnScheme );
-
+    
     // Create Servo button.
     BtnCreate( GID_MAIN_BTN_SERVO,
+               BTN_MENU1_L, BTN_MENU1_T,
+               BTN_MENU1_R, BTN_MENU1_B,
+               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Servo.bmp", "SERVO", pxImgBtnScheme );
+    
+    // Create Bluetooth button.
+    BtnCreate( GID_MAIN_BTN_BLUETOOTH,
                BTN_MENU2_L, BTN_MENU2_T,
                BTN_MENU2_R, BTN_MENU2_B,
-               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Servo.bmp", "SERVO", pxImgBtnScheme );
+               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Bluetooth.bmp", "BLUETOOTH", pxImgBtnScheme );
+
+    // Create Settings button.
+    BtnCreate( GID_MAIN_BTN_SETTINGS,
+               BTN_MENU3_L, BTN_MENU3_T,
+               BTN_MENU3_R, BTN_MENU3_B,
+               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Settings.bmp", "SETTINGS", pxImgBtnScheme );
 
     // Create Sensor button.
     BtnCreate( GID_MAIN_BTN_SENSOR,
-               BTN_MENU3_L, BTN_MENU3_T,
-               BTN_MENU3_R, BTN_MENU3_B,
+               BTN_MENU4_L, BTN_MENU4_T,
+               BTN_MENU4_R, BTN_MENU4_B,
                0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Sensor.bmp", "SENSOR", pxImgBtnScheme );
 
     // Create Motion button.
     BtnCreate( GID_MAIN_BTN_MOTION,
-               BTN_MENU4_L, BTN_MENU4_T,
-               BTN_MENU4_R, BTN_MENU4_B,
+               BTN_MENU5_L, BTN_MENU5_T,
+               BTN_MENU5_R, BTN_MENU5_B,
                0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Motion.bmp", "MOTION", pxImgBtnScheme );
 
     // Create API button.
     BtnCreate( GID_MAIN_BTN_API,
-               BTN_MENU5_L, BTN_MENU5_T,
-               BTN_MENU5_R, BTN_MENU5_B,
-               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Api.bmp", "C PROGRAM", pxImgBtnScheme );
-
-    // Create Settings button.
-    BtnCreate( GID_MAIN_BTN_SETTINGS,
                BTN_MENU6_L, BTN_MENU6_T,
                BTN_MENU6_R, BTN_MENU6_B,
-               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Settings.bmp", "SETTINGS", pxImgBtnScheme );
+               0, BTN_DRAW | BTN_TEXTBOTTOM | BTN_NOPANEL, "/Theme/MainMenu/Api.bmp", "C PROGRAM", pxImgBtnScheme );
+
 }
 
 
