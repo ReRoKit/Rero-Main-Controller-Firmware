@@ -42,6 +42,7 @@ typedef enum __attribute__((packed)) {
 PLAY_RESULT ePlayMotionStart(const char* szMotionFileName);
 void vPlayMotionStop(const char* szMotionFileName, MOTION_STATE eStopMode);
 void vPlayMotionStopAll(MOTION_STATE eStopMode);
+unsigned char ucIsMotionPlaying(void);
 void taskPlayMotion (void *pvParameters);
 
 

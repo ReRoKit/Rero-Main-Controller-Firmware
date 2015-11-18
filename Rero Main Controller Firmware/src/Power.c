@@ -8,6 +8,7 @@
 
 #include "Power.h"
 #include "UserProgram.h"
+#include "Planner.h"
 #include "TimeDelay.h"
 #include "Variables.h"
 #include "HardwareProfile.h"
@@ -246,12 +247,34 @@ void vPowerOff(void)
  *******************************************************************************/
 void taskPowerOff (void *pvParameters)
 {
+    vSetGuiPage(PAGE_SHUTDOWN);
+    
     // Stop the set path task and discard the limits if set path is running.
     if (xSystemState.bSetPath == 1) {
         vSetPathDiscard();
 
         // Delay 200ms to wait for set path complete.
         vTaskDelay(200 / portTICK_RATE_MS);
+    }
+    
+    // Stop the running planner file.
+    if (ucIsPlannerPlaying() != 0) {
+        vPlannerStopCurrent(STOP_NOW);
+        
+        // Wait until the planner file stop running.
+        while (ucIsPlannerPlaying() != 0) {
+            vTaskDelay(50 / portTICK_RATE_MS);
+        }
+    }
+    
+    // Stop the running motion file.
+    if (ucIsMotionPlaying() != 0) {
+        vPlayMotionStopAll(STOP_NOW);
+        
+        // Wait until the motion file stop running.
+        while (ucIsMotionPlaying() != 0) {
+            vTaskDelay(50 / portTICK_RATE_MS);
+        }
     }
     
     

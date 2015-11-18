@@ -89,7 +89,7 @@
 #define configPERIPHERAL_CLOCK_HZ		(80000000UL)
 #define configCPU_CLOCK_HZ			(80000000UL)
 #define configUSE_16_BIT_TICKS			0
-#define configMINIMAL_STACK_SIZE		( 350 )
+#define configMINIMAL_STACK_SIZE		( 400 )
 #define configISR_STACK_SIZE			( 400 )
 #define configMAX_SYSCALL_INTERRUPT_PRIORITY	0x04
 #endif

@@ -68,7 +68,9 @@ typedef enum __attribute__((packed)) {
     PAGE_SET_BT_PIN,
     
     PAGE_USB,
-    PAGE_USER_PROGRAM
+    PAGE_USER_PROGRAM,
+    
+    PAGE_SHUTDOWN
 } GUI_PAGE;
 
 

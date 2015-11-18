@@ -717,7 +717,7 @@ WORD GOLDrawCallback(void)
             switch (prv_eGuiPage) {
                 case PAGE_MAIN_MENU:    vCreateMainMenu();          break;
                 
-                case PAGE_BLUETOOTH:   vCreateBluetoothPage();     break;
+                case PAGE_BLUETOOTH:    vCreateBluetoothPage();     break;
                 
                 case PAGE_SERVO:        vCreateG15Page();           break;
                 case PAGE_SENSOR:       vCreateSensorPage();        break;

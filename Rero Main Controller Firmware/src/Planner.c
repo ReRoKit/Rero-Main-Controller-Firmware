@@ -160,9 +160,6 @@ PLAY_RESULT ePlannerRun(const char* szPlannerFileName)
 
 
 
-    // Save the planner file name.
-    prv_szOpenedFilename = szPlannerFileName;
-
     // Get the planner file name and add the extension.
     strcpy(prv_szFullFilePath, szProgramFolder);
     strcat(prv_szFullFilePath, "/");
@@ -210,6 +207,8 @@ PLAY_RESULT ePlannerRun(const char* szPlannerFileName)
         return PLAY_CANT_CREATE_TASK;
     }
 
+    // Save the planner file name and set the playing flag.
+    prv_szOpenedFilename = szPlannerFileName;
     prv_ucPlaying = 1;
 
     return PLAY_NO_ERROR;
@@ -371,6 +370,31 @@ unsigned char ucDeleteProgramFiles(const char *szFilenameHead)
     xSemaphoreGive(xSdCardMutex);
     
     return ucReadOnly;
+}
+
+
+
+/*******************************************************************************
+ * PUBLIC FUNCTION: ucIsPlannerPlaying
+ *
+ * PARAMETERS:
+ * ~ void
+ *
+ * RETURN:
+ * ~ Return 0 if no planner file is playing.
+ * ~ Return 1 if planner file is playing.
+ *
+ * DESCRIPTIONS:
+ * Check whether is there any planner file playing.
+ *
+ *******************************************************************************/
+unsigned char ucIsPlannerPlaying(void)
+{
+    if (prv_szOpenedFilename == NULL) {
+        return 0;
+    } else {
+        return 1;
+    }
 }
 
 
@@ -795,6 +819,7 @@ void taskPlanner(void *pvParameters)
     vUpdateMotionPageEndPlaying(PLANNER_FILE);
 
     // Indicate stop playing.
+    prv_szOpenedFilename = NULL;
     prv_ucPlaying = 0;
 
     

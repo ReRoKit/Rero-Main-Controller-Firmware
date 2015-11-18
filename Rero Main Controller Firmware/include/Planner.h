@@ -21,6 +21,7 @@ PLAY_RESULT ePlannerRun(const char* szPlannerFileName);
 void vPlannerStop(const char* szPlannerFileName, MOTION_STATE eStopMode);
 void vPlannerStopCurrent(MOTION_STATE eStopMode);
 unsigned char ucDeleteProgramFiles(const char *szFilenameHead);
+unsigned char ucIsPlannerPlaying(void);
 void taskPlanner(void *pvParameters);
 
 

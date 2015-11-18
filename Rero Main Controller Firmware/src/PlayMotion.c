@@ -344,6 +344,31 @@ void vPlayMotionStopAll(MOTION_STATE eStopMode)
 
 
 /*******************************************************************************
+ * PUBLIC FUNCTION: ucIsMotionPlaying
+ *
+ * PARAMETERS:
+ * ~ void
+ *
+ * RETURN:
+ * ~ Return 0 if no motion file is playing.
+ * ~ Return 1 if at least one motion file is playing.
+ *
+ * DESCRIPTIONS:
+ * Check whether is there any motion file playing.
+ *
+ *******************************************************************************/
+unsigned char ucIsMotionPlaying(void)
+{
+    if (prv_pxFirstMotionObj == NULL) {
+        return 0;
+    } else {
+        return 1;
+    }
+}
+
+
+
+/*******************************************************************************
 * TASK: taskPlayMotion
 *
 * DESCRIPTIONS:
@@ -775,14 +800,14 @@ void taskPlayMotion (void *pvParameters)
     // Release the memory for G15 ID.
     free((void*)pucG15Id);
 
-    // Remove the object from the playing list.
-    prv_vRemoveMotionObj(pxMotionObject);
-
     // Update the play page GUI when finish playing.
     vUpdateMotionPageEndPlaying(MOTION_FILE);
 
     // Give the semaphore to indicate finish playing the motion.
     xSemaphoreGive(xPlayingMotionSemaphore);
+    
+    // Remove the object from the playing list.
+    prv_vRemoveMotionObj(pxMotionObject);
 
 
     
