@@ -73,7 +73,7 @@ FIXDEPS=fixDeps
 
 # The following macros may be used in the pre and post step lines
 Device=PIC32MX575F512L
-ProjectDir="F:\GitHub Projects\Rero Main Controller Firmware Branch\Rero Main Controller Firmware.X"
+ProjectDir="F:\GitHub Projects\Rero-Main-Controller-Firmware\Rero Main Controller Firmware\Rero Main Controller Firmware.X"
 ConfName=default
 ImagePath="dist\default\${IMAGE_TYPE}\Rero_Main_Controller_Firmware.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}"
 ImageDir="dist\default\${IMAGE_TYPE}"
@@ -110,7 +110,7 @@ ${OBJECTDIR}/_ext/1447740322/port_asm.o: ../src/FreeRTOS/portable/MPLAB/PIC32MX/
 	@${RM} ${OBJECTDIR}/_ext/1447740322/port_asm.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1447740322/port_asm.o 
 	@${RM} ${OBJECTDIR}/_ext/1447740322/port_asm.o.ok ${OBJECTDIR}/_ext/1447740322/port_asm.o.err 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1447740322/port_asm.o.d" "${OBJECTDIR}/_ext/1447740322/port_asm.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1447740322/port_asm.o.d"  -o ${OBJECTDIR}/_ext/1447740322/port_asm.o ../src/FreeRTOS/portable/MPLAB/PIC32MX/port_asm.S  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/_ext/1447740322/port_asm.o.asm.d",--defsym=__MPLAB_DEBUG=1,--gdwarf-2,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_SIMULATOR=1
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1447740322/port_asm.o.d" "${OBJECTDIR}/_ext/1447740322/port_asm.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1447740322/port_asm.o.d"  -o ${OBJECTDIR}/_ext/1447740322/port_asm.o ../src/FreeRTOS/portable/MPLAB/PIC32MX/port_asm.S    -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/_ext/1447740322/port_asm.o.asm.d",--defsym=__MPLAB_DEBUG=1,--gdwarf-2,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_SIMULATOR=1
 	
 else
 ${OBJECTDIR}/_ext/1447740322/port_asm.o: ../src/FreeRTOS/portable/MPLAB/PIC32MX/port_asm.S  nbproject/Makefile-${CND_CONF}.mk
@@ -118,7 +118,7 @@ ${OBJECTDIR}/_ext/1447740322/port_asm.o: ../src/FreeRTOS/portable/MPLAB/PIC32MX/
 	@${RM} ${OBJECTDIR}/_ext/1447740322/port_asm.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1447740322/port_asm.o 
 	@${RM} ${OBJECTDIR}/_ext/1447740322/port_asm.o.ok ${OBJECTDIR}/_ext/1447740322/port_asm.o.err 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1447740322/port_asm.o.d" "${OBJECTDIR}/_ext/1447740322/port_asm.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1447740322/port_asm.o.d"  -o ${OBJECTDIR}/_ext/1447740322/port_asm.o ../src/FreeRTOS/portable/MPLAB/PIC32MX/port_asm.S  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/_ext/1447740322/port_asm.o.asm.d",--gdwarf-2
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1447740322/port_asm.o.d" "${OBJECTDIR}/_ext/1447740322/port_asm.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1447740322/port_asm.o.d"  -o ${OBJECTDIR}/_ext/1447740322/port_asm.o ../src/FreeRTOS/portable/MPLAB/PIC32MX/port_asm.S    -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/_ext/1447740322/port_asm.o.asm.d",--gdwarf-2
 	
 endif
 
@@ -129,1178 +129,1178 @@ ${OBJECTDIR}/_ext/302797332/BluetoothControl.o: ../src/Bluetooth/BluetoothContro
 	@${MKDIR} "${OBJECTDIR}/_ext/302797332" 
 	@${RM} ${OBJECTDIR}/_ext/302797332/BluetoothControl.o.d 
 	@${RM} ${OBJECTDIR}/_ext/302797332/BluetoothControl.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/302797332/BluetoothControl.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/302797332/BluetoothControl.o.d" -o ${OBJECTDIR}/_ext/302797332/BluetoothControl.o ../src/Bluetooth/BluetoothControl.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/302797332/BluetoothControl.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/302797332/BluetoothControl.o.d" -o ${OBJECTDIR}/_ext/302797332/BluetoothControl.o ../src/Bluetooth/BluetoothControl.c     
 	
 ${OBJECTDIR}/_ext/302797332/uart2.o: ../src/Bluetooth/uart2.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/302797332" 
 	@${RM} ${OBJECTDIR}/_ext/302797332/uart2.o.d 
 	@${RM} ${OBJECTDIR}/_ext/302797332/uart2.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/302797332/uart2.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/302797332/uart2.o.d" -o ${OBJECTDIR}/_ext/302797332/uart2.o ../src/Bluetooth/uart2.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/302797332/uart2.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/302797332/uart2.o.d" -o ${OBJECTDIR}/_ext/302797332/uart2.o ../src/Bluetooth/uart2.c     
 	
 ${OBJECTDIR}/_ext/1563925460/ccsbcs.o: ../src/FatFs/ccsbcs.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1563925460" 
 	@${RM} ${OBJECTDIR}/_ext/1563925460/ccsbcs.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1563925460/ccsbcs.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1563925460/ccsbcs.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1563925460/ccsbcs.o.d" -o ${OBJECTDIR}/_ext/1563925460/ccsbcs.o ../src/FatFs/ccsbcs.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1563925460/ccsbcs.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1563925460/ccsbcs.o.d" -o ${OBJECTDIR}/_ext/1563925460/ccsbcs.o ../src/FatFs/ccsbcs.c     
 	
 ${OBJECTDIR}/_ext/1563925460/diskio.o: ../src/FatFs/diskio.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1563925460" 
 	@${RM} ${OBJECTDIR}/_ext/1563925460/diskio.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1563925460/diskio.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1563925460/diskio.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1563925460/diskio.o.d" -o ${OBJECTDIR}/_ext/1563925460/diskio.o ../src/FatFs/diskio.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1563925460/diskio.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1563925460/diskio.o.d" -o ${OBJECTDIR}/_ext/1563925460/diskio.o ../src/FatFs/diskio.c     
 	
 ${OBJECTDIR}/_ext/1563925460/ff.o: ../src/FatFs/ff.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1563925460" 
 	@${RM} ${OBJECTDIR}/_ext/1563925460/ff.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1563925460/ff.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1563925460/ff.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1563925460/ff.o.d" -o ${OBJECTDIR}/_ext/1563925460/ff.o ../src/FatFs/ff.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1563925460/ff.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1563925460/ff.o.d" -o ${OBJECTDIR}/_ext/1563925460/ff.o ../src/FatFs/ff.c     
 	
 ${OBJECTDIR}/_ext/1563925460/SD-SPI.o: ../src/FatFs/SD-SPI.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1563925460" 
 	@${RM} ${OBJECTDIR}/_ext/1563925460/SD-SPI.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1563925460/SD-SPI.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1563925460/SD-SPI.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1563925460/SD-SPI.o.d" -o ${OBJECTDIR}/_ext/1563925460/SD-SPI.o ../src/FatFs/SD-SPI.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1563925460/SD-SPI.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1563925460/SD-SPI.o.d" -o ${OBJECTDIR}/_ext/1563925460/SD-SPI.o ../src/FatFs/SD-SPI.c     
 	
 ${OBJECTDIR}/_ext/1563925460/FatFsWrapper.o: ../src/FatFs/FatFsWrapper.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1563925460" 
 	@${RM} ${OBJECTDIR}/_ext/1563925460/FatFsWrapper.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1563925460/FatFsWrapper.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1563925460/FatFsWrapper.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1563925460/FatFsWrapper.o.d" -o ${OBJECTDIR}/_ext/1563925460/FatFsWrapper.o ../src/FatFs/FatFsWrapper.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1563925460/FatFsWrapper.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1563925460/FatFsWrapper.o.d" -o ${OBJECTDIR}/_ext/1563925460/FatFsWrapper.o ../src/FatFs/FatFsWrapper.c     
 	
 ${OBJECTDIR}/_ext/689329905/SplashScreenLogo.o: ../src/Flash\ Image/SplashScreenLogo.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/689329905" 
 	@${RM} ${OBJECTDIR}/_ext/689329905/SplashScreenLogo.o.d 
 	@${RM} ${OBJECTDIR}/_ext/689329905/SplashScreenLogo.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/689329905/SplashScreenLogo.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/689329905/SplashScreenLogo.o.d" -o ${OBJECTDIR}/_ext/689329905/SplashScreenLogo.o "../src/Flash Image/SplashScreenLogo.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/689329905/SplashScreenLogo.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/689329905/SplashScreenLogo.o.d" -o ${OBJECTDIR}/_ext/689329905/SplashScreenLogo.o "../src/Flash Image/SplashScreenLogo.c"     
 	
 ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_11.o: ../src/Font/Segoe_UI_Semibold_11.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1020267223" 
 	@${RM} ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_11.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_11.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_11.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_11.o.d" -o ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_11.o ../src/Font/Segoe_UI_Semibold_11.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_11.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_11.o.d" -o ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_11.o ../src/Font/Segoe_UI_Semibold_11.c     
 	
 ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_14.o: ../src/Font/Segoe_UI_Semibold_14.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1020267223" 
 	@${RM} ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_14.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_14.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_14.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_14.o.d" -o ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_14.o ../src/Font/Segoe_UI_Semibold_14.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_14.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_14.o.d" -o ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_14.o ../src/Font/Segoe_UI_Semibold_14.c     
 	
 ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_18.o: ../src/Font/Segoe_UI_Semibold_18.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1020267223" 
 	@${RM} ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_18.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_18.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_18.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_18.o.d" -o ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_18.o ../src/Font/Segoe_UI_Semibold_18.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_18.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_18.o.d" -o ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_18.o ../src/Font/Segoe_UI_Semibold_18.c     
 	
 ${OBJECTDIR}/_ext/573367119/heap_3.o: ../src/FreeRTOS/portable/MemMang/heap_3.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/573367119" 
 	@${RM} ${OBJECTDIR}/_ext/573367119/heap_3.o.d 
 	@${RM} ${OBJECTDIR}/_ext/573367119/heap_3.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/573367119/heap_3.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/573367119/heap_3.o.d" -o ${OBJECTDIR}/_ext/573367119/heap_3.o ../src/FreeRTOS/portable/MemMang/heap_3.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/573367119/heap_3.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/573367119/heap_3.o.d" -o ${OBJECTDIR}/_ext/573367119/heap_3.o ../src/FreeRTOS/portable/MemMang/heap_3.c     
 	
 ${OBJECTDIR}/_ext/1447740322/port.o: ../src/FreeRTOS/portable/MPLAB/PIC32MX/port.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1447740322" 
 	@${RM} ${OBJECTDIR}/_ext/1447740322/port.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1447740322/port.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1447740322/port.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1447740322/port.o.d" -o ${OBJECTDIR}/_ext/1447740322/port.o ../src/FreeRTOS/portable/MPLAB/PIC32MX/port.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1447740322/port.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1447740322/port.o.d" -o ${OBJECTDIR}/_ext/1447740322/port.o ../src/FreeRTOS/portable/MPLAB/PIC32MX/port.c     
 	
 ${OBJECTDIR}/_ext/1592166420/list.o: ../src/FreeRTOS/list.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1592166420" 
 	@${RM} ${OBJECTDIR}/_ext/1592166420/list.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1592166420/list.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1592166420/list.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1592166420/list.o.d" -o ${OBJECTDIR}/_ext/1592166420/list.o ../src/FreeRTOS/list.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1592166420/list.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1592166420/list.o.d" -o ${OBJECTDIR}/_ext/1592166420/list.o ../src/FreeRTOS/list.c     
 	
 ${OBJECTDIR}/_ext/1592166420/queue.o: ../src/FreeRTOS/queue.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1592166420" 
 	@${RM} ${OBJECTDIR}/_ext/1592166420/queue.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1592166420/queue.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1592166420/queue.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1592166420/queue.o.d" -o ${OBJECTDIR}/_ext/1592166420/queue.o ../src/FreeRTOS/queue.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1592166420/queue.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1592166420/queue.o.d" -o ${OBJECTDIR}/_ext/1592166420/queue.o ../src/FreeRTOS/queue.c     
 	
 ${OBJECTDIR}/_ext/1592166420/tasks.o: ../src/FreeRTOS/tasks.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1592166420" 
 	@${RM} ${OBJECTDIR}/_ext/1592166420/tasks.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1592166420/tasks.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1592166420/tasks.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1592166420/tasks.o.d" -o ${OBJECTDIR}/_ext/1592166420/tasks.o ../src/FreeRTOS/tasks.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1592166420/tasks.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1592166420/tasks.o.d" -o ${OBJECTDIR}/_ext/1592166420/tasks.o ../src/FreeRTOS/tasks.c     
 	
 ${OBJECTDIR}/_ext/523260321/G15.o: ../src/G15\ and\ Sensors/G15.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/523260321" 
 	@${RM} ${OBJECTDIR}/_ext/523260321/G15.o.d 
 	@${RM} ${OBJECTDIR}/_ext/523260321/G15.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/523260321/G15.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/523260321/G15.o.d" -o ${OBJECTDIR}/_ext/523260321/G15.o "../src/G15 and Sensors/G15.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/523260321/G15.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/523260321/G15.o.d" -o ${OBJECTDIR}/_ext/523260321/G15.o "../src/G15 and Sensors/G15.c"     
 	
 ${OBJECTDIR}/_ext/523260321/uart5.o: ../src/G15\ and\ Sensors/uart5.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/523260321" 
 	@${RM} ${OBJECTDIR}/_ext/523260321/uart5.o.d 
 	@${RM} ${OBJECTDIR}/_ext/523260321/uart5.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/523260321/uart5.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/523260321/uart5.o.d" -o ${OBJECTDIR}/_ext/523260321/uart5.o "../src/G15 and Sensors/uart5.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/523260321/uart5.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/523260321/uart5.o.d" -o ${OBJECTDIR}/_ext/523260321/uart5.o "../src/G15 and Sensors/uart5.c"     
 	
 ${OBJECTDIR}/_ext/523260321/Sensors.o: ../src/G15\ and\ Sensors/Sensors.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/523260321" 
 	@${RM} ${OBJECTDIR}/_ext/523260321/Sensors.o.d 
 	@${RM} ${OBJECTDIR}/_ext/523260321/Sensors.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/523260321/Sensors.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/523260321/Sensors.o.d" -o ${OBJECTDIR}/_ext/523260321/Sensors.o "../src/G15 and Sensors/Sensors.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/523260321/Sensors.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/523260321/Sensors.o.d" -o ${OBJECTDIR}/_ext/523260321/Sensors.o "../src/G15 and Sensors/Sensors.c"     
 	
 ${OBJECTDIR}/_ext/523260321/ExtModule.o: ../src/G15\ and\ Sensors/ExtModule.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/523260321" 
 	@${RM} ${OBJECTDIR}/_ext/523260321/ExtModule.o.d 
 	@${RM} ${OBJECTDIR}/_ext/523260321/ExtModule.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/523260321/ExtModule.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/523260321/ExtModule.o.d" -o ${OBJECTDIR}/_ext/523260321/ExtModule.o "../src/G15 and Sensors/ExtModule.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/523260321/ExtModule.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/523260321/ExtModule.o.d" -o ${OBJECTDIR}/_ext/523260321/ExtModule.o "../src/G15 and Sensors/ExtModule.c"     
 	
 ${OBJECTDIR}/_ext/54361528/Battery.o: ../src/GUI/Custom\ Graphic\ Object/Battery.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/54361528" 
 	@${RM} ${OBJECTDIR}/_ext/54361528/Battery.o.d 
 	@${RM} ${OBJECTDIR}/_ext/54361528/Battery.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/54361528/Battery.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/54361528/Battery.o.d" -o ${OBJECTDIR}/_ext/54361528/Battery.o "../src/GUI/Custom Graphic Object/Battery.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/54361528/Battery.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/54361528/Battery.o.d" -o ${OBJECTDIR}/_ext/54361528/Battery.o "../src/GUI/Custom Graphic Object/Battery.c"     
 	
 ${OBJECTDIR}/_ext/659824929/SensorPage.o: ../src/GUI/SensorPage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/SensorPage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/SensorPage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/SensorPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/SensorPage.o.d" -o ${OBJECTDIR}/_ext/659824929/SensorPage.o ../src/GUI/SensorPage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/SensorPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/SensorPage.o.d" -o ${OBJECTDIR}/_ext/659824929/SensorPage.o ../src/GUI/SensorPage.c     
 	
 ${OBJECTDIR}/_ext/659824929/GraphicScreens.o: ../src/GUI/GraphicScreens.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/GraphicScreens.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/GraphicScreens.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/GraphicScreens.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/GraphicScreens.o.d" -o ${OBJECTDIR}/_ext/659824929/GraphicScreens.o ../src/GUI/GraphicScreens.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/GraphicScreens.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/GraphicScreens.o.d" -o ${OBJECTDIR}/_ext/659824929/GraphicScreens.o ../src/GUI/GraphicScreens.c     
 	
 ${OBJECTDIR}/_ext/659824929/G15Page.o: ../src/GUI/G15Page.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/G15Page.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/G15Page.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/G15Page.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/G15Page.o.d" -o ${OBJECTDIR}/_ext/659824929/G15Page.o ../src/GUI/G15Page.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/G15Page.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/G15Page.o.d" -o ${OBJECTDIR}/_ext/659824929/G15Page.o ../src/GUI/G15Page.c     
 	
 ${OBJECTDIR}/_ext/659824929/SetIdPage.o: ../src/GUI/SetIdPage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/SetIdPage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/SetIdPage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/SetIdPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/SetIdPage.o.d" -o ${OBJECTDIR}/_ext/659824929/SetIdPage.o ../src/GUI/SetIdPage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/SetIdPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/SetIdPage.o.d" -o ${OBJECTDIR}/_ext/659824929/SetIdPage.o ../src/GUI/SetIdPage.c     
 	
 ${OBJECTDIR}/_ext/659824929/SettingsPage.o: ../src/GUI/SettingsPage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/SettingsPage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/SettingsPage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/SettingsPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/SettingsPage.o.d" -o ${OBJECTDIR}/_ext/659824929/SettingsPage.o ../src/GUI/SettingsPage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/SettingsPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/SettingsPage.o.d" -o ${OBJECTDIR}/_ext/659824929/SettingsPage.o ../src/GUI/SettingsPage.c     
 	
 ${OBJECTDIR}/_ext/659824929/UsbPage.o: ../src/GUI/UsbPage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/UsbPage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/UsbPage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/UsbPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/UsbPage.o.d" -o ${OBJECTDIR}/_ext/659824929/UsbPage.o ../src/GUI/UsbPage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/UsbPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/UsbPage.o.d" -o ${OBJECTDIR}/_ext/659824929/UsbPage.o ../src/GUI/UsbPage.c     
 	
 ${OBJECTDIR}/_ext/659824929/SetBtPinPage.o: ../src/GUI/SetBtPinPage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/SetBtPinPage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/SetBtPinPage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/SetBtPinPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/SetBtPinPage.o.d" -o ${OBJECTDIR}/_ext/659824929/SetBtPinPage.o ../src/GUI/SetBtPinPage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/SetBtPinPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/SetBtPinPage.o.d" -o ${OBJECTDIR}/_ext/659824929/SetBtPinPage.o ../src/GUI/SetBtPinPage.c     
 	
 ${OBJECTDIR}/_ext/659824929/NumbericKeypad.o: ../src/GUI/NumbericKeypad.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/NumbericKeypad.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/NumbericKeypad.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/NumbericKeypad.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/NumbericKeypad.o.d" -o ${OBJECTDIR}/_ext/659824929/NumbericKeypad.o ../src/GUI/NumbericKeypad.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/NumbericKeypad.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/NumbericKeypad.o.d" -o ${OBJECTDIR}/_ext/659824929/NumbericKeypad.o ../src/GUI/NumbericKeypad.c     
 	
 ${OBJECTDIR}/_ext/659824929/BtSettingsPage.o: ../src/GUI/BtSettingsPage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/BtSettingsPage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/BtSettingsPage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/BtSettingsPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/BtSettingsPage.o.d" -o ${OBJECTDIR}/_ext/659824929/BtSettingsPage.o ../src/GUI/BtSettingsPage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/BtSettingsPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/BtSettingsPage.o.d" -o ${OBJECTDIR}/_ext/659824929/BtSettingsPage.o ../src/GUI/BtSettingsPage.c     
 	
 ${OBJECTDIR}/_ext/659824929/LockScreen.o: ../src/GUI/LockScreen.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/LockScreen.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/LockScreen.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/LockScreen.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/LockScreen.o.d" -o ${OBJECTDIR}/_ext/659824929/LockScreen.o ../src/GUI/LockScreen.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/LockScreen.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/LockScreen.o.d" -o ${OBJECTDIR}/_ext/659824929/LockScreen.o ../src/GUI/LockScreen.c     
 	
 ${OBJECTDIR}/_ext/659824929/MainMenu.o: ../src/GUI/MainMenu.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/MainMenu.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/MainMenu.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/MainMenu.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/MainMenu.o.d" -o ${OBJECTDIR}/_ext/659824929/MainMenu.o ../src/GUI/MainMenu.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/MainMenu.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/MainMenu.o.d" -o ${OBJECTDIR}/_ext/659824929/MainMenu.o ../src/GUI/MainMenu.c     
 	
 ${OBJECTDIR}/_ext/659824929/Scheme.o: ../src/GUI/Scheme.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/Scheme.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/Scheme.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/Scheme.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/Scheme.o.d" -o ${OBJECTDIR}/_ext/659824929/Scheme.o ../src/GUI/Scheme.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/Scheme.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/Scheme.o.d" -o ${OBJECTDIR}/_ext/659824929/Scheme.o ../src/GUI/Scheme.c     
 	
 ${OBJECTDIR}/_ext/659824929/ScrollbarListbox.o: ../src/GUI/ScrollbarListbox.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/ScrollbarListbox.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/ScrollbarListbox.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/ScrollbarListbox.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/ScrollbarListbox.o.d" -o ${OBJECTDIR}/_ext/659824929/ScrollbarListbox.o ../src/GUI/ScrollbarListbox.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/ScrollbarListbox.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/ScrollbarListbox.o.d" -o ${OBJECTDIR}/_ext/659824929/ScrollbarListbox.o ../src/GUI/ScrollbarListbox.c     
 	
 ${OBJECTDIR}/_ext/659824929/WallpaperPage.o: ../src/GUI/WallpaperPage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/WallpaperPage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/WallpaperPage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/WallpaperPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/WallpaperPage.o.d" -o ${OBJECTDIR}/_ext/659824929/WallpaperPage.o ../src/GUI/WallpaperPage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/WallpaperPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/WallpaperPage.o.d" -o ${OBJECTDIR}/_ext/659824929/WallpaperPage.o ../src/GUI/WallpaperPage.c     
 	
 ${OBJECTDIR}/_ext/659824929/HideUnhideScreen.o: ../src/GUI/HideUnhideScreen.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/HideUnhideScreen.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/HideUnhideScreen.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/HideUnhideScreen.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/HideUnhideScreen.o.d" -o ${OBJECTDIR}/_ext/659824929/HideUnhideScreen.o ../src/GUI/HideUnhideScreen.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/HideUnhideScreen.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/HideUnhideScreen.o.d" -o ${OBJECTDIR}/_ext/659824929/HideUnhideScreen.o ../src/GUI/HideUnhideScreen.c     
 	
 ${OBJECTDIR}/_ext/659824929/PopUpMessagePage.o: ../src/GUI/PopUpMessagePage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/PopUpMessagePage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/PopUpMessagePage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/PopUpMessagePage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/PopUpMessagePage.o.d" -o ${OBJECTDIR}/_ext/659824929/PopUpMessagePage.o ../src/GUI/PopUpMessagePage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/PopUpMessagePage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/PopUpMessagePage.o.d" -o ${OBJECTDIR}/_ext/659824929/PopUpMessagePage.o ../src/GUI/PopUpMessagePage.c     
 	
 ${OBJECTDIR}/_ext/659824929/BluetoothPage.o: ../src/GUI/BluetoothPage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/BluetoothPage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/BluetoothPage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/BluetoothPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/BluetoothPage.o.d" -o ${OBJECTDIR}/_ext/659824929/BluetoothPage.o ../src/GUI/BluetoothPage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/BluetoothPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/BluetoothPage.o.d" -o ${OBJECTDIR}/_ext/659824929/BluetoothPage.o ../src/GUI/BluetoothPage.c     
 	
 ${OBJECTDIR}/_ext/659824929/MotionPage.o: ../src/GUI/MotionPage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/MotionPage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/MotionPage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/MotionPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/MotionPage.o.d" -o ${OBJECTDIR}/_ext/659824929/MotionPage.o ../src/GUI/MotionPage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/MotionPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/MotionPage.o.d" -o ${OBJECTDIR}/_ext/659824929/MotionPage.o ../src/GUI/MotionPage.c     
 	
 ${OBJECTDIR}/_ext/659824929/UserProgramPage.o: ../src/GUI/UserProgramPage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/UserProgramPage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/UserProgramPage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/UserProgramPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/UserProgramPage.o.d" -o ${OBJECTDIR}/_ext/659824929/UserProgramPage.o ../src/GUI/UserProgramPage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/UserProgramPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/UserProgramPage.o.d" -o ${OBJECTDIR}/_ext/659824929/UserProgramPage.o ../src/GUI/UserProgramPage.c     
 	
 ${OBJECTDIR}/_ext/659824929/Screenshot.o: ../src/GUI/Screenshot.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/Screenshot.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/Screenshot.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/Screenshot.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/Screenshot.o.d" -o ${OBJECTDIR}/_ext/659824929/Screenshot.o ../src/GUI/Screenshot.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/Screenshot.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/Screenshot.o.d" -o ${OBJECTDIR}/_ext/659824929/Screenshot.o ../src/GUI/Screenshot.c     
 	
 ${OBJECTDIR}/_ext/659826615/i2c1.o: ../src/IMU/i2c1.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659826615" 
 	@${RM} ${OBJECTDIR}/_ext/659826615/i2c1.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659826615/i2c1.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659826615/i2c1.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659826615/i2c1.o.d" -o ${OBJECTDIR}/_ext/659826615/i2c1.o ../src/IMU/i2c1.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659826615/i2c1.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659826615/i2c1.o.d" -o ${OBJECTDIR}/_ext/659826615/i2c1.o ../src/IMU/i2c1.c     
 	
 ${OBJECTDIR}/_ext/659826615/inv_mpu.o: ../src/IMU/inv_mpu.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659826615" 
 	@${RM} ${OBJECTDIR}/_ext/659826615/inv_mpu.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659826615/inv_mpu.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659826615/inv_mpu.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659826615/inv_mpu.o.d" -o ${OBJECTDIR}/_ext/659826615/inv_mpu.o ../src/IMU/inv_mpu.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659826615/inv_mpu.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659826615/inv_mpu.o.d" -o ${OBJECTDIR}/_ext/659826615/inv_mpu.o ../src/IMU/inv_mpu.c     
 	
 ${OBJECTDIR}/_ext/659826615/inv_mpu_dmp_motion_driver.o: ../src/IMU/inv_mpu_dmp_motion_driver.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659826615" 
 	@${RM} ${OBJECTDIR}/_ext/659826615/inv_mpu_dmp_motion_driver.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659826615/inv_mpu_dmp_motion_driver.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659826615/inv_mpu_dmp_motion_driver.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659826615/inv_mpu_dmp_motion_driver.o.d" -o ${OBJECTDIR}/_ext/659826615/inv_mpu_dmp_motion_driver.o ../src/IMU/inv_mpu_dmp_motion_driver.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659826615/inv_mpu_dmp_motion_driver.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659826615/inv_mpu_dmp_motion_driver.o.d" -o ${OBJECTDIR}/_ext/659826615/inv_mpu_dmp_motion_driver.o ../src/IMU/inv_mpu_dmp_motion_driver.c     
 	
 ${OBJECTDIR}/_ext/659826615/imu.o: ../src/IMU/imu.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659826615" 
 	@${RM} ${OBJECTDIR}/_ext/659826615/imu.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659826615/imu.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659826615/imu.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659826615/imu.o.d" -o ${OBJECTDIR}/_ext/659826615/imu.o ../src/IMU/imu.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659826615/imu.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659826615/imu.o.d" -o ${OBJECTDIR}/_ext/659826615/imu.o ../src/IMU/imu.c     
 	
 ${OBJECTDIR}/_ext/620447172/TimeDelay.o: ../src/Microchip/Common/TimeDelay.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/620447172" 
 	@${RM} ${OBJECTDIR}/_ext/620447172/TimeDelay.o.d 
 	@${RM} ${OBJECTDIR}/_ext/620447172/TimeDelay.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/620447172/TimeDelay.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/620447172/TimeDelay.o.d" -o ${OBJECTDIR}/_ext/620447172/TimeDelay.o ../src/Microchip/Common/TimeDelay.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/620447172/TimeDelay.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/620447172/TimeDelay.o.d" -o ${OBJECTDIR}/_ext/620447172/TimeDelay.o ../src/Microchip/Common/TimeDelay.c     
 	
 ${OBJECTDIR}/_ext/1336470976/ILI9341.o: ../src/Microchip/Graphics/Drivers/ILI9341.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1336470976" 
 	@${RM} ${OBJECTDIR}/_ext/1336470976/ILI9341.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1336470976/ILI9341.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1336470976/ILI9341.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1336470976/ILI9341.o.d" -o ${OBJECTDIR}/_ext/1336470976/ILI9341.o ../src/Microchip/Graphics/Drivers/ILI9341.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1336470976/ILI9341.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1336470976/ILI9341.o.d" -o ${OBJECTDIR}/_ext/1336470976/ILI9341.o ../src/Microchip/Graphics/Drivers/ILI9341.c     
 	
 ${OBJECTDIR}/_ext/47893468/Button.o: ../src/Microchip/Graphics/Button.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Button.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Button.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Button.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Button.o.d" -o ${OBJECTDIR}/_ext/47893468/Button.o ../src/Microchip/Graphics/Button.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Button.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Button.o.d" -o ${OBJECTDIR}/_ext/47893468/Button.o ../src/Microchip/Graphics/Button.c     
 	
 ${OBJECTDIR}/_ext/47893468/Chart.o: ../src/Microchip/Graphics/Chart.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Chart.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Chart.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Chart.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Chart.o.d" -o ${OBJECTDIR}/_ext/47893468/Chart.o ../src/Microchip/Graphics/Chart.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Chart.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Chart.o.d" -o ${OBJECTDIR}/_ext/47893468/Chart.o ../src/Microchip/Graphics/Chart.c     
 	
 ${OBJECTDIR}/_ext/47893468/CheckBox.o: ../src/Microchip/Graphics/CheckBox.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/CheckBox.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/CheckBox.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/CheckBox.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/CheckBox.o.d" -o ${OBJECTDIR}/_ext/47893468/CheckBox.o ../src/Microchip/Graphics/CheckBox.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/CheckBox.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/CheckBox.o.d" -o ${OBJECTDIR}/_ext/47893468/CheckBox.o ../src/Microchip/Graphics/CheckBox.c     
 	
 ${OBJECTDIR}/_ext/47893468/DigitalMeter.o: ../src/Microchip/Graphics/DigitalMeter.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/DigitalMeter.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/DigitalMeter.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/DigitalMeter.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/DigitalMeter.o.d" -o ${OBJECTDIR}/_ext/47893468/DigitalMeter.o ../src/Microchip/Graphics/DigitalMeter.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/DigitalMeter.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/DigitalMeter.o.d" -o ${OBJECTDIR}/_ext/47893468/DigitalMeter.o ../src/Microchip/Graphics/DigitalMeter.c     
 	
 ${OBJECTDIR}/_ext/47893468/EditBox.o: ../src/Microchip/Graphics/EditBox.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/EditBox.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/EditBox.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/EditBox.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/EditBox.o.d" -o ${OBJECTDIR}/_ext/47893468/EditBox.o ../src/Microchip/Graphics/EditBox.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/EditBox.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/EditBox.o.d" -o ${OBJECTDIR}/_ext/47893468/EditBox.o ../src/Microchip/Graphics/EditBox.c     
 	
 ${OBJECTDIR}/_ext/47893468/GOL.o: ../src/Microchip/Graphics/GOL.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/GOL.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/GOL.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/GOL.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/GOL.o.d" -o ${OBJECTDIR}/_ext/47893468/GOL.o ../src/Microchip/Graphics/GOL.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/GOL.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/GOL.o.d" -o ${OBJECTDIR}/_ext/47893468/GOL.o ../src/Microchip/Graphics/GOL.c     
 	
 ${OBJECTDIR}/_ext/47893468/GOLSchemeDefault.o: ../src/Microchip/Graphics/GOLSchemeDefault.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/GOLSchemeDefault.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/GOLSchemeDefault.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/GOLSchemeDefault.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/GOLSchemeDefault.o.d" -o ${OBJECTDIR}/_ext/47893468/GOLSchemeDefault.o ../src/Microchip/Graphics/GOLSchemeDefault.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/GOLSchemeDefault.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/GOLSchemeDefault.o.d" -o ${OBJECTDIR}/_ext/47893468/GOLSchemeDefault.o ../src/Microchip/Graphics/GOLSchemeDefault.c     
 	
 ${OBJECTDIR}/_ext/47893468/Grid.o: ../src/Microchip/Graphics/Grid.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Grid.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Grid.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Grid.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Grid.o.d" -o ${OBJECTDIR}/_ext/47893468/Grid.o ../src/Microchip/Graphics/Grid.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Grid.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Grid.o.d" -o ${OBJECTDIR}/_ext/47893468/Grid.o ../src/Microchip/Graphics/Grid.c     
 	
 ${OBJECTDIR}/_ext/47893468/GroupBox.o: ../src/Microchip/Graphics/GroupBox.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/GroupBox.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/GroupBox.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/GroupBox.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/GroupBox.o.d" -o ${OBJECTDIR}/_ext/47893468/GroupBox.o ../src/Microchip/Graphics/GroupBox.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/GroupBox.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/GroupBox.o.d" -o ${OBJECTDIR}/_ext/47893468/GroupBox.o ../src/Microchip/Graphics/GroupBox.c     
 	
 ${OBJECTDIR}/_ext/47893468/ListBox.o: ../src/Microchip/Graphics/ListBox.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/ListBox.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/ListBox.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/ListBox.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/ListBox.o.d" -o ${OBJECTDIR}/_ext/47893468/ListBox.o ../src/Microchip/Graphics/ListBox.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/ListBox.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/ListBox.o.d" -o ${OBJECTDIR}/_ext/47893468/ListBox.o ../src/Microchip/Graphics/ListBox.c     
 	
 ${OBJECTDIR}/_ext/47893468/Meter.o: ../src/Microchip/Graphics/Meter.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Meter.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Meter.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Meter.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Meter.o.d" -o ${OBJECTDIR}/_ext/47893468/Meter.o ../src/Microchip/Graphics/Meter.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Meter.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Meter.o.d" -o ${OBJECTDIR}/_ext/47893468/Meter.o ../src/Microchip/Graphics/Meter.c     
 	
 ${OBJECTDIR}/_ext/47893468/Palette.o: ../src/Microchip/Graphics/Palette.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Palette.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Palette.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Palette.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Palette.o.d" -o ${OBJECTDIR}/_ext/47893468/Palette.o ../src/Microchip/Graphics/Palette.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Palette.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Palette.o.d" -o ${OBJECTDIR}/_ext/47893468/Palette.o ../src/Microchip/Graphics/Palette.c     
 	
 ${OBJECTDIR}/_ext/47893468/Picture.o: ../src/Microchip/Graphics/Picture.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Picture.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Picture.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Picture.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Picture.o.d" -o ${OBJECTDIR}/_ext/47893468/Picture.o ../src/Microchip/Graphics/Picture.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Picture.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Picture.o.d" -o ${OBJECTDIR}/_ext/47893468/Picture.o ../src/Microchip/Graphics/Picture.c     
 	
 ${OBJECTDIR}/_ext/47893468/Primitive.o: ../src/Microchip/Graphics/Primitive.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Primitive.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Primitive.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Primitive.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Primitive.o.d" -o ${OBJECTDIR}/_ext/47893468/Primitive.o ../src/Microchip/Graphics/Primitive.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Primitive.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Primitive.o.d" -o ${OBJECTDIR}/_ext/47893468/Primitive.o ../src/Microchip/Graphics/Primitive.c     
 	
 ${OBJECTDIR}/_ext/47893468/ProgressBar.o: ../src/Microchip/Graphics/ProgressBar.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/ProgressBar.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/ProgressBar.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/ProgressBar.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/ProgressBar.o.d" -o ${OBJECTDIR}/_ext/47893468/ProgressBar.o ../src/Microchip/Graphics/ProgressBar.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/ProgressBar.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/ProgressBar.o.d" -o ${OBJECTDIR}/_ext/47893468/ProgressBar.o ../src/Microchip/Graphics/ProgressBar.c     
 	
 ${OBJECTDIR}/_ext/47893468/RadioButton.o: ../src/Microchip/Graphics/RadioButton.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/RadioButton.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/RadioButton.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/RadioButton.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/RadioButton.o.d" -o ${OBJECTDIR}/_ext/47893468/RadioButton.o ../src/Microchip/Graphics/RadioButton.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/RadioButton.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/RadioButton.o.d" -o ${OBJECTDIR}/_ext/47893468/RadioButton.o ../src/Microchip/Graphics/RadioButton.c     
 	
 ${OBJECTDIR}/_ext/47893468/RoundDial.o: ../src/Microchip/Graphics/RoundDial.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/RoundDial.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/RoundDial.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/RoundDial.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/RoundDial.o.d" -o ${OBJECTDIR}/_ext/47893468/RoundDial.o ../src/Microchip/Graphics/RoundDial.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/RoundDial.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/RoundDial.o.d" -o ${OBJECTDIR}/_ext/47893468/RoundDial.o ../src/Microchip/Graphics/RoundDial.c     
 	
 ${OBJECTDIR}/_ext/47893468/Slider.o: ../src/Microchip/Graphics/Slider.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Slider.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Slider.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Slider.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Slider.o.d" -o ${OBJECTDIR}/_ext/47893468/Slider.o ../src/Microchip/Graphics/Slider.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Slider.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Slider.o.d" -o ${OBJECTDIR}/_ext/47893468/Slider.o ../src/Microchip/Graphics/Slider.c     
 	
 ${OBJECTDIR}/_ext/47893468/StaticText.o: ../src/Microchip/Graphics/StaticText.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/StaticText.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/StaticText.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/StaticText.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/StaticText.o.d" -o ${OBJECTDIR}/_ext/47893468/StaticText.o ../src/Microchip/Graphics/StaticText.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/StaticText.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/StaticText.o.d" -o ${OBJECTDIR}/_ext/47893468/StaticText.o ../src/Microchip/Graphics/StaticText.c     
 	
 ${OBJECTDIR}/_ext/47893468/Window.o: ../src/Microchip/Graphics/Window.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Window.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Window.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Window.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Window.o.d" -o ${OBJECTDIR}/_ext/47893468/Window.o ../src/Microchip/Graphics/Window.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Window.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Window.o.d" -o ${OBJECTDIR}/_ext/47893468/Window.o ../src/Microchip/Graphics/Window.c     
 	
 ${OBJECTDIR}/_ext/219152179/BmpDecoder.o: ../src/Microchip/Image\ Decoders/BmpDecoder.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/219152179" 
 	@${RM} ${OBJECTDIR}/_ext/219152179/BmpDecoder.o.d 
 	@${RM} ${OBJECTDIR}/_ext/219152179/BmpDecoder.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/219152179/BmpDecoder.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/219152179/BmpDecoder.o.d" -o ${OBJECTDIR}/_ext/219152179/BmpDecoder.o "../src/Microchip/Image Decoders/BmpDecoder.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/219152179/BmpDecoder.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/219152179/BmpDecoder.o.d" -o ${OBJECTDIR}/_ext/219152179/BmpDecoder.o "../src/Microchip/Image Decoders/BmpDecoder.c"     
 	
 ${OBJECTDIR}/_ext/219152179/ImageDecoder.o: ../src/Microchip/Image\ Decoders/ImageDecoder.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/219152179" 
 	@${RM} ${OBJECTDIR}/_ext/219152179/ImageDecoder.o.d 
 	@${RM} ${OBJECTDIR}/_ext/219152179/ImageDecoder.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/219152179/ImageDecoder.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/219152179/ImageDecoder.o.d" -o ${OBJECTDIR}/_ext/219152179/ImageDecoder.o "../src/Microchip/Image Decoders/ImageDecoder.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/219152179/ImageDecoder.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/219152179/ImageDecoder.o.d" -o ${OBJECTDIR}/_ext/219152179/ImageDecoder.o "../src/Microchip/Image Decoders/ImageDecoder.c"     
 	
 ${OBJECTDIR}/_ext/219152179/JpegDecoder.o: ../src/Microchip/Image\ Decoders/JpegDecoder.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/219152179" 
 	@${RM} ${OBJECTDIR}/_ext/219152179/JpegDecoder.o.d 
 	@${RM} ${OBJECTDIR}/_ext/219152179/JpegDecoder.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/219152179/JpegDecoder.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/219152179/JpegDecoder.o.d" -o ${OBJECTDIR}/_ext/219152179/JpegDecoder.o "../src/Microchip/Image Decoders/JpegDecoder.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/219152179/JpegDecoder.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/219152179/JpegDecoder.o.d" -o ${OBJECTDIR}/_ext/219152179/JpegDecoder.o "../src/Microchip/Image Decoders/JpegDecoder.c"     
 	
 ${OBJECTDIR}/_ext/219152179/jidctint.o: ../src/Microchip/Image\ Decoders/jidctint.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/219152179" 
 	@${RM} ${OBJECTDIR}/_ext/219152179/jidctint.o.d 
 	@${RM} ${OBJECTDIR}/_ext/219152179/jidctint.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/219152179/jidctint.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/219152179/jidctint.o.d" -o ${OBJECTDIR}/_ext/219152179/jidctint.o "../src/Microchip/Image Decoders/jidctint.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/219152179/jidctint.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/219152179/jidctint.o.d" -o ${OBJECTDIR}/_ext/219152179/jidctint.o "../src/Microchip/Image Decoders/jidctint.c"     
 	
 ${OBJECTDIR}/_ext/659191409/usb_function_hid.o: ../src/Microchip/USB/HID\ Device\ Driver/usb_function_hid.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659191409" 
 	@${RM} ${OBJECTDIR}/_ext/659191409/usb_function_hid.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659191409/usb_function_hid.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659191409/usb_function_hid.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659191409/usb_function_hid.o.d" -o ${OBJECTDIR}/_ext/659191409/usb_function_hid.o "../src/Microchip/USB/HID Device Driver/usb_function_hid.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659191409/usb_function_hid.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659191409/usb_function_hid.o.d" -o ${OBJECTDIR}/_ext/659191409/usb_function_hid.o "../src/Microchip/USB/HID Device Driver/usb_function_hid.c"     
 	
 ${OBJECTDIR}/_ext/1974569172/usb_function_msd_multi_sector.o: ../src/Microchip/USB/MSD\ Device\ Driver/usb_function_msd_multi_sector.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1974569172" 
 	@${RM} ${OBJECTDIR}/_ext/1974569172/usb_function_msd_multi_sector.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1974569172/usb_function_msd_multi_sector.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1974569172/usb_function_msd_multi_sector.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1974569172/usb_function_msd_multi_sector.o.d" -o ${OBJECTDIR}/_ext/1974569172/usb_function_msd_multi_sector.o "../src/Microchip/USB/MSD Device Driver/usb_function_msd_multi_sector.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1974569172/usb_function_msd_multi_sector.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1974569172/usb_function_msd_multi_sector.o.d" -o ${OBJECTDIR}/_ext/1974569172/usb_function_msd_multi_sector.o "../src/Microchip/USB/MSD Device Driver/usb_function_msd_multi_sector.c"     
 	
 ${OBJECTDIR}/_ext/2140021685/usb_descriptors.o: ../src/Microchip/USB/usb_descriptors.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/2140021685" 
 	@${RM} ${OBJECTDIR}/_ext/2140021685/usb_descriptors.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2140021685/usb_descriptors.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2140021685/usb_descriptors.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/2140021685/usb_descriptors.o.d" -o ${OBJECTDIR}/_ext/2140021685/usb_descriptors.o ../src/Microchip/USB/usb_descriptors.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/2140021685/usb_descriptors.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/2140021685/usb_descriptors.o.d" -o ${OBJECTDIR}/_ext/2140021685/usb_descriptors.o ../src/Microchip/USB/usb_descriptors.c     
 	
 ${OBJECTDIR}/_ext/2140021685/usb_device.o: ../src/Microchip/USB/usb_device.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/2140021685" 
 	@${RM} ${OBJECTDIR}/_ext/2140021685/usb_device.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2140021685/usb_device.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2140021685/usb_device.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/2140021685/usb_device.o.d" -o ${OBJECTDIR}/_ext/2140021685/usb_device.o ../src/Microchip/USB/usb_device.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/2140021685/usb_device.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/2140021685/usb_device.o.d" -o ${OBJECTDIR}/_ext/2140021685/usb_device.o ../src/Microchip/USB/usb_device.c     
 	
 ${OBJECTDIR}/_ext/1094399317/TouchTone.o: ../src/Sound\ Stream/TouchTone.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1094399317" 
 	@${RM} ${OBJECTDIR}/_ext/1094399317/TouchTone.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1094399317/TouchTone.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1094399317/TouchTone.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1094399317/TouchTone.o.d" -o ${OBJECTDIR}/_ext/1094399317/TouchTone.o "../src/Sound Stream/TouchTone.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1094399317/TouchTone.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1094399317/TouchTone.o.d" -o ${OBJECTDIR}/_ext/1094399317/TouchTone.o "../src/Sound Stream/TouchTone.c"     
 	
 ${OBJECTDIR}/_ext/1094399317/Startup.o: ../src/Sound\ Stream/Startup.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1094399317" 
 	@${RM} ${OBJECTDIR}/_ext/1094399317/Startup.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1094399317/Startup.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1094399317/Startup.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1094399317/Startup.o.d" -o ${OBJECTDIR}/_ext/1094399317/Startup.o "../src/Sound Stream/Startup.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1094399317/Startup.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1094399317/Startup.o.d" -o ${OBJECTDIR}/_ext/1094399317/Startup.o "../src/Sound Stream/Startup.c"     
 	
 ${OBJECTDIR}/_ext/1094399317/Shutdown.o: ../src/Sound\ Stream/Shutdown.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1094399317" 
 	@${RM} ${OBJECTDIR}/_ext/1094399317/Shutdown.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1094399317/Shutdown.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1094399317/Shutdown.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1094399317/Shutdown.o.d" -o ${OBJECTDIR}/_ext/1094399317/Shutdown.o "../src/Sound Stream/Shutdown.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1094399317/Shutdown.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1094399317/Shutdown.o.d" -o ${OBJECTDIR}/_ext/1094399317/Shutdown.o "../src/Sound Stream/Shutdown.c"     
 	
 ${OBJECTDIR}/_ext/1094399317/Error.o: ../src/Sound\ Stream/Error.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1094399317" 
 	@${RM} ${OBJECTDIR}/_ext/1094399317/Error.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1094399317/Error.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1094399317/Error.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1094399317/Error.o.d" -o ${OBJECTDIR}/_ext/1094399317/Error.o "../src/Sound Stream/Error.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1094399317/Error.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1094399317/Error.o.d" -o ${OBJECTDIR}/_ext/1094399317/Error.o "../src/Sound Stream/Error.c"     
 	
 ${OBJECTDIR}/_ext/791854511/TouchScreen.o: ../src/Touchscreen/TouchScreen.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/791854511" 
 	@${RM} ${OBJECTDIR}/_ext/791854511/TouchScreen.o.d 
 	@${RM} ${OBJECTDIR}/_ext/791854511/TouchScreen.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/791854511/TouchScreen.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/791854511/TouchScreen.o.d" -o ${OBJECTDIR}/_ext/791854511/TouchScreen.o ../src/Touchscreen/TouchScreen.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/791854511/TouchScreen.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/791854511/TouchScreen.o.d" -o ${OBJECTDIR}/_ext/791854511/TouchScreen.o ../src/Touchscreen/TouchScreen.c     
 	
 ${OBJECTDIR}/_ext/791854511/TouchScreenResistive.o: ../src/Touchscreen/TouchScreenResistive.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/791854511" 
 	@${RM} ${OBJECTDIR}/_ext/791854511/TouchScreenResistive.o.d 
 	@${RM} ${OBJECTDIR}/_ext/791854511/TouchScreenResistive.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/791854511/TouchScreenResistive.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/791854511/TouchScreenResistive.o.d" -o ${OBJECTDIR}/_ext/791854511/TouchScreenResistive.o ../src/Touchscreen/TouchScreenResistive.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/791854511/TouchScreenResistive.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/791854511/TouchScreenResistive.o.d" -o ${OBJECTDIR}/_ext/791854511/TouchScreenResistive.o ../src/Touchscreen/TouchScreenResistive.c     
 	
 ${OBJECTDIR}/_ext/1707987343/TouchScreenTask.o: ../src/TouchScreen/TouchScreenTask.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1707987343" 
 	@${RM} ${OBJECTDIR}/_ext/1707987343/TouchScreenTask.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1707987343/TouchScreenTask.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1707987343/TouchScreenTask.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1707987343/TouchScreenTask.o.d" -o ${OBJECTDIR}/_ext/1707987343/TouchScreenTask.o ../src/TouchScreen/TouchScreenTask.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1707987343/TouchScreenTask.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1707987343/TouchScreenTask.o.d" -o ${OBJECTDIR}/_ext/1707987343/TouchScreenTask.o ../src/TouchScreen/TouchScreenTask.c     
 	
 ${OBJECTDIR}/_ext/1360937237/Main.o: ../src/Main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Main.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Main.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Main.o.d" -o ${OBJECTDIR}/_ext/1360937237/Main.o ../src/Main.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Main.o.d" -o ${OBJECTDIR}/_ext/1360937237/Main.o ../src/Main.c     
 	
 ${OBJECTDIR}/_ext/1360937237/Variables.o: ../src/Variables.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Variables.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Variables.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Variables.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Variables.o.d" -o ${OBJECTDIR}/_ext/1360937237/Variables.o ../src/Variables.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Variables.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Variables.o.d" -o ${OBJECTDIR}/_ext/1360937237/Variables.o ../src/Variables.c     
 	
 ${OBJECTDIR}/_ext/1360937237/Background.o: ../src/Background.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Background.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Background.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Background.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Background.o.d" -o ${OBJECTDIR}/_ext/1360937237/Background.o ../src/Background.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Background.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Background.o.d" -o ${OBJECTDIR}/_ext/1360937237/Background.o ../src/Background.c     
 	
 ${OBJECTDIR}/_ext/1360937237/SetPath.o: ../src/SetPath.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/SetPath.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/SetPath.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/SetPath.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/SetPath.o.d" -o ${OBJECTDIR}/_ext/1360937237/SetPath.o ../src/SetPath.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/SetPath.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/SetPath.o.d" -o ${OBJECTDIR}/_ext/1360937237/SetPath.o ../src/SetPath.c     
 	
 ${OBJECTDIR}/_ext/1360937237/PlayMotion.o: ../src/PlayMotion.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/PlayMotion.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/PlayMotion.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/PlayMotion.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/PlayMotion.o.d" -o ${OBJECTDIR}/_ext/1360937237/PlayMotion.o ../src/PlayMotion.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/PlayMotion.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/PlayMotion.o.d" -o ${OBJECTDIR}/_ext/1360937237/PlayMotion.o ../src/PlayMotion.c     
 	
 ${OBJECTDIR}/_ext/1360937237/UsbApp.o: ../src/UsbApp.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/UsbApp.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/UsbApp.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/UsbApp.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/UsbApp.o.d" -o ${OBJECTDIR}/_ext/1360937237/UsbApp.o ../src/UsbApp.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/UsbApp.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/UsbApp.o.d" -o ${OBJECTDIR}/_ext/1360937237/UsbApp.o ../src/UsbApp.c     
 	
 ${OBJECTDIR}/_ext/1360937237/Power.o: ../src/Power.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Power.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Power.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Power.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Power.o.d" -o ${OBJECTDIR}/_ext/1360937237/Power.o ../src/Power.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Power.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Power.o.d" -o ${OBJECTDIR}/_ext/1360937237/Power.o ../src/Power.c     
 	
 ${OBJECTDIR}/_ext/1360937237/Planner.o: ../src/Planner.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Planner.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Planner.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Planner.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Planner.o.d" -o ${OBJECTDIR}/_ext/1360937237/Planner.o ../src/Planner.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Planner.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Planner.o.d" -o ${OBJECTDIR}/_ext/1360937237/Planner.o ../src/Planner.c     
 	
 ${OBJECTDIR}/_ext/1360937237/Log.o: ../src/Log.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Log.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Log.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Log.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Log.o.d" -o ${OBJECTDIR}/_ext/1360937237/Log.o ../src/Log.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Log.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Log.o.d" -o ${OBJECTDIR}/_ext/1360937237/Log.o ../src/Log.c     
 	
 ${OBJECTDIR}/_ext/1360937237/Protocol.o: ../src/Protocol.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Protocol.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Protocol.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Protocol.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Protocol.o.d" -o ${OBJECTDIR}/_ext/1360937237/Protocol.o ../src/Protocol.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Protocol.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Protocol.o.d" -o ${OBJECTDIR}/_ext/1360937237/Protocol.o ../src/Protocol.c     
 	
 ${OBJECTDIR}/_ext/1360937237/Adc.o: ../src/Adc.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Adc.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Adc.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Adc.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Adc.o.d" -o ${OBJECTDIR}/_ext/1360937237/Adc.o ../src/Adc.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Adc.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Adc.o.d" -o ${OBJECTDIR}/_ext/1360937237/Adc.o ../src/Adc.c     
 	
 ${OBJECTDIR}/_ext/1360937237/ErrorTrap.o: ../src/ErrorTrap.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/ErrorTrap.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/ErrorTrap.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/ErrorTrap.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/ErrorTrap.o.d" -o ${OBJECTDIR}/_ext/1360937237/ErrorTrap.o ../src/ErrorTrap.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/ErrorTrap.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/ErrorTrap.o.d" -o ${OBJECTDIR}/_ext/1360937237/ErrorTrap.o ../src/ErrorTrap.c     
 	
 ${OBJECTDIR}/_ext/1360937237/AudioAmp.o: ../src/AudioAmp.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/AudioAmp.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/AudioAmp.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/AudioAmp.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/AudioAmp.o.d" -o ${OBJECTDIR}/_ext/1360937237/AudioAmp.o ../src/AudioAmp.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/AudioAmp.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/AudioAmp.o.d" -o ${OBJECTDIR}/_ext/1360937237/AudioAmp.o ../src/AudioAmp.c     
 	
 ${OBJECTDIR}/_ext/1360937237/UserProgram.o: ../src/UserProgram.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/UserProgram.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/UserProgram.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/UserProgram.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/UserProgram.o.d" -o ${OBJECTDIR}/_ext/1360937237/UserProgram.o ../src/UserProgram.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/UserProgram.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/UserProgram.o.d" -o ${OBJECTDIR}/_ext/1360937237/UserProgram.o ../src/UserProgram.c     
 	
 ${OBJECTDIR}/_ext/1360937237/Configuration.o: ../src/Configuration.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Configuration.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Configuration.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Configuration.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Configuration.o.d" -o ${OBJECTDIR}/_ext/1360937237/Configuration.o ../src/Configuration.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Configuration.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Configuration.o.d" -o ${OBJECTDIR}/_ext/1360937237/Configuration.o ../src/Configuration.c     
 	
 ${OBJECTDIR}/_ext/1360937237/TeachMotion.o: ../src/TeachMotion.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/TeachMotion.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/TeachMotion.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/TeachMotion.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/TeachMotion.o.d" -o ${OBJECTDIR}/_ext/1360937237/TeachMotion.o ../src/TeachMotion.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/TeachMotion.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/TeachMotion.o.d" -o ${OBJECTDIR}/_ext/1360937237/TeachMotion.o ../src/TeachMotion.c     
 	
 else
 ${OBJECTDIR}/_ext/302797332/BluetoothControl.o: ../src/Bluetooth/BluetoothControl.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/302797332" 
 	@${RM} ${OBJECTDIR}/_ext/302797332/BluetoothControl.o.d 
 	@${RM} ${OBJECTDIR}/_ext/302797332/BluetoothControl.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/302797332/BluetoothControl.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/302797332/BluetoothControl.o.d" -o ${OBJECTDIR}/_ext/302797332/BluetoothControl.o ../src/Bluetooth/BluetoothControl.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/302797332/BluetoothControl.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/302797332/BluetoothControl.o.d" -o ${OBJECTDIR}/_ext/302797332/BluetoothControl.o ../src/Bluetooth/BluetoothControl.c     
 	
 ${OBJECTDIR}/_ext/302797332/uart2.o: ../src/Bluetooth/uart2.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/302797332" 
 	@${RM} ${OBJECTDIR}/_ext/302797332/uart2.o.d 
 	@${RM} ${OBJECTDIR}/_ext/302797332/uart2.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/302797332/uart2.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/302797332/uart2.o.d" -o ${OBJECTDIR}/_ext/302797332/uart2.o ../src/Bluetooth/uart2.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/302797332/uart2.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/302797332/uart2.o.d" -o ${OBJECTDIR}/_ext/302797332/uart2.o ../src/Bluetooth/uart2.c     
 	
 ${OBJECTDIR}/_ext/1563925460/ccsbcs.o: ../src/FatFs/ccsbcs.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1563925460" 
 	@${RM} ${OBJECTDIR}/_ext/1563925460/ccsbcs.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1563925460/ccsbcs.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1563925460/ccsbcs.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1563925460/ccsbcs.o.d" -o ${OBJECTDIR}/_ext/1563925460/ccsbcs.o ../src/FatFs/ccsbcs.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1563925460/ccsbcs.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1563925460/ccsbcs.o.d" -o ${OBJECTDIR}/_ext/1563925460/ccsbcs.o ../src/FatFs/ccsbcs.c     
 	
 ${OBJECTDIR}/_ext/1563925460/diskio.o: ../src/FatFs/diskio.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1563925460" 
 	@${RM} ${OBJECTDIR}/_ext/1563925460/diskio.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1563925460/diskio.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1563925460/diskio.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1563925460/diskio.o.d" -o ${OBJECTDIR}/_ext/1563925460/diskio.o ../src/FatFs/diskio.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1563925460/diskio.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1563925460/diskio.o.d" -o ${OBJECTDIR}/_ext/1563925460/diskio.o ../src/FatFs/diskio.c     
 	
 ${OBJECTDIR}/_ext/1563925460/ff.o: ../src/FatFs/ff.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1563925460" 
 	@${RM} ${OBJECTDIR}/_ext/1563925460/ff.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1563925460/ff.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1563925460/ff.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1563925460/ff.o.d" -o ${OBJECTDIR}/_ext/1563925460/ff.o ../src/FatFs/ff.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1563925460/ff.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1563925460/ff.o.d" -o ${OBJECTDIR}/_ext/1563925460/ff.o ../src/FatFs/ff.c     
 	
 ${OBJECTDIR}/_ext/1563925460/SD-SPI.o: ../src/FatFs/SD-SPI.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1563925460" 
 	@${RM} ${OBJECTDIR}/_ext/1563925460/SD-SPI.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1563925460/SD-SPI.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1563925460/SD-SPI.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1563925460/SD-SPI.o.d" -o ${OBJECTDIR}/_ext/1563925460/SD-SPI.o ../src/FatFs/SD-SPI.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1563925460/SD-SPI.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1563925460/SD-SPI.o.d" -o ${OBJECTDIR}/_ext/1563925460/SD-SPI.o ../src/FatFs/SD-SPI.c     
 	
 ${OBJECTDIR}/_ext/1563925460/FatFsWrapper.o: ../src/FatFs/FatFsWrapper.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1563925460" 
 	@${RM} ${OBJECTDIR}/_ext/1563925460/FatFsWrapper.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1563925460/FatFsWrapper.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1563925460/FatFsWrapper.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1563925460/FatFsWrapper.o.d" -o ${OBJECTDIR}/_ext/1563925460/FatFsWrapper.o ../src/FatFs/FatFsWrapper.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1563925460/FatFsWrapper.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1563925460/FatFsWrapper.o.d" -o ${OBJECTDIR}/_ext/1563925460/FatFsWrapper.o ../src/FatFs/FatFsWrapper.c     
 	
 ${OBJECTDIR}/_ext/689329905/SplashScreenLogo.o: ../src/Flash\ Image/SplashScreenLogo.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/689329905" 
 	@${RM} ${OBJECTDIR}/_ext/689329905/SplashScreenLogo.o.d 
 	@${RM} ${OBJECTDIR}/_ext/689329905/SplashScreenLogo.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/689329905/SplashScreenLogo.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/689329905/SplashScreenLogo.o.d" -o ${OBJECTDIR}/_ext/689329905/SplashScreenLogo.o "../src/Flash Image/SplashScreenLogo.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/689329905/SplashScreenLogo.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/689329905/SplashScreenLogo.o.d" -o ${OBJECTDIR}/_ext/689329905/SplashScreenLogo.o "../src/Flash Image/SplashScreenLogo.c"     
 	
 ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_11.o: ../src/Font/Segoe_UI_Semibold_11.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1020267223" 
 	@${RM} ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_11.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_11.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_11.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_11.o.d" -o ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_11.o ../src/Font/Segoe_UI_Semibold_11.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_11.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_11.o.d" -o ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_11.o ../src/Font/Segoe_UI_Semibold_11.c     
 	
 ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_14.o: ../src/Font/Segoe_UI_Semibold_14.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1020267223" 
 	@${RM} ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_14.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_14.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_14.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_14.o.d" -o ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_14.o ../src/Font/Segoe_UI_Semibold_14.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_14.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_14.o.d" -o ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_14.o ../src/Font/Segoe_UI_Semibold_14.c     
 	
 ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_18.o: ../src/Font/Segoe_UI_Semibold_18.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1020267223" 
 	@${RM} ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_18.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_18.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_18.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_18.o.d" -o ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_18.o ../src/Font/Segoe_UI_Semibold_18.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_18.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_18.o.d" -o ${OBJECTDIR}/_ext/1020267223/Segoe_UI_Semibold_18.o ../src/Font/Segoe_UI_Semibold_18.c     
 	
 ${OBJECTDIR}/_ext/573367119/heap_3.o: ../src/FreeRTOS/portable/MemMang/heap_3.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/573367119" 
 	@${RM} ${OBJECTDIR}/_ext/573367119/heap_3.o.d 
 	@${RM} ${OBJECTDIR}/_ext/573367119/heap_3.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/573367119/heap_3.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/573367119/heap_3.o.d" -o ${OBJECTDIR}/_ext/573367119/heap_3.o ../src/FreeRTOS/portable/MemMang/heap_3.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/573367119/heap_3.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/573367119/heap_3.o.d" -o ${OBJECTDIR}/_ext/573367119/heap_3.o ../src/FreeRTOS/portable/MemMang/heap_3.c     
 	
 ${OBJECTDIR}/_ext/1447740322/port.o: ../src/FreeRTOS/portable/MPLAB/PIC32MX/port.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1447740322" 
 	@${RM} ${OBJECTDIR}/_ext/1447740322/port.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1447740322/port.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1447740322/port.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1447740322/port.o.d" -o ${OBJECTDIR}/_ext/1447740322/port.o ../src/FreeRTOS/portable/MPLAB/PIC32MX/port.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1447740322/port.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1447740322/port.o.d" -o ${OBJECTDIR}/_ext/1447740322/port.o ../src/FreeRTOS/portable/MPLAB/PIC32MX/port.c     
 	
 ${OBJECTDIR}/_ext/1592166420/list.o: ../src/FreeRTOS/list.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1592166420" 
 	@${RM} ${OBJECTDIR}/_ext/1592166420/list.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1592166420/list.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1592166420/list.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1592166420/list.o.d" -o ${OBJECTDIR}/_ext/1592166420/list.o ../src/FreeRTOS/list.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1592166420/list.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1592166420/list.o.d" -o ${OBJECTDIR}/_ext/1592166420/list.o ../src/FreeRTOS/list.c     
 	
 ${OBJECTDIR}/_ext/1592166420/queue.o: ../src/FreeRTOS/queue.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1592166420" 
 	@${RM} ${OBJECTDIR}/_ext/1592166420/queue.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1592166420/queue.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1592166420/queue.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1592166420/queue.o.d" -o ${OBJECTDIR}/_ext/1592166420/queue.o ../src/FreeRTOS/queue.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1592166420/queue.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1592166420/queue.o.d" -o ${OBJECTDIR}/_ext/1592166420/queue.o ../src/FreeRTOS/queue.c     
 	
 ${OBJECTDIR}/_ext/1592166420/tasks.o: ../src/FreeRTOS/tasks.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1592166420" 
 	@${RM} ${OBJECTDIR}/_ext/1592166420/tasks.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1592166420/tasks.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1592166420/tasks.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1592166420/tasks.o.d" -o ${OBJECTDIR}/_ext/1592166420/tasks.o ../src/FreeRTOS/tasks.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1592166420/tasks.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1592166420/tasks.o.d" -o ${OBJECTDIR}/_ext/1592166420/tasks.o ../src/FreeRTOS/tasks.c     
 	
 ${OBJECTDIR}/_ext/523260321/G15.o: ../src/G15\ and\ Sensors/G15.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/523260321" 
 	@${RM} ${OBJECTDIR}/_ext/523260321/G15.o.d 
 	@${RM} ${OBJECTDIR}/_ext/523260321/G15.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/523260321/G15.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/523260321/G15.o.d" -o ${OBJECTDIR}/_ext/523260321/G15.o "../src/G15 and Sensors/G15.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/523260321/G15.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/523260321/G15.o.d" -o ${OBJECTDIR}/_ext/523260321/G15.o "../src/G15 and Sensors/G15.c"     
 	
 ${OBJECTDIR}/_ext/523260321/uart5.o: ../src/G15\ and\ Sensors/uart5.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/523260321" 
 	@${RM} ${OBJECTDIR}/_ext/523260321/uart5.o.d 
 	@${RM} ${OBJECTDIR}/_ext/523260321/uart5.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/523260321/uart5.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/523260321/uart5.o.d" -o ${OBJECTDIR}/_ext/523260321/uart5.o "../src/G15 and Sensors/uart5.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/523260321/uart5.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/523260321/uart5.o.d" -o ${OBJECTDIR}/_ext/523260321/uart5.o "../src/G15 and Sensors/uart5.c"     
 	
 ${OBJECTDIR}/_ext/523260321/Sensors.o: ../src/G15\ and\ Sensors/Sensors.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/523260321" 
 	@${RM} ${OBJECTDIR}/_ext/523260321/Sensors.o.d 
 	@${RM} ${OBJECTDIR}/_ext/523260321/Sensors.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/523260321/Sensors.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/523260321/Sensors.o.d" -o ${OBJECTDIR}/_ext/523260321/Sensors.o "../src/G15 and Sensors/Sensors.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/523260321/Sensors.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/523260321/Sensors.o.d" -o ${OBJECTDIR}/_ext/523260321/Sensors.o "../src/G15 and Sensors/Sensors.c"     
 	
 ${OBJECTDIR}/_ext/523260321/ExtModule.o: ../src/G15\ and\ Sensors/ExtModule.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/523260321" 
 	@${RM} ${OBJECTDIR}/_ext/523260321/ExtModule.o.d 
 	@${RM} ${OBJECTDIR}/_ext/523260321/ExtModule.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/523260321/ExtModule.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/523260321/ExtModule.o.d" -o ${OBJECTDIR}/_ext/523260321/ExtModule.o "../src/G15 and Sensors/ExtModule.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/523260321/ExtModule.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/523260321/ExtModule.o.d" -o ${OBJECTDIR}/_ext/523260321/ExtModule.o "../src/G15 and Sensors/ExtModule.c"     
 	
 ${OBJECTDIR}/_ext/54361528/Battery.o: ../src/GUI/Custom\ Graphic\ Object/Battery.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/54361528" 
 	@${RM} ${OBJECTDIR}/_ext/54361528/Battery.o.d 
 	@${RM} ${OBJECTDIR}/_ext/54361528/Battery.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/54361528/Battery.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/54361528/Battery.o.d" -o ${OBJECTDIR}/_ext/54361528/Battery.o "../src/GUI/Custom Graphic Object/Battery.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/54361528/Battery.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/54361528/Battery.o.d" -o ${OBJECTDIR}/_ext/54361528/Battery.o "../src/GUI/Custom Graphic Object/Battery.c"     
 	
 ${OBJECTDIR}/_ext/659824929/SensorPage.o: ../src/GUI/SensorPage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/SensorPage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/SensorPage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/SensorPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/SensorPage.o.d" -o ${OBJECTDIR}/_ext/659824929/SensorPage.o ../src/GUI/SensorPage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/SensorPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/SensorPage.o.d" -o ${OBJECTDIR}/_ext/659824929/SensorPage.o ../src/GUI/SensorPage.c     
 	
 ${OBJECTDIR}/_ext/659824929/GraphicScreens.o: ../src/GUI/GraphicScreens.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/GraphicScreens.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/GraphicScreens.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/GraphicScreens.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/GraphicScreens.o.d" -o ${OBJECTDIR}/_ext/659824929/GraphicScreens.o ../src/GUI/GraphicScreens.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/GraphicScreens.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/GraphicScreens.o.d" -o ${OBJECTDIR}/_ext/659824929/GraphicScreens.o ../src/GUI/GraphicScreens.c     
 	
 ${OBJECTDIR}/_ext/659824929/G15Page.o: ../src/GUI/G15Page.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/G15Page.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/G15Page.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/G15Page.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/G15Page.o.d" -o ${OBJECTDIR}/_ext/659824929/G15Page.o ../src/GUI/G15Page.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/G15Page.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/G15Page.o.d" -o ${OBJECTDIR}/_ext/659824929/G15Page.o ../src/GUI/G15Page.c     
 	
 ${OBJECTDIR}/_ext/659824929/SetIdPage.o: ../src/GUI/SetIdPage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/SetIdPage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/SetIdPage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/SetIdPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/SetIdPage.o.d" -o ${OBJECTDIR}/_ext/659824929/SetIdPage.o ../src/GUI/SetIdPage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/SetIdPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/SetIdPage.o.d" -o ${OBJECTDIR}/_ext/659824929/SetIdPage.o ../src/GUI/SetIdPage.c     
 	
 ${OBJECTDIR}/_ext/659824929/SettingsPage.o: ../src/GUI/SettingsPage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/SettingsPage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/SettingsPage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/SettingsPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/SettingsPage.o.d" -o ${OBJECTDIR}/_ext/659824929/SettingsPage.o ../src/GUI/SettingsPage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/SettingsPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/SettingsPage.o.d" -o ${OBJECTDIR}/_ext/659824929/SettingsPage.o ../src/GUI/SettingsPage.c     
 	
 ${OBJECTDIR}/_ext/659824929/UsbPage.o: ../src/GUI/UsbPage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/UsbPage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/UsbPage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/UsbPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/UsbPage.o.d" -o ${OBJECTDIR}/_ext/659824929/UsbPage.o ../src/GUI/UsbPage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/UsbPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/UsbPage.o.d" -o ${OBJECTDIR}/_ext/659824929/UsbPage.o ../src/GUI/UsbPage.c     
 	
 ${OBJECTDIR}/_ext/659824929/SetBtPinPage.o: ../src/GUI/SetBtPinPage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/SetBtPinPage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/SetBtPinPage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/SetBtPinPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/SetBtPinPage.o.d" -o ${OBJECTDIR}/_ext/659824929/SetBtPinPage.o ../src/GUI/SetBtPinPage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/SetBtPinPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/SetBtPinPage.o.d" -o ${OBJECTDIR}/_ext/659824929/SetBtPinPage.o ../src/GUI/SetBtPinPage.c     
 	
 ${OBJECTDIR}/_ext/659824929/NumbericKeypad.o: ../src/GUI/NumbericKeypad.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/NumbericKeypad.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/NumbericKeypad.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/NumbericKeypad.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/NumbericKeypad.o.d" -o ${OBJECTDIR}/_ext/659824929/NumbericKeypad.o ../src/GUI/NumbericKeypad.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/NumbericKeypad.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/NumbericKeypad.o.d" -o ${OBJECTDIR}/_ext/659824929/NumbericKeypad.o ../src/GUI/NumbericKeypad.c     
 	
 ${OBJECTDIR}/_ext/659824929/BtSettingsPage.o: ../src/GUI/BtSettingsPage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/BtSettingsPage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/BtSettingsPage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/BtSettingsPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/BtSettingsPage.o.d" -o ${OBJECTDIR}/_ext/659824929/BtSettingsPage.o ../src/GUI/BtSettingsPage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/BtSettingsPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/BtSettingsPage.o.d" -o ${OBJECTDIR}/_ext/659824929/BtSettingsPage.o ../src/GUI/BtSettingsPage.c     
 	
 ${OBJECTDIR}/_ext/659824929/LockScreen.o: ../src/GUI/LockScreen.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/LockScreen.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/LockScreen.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/LockScreen.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/LockScreen.o.d" -o ${OBJECTDIR}/_ext/659824929/LockScreen.o ../src/GUI/LockScreen.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/LockScreen.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/LockScreen.o.d" -o ${OBJECTDIR}/_ext/659824929/LockScreen.o ../src/GUI/LockScreen.c     
 	
 ${OBJECTDIR}/_ext/659824929/MainMenu.o: ../src/GUI/MainMenu.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/MainMenu.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/MainMenu.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/MainMenu.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/MainMenu.o.d" -o ${OBJECTDIR}/_ext/659824929/MainMenu.o ../src/GUI/MainMenu.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/MainMenu.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/MainMenu.o.d" -o ${OBJECTDIR}/_ext/659824929/MainMenu.o ../src/GUI/MainMenu.c     
 	
 ${OBJECTDIR}/_ext/659824929/Scheme.o: ../src/GUI/Scheme.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/Scheme.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/Scheme.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/Scheme.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/Scheme.o.d" -o ${OBJECTDIR}/_ext/659824929/Scheme.o ../src/GUI/Scheme.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/Scheme.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/Scheme.o.d" -o ${OBJECTDIR}/_ext/659824929/Scheme.o ../src/GUI/Scheme.c     
 	
 ${OBJECTDIR}/_ext/659824929/ScrollbarListbox.o: ../src/GUI/ScrollbarListbox.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/ScrollbarListbox.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/ScrollbarListbox.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/ScrollbarListbox.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/ScrollbarListbox.o.d" -o ${OBJECTDIR}/_ext/659824929/ScrollbarListbox.o ../src/GUI/ScrollbarListbox.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/ScrollbarListbox.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/ScrollbarListbox.o.d" -o ${OBJECTDIR}/_ext/659824929/ScrollbarListbox.o ../src/GUI/ScrollbarListbox.c     
 	
 ${OBJECTDIR}/_ext/659824929/WallpaperPage.o: ../src/GUI/WallpaperPage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/WallpaperPage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/WallpaperPage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/WallpaperPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/WallpaperPage.o.d" -o ${OBJECTDIR}/_ext/659824929/WallpaperPage.o ../src/GUI/WallpaperPage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/WallpaperPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/WallpaperPage.o.d" -o ${OBJECTDIR}/_ext/659824929/WallpaperPage.o ../src/GUI/WallpaperPage.c     
 	
 ${OBJECTDIR}/_ext/659824929/HideUnhideScreen.o: ../src/GUI/HideUnhideScreen.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/HideUnhideScreen.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/HideUnhideScreen.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/HideUnhideScreen.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/HideUnhideScreen.o.d" -o ${OBJECTDIR}/_ext/659824929/HideUnhideScreen.o ../src/GUI/HideUnhideScreen.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/HideUnhideScreen.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/HideUnhideScreen.o.d" -o ${OBJECTDIR}/_ext/659824929/HideUnhideScreen.o ../src/GUI/HideUnhideScreen.c     
 	
 ${OBJECTDIR}/_ext/659824929/PopUpMessagePage.o: ../src/GUI/PopUpMessagePage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/PopUpMessagePage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/PopUpMessagePage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/PopUpMessagePage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/PopUpMessagePage.o.d" -o ${OBJECTDIR}/_ext/659824929/PopUpMessagePage.o ../src/GUI/PopUpMessagePage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/PopUpMessagePage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/PopUpMessagePage.o.d" -o ${OBJECTDIR}/_ext/659824929/PopUpMessagePage.o ../src/GUI/PopUpMessagePage.c     
 	
 ${OBJECTDIR}/_ext/659824929/BluetoothPage.o: ../src/GUI/BluetoothPage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/BluetoothPage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/BluetoothPage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/BluetoothPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/BluetoothPage.o.d" -o ${OBJECTDIR}/_ext/659824929/BluetoothPage.o ../src/GUI/BluetoothPage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/BluetoothPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/BluetoothPage.o.d" -o ${OBJECTDIR}/_ext/659824929/BluetoothPage.o ../src/GUI/BluetoothPage.c     
 	
 ${OBJECTDIR}/_ext/659824929/MotionPage.o: ../src/GUI/MotionPage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/MotionPage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/MotionPage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/MotionPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/MotionPage.o.d" -o ${OBJECTDIR}/_ext/659824929/MotionPage.o ../src/GUI/MotionPage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/MotionPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/MotionPage.o.d" -o ${OBJECTDIR}/_ext/659824929/MotionPage.o ../src/GUI/MotionPage.c     
 	
 ${OBJECTDIR}/_ext/659824929/UserProgramPage.o: ../src/GUI/UserProgramPage.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/UserProgramPage.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/UserProgramPage.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/UserProgramPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/UserProgramPage.o.d" -o ${OBJECTDIR}/_ext/659824929/UserProgramPage.o ../src/GUI/UserProgramPage.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/UserProgramPage.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/UserProgramPage.o.d" -o ${OBJECTDIR}/_ext/659824929/UserProgramPage.o ../src/GUI/UserProgramPage.c     
 	
 ${OBJECTDIR}/_ext/659824929/Screenshot.o: ../src/GUI/Screenshot.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659824929" 
 	@${RM} ${OBJECTDIR}/_ext/659824929/Screenshot.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659824929/Screenshot.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/Screenshot.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/Screenshot.o.d" -o ${OBJECTDIR}/_ext/659824929/Screenshot.o ../src/GUI/Screenshot.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659824929/Screenshot.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659824929/Screenshot.o.d" -o ${OBJECTDIR}/_ext/659824929/Screenshot.o ../src/GUI/Screenshot.c     
 	
 ${OBJECTDIR}/_ext/659826615/i2c1.o: ../src/IMU/i2c1.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659826615" 
 	@${RM} ${OBJECTDIR}/_ext/659826615/i2c1.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659826615/i2c1.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659826615/i2c1.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659826615/i2c1.o.d" -o ${OBJECTDIR}/_ext/659826615/i2c1.o ../src/IMU/i2c1.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659826615/i2c1.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659826615/i2c1.o.d" -o ${OBJECTDIR}/_ext/659826615/i2c1.o ../src/IMU/i2c1.c     
 	
 ${OBJECTDIR}/_ext/659826615/inv_mpu.o: ../src/IMU/inv_mpu.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659826615" 
 	@${RM} ${OBJECTDIR}/_ext/659826615/inv_mpu.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659826615/inv_mpu.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659826615/inv_mpu.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659826615/inv_mpu.o.d" -o ${OBJECTDIR}/_ext/659826615/inv_mpu.o ../src/IMU/inv_mpu.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659826615/inv_mpu.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659826615/inv_mpu.o.d" -o ${OBJECTDIR}/_ext/659826615/inv_mpu.o ../src/IMU/inv_mpu.c     
 	
 ${OBJECTDIR}/_ext/659826615/inv_mpu_dmp_motion_driver.o: ../src/IMU/inv_mpu_dmp_motion_driver.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659826615" 
 	@${RM} ${OBJECTDIR}/_ext/659826615/inv_mpu_dmp_motion_driver.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659826615/inv_mpu_dmp_motion_driver.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659826615/inv_mpu_dmp_motion_driver.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659826615/inv_mpu_dmp_motion_driver.o.d" -o ${OBJECTDIR}/_ext/659826615/inv_mpu_dmp_motion_driver.o ../src/IMU/inv_mpu_dmp_motion_driver.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659826615/inv_mpu_dmp_motion_driver.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659826615/inv_mpu_dmp_motion_driver.o.d" -o ${OBJECTDIR}/_ext/659826615/inv_mpu_dmp_motion_driver.o ../src/IMU/inv_mpu_dmp_motion_driver.c     
 	
 ${OBJECTDIR}/_ext/659826615/imu.o: ../src/IMU/imu.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659826615" 
 	@${RM} ${OBJECTDIR}/_ext/659826615/imu.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659826615/imu.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659826615/imu.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659826615/imu.o.d" -o ${OBJECTDIR}/_ext/659826615/imu.o ../src/IMU/imu.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659826615/imu.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659826615/imu.o.d" -o ${OBJECTDIR}/_ext/659826615/imu.o ../src/IMU/imu.c     
 	
 ${OBJECTDIR}/_ext/620447172/TimeDelay.o: ../src/Microchip/Common/TimeDelay.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/620447172" 
 	@${RM} ${OBJECTDIR}/_ext/620447172/TimeDelay.o.d 
 	@${RM} ${OBJECTDIR}/_ext/620447172/TimeDelay.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/620447172/TimeDelay.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/620447172/TimeDelay.o.d" -o ${OBJECTDIR}/_ext/620447172/TimeDelay.o ../src/Microchip/Common/TimeDelay.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/620447172/TimeDelay.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/620447172/TimeDelay.o.d" -o ${OBJECTDIR}/_ext/620447172/TimeDelay.o ../src/Microchip/Common/TimeDelay.c     
 	
 ${OBJECTDIR}/_ext/1336470976/ILI9341.o: ../src/Microchip/Graphics/Drivers/ILI9341.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1336470976" 
 	@${RM} ${OBJECTDIR}/_ext/1336470976/ILI9341.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1336470976/ILI9341.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1336470976/ILI9341.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1336470976/ILI9341.o.d" -o ${OBJECTDIR}/_ext/1336470976/ILI9341.o ../src/Microchip/Graphics/Drivers/ILI9341.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1336470976/ILI9341.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1336470976/ILI9341.o.d" -o ${OBJECTDIR}/_ext/1336470976/ILI9341.o ../src/Microchip/Graphics/Drivers/ILI9341.c     
 	
 ${OBJECTDIR}/_ext/47893468/Button.o: ../src/Microchip/Graphics/Button.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Button.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Button.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Button.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Button.o.d" -o ${OBJECTDIR}/_ext/47893468/Button.o ../src/Microchip/Graphics/Button.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Button.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Button.o.d" -o ${OBJECTDIR}/_ext/47893468/Button.o ../src/Microchip/Graphics/Button.c     
 	
 ${OBJECTDIR}/_ext/47893468/Chart.o: ../src/Microchip/Graphics/Chart.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Chart.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Chart.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Chart.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Chart.o.d" -o ${OBJECTDIR}/_ext/47893468/Chart.o ../src/Microchip/Graphics/Chart.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Chart.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Chart.o.d" -o ${OBJECTDIR}/_ext/47893468/Chart.o ../src/Microchip/Graphics/Chart.c     
 	
 ${OBJECTDIR}/_ext/47893468/CheckBox.o: ../src/Microchip/Graphics/CheckBox.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/CheckBox.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/CheckBox.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/CheckBox.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/CheckBox.o.d" -o ${OBJECTDIR}/_ext/47893468/CheckBox.o ../src/Microchip/Graphics/CheckBox.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/CheckBox.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/CheckBox.o.d" -o ${OBJECTDIR}/_ext/47893468/CheckBox.o ../src/Microchip/Graphics/CheckBox.c     
 	
 ${OBJECTDIR}/_ext/47893468/DigitalMeter.o: ../src/Microchip/Graphics/DigitalMeter.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/DigitalMeter.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/DigitalMeter.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/DigitalMeter.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/DigitalMeter.o.d" -o ${OBJECTDIR}/_ext/47893468/DigitalMeter.o ../src/Microchip/Graphics/DigitalMeter.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/DigitalMeter.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/DigitalMeter.o.d" -o ${OBJECTDIR}/_ext/47893468/DigitalMeter.o ../src/Microchip/Graphics/DigitalMeter.c     
 	
 ${OBJECTDIR}/_ext/47893468/EditBox.o: ../src/Microchip/Graphics/EditBox.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/EditBox.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/EditBox.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/EditBox.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/EditBox.o.d" -o ${OBJECTDIR}/_ext/47893468/EditBox.o ../src/Microchip/Graphics/EditBox.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/EditBox.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/EditBox.o.d" -o ${OBJECTDIR}/_ext/47893468/EditBox.o ../src/Microchip/Graphics/EditBox.c     
 	
 ${OBJECTDIR}/_ext/47893468/GOL.o: ../src/Microchip/Graphics/GOL.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/GOL.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/GOL.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/GOL.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/GOL.o.d" -o ${OBJECTDIR}/_ext/47893468/GOL.o ../src/Microchip/Graphics/GOL.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/GOL.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/GOL.o.d" -o ${OBJECTDIR}/_ext/47893468/GOL.o ../src/Microchip/Graphics/GOL.c     
 	
 ${OBJECTDIR}/_ext/47893468/GOLSchemeDefault.o: ../src/Microchip/Graphics/GOLSchemeDefault.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/GOLSchemeDefault.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/GOLSchemeDefault.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/GOLSchemeDefault.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/GOLSchemeDefault.o.d" -o ${OBJECTDIR}/_ext/47893468/GOLSchemeDefault.o ../src/Microchip/Graphics/GOLSchemeDefault.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/GOLSchemeDefault.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/GOLSchemeDefault.o.d" -o ${OBJECTDIR}/_ext/47893468/GOLSchemeDefault.o ../src/Microchip/Graphics/GOLSchemeDefault.c     
 	
 ${OBJECTDIR}/_ext/47893468/Grid.o: ../src/Microchip/Graphics/Grid.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Grid.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Grid.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Grid.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Grid.o.d" -o ${OBJECTDIR}/_ext/47893468/Grid.o ../src/Microchip/Graphics/Grid.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Grid.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Grid.o.d" -o ${OBJECTDIR}/_ext/47893468/Grid.o ../src/Microchip/Graphics/Grid.c     
 	
 ${OBJECTDIR}/_ext/47893468/GroupBox.o: ../src/Microchip/Graphics/GroupBox.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/GroupBox.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/GroupBox.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/GroupBox.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/GroupBox.o.d" -o ${OBJECTDIR}/_ext/47893468/GroupBox.o ../src/Microchip/Graphics/GroupBox.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/GroupBox.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/GroupBox.o.d" -o ${OBJECTDIR}/_ext/47893468/GroupBox.o ../src/Microchip/Graphics/GroupBox.c     
 	
 ${OBJECTDIR}/_ext/47893468/ListBox.o: ../src/Microchip/Graphics/ListBox.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/ListBox.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/ListBox.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/ListBox.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/ListBox.o.d" -o ${OBJECTDIR}/_ext/47893468/ListBox.o ../src/Microchip/Graphics/ListBox.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/ListBox.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/ListBox.o.d" -o ${OBJECTDIR}/_ext/47893468/ListBox.o ../src/Microchip/Graphics/ListBox.c     
 	
 ${OBJECTDIR}/_ext/47893468/Meter.o: ../src/Microchip/Graphics/Meter.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Meter.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Meter.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Meter.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Meter.o.d" -o ${OBJECTDIR}/_ext/47893468/Meter.o ../src/Microchip/Graphics/Meter.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Meter.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Meter.o.d" -o ${OBJECTDIR}/_ext/47893468/Meter.o ../src/Microchip/Graphics/Meter.c     
 	
 ${OBJECTDIR}/_ext/47893468/Palette.o: ../src/Microchip/Graphics/Palette.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Palette.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Palette.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Palette.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Palette.o.d" -o ${OBJECTDIR}/_ext/47893468/Palette.o ../src/Microchip/Graphics/Palette.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Palette.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Palette.o.d" -o ${OBJECTDIR}/_ext/47893468/Palette.o ../src/Microchip/Graphics/Palette.c     
 	
 ${OBJECTDIR}/_ext/47893468/Picture.o: ../src/Microchip/Graphics/Picture.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Picture.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Picture.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Picture.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Picture.o.d" -o ${OBJECTDIR}/_ext/47893468/Picture.o ../src/Microchip/Graphics/Picture.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Picture.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Picture.o.d" -o ${OBJECTDIR}/_ext/47893468/Picture.o ../src/Microchip/Graphics/Picture.c     
 	
 ${OBJECTDIR}/_ext/47893468/Primitive.o: ../src/Microchip/Graphics/Primitive.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Primitive.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Primitive.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Primitive.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Primitive.o.d" -o ${OBJECTDIR}/_ext/47893468/Primitive.o ../src/Microchip/Graphics/Primitive.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Primitive.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Primitive.o.d" -o ${OBJECTDIR}/_ext/47893468/Primitive.o ../src/Microchip/Graphics/Primitive.c     
 	
 ${OBJECTDIR}/_ext/47893468/ProgressBar.o: ../src/Microchip/Graphics/ProgressBar.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/ProgressBar.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/ProgressBar.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/ProgressBar.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/ProgressBar.o.d" -o ${OBJECTDIR}/_ext/47893468/ProgressBar.o ../src/Microchip/Graphics/ProgressBar.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/ProgressBar.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/ProgressBar.o.d" -o ${OBJECTDIR}/_ext/47893468/ProgressBar.o ../src/Microchip/Graphics/ProgressBar.c     
 	
 ${OBJECTDIR}/_ext/47893468/RadioButton.o: ../src/Microchip/Graphics/RadioButton.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/RadioButton.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/RadioButton.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/RadioButton.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/RadioButton.o.d" -o ${OBJECTDIR}/_ext/47893468/RadioButton.o ../src/Microchip/Graphics/RadioButton.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/RadioButton.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/RadioButton.o.d" -o ${OBJECTDIR}/_ext/47893468/RadioButton.o ../src/Microchip/Graphics/RadioButton.c     
 	
 ${OBJECTDIR}/_ext/47893468/RoundDial.o: ../src/Microchip/Graphics/RoundDial.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/RoundDial.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/RoundDial.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/RoundDial.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/RoundDial.o.d" -o ${OBJECTDIR}/_ext/47893468/RoundDial.o ../src/Microchip/Graphics/RoundDial.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/RoundDial.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/RoundDial.o.d" -o ${OBJECTDIR}/_ext/47893468/RoundDial.o ../src/Microchip/Graphics/RoundDial.c     
 	
 ${OBJECTDIR}/_ext/47893468/Slider.o: ../src/Microchip/Graphics/Slider.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Slider.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Slider.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Slider.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Slider.o.d" -o ${OBJECTDIR}/_ext/47893468/Slider.o ../src/Microchip/Graphics/Slider.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Slider.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Slider.o.d" -o ${OBJECTDIR}/_ext/47893468/Slider.o ../src/Microchip/Graphics/Slider.c     
 	
 ${OBJECTDIR}/_ext/47893468/StaticText.o: ../src/Microchip/Graphics/StaticText.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/StaticText.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/StaticText.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/StaticText.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/StaticText.o.d" -o ${OBJECTDIR}/_ext/47893468/StaticText.o ../src/Microchip/Graphics/StaticText.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/StaticText.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/StaticText.o.d" -o ${OBJECTDIR}/_ext/47893468/StaticText.o ../src/Microchip/Graphics/StaticText.c     
 	
 ${OBJECTDIR}/_ext/47893468/Window.o: ../src/Microchip/Graphics/Window.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/47893468" 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Window.o.d 
 	@${RM} ${OBJECTDIR}/_ext/47893468/Window.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Window.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Window.o.d" -o ${OBJECTDIR}/_ext/47893468/Window.o ../src/Microchip/Graphics/Window.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/47893468/Window.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/47893468/Window.o.d" -o ${OBJECTDIR}/_ext/47893468/Window.o ../src/Microchip/Graphics/Window.c     
 	
 ${OBJECTDIR}/_ext/219152179/BmpDecoder.o: ../src/Microchip/Image\ Decoders/BmpDecoder.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/219152179" 
 	@${RM} ${OBJECTDIR}/_ext/219152179/BmpDecoder.o.d 
 	@${RM} ${OBJECTDIR}/_ext/219152179/BmpDecoder.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/219152179/BmpDecoder.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/219152179/BmpDecoder.o.d" -o ${OBJECTDIR}/_ext/219152179/BmpDecoder.o "../src/Microchip/Image Decoders/BmpDecoder.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/219152179/BmpDecoder.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/219152179/BmpDecoder.o.d" -o ${OBJECTDIR}/_ext/219152179/BmpDecoder.o "../src/Microchip/Image Decoders/BmpDecoder.c"     
 	
 ${OBJECTDIR}/_ext/219152179/ImageDecoder.o: ../src/Microchip/Image\ Decoders/ImageDecoder.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/219152179" 
 	@${RM} ${OBJECTDIR}/_ext/219152179/ImageDecoder.o.d 
 	@${RM} ${OBJECTDIR}/_ext/219152179/ImageDecoder.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/219152179/ImageDecoder.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/219152179/ImageDecoder.o.d" -o ${OBJECTDIR}/_ext/219152179/ImageDecoder.o "../src/Microchip/Image Decoders/ImageDecoder.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/219152179/ImageDecoder.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/219152179/ImageDecoder.o.d" -o ${OBJECTDIR}/_ext/219152179/ImageDecoder.o "../src/Microchip/Image Decoders/ImageDecoder.c"     
 	
 ${OBJECTDIR}/_ext/219152179/JpegDecoder.o: ../src/Microchip/Image\ Decoders/JpegDecoder.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/219152179" 
 	@${RM} ${OBJECTDIR}/_ext/219152179/JpegDecoder.o.d 
 	@${RM} ${OBJECTDIR}/_ext/219152179/JpegDecoder.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/219152179/JpegDecoder.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/219152179/JpegDecoder.o.d" -o ${OBJECTDIR}/_ext/219152179/JpegDecoder.o "../src/Microchip/Image Decoders/JpegDecoder.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/219152179/JpegDecoder.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/219152179/JpegDecoder.o.d" -o ${OBJECTDIR}/_ext/219152179/JpegDecoder.o "../src/Microchip/Image Decoders/JpegDecoder.c"     
 	
 ${OBJECTDIR}/_ext/219152179/jidctint.o: ../src/Microchip/Image\ Decoders/jidctint.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/219152179" 
 	@${RM} ${OBJECTDIR}/_ext/219152179/jidctint.o.d 
 	@${RM} ${OBJECTDIR}/_ext/219152179/jidctint.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/219152179/jidctint.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/219152179/jidctint.o.d" -o ${OBJECTDIR}/_ext/219152179/jidctint.o "../src/Microchip/Image Decoders/jidctint.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/219152179/jidctint.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/219152179/jidctint.o.d" -o ${OBJECTDIR}/_ext/219152179/jidctint.o "../src/Microchip/Image Decoders/jidctint.c"     
 	
 ${OBJECTDIR}/_ext/659191409/usb_function_hid.o: ../src/Microchip/USB/HID\ Device\ Driver/usb_function_hid.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/659191409" 
 	@${RM} ${OBJECTDIR}/_ext/659191409/usb_function_hid.o.d 
 	@${RM} ${OBJECTDIR}/_ext/659191409/usb_function_hid.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/659191409/usb_function_hid.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659191409/usb_function_hid.o.d" -o ${OBJECTDIR}/_ext/659191409/usb_function_hid.o "../src/Microchip/USB/HID Device Driver/usb_function_hid.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/659191409/usb_function_hid.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/659191409/usb_function_hid.o.d" -o ${OBJECTDIR}/_ext/659191409/usb_function_hid.o "../src/Microchip/USB/HID Device Driver/usb_function_hid.c"     
 	
 ${OBJECTDIR}/_ext/1974569172/usb_function_msd_multi_sector.o: ../src/Microchip/USB/MSD\ Device\ Driver/usb_function_msd_multi_sector.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1974569172" 
 	@${RM} ${OBJECTDIR}/_ext/1974569172/usb_function_msd_multi_sector.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1974569172/usb_function_msd_multi_sector.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1974569172/usb_function_msd_multi_sector.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1974569172/usb_function_msd_multi_sector.o.d" -o ${OBJECTDIR}/_ext/1974569172/usb_function_msd_multi_sector.o "../src/Microchip/USB/MSD Device Driver/usb_function_msd_multi_sector.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1974569172/usb_function_msd_multi_sector.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1974569172/usb_function_msd_multi_sector.o.d" -o ${OBJECTDIR}/_ext/1974569172/usb_function_msd_multi_sector.o "../src/Microchip/USB/MSD Device Driver/usb_function_msd_multi_sector.c"     
 	
 ${OBJECTDIR}/_ext/2140021685/usb_descriptors.o: ../src/Microchip/USB/usb_descriptors.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/2140021685" 
 	@${RM} ${OBJECTDIR}/_ext/2140021685/usb_descriptors.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2140021685/usb_descriptors.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2140021685/usb_descriptors.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/2140021685/usb_descriptors.o.d" -o ${OBJECTDIR}/_ext/2140021685/usb_descriptors.o ../src/Microchip/USB/usb_descriptors.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/2140021685/usb_descriptors.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/2140021685/usb_descriptors.o.d" -o ${OBJECTDIR}/_ext/2140021685/usb_descriptors.o ../src/Microchip/USB/usb_descriptors.c     
 	
 ${OBJECTDIR}/_ext/2140021685/usb_device.o: ../src/Microchip/USB/usb_device.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/2140021685" 
 	@${RM} ${OBJECTDIR}/_ext/2140021685/usb_device.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2140021685/usb_device.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2140021685/usb_device.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/2140021685/usb_device.o.d" -o ${OBJECTDIR}/_ext/2140021685/usb_device.o ../src/Microchip/USB/usb_device.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/2140021685/usb_device.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/2140021685/usb_device.o.d" -o ${OBJECTDIR}/_ext/2140021685/usb_device.o ../src/Microchip/USB/usb_device.c     
 	
 ${OBJECTDIR}/_ext/1094399317/TouchTone.o: ../src/Sound\ Stream/TouchTone.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1094399317" 
 	@${RM} ${OBJECTDIR}/_ext/1094399317/TouchTone.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1094399317/TouchTone.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1094399317/TouchTone.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1094399317/TouchTone.o.d" -o ${OBJECTDIR}/_ext/1094399317/TouchTone.o "../src/Sound Stream/TouchTone.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1094399317/TouchTone.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1094399317/TouchTone.o.d" -o ${OBJECTDIR}/_ext/1094399317/TouchTone.o "../src/Sound Stream/TouchTone.c"     
 	
 ${OBJECTDIR}/_ext/1094399317/Startup.o: ../src/Sound\ Stream/Startup.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1094399317" 
 	@${RM} ${OBJECTDIR}/_ext/1094399317/Startup.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1094399317/Startup.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1094399317/Startup.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1094399317/Startup.o.d" -o ${OBJECTDIR}/_ext/1094399317/Startup.o "../src/Sound Stream/Startup.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1094399317/Startup.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1094399317/Startup.o.d" -o ${OBJECTDIR}/_ext/1094399317/Startup.o "../src/Sound Stream/Startup.c"     
 	
 ${OBJECTDIR}/_ext/1094399317/Shutdown.o: ../src/Sound\ Stream/Shutdown.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1094399317" 
 	@${RM} ${OBJECTDIR}/_ext/1094399317/Shutdown.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1094399317/Shutdown.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1094399317/Shutdown.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1094399317/Shutdown.o.d" -o ${OBJECTDIR}/_ext/1094399317/Shutdown.o "../src/Sound Stream/Shutdown.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1094399317/Shutdown.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1094399317/Shutdown.o.d" -o ${OBJECTDIR}/_ext/1094399317/Shutdown.o "../src/Sound Stream/Shutdown.c"     
 	
 ${OBJECTDIR}/_ext/1094399317/Error.o: ../src/Sound\ Stream/Error.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1094399317" 
 	@${RM} ${OBJECTDIR}/_ext/1094399317/Error.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1094399317/Error.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1094399317/Error.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1094399317/Error.o.d" -o ${OBJECTDIR}/_ext/1094399317/Error.o "../src/Sound Stream/Error.c"   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1094399317/Error.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1094399317/Error.o.d" -o ${OBJECTDIR}/_ext/1094399317/Error.o "../src/Sound Stream/Error.c"     
 	
 ${OBJECTDIR}/_ext/791854511/TouchScreen.o: ../src/Touchscreen/TouchScreen.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/791854511" 
 	@${RM} ${OBJECTDIR}/_ext/791854511/TouchScreen.o.d 
 	@${RM} ${OBJECTDIR}/_ext/791854511/TouchScreen.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/791854511/TouchScreen.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/791854511/TouchScreen.o.d" -o ${OBJECTDIR}/_ext/791854511/TouchScreen.o ../src/Touchscreen/TouchScreen.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/791854511/TouchScreen.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/791854511/TouchScreen.o.d" -o ${OBJECTDIR}/_ext/791854511/TouchScreen.o ../src/Touchscreen/TouchScreen.c     
 	
 ${OBJECTDIR}/_ext/791854511/TouchScreenResistive.o: ../src/Touchscreen/TouchScreenResistive.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/791854511" 
 	@${RM} ${OBJECTDIR}/_ext/791854511/TouchScreenResistive.o.d 
 	@${RM} ${OBJECTDIR}/_ext/791854511/TouchScreenResistive.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/791854511/TouchScreenResistive.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/791854511/TouchScreenResistive.o.d" -o ${OBJECTDIR}/_ext/791854511/TouchScreenResistive.o ../src/Touchscreen/TouchScreenResistive.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/791854511/TouchScreenResistive.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/791854511/TouchScreenResistive.o.d" -o ${OBJECTDIR}/_ext/791854511/TouchScreenResistive.o ../src/Touchscreen/TouchScreenResistive.c     
 	
 ${OBJECTDIR}/_ext/1707987343/TouchScreenTask.o: ../src/TouchScreen/TouchScreenTask.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1707987343" 
 	@${RM} ${OBJECTDIR}/_ext/1707987343/TouchScreenTask.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1707987343/TouchScreenTask.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1707987343/TouchScreenTask.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1707987343/TouchScreenTask.o.d" -o ${OBJECTDIR}/_ext/1707987343/TouchScreenTask.o ../src/TouchScreen/TouchScreenTask.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1707987343/TouchScreenTask.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1707987343/TouchScreenTask.o.d" -o ${OBJECTDIR}/_ext/1707987343/TouchScreenTask.o ../src/TouchScreen/TouchScreenTask.c     
 	
 ${OBJECTDIR}/_ext/1360937237/Main.o: ../src/Main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Main.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Main.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Main.o.d" -o ${OBJECTDIR}/_ext/1360937237/Main.o ../src/Main.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Main.o.d" -o ${OBJECTDIR}/_ext/1360937237/Main.o ../src/Main.c     
 	
 ${OBJECTDIR}/_ext/1360937237/Variables.o: ../src/Variables.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Variables.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Variables.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Variables.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Variables.o.d" -o ${OBJECTDIR}/_ext/1360937237/Variables.o ../src/Variables.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Variables.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Variables.o.d" -o ${OBJECTDIR}/_ext/1360937237/Variables.o ../src/Variables.c     
 	
 ${OBJECTDIR}/_ext/1360937237/Background.o: ../src/Background.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Background.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Background.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Background.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Background.o.d" -o ${OBJECTDIR}/_ext/1360937237/Background.o ../src/Background.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Background.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Background.o.d" -o ${OBJECTDIR}/_ext/1360937237/Background.o ../src/Background.c     
 	
 ${OBJECTDIR}/_ext/1360937237/SetPath.o: ../src/SetPath.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/SetPath.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/SetPath.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/SetPath.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/SetPath.o.d" -o ${OBJECTDIR}/_ext/1360937237/SetPath.o ../src/SetPath.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/SetPath.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/SetPath.o.d" -o ${OBJECTDIR}/_ext/1360937237/SetPath.o ../src/SetPath.c     
 	
 ${OBJECTDIR}/_ext/1360937237/PlayMotion.o: ../src/PlayMotion.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/PlayMotion.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/PlayMotion.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/PlayMotion.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/PlayMotion.o.d" -o ${OBJECTDIR}/_ext/1360937237/PlayMotion.o ../src/PlayMotion.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/PlayMotion.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/PlayMotion.o.d" -o ${OBJECTDIR}/_ext/1360937237/PlayMotion.o ../src/PlayMotion.c     
 	
 ${OBJECTDIR}/_ext/1360937237/UsbApp.o: ../src/UsbApp.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/UsbApp.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/UsbApp.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/UsbApp.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/UsbApp.o.d" -o ${OBJECTDIR}/_ext/1360937237/UsbApp.o ../src/UsbApp.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/UsbApp.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/UsbApp.o.d" -o ${OBJECTDIR}/_ext/1360937237/UsbApp.o ../src/UsbApp.c     
 	
 ${OBJECTDIR}/_ext/1360937237/Power.o: ../src/Power.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Power.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Power.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Power.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Power.o.d" -o ${OBJECTDIR}/_ext/1360937237/Power.o ../src/Power.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Power.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Power.o.d" -o ${OBJECTDIR}/_ext/1360937237/Power.o ../src/Power.c     
 	
 ${OBJECTDIR}/_ext/1360937237/Planner.o: ../src/Planner.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Planner.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Planner.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Planner.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Planner.o.d" -o ${OBJECTDIR}/_ext/1360937237/Planner.o ../src/Planner.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Planner.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Planner.o.d" -o ${OBJECTDIR}/_ext/1360937237/Planner.o ../src/Planner.c     
 	
 ${OBJECTDIR}/_ext/1360937237/Log.o: ../src/Log.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Log.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Log.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Log.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Log.o.d" -o ${OBJECTDIR}/_ext/1360937237/Log.o ../src/Log.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Log.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Log.o.d" -o ${OBJECTDIR}/_ext/1360937237/Log.o ../src/Log.c     
 	
 ${OBJECTDIR}/_ext/1360937237/Protocol.o: ../src/Protocol.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Protocol.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Protocol.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Protocol.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Protocol.o.d" -o ${OBJECTDIR}/_ext/1360937237/Protocol.o ../src/Protocol.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Protocol.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Protocol.o.d" -o ${OBJECTDIR}/_ext/1360937237/Protocol.o ../src/Protocol.c     
 	
 ${OBJECTDIR}/_ext/1360937237/Adc.o: ../src/Adc.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Adc.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Adc.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Adc.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Adc.o.d" -o ${OBJECTDIR}/_ext/1360937237/Adc.o ../src/Adc.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Adc.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Adc.o.d" -o ${OBJECTDIR}/_ext/1360937237/Adc.o ../src/Adc.c     
 	
 ${OBJECTDIR}/_ext/1360937237/ErrorTrap.o: ../src/ErrorTrap.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/ErrorTrap.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/ErrorTrap.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/ErrorTrap.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/ErrorTrap.o.d" -o ${OBJECTDIR}/_ext/1360937237/ErrorTrap.o ../src/ErrorTrap.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/ErrorTrap.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/ErrorTrap.o.d" -o ${OBJECTDIR}/_ext/1360937237/ErrorTrap.o ../src/ErrorTrap.c     
 	
 ${OBJECTDIR}/_ext/1360937237/AudioAmp.o: ../src/AudioAmp.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/AudioAmp.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/AudioAmp.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/AudioAmp.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/AudioAmp.o.d" -o ${OBJECTDIR}/_ext/1360937237/AudioAmp.o ../src/AudioAmp.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/AudioAmp.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/AudioAmp.o.d" -o ${OBJECTDIR}/_ext/1360937237/AudioAmp.o ../src/AudioAmp.c     
 	
 ${OBJECTDIR}/_ext/1360937237/UserProgram.o: ../src/UserProgram.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/UserProgram.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/UserProgram.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/UserProgram.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/UserProgram.o.d" -o ${OBJECTDIR}/_ext/1360937237/UserProgram.o ../src/UserProgram.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/UserProgram.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/UserProgram.o.d" -o ${OBJECTDIR}/_ext/1360937237/UserProgram.o ../src/UserProgram.c     
 	
 ${OBJECTDIR}/_ext/1360937237/Configuration.o: ../src/Configuration.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Configuration.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/Configuration.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Configuration.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Configuration.o.d" -o ${OBJECTDIR}/_ext/1360937237/Configuration.o ../src/Configuration.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/Configuration.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/Configuration.o.d" -o ${OBJECTDIR}/_ext/1360937237/Configuration.o ../src/Configuration.c     
 	
 ${OBJECTDIR}/_ext/1360937237/TeachMotion.o: ../src/TeachMotion.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/TeachMotion.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/TeachMotion.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/TeachMotion.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/TeachMotion.o.d" -o ${OBJECTDIR}/_ext/1360937237/TeachMotion.o ../src/TeachMotion.c   
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/TeachMotion.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -DMPU6050 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -I"../include" -I"../include/FreeRTOS" -I"../include/FreeRTOS/portable/MPLAB/PIC32MX" -I"../include/Microchip" -I"../include/IMU" -MMD -MF "${OBJECTDIR}/_ext/1360937237/TeachMotion.o.d" -o ${OBJECTDIR}/_ext/1360937237/TeachMotion.o ../src/TeachMotion.c     
 	
 endif
 
@@ -1315,12 +1315,12 @@ endif
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 dist/${CND_CONF}/${IMAGE_TYPE}/Rero_Main_Controller_Firmware.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    ../app_32MX575F512L.ld
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE)  -mdebugger -D__MPLAB_DEBUGGER_SIMULATOR=1 -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/Rero_Main_Controller_Firmware.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}              -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_SIMULATOR=1,--defsym=_min_heap_size=45000,-L"/C:/Program Files/Microchip/MPLAB C32 Suite/lib",-L"/C:/Program Files/Microchip/MPLAB C32 Suite/pic32mx/lib",-Map="${DISTDIR}/Rero_Main_Controller_Firmware.X.${IMAGE_TYPE}.map"
+	${MP_CC} $(MP_EXTRA_LD_PRE)  -mdebugger -D__MPLAB_DEBUGGER_SIMULATOR=1 -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/Rero_Main_Controller_Firmware.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}                -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_SIMULATOR=1,--defsym=_min_heap_size=45000,-L"/C:/Program Files/Microchip/MPLAB C32 Suite/lib",-L"/C:/Program Files/Microchip/MPLAB C32 Suite/pic32mx/lib",-Map="${DISTDIR}/Rero_Main_Controller_Firmware.X.${IMAGE_TYPE}.map"
 	
 else
 dist/${CND_CONF}/${IMAGE_TYPE}/Rero_Main_Controller_Firmware.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   ../app_32MX575F512L.ld
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/Rero_Main_Controller_Firmware.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=_min_heap_size=45000,-L"/C:/Program Files/Microchip/MPLAB C32 Suite/lib",-L"/C:/Program Files/Microchip/MPLAB C32 Suite/pic32mx/lib",-Map="${DISTDIR}/Rero_Main_Controller_Firmware.X.${IMAGE_TYPE}.map"
+	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/Rero_Main_Controller_Firmware.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}            -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=_min_heap_size=45000,-L"/C:/Program Files/Microchip/MPLAB C32 Suite/lib",-L"/C:/Program Files/Microchip/MPLAB C32 Suite/pic32mx/lib",-Map="${DISTDIR}/Rero_Main_Controller_Firmware.X.${IMAGE_TYPE}.map"
 	${MP_CC_DIR}\\xc32-bin2hex dist/${CND_CONF}/${IMAGE_TYPE}/Rero_Main_Controller_Firmware.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
 endif
 

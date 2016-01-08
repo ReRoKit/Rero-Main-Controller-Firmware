@@ -593,14 +593,20 @@ void taskPlayMotion (void *pvParameters)
                     }
                 }
                 
-                // Play wave file 0-4 if servo ID < 5 and LED is on.
-                if ((pucG15Id[ucServoCount] < 5) && (xControl.LED != 0)) {
+                // Play wave file 0-10 if servo ID <= 10 and LED is on.
+                if ((pucG15Id[ucServoCount] <= 10) && (xControl.LED != 0)) {
                     switch (pucG15Id[ucServoCount]) {
                         case 0: vPlayWaveFile("/Program/Wave0.wav");    break;
                         case 1: vPlayWaveFile("/Program/Wave1.wav");    break;
                         case 2: vPlayWaveFile("/Program/Wave2.wav");    break;
                         case 3: vPlayWaveFile("/Program/Wave3.wav");    break;
                         case 4: vPlayWaveFile("/Program/Wave4.wav");    break;
+                        case 5: vPlayWaveFile("/Program/Wave5.wav");    break;
+                        case 6: vPlayWaveFile("/Program/Wave6.wav");    break;
+                        case 7: vPlayWaveFile("/Program/Wave7.wav");    break;
+                        case 8: vPlayWaveFile("/Program/Wave8.wav");    break;
+                        case 9: vPlayWaveFile("/Program/Wave9.wav");    break;
+                        case 10: vPlayWaveFile("/Program/Wave10.wav");  break;
                     }
                 }
                 

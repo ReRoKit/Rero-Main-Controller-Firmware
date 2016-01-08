@@ -195,7 +195,7 @@ void main(void)
         vClearScreenWithFadeEffect();
         
 #ifdef SHOWCASE_ROBOT
-        vSetGuiPage(PAGE_PLAY);
+        vSetGuiPage(PAGE_MOTION);
 #else
         vSetGuiPage(PAGE_MAIN_MENU);
 #endif

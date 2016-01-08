@@ -886,6 +886,19 @@ static void prv_vCreateMainPage(void)
     
     // Clear the selected button.
     prv_vSelectButton(BUTTON_NONE);
+    
+    
+    
+#ifdef SHOWCASE_ROBOT
+    // Play File 5 automatically when power up.
+    // Select File 5.
+    usMsgMotionPage(BTN_MSG_PRESSED, GOLFindObject(GID_MOTION_BTN_5), NULL);
+    usMsgMotionPage(BTN_MSG_RELEASED, GOLFindObject(GID_MOTION_BTN_5), NULL);
+    
+    // Press the play button.
+    usMsgMotionPage(BTN_MSG_PRESSED, GOLFindObject(GID_MOTION_BTN_PLAY), NULL);
+    usMsgMotionPage(BTN_MSG_RELEASED, GOLFindObject(GID_MOTION_BTN_PLAY), NULL);
+#endif
 }
 
 
