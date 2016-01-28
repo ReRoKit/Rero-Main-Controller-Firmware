@@ -349,28 +349,28 @@ void vEnableBluetooth(BLUETOOTH_MODE eBtMode)
                 }
                 
                 
-                // Flush the Rx FIFO.
-                vUART2FlushRxBuffer();
-
-                // Start the EDR / BLE module.
-                while (uiUART2GetTxSpace() < strlen(szStartCommand));
-                uiUART2Write(szStartCommand, strlen(szStartCommand));
-
-                // Wait until the respond is received.
-                // Response: OK+STARE or OK+STARB
-                // We don't check the received string here. We only make sure the number of bytes received is correct.
-                if (prv_uiReadBluetooth(prv_pucRxBuffer, 8, BT_RX_TIMEOUT) < 8) {
-                    // This command is not compatible with old BT4.0 firmware, thus just ignore it if timeout occured.
-                    
-//                    // Timeout occurred.
-//                    // Set the error flag.
-//                    xSystemError.bBluetoothError = 1;
+//                // Flush the Rx FIFO.
+//                vUART2FlushRxBuffer();
 //
-//                    // Disable the bluetooth module.
-//                    vDisableBluetooth();
+//                // Start the EDR / BLE module.
+//                while (uiUART2GetTxSpace() < strlen(szStartCommand));
+//                uiUART2Write(szStartCommand, strlen(szStartCommand));
 //
-//                    return;
-                }
+//                // Wait until the respond is received.
+//                // Response: OK+STARE or OK+STARB
+//                // We don't check the received string here. We only make sure the number of bytes received is correct.
+//                if (prv_uiReadBluetooth(prv_pucRxBuffer, 8, BT_RX_TIMEOUT) < 8) {
+//                    // This command is not compatible with old BT4.0 firmware, thus just ignore it if timeout occured.
+//                    
+////                    // Timeout occurred.
+////                    // Set the error flag.
+////                    xSystemError.bBluetoothError = 1;
+////
+////                    // Disable the bluetooth module.
+////                    vDisableBluetooth();
+////
+////                    return;
+//                }
             }
         }
     }
@@ -623,7 +623,7 @@ void vConfigureBluetooth(void)
 
         // Do not start the EDR mode automatically after power on.
         // Command: AT+IMME1
-        const unsigned char pucImmeCommand[] = "AT+IMME1";
+        const unsigned char pucImmeCommand[] = "AT+IMME0";
         while (uiUART2GetTxSpace() < (sizeof(pucImmeCommand) - 1));
         uiUART2Write(pucImmeCommand, sizeof(pucImmeCommand) - 1);
 
@@ -649,7 +649,7 @@ void vConfigureBluetooth(void)
 
         // Do not start the BLE mode automatically after power on.
         // Command: AT+IMMB1
-        const unsigned char pucImmbCommand[] = "AT+IMMB1";
+        const unsigned char pucImmbCommand[] = "AT+IMMB0";
         while (uiUART2GetTxSpace() < (sizeof(pucImmbCommand) - 1));
         uiUART2Write(pucImmbCommand, sizeof(pucImmbCommand) - 1);
 
