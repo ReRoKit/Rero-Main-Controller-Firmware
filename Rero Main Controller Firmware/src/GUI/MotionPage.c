@@ -723,8 +723,23 @@ static void prv_vSelectButton(SELECTED_BUTTON eNewSelectedButton)
         }
         vUpdateMotionPageMsg2(prv_xSelectedFileInfo.szFileComment);
     }
-
-
+    
+    
+// Lock all files except File 1 if this is for showcase.
+#ifdef SHOWCASE_ROBOT
+    if (eNewSelectedButton == BUTTON_1) {
+        vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_TEACH), "/Theme/MotionPage/Teach-Released.bmp");
+        vGraphicsObjectEnable((BUTTON*)GOLFindObject(GID_MOTION_BTN_TEACH));
+        
+        vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_LOCK), "/Theme/MotionPage/Unlocked.bmp");
+        
+    } else {
+        vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_TEACH), "/Theme/MotionPage/Teach-Disabled.bmp");
+        vGraphicsObjectDisable((BUTTON*)GOLFindObject(GID_MOTION_BTN_TEACH));
+        
+        vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_LOCK), "/Theme/MotionPage/Locked.bmp");
+    }
+#else
     // If the file is locked, disable the teach button and show the locked icon.
     if (prv_xSelectedFileInfo.ucLock != 0) {
         vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_TEACH), "/Theme/MotionPage/Teach-Disabled.bmp");
@@ -743,7 +758,8 @@ static void prv_vSelectButton(SELECTED_BUTTON eNewSelectedButton)
         }
         vPictureUpdateBitmap((PICTURE*)GOLFindObject(GID_MOTION_IMG_LOCK), "/Theme/MotionPage/Unlocked.bmp");
     }
-        
+#endif
+    
     
     
     // Save the selected button.
@@ -1287,6 +1303,11 @@ static void prv_vCreateMainPageButton(void)
                BTN_EDIT_L, BTN_EDIT_T,
                BTN_EDIT_R, BTN_EDIT_B,
                1, BTN_DRAW, NULL, "Edit", pxTransBtnScheme );
+    
+// Disable the edit button if this is for showcase robot.
+#ifdef SHOWCASE_ROBOT
+    vGraphicsObjectDisable((BUTTON*)GOLFindObject(GID_MOTION_BTN_EDIT));
+#endif
 }
 
 
