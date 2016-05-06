@@ -92,14 +92,20 @@ void main(void)
         }
     }
     
-    // Turn on the power.
-    vPowerOn();
+    // Turn on power for top PCB first.
+    POWER_MAIN = 1;
 
     // Initialize Graphics Library and LCD.
     // This may take up to 500ms.
     GOLInit();
     vCreateScheme();
     ImageDecoderInit();
+    
+    // Do not turn on if the battery is too low.
+    vPreventLowBattStartup();
+    
+    // Turn on power for bottom PCB.
+    POWER_SUB = 1;
 
     // Show the start screen and set the backlight to default value.
     vShowStartScreen();

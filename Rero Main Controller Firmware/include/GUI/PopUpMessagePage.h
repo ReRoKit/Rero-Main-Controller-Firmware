@@ -19,6 +19,7 @@
 
 void vCreateGenericMessagePage(char *szText);
 void vCreateLowBattShutdownMessage(void);
+void vCreateChargeBatteryMessage(void);
 void vCreateShutdownErrorMessage(void);
 
 

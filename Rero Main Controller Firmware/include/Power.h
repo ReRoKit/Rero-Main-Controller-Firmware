@@ -16,6 +16,7 @@
  *******************************************************************************/
 
 void taskBattMonitor( void *pvParameters );
+void vPreventLowBattStartup(void);
 void vPowerOn(void);
 void vPowerOff(void);
 void taskPowerOff (void *pvParameters);

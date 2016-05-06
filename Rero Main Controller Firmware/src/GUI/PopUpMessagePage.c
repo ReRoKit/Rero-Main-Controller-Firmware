@@ -112,6 +112,70 @@ void vCreateLowBattShutdownMessage(void)
 
 
 /*******************************************************************************
+ * FUNCTION: vCreateChargeBatteryMessage
+ *
+ * PARAMETERS:
+ * ~ void
+ *
+ * RETURN:
+ * ~ void
+ *
+ * DESCRIPTIONS:
+ * Create the charge battery message.
+ *
+ *******************************************************************************/
+void vCreateChargeBatteryMessage(void)
+{
+    const unsigned short BATT_POS_X = 115;
+    const unsigned short BATT_POS_Y = 60;
+
+    const unsigned short TXT1_POS_X = 100;
+    const unsigned short TXT1_POS_Y = 120;
+
+    const unsigned short TXT2_POS_X = 80;
+    const unsigned short TXT2_POS_Y = 180;
+    
+    
+    
+    // Turn on the backlight.
+    SetDCOC1PWM(BLight);
+
+    // Clear all GOL objects.
+    GOLFree();
+
+    // Set background to red.
+    SetColor(RED);
+    ClearDevice();
+
+    // Draw the battery icon.
+    SetColor(WHITE);
+    Bar( BATT_POS_X,      BATT_POS_Y + 15,
+         BATT_POS_X + 10, BATT_POS_Y + 35 );
+
+    Bar( BATT_POS_X + 10, BATT_POS_Y,
+         BATT_POS_X + 90, BATT_POS_Y + 50);
+
+    SetColor(RED);
+    Bar( BATT_POS_X + 18, BATT_POS_Y + 8,
+         BATT_POS_X + 82, BATT_POS_Y + 42);
+
+    SetColor(WHITE);
+    Bar( BATT_POS_X + 72, BATT_POS_Y + 13,
+         BATT_POS_X + 77, BATT_POS_Y + 37);
+
+
+
+    // Show the text.
+    SetFont((void *)ptrLargeFont);
+    OutTextXY(TXT1_POS_X, TXT1_POS_Y, "LOW BATTERY");
+
+    SetFont((void *)ptrMediumFont);
+    OutTextXY(TXT2_POS_X, TXT2_POS_Y, "Please charge the battery!");
+}
+
+
+
+/*******************************************************************************
  * FUNCTION: vCreateShutdownErrorMessage
  *
  * PARAMETERS:

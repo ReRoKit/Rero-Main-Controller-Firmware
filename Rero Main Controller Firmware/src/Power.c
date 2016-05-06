@@ -183,6 +183,42 @@ void taskBattMonitor( void *pvParameters )
 
 
 /*******************************************************************************
+ * FUNCTION: vPreventLowBattStartup
+ *
+ * PARAMETERS:
+ * ~ void
+ *
+ * RETURN:
+ * ~ void
+ *
+ * DESCRIPTIONS:
+ * Do not turn on the power if battery is too low.
+ *
+ *******************************************************************************/
+void vPreventLowBattStartup(void)
+{
+    // Read the battery voltage.
+    unsigned int uiOffset = 8 * ((~ReadActiveBufferADC10() & 0x01));    // Determine which buffer is idle and create an offset.
+    unsigned int uiBattAdc = ReadADC10(uiOffset);                       // Read the result of channel 4 conversion from the idle buffer.
+    
+    // If battery is too low...
+    if (uiBattAdc < BATT_ADC_0) {
+        // Show the charge battery message.
+        vCreateChargeBatteryMessage();
+        
+        DelayMs(1500);
+        
+        // Turn off the power.
+        POWER_MAIN = 0;
+        POWER_SUB = 0;
+        
+        while(1);
+    }
+}
+
+
+
+/*******************************************************************************
  * FUNCTION: vPowerOn
  *
  * PARAMETERS:
