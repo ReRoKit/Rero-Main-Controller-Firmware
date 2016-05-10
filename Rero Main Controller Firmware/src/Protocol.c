@@ -372,14 +372,14 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
                     szFilenameHead = &pucReceivedPacket[1];
                     unsigned char ucReadOnly = ucDeleteProgramFiles(szFilenameHead);
                     
-//                    // Return the read-only flag.
-//                    pucTransmitPacket[0] = ucReadOnly;
-//                    
-//                    // Set the return packet size.
-//                    ucTransmitDataLength = 1;
-//                    
-//                    // Set next state as finish transmitting the data.
-//                    eProcessState = FINISH_TRANSMITTING;
+                    // Return the read-only flag.
+                    pucTransmitPacket[0] = ucReadOnly;
+                    
+                    // Set the return packet size.
+                    ucTransmitDataLength = 1;
+                    
+                    // Set next state as finish transmitting the data.
+                    eProcessState = FINISH_TRANSMITTING;
                     break;
                 }
 
