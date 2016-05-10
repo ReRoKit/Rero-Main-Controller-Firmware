@@ -99,7 +99,7 @@ void vCreateBtSettingsPage(void)
     RADIOBUTTON *pxRbBle = RbCreate( GID_BTSETTINGS_RB_BLE,
                                      RB_BLE_X1, RB_BLE_Y1,
                                      RB_BLE_X2, RB_BLE_Y2,
-                                     RB_DRAW, " BLE (iOS)", pxRadioBtnScheme );
+                                     RB_DRAW, " BLE (Android ,  iOS)", pxRadioBtnScheme );
 
     // Create button "Set Bluetooth PIN".
     BtnCreate( GID_BTSETTINGS_BTN_SETBTPIN,
