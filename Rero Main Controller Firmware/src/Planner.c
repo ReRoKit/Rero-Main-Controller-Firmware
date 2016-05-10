@@ -53,8 +53,8 @@ typedef enum __attribute__((packed)) {
 * PRIVATE GLOBAL VARIABLES
 *******************************************************************************/
 
-static const char *prv_szMotionFilename = NULL;
-static const char *prv_szOpenedFilename = NULL;
+static char prv_szMotionFilename[MAX_FILENAME_LENGTH * 2] = {0};
+static char prv_szOpenedFilename[MAX_FILENAME_LENGTH] = {0};
 static char prv_szFullFilePath[MAX_FILENAME_LENGTH * 3];
 static FSFILE *prv_pxOpenedFile = NULL;
 static unsigned char prv_ucLock = 0;
@@ -208,7 +208,7 @@ PLAY_RESULT ePlannerRun(const char* szPlannerFileName)
     }
 
     // Save the planner file name and set the playing flag.
-    prv_szOpenedFilename = szPlannerFileName;
+    strcpy(prv_szOpenedFilename, szPlannerFileName);
     prv_ucPlaying = 1;
 
     return PLAY_NO_ERROR;
@@ -237,7 +237,7 @@ PLAY_RESULT ePlannerRun(const char* szPlannerFileName)
 void vPlannerStop(const char* szPlannerFileName, MOTION_STATE eStopMode)
 {
     // Make sure there is planner file playing.
-    if (prv_szOpenedFilename != NULL) {
+    if (prv_szOpenedFilename[0] != 0) {
         // Make sure the planner file name matched.
         if (strcmp(szPlannerFileName, prv_szOpenedFilename) == 0) {
             // Stop playing.
@@ -271,7 +271,7 @@ void vPlannerStop(const char* szPlannerFileName, MOTION_STATE eStopMode)
 void vPlannerStopCurrent(MOTION_STATE eStopMode)
 {
     // Make sure there is planner file playing.
-    if (prv_szOpenedFilename != NULL) {
+    if (prv_szOpenedFilename[0] != 0) {
         // Stop playing.
         prv_ucPlaying = 0;
 
@@ -390,7 +390,7 @@ unsigned char ucDeleteProgramFiles(const char *szFilenameHead)
  *******************************************************************************/
 unsigned char ucIsPlannerPlaying(void)
 {
-    if (prv_szOpenedFilename == NULL) {
+    if (prv_szOpenedFilename[0] == 0) {
         return 0;
     } else {
         return 1;
@@ -464,21 +464,23 @@ void taskPlanner(void *pvParameters)
 
                 // Motion file name starts with the planner file name.
                 // Ex: Planner = File1.rpl, Motion = File1_Motion1.rmo.
-                static char szMotionFilename[MAX_FILENAME_LENGTH * 2] = {0};
+                // Make sure it doesn't switch task when creating the file name until start playing the motion file.
+                vTaskEnterCritical();
                 char *szMotionBlockName = &pucBuffer[1];
-                strcpy(szMotionFilename, prv_szOpenedFilename);
-                strcat(szMotionFilename, "_");
-                strcat(szMotionFilename, szMotionBlockName);
+                strcpy(prv_szMotionFilename, prv_szOpenedFilename);
+                strcat(prv_szMotionFilename, "_");
+                strcat(prv_szMotionFilename, szMotionBlockName);
                 
-                // Save the motion file name.
-                prv_szMotionFilename = szMotionFilename;
                 
                 // Update the message text in play page.
                 vUpdateMotionPageMsg2(szMotionBlockName);
 
                 // Play the motion file.
+                PLAY_RESULT ePlayResult = ePlayMotionStart(prv_szMotionFilename);
+                vTaskExitCritical();
+                
                 // If successful to open the motion file, wait until the motion finish playing.
-                if (ePlayMotionStart(szMotionFilename) == PLAY_NO_ERROR) {
+                if (ePlayResult == PLAY_NO_ERROR) {
                     xSemaphoreTake(xPlayingMotionSemaphore, portMAX_DELAY);
                     
                     // Clear the time and frame.
@@ -819,7 +821,7 @@ void taskPlanner(void *pvParameters)
     vUpdateMotionPageEndPlaying(PLANNER_FILE);
 
     // Indicate stop playing.
-    prv_szOpenedFilename = NULL;
+    prv_szOpenedFilename[0] = 0;
     prv_ucPlaying = 0;
 
     
