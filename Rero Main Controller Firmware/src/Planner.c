@@ -673,7 +673,7 @@ void taskPlanner(void *pvParameters)
                 
                 // Read the value from the analog input module.
                 // If there is error reading the sensor, stop playing and display error message until stop button is pressed.
-                unsigned short usSensorValue;
+                unsigned short usSensorValue = 0;
                 if (eAnalogInputModuleGetValue(ucSensorId, ucSensorChannel, (unsigned char*)&usSensorValue) != EM_NO_ERROR) {
                     prv_vTrapSensorError(ucSensorId);
                 }
