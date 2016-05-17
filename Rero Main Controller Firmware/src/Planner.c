@@ -41,6 +41,7 @@ typedef enum __attribute__((packed)) {
     SENSOR_BLOCK_COLOUR     = 0x27,
     SENSOR_BLOCK_LINE       = 0x28,
     SENSOR_BLOCK_TACTILE    = 0x29,
+    SENSOR_BLOCK_ANALOG_IN  = 0x2a,
     COUNTER_BLOCK           = 0x40,
     DELAY_BLOCK             = 0x60,
     CONTROL_SERVO_BLOCK     = 0x80,
@@ -649,6 +650,39 @@ void taskPlanner(void *pvParameters)
                     ulBlockAddress = ((unsigned long)pucBuffer[2] << 16) + ((unsigned long)pucBuffer[3] << 8) + (unsigned long)pucBuffer[4];
                 } else {
                     ulBlockAddress = ((unsigned long)pucBuffer[5] << 16) + ((unsigned long)pucBuffer[6] << 8) + (unsigned long)pucBuffer[7];
+                }
+                
+                break;
+            }
+            
+            
+            
+            // Sensor block for analog input module.
+            case SENSOR_BLOCK_ANALOG_IN: {
+                // Update the message text in play page.
+                vUpdateMotionPageMsg2("Reading sensor");
+
+                // Get the sensor ID.
+                unsigned char ucSensorId = pucBuffer[1];
+                
+                // Get the sensor channel.
+                unsigned char ucSensorChannel = pucBuffer[2];
+                
+                // Get the sensor threshold.
+                unsigned short usSensorThreshold = ((unsigned short)pucBuffer[3] << 8) + (unsigned short)pucBuffer[4];
+                
+                // Read the value from the analog input module.
+                // If there is error reading the sensor, stop playing and display error message until stop button is pressed.
+                unsigned short usSensorValue;
+                if (eAnalogInputModuleGetValue(ucSensorId, ucSensorChannel, (unsigned char*)&usSensorValue) != EM_NO_ERROR) {
+                    prv_vTrapSensorError(ucSensorId);
+                }
+                
+                // Compare the sensor value with the threshold and get the next block address.
+                if (usSensorValue > usSensorThreshold) {
+                    ulBlockAddress = ((unsigned long)pucBuffer[5] << 16) + ((unsigned long)pucBuffer[6] << 8) + (unsigned long)pucBuffer[7];
+                } else {
+                    ulBlockAddress = ((unsigned long)pucBuffer[8] << 16) + ((unsigned long)pucBuffer[9] << 8) + (unsigned long)pucBuffer[10];
                 }
                 
                 break;

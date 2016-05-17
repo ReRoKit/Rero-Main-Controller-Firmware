@@ -48,6 +48,7 @@ EM_ERROR eHeadGetMicValue(unsigned char ucId, unsigned char *pucValue);
 EM_ERROR eInfraredSensorGetValue(unsigned char ucId, unsigned char *pucValue);
 EM_ERROR eUltrasonicSensorGetValue(unsigned char ucId, unsigned short *pusValue);
 EM_ERROR eTactileSensorGetValue(unsigned char ucId, unsigned char *pucValue);
+EM_ERROR eAnalogInputModuleGetValue(unsigned char ucId, unsigned char ucChannel, unsigned char *pucValue);
 
 EM_ERROR eLineSensorGetAnalog(unsigned char ucId, unsigned char *pucS1, unsigned char *pucS2, unsigned char *pucS3, unsigned char *pucS4);
 EM_ERROR eLineSensorGetDigital(unsigned char ucId, unsigned char *pucValue);
