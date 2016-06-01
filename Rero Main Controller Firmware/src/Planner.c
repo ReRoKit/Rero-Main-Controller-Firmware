@@ -409,6 +409,7 @@ unsigned char ucIsPlannerPlaying(void)
 *******************************************************************************/
 void taskPlanner(void *pvParameters)
 {
+    unsigned short usCounter[10] = {0};
     unsigned long ulBlockAddress = 0x00000013;
     unsigned char pucBuffer[20] = {0};
     
@@ -695,28 +696,22 @@ void taskPlanner(void *pvParameters)
                 // Update the message text in play page.
                 vUpdateMotionPageMsg2("Counter");
                 
-                // Get the counter limit and value.
-                unsigned short usLimit = ((unsigned short)pucBuffer[1] << 8) + (unsigned short)pucBuffer[2];
-                unsigned short usValue = ((unsigned short)pucBuffer[3] << 8) + (unsigned short)pucBuffer[4];
+                // Get the counter ID and limit.
+                unsigned char ucCounterId = pucBuffer[1];
+                unsigned short usLimit = ((unsigned short)pucBuffer[2] << 8) + (unsigned short)pucBuffer[3];
                 
                 // Increase the counter value.
-                usValue++;
+                usCounter[ucCounterId]++;
                 
                 // Get the next block address.
-                if (usValue > usLimit) {
-                    ulBlockAddress = ((unsigned long)pucBuffer[5] << 16) + ((unsigned long)pucBuffer[6] << 8) + (unsigned long)pucBuffer[7];
+                if (usCounter[ucCounterId] > usLimit) {
+                    ulBlockAddress = ((unsigned long)pucBuffer[4] << 16) + ((unsigned long)pucBuffer[5] << 8) + (unsigned long)pucBuffer[6];
                     
                     // Reset the counter value.
-                    usValue = 0;
+                    usCounter[ucCounterId] = 0;
                 } else {
-                    ulBlockAddress = ((unsigned long)pucBuffer[8] << 16) + ((unsigned long)pucBuffer[9] << 8) + (unsigned long)pucBuffer[10];
+                    ulBlockAddress = ((unsigned long)pucBuffer[7] << 16) + ((unsigned long)pucBuffer[8] << 8) + (unsigned long)pucBuffer[9];
                 }
-                
-                // Write back the new counter value to file.
-                xSemaphoreTake(xSdCardMutex, portMAX_DELAY);
-                FSfseek(prv_pxOpenedFile, -17, SEEK_CUR);
-                FSfwrite(&usValue, 1, 2, prv_pxOpenedFile);
-                xSemaphoreGive(xSdCardMutex);
                 
                 break;
             }
