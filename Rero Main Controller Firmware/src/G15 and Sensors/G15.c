@@ -398,6 +398,40 @@ EM_ERROR eG15GetAngleLimit(unsigned char ucId, unsigned short *pusLimitCw, unsig
 
 
 /*******************************************************************************
+ * FUNCTION: eG15SetComplianceSlope
+ *
+ * PARAMETERS:
+ * ~ ucId                   - G15 ID.
+ * ~ ucComplianceSlopeCw    - CW Compliance Slope (1 - 254).
+ * ~ ucComplianceSlopeCcw   - CCW Compliance Slope (1 - 254).
+ *
+ * RETURN:
+ * ~ Error Code.
+ *
+ * DESCRIPTIONS:
+ * Set the CW and CCW Compliance Slope.
+ *
+ *******************************************************************************/
+EM_ERROR eG15SetComplianceSlope(unsigned char ucId, unsigned char ucComplianceSlopeCw, unsigned char ucComplianceSlopeCcw)
+{
+    unsigned char pucTxParam[3];
+
+    // Control table address.
+    pucTxParam[0] = (unsigned char)G15_ADD_CW_COMPLIANCE_SLOPE;
+
+    // CW Compliance Slope.
+    pucTxParam[1] = ucComplianceSlopeCw;
+
+    // CCW Compliance Slope.
+    pucTxParam[2] = ucComplianceSlopeCcw;
+
+    // Send the packet and return the error code.
+    return eEMSendReceivePacket(ucId, EM_INST_WRITE_DATA, sizeof(pucTxParam), pucTxParam, NULL);
+}
+
+
+
+/*******************************************************************************
  * FUNCTION: eG15SetTorqueLimit
  *
  * PARAMETERS:

@@ -8,6 +8,7 @@
 
 #include "TeachMotion.h"
 #include "Variables.h"
+#include "HardwareProfile.h"
 #include "FatFs/FatFsWrapper.h"
 #include "G15 and Sensors/G15.h"
 #include "GUI/MotionPage.h"
@@ -124,6 +125,7 @@ static void prv_vWriteMotionFileHeader(FSFILE *pxMotionFile)
  * DESCRIPTIONS:
  * Start the teaching process by searching for all G15.
  * Do not overwrite the selected memory yet.
+ * Also turn off the Sub-PCB power so that the G15 can be rotated easily.
  *
  *******************************************************************************/
 void vStartTeaching(void)
@@ -148,9 +150,9 @@ void vStartTeaching(void)
                 // Try to read the angle limit from the servo.
                 // If no error, that means a servo is found.
                 if (eG15GetAngleLimit(i, &usLimitCw, &usLimitCcw) == EM_NO_ERROR) {
-                    // Turn off torque and turn on LED.
-                    eG15SetTorqueLed(i, WRITE_NOW, 0, 1);
-
+//                    // Turn off torque and turn on LED.
+//                    eG15SetTorqueLed(i, WRITE_NOW, 0, 1);
+                    
                     // Save the servo ID.
                     prv_pxServoInfo[prv_ucServoCount].ucServoId = i;
 
@@ -171,6 +173,9 @@ void vStartTeaching(void)
             }
         }
     }
+    
+    // Power off the Sub-PCB.
+    vTeachTurnOffSubPcb();
 }
 
 
@@ -190,6 +195,9 @@ void vStartTeaching(void)
  *******************************************************************************/
 void vTeachAddPosition(char *szSelectedFileName)
 {
+    // Turn on Sub-PCB.
+    vTeachTurnOnSubPcb();
+    
     // Get the full file path and add the extension for motion file.
     static char szFullFilePath[MAX_FILENAME_LENGTH * 3];
     strcpy(szFullFilePath, szProgramFolder);
@@ -320,6 +328,9 @@ void vTeachAddPosition(char *szSelectedFileName)
     
     // Release control of SD card.
     xSemaphoreGive(xSdCardMutex);
+    
+    // Power off the Sub-PCB.
+    vTeachTurnOffSubPcb();
 }
 
 
@@ -342,5 +353,60 @@ void vTeachTurnOffServoLed(void)
     unsigned char i;
     for (i = 0; i < prv_ucServoCount; i++) {
         eG15SetLed(prv_pxServoInfo[i].ucServoId, WRITE_NOW, 0);
+    }
+}
+
+
+
+/*******************************************************************************
+ * FUNCTION: vTeachTurnOnSubPcb
+ *
+ * PARAMETERS:
+ * ~ void
+ *
+ * RETURN:
+ * ~ void
+ *
+ * DESCRIPTIONS:
+ * Turn on Sub-PCB.
+ *
+ *******************************************************************************/
+void vTeachTurnOnSubPcb(void)
+{
+    if (POWER_SUB == 0) {
+        // Power on the Sub-PCB.
+        POWER_SUB = 1;
+
+        // Delay for 700ms.
+        vTaskDelay(700 / portTICK_RATE_MS);
+
+        // Change back to Rx Mode.
+        vRxMode();
+    }
+}
+
+
+
+/*******************************************************************************
+ * FUNCTION: vTeachTurnOffSubPcb
+ *
+ * PARAMETERS:
+ * ~ void
+ *
+ * RETURN:
+ * ~ void
+ *
+ * DESCRIPTIONS:
+ * Turn off Sub-PCB.
+ *
+ *******************************************************************************/
+void vTeachTurnOffSubPcb(void)
+{
+    if (POWER_SUB == 1) {
+        // Change to Tx Mode to prevent receiving garbage data.
+        vTxMode();
+
+        // Power off the Sub-PCB.
+        POWER_SUB = 0;
     }
 }

@@ -55,6 +55,7 @@ EM_ERROR eG15SetTorque(unsigned char ucId, EM_WRITE_MODE eWriteMode, unsigned ch
 EM_ERROR eG15SetLed(unsigned char ucId, EM_WRITE_MODE eWriteMode, unsigned char ucLed);
 EM_ERROR eG15SetAngleLimit(unsigned char ucId, unsigned short usLimitCw, unsigned short usLimitCcw);
 EM_ERROR eG15GetAngleLimit(unsigned char ucId, unsigned short *pusLimitCw, unsigned short *pusLimitCcw);
+EM_ERROR eG15SetComplianceSlope(unsigned char ucId, unsigned char ucComplianceSlopeCw, unsigned char ucComplianceSlopeCcw);
 EM_ERROR eG15SetTorqueLimit(unsigned char ucId, unsigned short usTorqueLimit);
 EM_ERROR eG15ResetRegister(unsigned char ucId);
 

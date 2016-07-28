@@ -18,6 +18,8 @@
 void vStartTeaching(void);
 void vTeachAddPosition(char *szSelectedFileName);
 void vTeachTurnOffServoLed(void);
+void vTeachTurnOnSubPcb(void);
+void vTeachTurnOffSubPcb(void);
 
 
 

@@ -47,10 +47,6 @@
 // Minimum packet length (No parameter).
 #define MIN_PACKET_LENGHT   6
 
-// Macro to switch between Tx and Rx.
-#define vTxMode()           EXT_UART_DIR = 0
-#define vRxMode()           EXT_UART_DIR = 1
-
 
 
 /*******************************************************************************
@@ -69,6 +65,7 @@
  *    wheel mode flag is not initialized properly.
  * 2. Trigger the ping command for the ultrasonic sensor. Or else, the reading
  *    for the first measurement will be incorrect.
+ * 3. For showcase robot, change the compliance slope to 0x28.
  *
  *******************************************************************************/
 void vEMInitWorkaround(void)
@@ -84,6 +81,10 @@ void vEMInitWorkaround(void)
             // Enable the torque if it's G15.
             if (eModel == EM_MODEL_G15) {
                 eG15SetTorque(ucId, WRITE_NOW, 1);
+                
+#ifdef SHOWCASE_ROBOT
+//                eG15SetComplianceSlope(ucId, 0x28, 0x28);
+#endif
 
                 // Record the connected servo.
                 pucConnectedServo[ucId] = 1;

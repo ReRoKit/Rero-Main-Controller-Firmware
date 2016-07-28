@@ -95,6 +95,12 @@ typedef enum __attribute__((packed)) {
 
 
 
+// Macro to switch between Tx and Rx.
+#define vTxMode()           EXT_UART_DIR = 0
+#define vRxMode()           EXT_UART_DIR = 1
+
+
+
 /*******************************************************************************
  * PUBLIC FUNCTION PROTOTYPES
  *******************************************************************************/

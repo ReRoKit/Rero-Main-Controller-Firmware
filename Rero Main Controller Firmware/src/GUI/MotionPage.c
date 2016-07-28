@@ -1564,8 +1564,11 @@ WORD usMsgMotionPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                 
             // Stop teaching button.
             case GID_MOTION_BTN_STOPTEACH:
-                // Turn off all servo LED.
-                vTeachTurnOffServoLed();
+//                // Turn off all servo LED.
+//                vTeachTurnOffServoLed();
+                
+                // Turn on Sub-PCB.
+                vTeachTurnOnSubPcb();
                 
                 // Remove the next and stop button.
                 GOLDeleteObjectByID(GID_MOTION_IMG_NEXT);
@@ -1654,6 +1657,10 @@ WORD usMsgMotionPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                 
             // Exit button.
             case GID_BTN_EXIT:
+                // Turn on Sub-PCB.
+                // In case we are in teach mode.
+                vTeachTurnOnSubPcb();
+                
                 // Stop the planner file.
                 if (prv_xSelectedFileInfo.eFileType == PLANNER_FILE) {
                     vPlannerStop(prv_xSelectedFileInfo.szFileName, STOP_NOW);
