@@ -1673,8 +1673,8 @@ WORD usMsgMotionPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                 // Delay a while to let the motion/planner stop running.
                 vTaskDelay(250 / portTICK_RATE_MS);
                 
-                // Disable all output.
-                vEMDisableAllOutput();
+//                // Disable all output.
+//                vEMDisableAllOutput();
                 
                 // Back to main screen.
                 vSetGuiPage(PAGE_MAIN_MENU);
@@ -1783,6 +1783,9 @@ void vUpdateMotionPageEndPlaying(FILE_TYPE ePlayingType)
     if (eGetGuiPage() == PAGE_MOTION) {
         // Make sure the selected file type is same with the playing type.
         if (prv_xSelectedFileInfo.eFileType == ePlayingType) {
+            // Disable all output.
+            vEMDisableAllOutput();
+            
             // If the screen is locked, wake it up.
             vUnlockScreen();
 
