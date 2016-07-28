@@ -12,6 +12,7 @@
 #include "FatFs/FatFsWrapper.h"
 #include "G15 and Sensors/G15.h"
 #include "GUI/MotionPage.h"
+#include "Sound Stream/Beep.h"
 
 // FreeRTOS includes
 #include "FreeRTOS.h"
@@ -331,6 +332,9 @@ void vTeachAddPosition(char *szSelectedFileName)
     
     // Power off the Sub-PCB.
     vTeachTurnOffSubPcb();
+    
+    // Beep to indicate done recording.
+    vPlaySoundStream(&xBeep);
 }
 
 

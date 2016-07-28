@@ -146,6 +146,7 @@
         <itemPath>../include/Sound Stream/Startup.h</itemPath>
         <itemPath>../include/Sound Stream/Shutdown.h</itemPath>
         <itemPath>../include/Sound Stream/Error.h</itemPath>
+        <itemPath>../include/Sound Stream/Beep.h</itemPath>
       </logicalFolder>
       <logicalFolder name="TouchScreen" displayName="TouchScreen" projectFiles="true">
         <itemPath>../include/Touchscreen/TouchScreen.h</itemPath>
@@ -295,6 +296,7 @@
         <itemPath>../src/Sound Stream/Startup.c</itemPath>
         <itemPath>../src/Sound Stream/Shutdown.c</itemPath>
         <itemPath>../src/Sound Stream/Error.c</itemPath>
+        <itemPath>../src/Sound Stream/Beep.c</itemPath>
       </logicalFolder>
       <logicalFolder name="TouchScreen" displayName="TouchScreen" projectFiles="true">
         <itemPath>../src/Touchscreen/TouchScreen.c</itemPath>
