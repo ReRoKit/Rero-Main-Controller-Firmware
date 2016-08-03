@@ -1783,9 +1783,6 @@ void vUpdateMotionPageEndPlaying(FILE_TYPE ePlayingType)
     if (eGetGuiPage() == PAGE_MOTION) {
         // Make sure the selected file type is same with the playing type.
         if (prv_xSelectedFileInfo.eFileType == ePlayingType) {
-            // Disable all output.
-            vEMDisableAllOutput();
-            
             // If the screen is locked, wake it up.
             vUnlockScreen();
 
@@ -1804,9 +1801,11 @@ void vUpdateMotionPageEndPlaying(FILE_TYPE ePlayingType)
             // Enable the gamepad button.
             prv_vEnableGamepadButton();
             
-            
             // Update the state of the buttons and file information.
             prv_vSelectButton(prv_eSelectedButton);
+            
+            // Disable all output.
+            vEMDisableAllOutput();
         }
     }
 }
