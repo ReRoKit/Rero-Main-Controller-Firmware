@@ -732,18 +732,24 @@ void taskPlanner(void *pvParameters)
                 // Get the counter ID and limit.
                 unsigned char ucCounterId = pucBuffer[1];
                 unsigned short usLimit = ((unsigned short)pucBuffer[2] << 8) + (unsigned short)pucBuffer[3];
+                unsigned char ucReset = pucBuffer[4];
                 
                 // Increase the counter value.
                 usCounter[ucCounterId]++;
                 
                 // Get the next block address.
                 if (usCounter[ucCounterId] > usLimit) {
-                    ulBlockAddress = ((unsigned long)pucBuffer[4] << 16) + ((unsigned long)pucBuffer[5] << 8) + (unsigned long)pucBuffer[6];
+                    ulBlockAddress = ((unsigned long)pucBuffer[5] << 16) + ((unsigned long)pucBuffer[6] << 8) + (unsigned long)pucBuffer[7];
                     
-                    // Reset the counter value.
-                    usCounter[ucCounterId]--;
+                    if (ucReset == 1) {
+                        // Reset the counter value.
+                        usCounter[ucCounterId] = 0;
+                    } else {
+                        // No reset
+                        usCounter[ucCounterId]--;
+                    }
                 } else {
-                    ulBlockAddress = ((unsigned long)pucBuffer[7] << 16) + ((unsigned long)pucBuffer[8] << 8) + (unsigned long)pucBuffer[9];
+                    ulBlockAddress = ((unsigned long)pucBuffer[8] << 16) + ((unsigned long)pucBuffer[9] << 8) + (unsigned long)pucBuffer[10];
                 }
                 
                 break;
