@@ -33,6 +33,7 @@
 // Block type.
 typedef enum __attribute__((packed)) {
     MOTION_BLOCK            = 0x00,
+    AUDIO_BLOCK             = 0x10,
     SENSOR_BLOCK_IR         = 0x20,
     SENSOR_BLOCK_CL_AMBIENT = 0x21,
     SENSOR_BLOCK_ULTRASONIC = 0x22,
@@ -45,7 +46,9 @@ typedef enum __attribute__((packed)) {
     COUNTER_BLOCK           = 0x40,
     DELAY_BLOCK             = 0x60,
     CONTROL_SERVO_BLOCK     = 0x80,
-    CONTROL_HEAD_BLOCK      = 0x81
+    CONTROL_HEAD_BLOCK      = 0x81,
+    CONTROL_RGB_LIGHT_BLOCK = 0x82,
+    CONTROL_2WD_BLOCK       = 0x83
 } BLOCK_TYPE;
 
 
@@ -506,7 +509,37 @@ void taskPlanner(void *pvParameters)
             }
 
 
+            // Play audio block.
+            case AUDIO_BLOCK: {
+                // Make sure the semaphore is taken.
+                // It will be given when the motion finish playing.
+                xSemaphoreTake(xPlayingMotionSemaphore, 0);
 
+
+                // Motion file name starts with the planner file name.
+                // Ex: Planner = File1.rpl, Motion = File1_Motion1.rmo.
+                // Make sure it doesn't switch task when creating the file name until start playing the motion file.
+                vTaskEnterCritical();
+                char *szAudioBlockName = &pucBuffer[1];
+                strcpy(prv_szMotionFilename, "/Program/");
+                strcat(prv_szMotionFilename, prv_szOpenedFilename);
+                strcat(prv_szMotionFilename, "_");
+                strcat(prv_szMotionFilename, szAudioBlockName);
+                
+                // Update the message text in play page.
+                vUpdateMotionPageMsg2(szAudioBlockName);
+                
+                // Play the motion file.
+                vPlayWaveFile(prv_szMotionFilename);
+                vTaskExitCritical();
+                
+                // Get the next block address.
+                ulBlockAddress = ((unsigned long)pucBuffer[17] << 16) + ((unsigned long)pucBuffer[18] << 8) + (unsigned long)pucBuffer[19];
+                break;
+            }
+            
+            
+            
             // Sensor block for IR, ultrasonic, head IR and head mic.
             case SENSOR_BLOCK_IR:
             case SENSOR_BLOCK_ULTRASONIC:
@@ -708,7 +741,7 @@ void taskPlanner(void *pvParameters)
                     ulBlockAddress = ((unsigned long)pucBuffer[4] << 16) + ((unsigned long)pucBuffer[5] << 8) + (unsigned long)pucBuffer[6];
                     
                     // Reset the counter value.
-                    usCounter[ucCounterId] = 0;
+                    usCounter[ucCounterId]--;
                 } else {
                     ulBlockAddress = ((unsigned long)pucBuffer[7] << 16) + ((unsigned long)pucBuffer[8] << 8) + (unsigned long)pucBuffer[9];
                 }
@@ -806,6 +839,71 @@ void taskPlanner(void *pvParameters)
 
 
 
+            // Control Servo block.
+            case CONTROL_2WD_BLOCK: {
+                // Update the message text in play page.
+                vUpdateMotionPageMsg2("Control 2WD");
+
+                // Get the servo IDs and indicate that it's used.
+                unsigned char ucLeftServoId = pucBuffer[1];
+                unsigned char ucRightServoId = pucBuffer[2];
+                prv_peUsedOutputModule[ucLeftServoId] = EM_MODEL_G15;
+                prv_peUsedOutputModule[ucRightServoId] = EM_MODEL_G15;
+
+                // Turn On/Off Torque & LED.
+                eG15SetTorqueLed(ucLeftServoId, WRITE_NOW, pucBuffer[4], pucBuffer[5]);
+                eG15SetTorqueLed(ucRightServoId, WRITE_NOW, pucBuffer[4], pucBuffer[5]);
+
+                // Set the servos speed and direction.
+                unsigned short usSpeed = ((unsigned short)pucBuffer[6] << 8) + (unsigned short)pucBuffer[7];
+                
+                G15_SPEED_CONTROL_MODE eLeftSpeedMode = WHEEL_CCW;
+                G15_SPEED_CONTROL_MODE eRightSpeedMode = WHEEL_CW;
+                        
+                // Set the servos direction
+                // 0 - Stop
+                // 1 - Forward
+                // 2 - Turn Left
+                // 3 - Turn Right
+                // 4 - Reverse
+                switch (pucBuffer[3]) {
+                    case 0: {
+                        usSpeed = 0;
+                        break;
+                    }
+                    case 1: {
+                        eLeftSpeedMode = WHEEL_CCW;
+                        eRightSpeedMode =  WHEEL_CW;
+                        break;
+                    }
+                    case 2: { 
+                        eLeftSpeedMode = WHEEL_CW;
+                        eRightSpeedMode =  WHEEL_CW;
+                        break;
+                    }
+                    case 3: { 
+                        eLeftSpeedMode = WHEEL_CCW;
+                        eRightSpeedMode =  WHEEL_CCW;
+                        break;
+                    }
+                    case 4: {
+                        eLeftSpeedMode = WHEEL_CW;
+                        eRightSpeedMode =  WHEEL_CCW;
+                        break;
+                    }
+                }
+                
+                eG15SetSpeed(ucLeftServoId, WRITE_NOW, usSpeed, eLeftSpeedMode);
+                eG15SetSpeed(ucRightServoId, WRITE_NOW, usSpeed, eRightSpeedMode);
+                
+                // Get the next block address.
+                ulBlockAddress = ((unsigned long)pucBuffer[8] << 16) + ((unsigned long)pucBuffer[9] << 8) + (unsigned long)pucBuffer[10];
+
+                break;
+            }
+
+            
+            
             default: {
                 ulBlockAddress = 0x00ffffff;
                 break;

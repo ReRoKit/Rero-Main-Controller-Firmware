@@ -157,7 +157,16 @@ void main(void)
     // And also cycle the torque enable bit for G15. This is the workaround for a bug in old G15 firmware.
     // We can only do that when the G15 / sensor is ready.
     vDisplayLoadingText("Initializing Servos and Sensors...", 1);
+
+#ifdef PRODUCTION
+    // Lower to original baudrate
+    // This is for Production tester which works with 19200 baudrate
+    eEMOriBaudrate();
+#else
+    // Boost the Baudrate for G15 and sensors.
     eEMBoostBaudrate();
+#endif
+    
     vEMInitWorkaround();
     
     

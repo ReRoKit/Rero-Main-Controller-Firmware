@@ -71,7 +71,8 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
 
     const char* szFileName;
     const char* szFilenameHead;
-    unsigned short usFileSize;
+    unsigned short usFileSize;  // 16-bit
+    unsigned long ulLargeFileSize;  // 32-bit
     static char szFullFilePath[MAX_FILENAME_LENGTH * 3];
     static FSFILE *pxFile = NULL;
 
@@ -412,6 +413,36 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
                     break;
                 }
 
+                // Save large data to file (with file name).
+                case 0xa6: {
+                    // Get the file size.
+                    ulLargeFileSize = (unsigned short)pucReceivedPacket[1] + ((unsigned short)pucReceivedPacket[2] << 8)
+                             + ((unsigned short)pucReceivedPacket[3] << 16) + ((unsigned short)pucReceivedPacket[4] << 32);
+
+                    // Get the date and time.
+                    vSetClock((unsigned int)pucReceivedPacket[5] + 2000, pucReceivedPacket[6], pucReceivedPacket[7], pucReceivedPacket[8], pucReceivedPacket[9], pucReceivedPacket[10]);
+
+                    // File name.
+                    szFileName = &pucReceivedPacket[11];
+
+                    // Get the full file path.
+                    strcpy(szFullFilePath, szProgramFolder);
+                    strcat(szFullFilePath, "/");
+                    strcat(szFullFilePath, szFileName);
+
+                    // Open the file for write.
+                    xSemaphoreTake(xSdCardMutex, portMAX_DELAY);
+                    pxFile = FSfopen(szFullFilePath, "w");
+                    xSemaphoreGive(xSdCardMutex);
+
+                    // Calculate the packet length.
+                    usNumberOfRxPacket = (ulLargeFileSize / 64) + 1;
+
+                    // Set next state as receiving data.
+                    eProcessState = RECEIVING_DATA;
+                    break;
+                }
+
                 // Read data from file.
                 case 0xa2: {
                     // File name.
@@ -556,7 +587,8 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
                 // Save data to file.
                 // The file must be opened.
                 case 0x80:
-                case 0xa1: {
+                case 0xa1: 
+                case 0xa6: {
                     xSemaphoreTake(xSdCardMutex, portMAX_DELAY);
                     
                     // Write data into the file

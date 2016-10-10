@@ -97,6 +97,9 @@ typedef enum __attribute__((packed)) {
 } AUTO_SHUTDOWN_SETTING;
 
 
+// For production.
+// Lower to original baudrate 19200.
+//#define PRODUCTION
 
 // For showcase robot.
 // Play file 5 automatically after power up.

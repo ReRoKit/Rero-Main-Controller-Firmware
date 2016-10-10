@@ -107,6 +107,7 @@ typedef enum __attribute__((packed)) {
 
 void vEMInitWorkaround(void);
 EM_ERROR eEMBoostBaudrate(void);
+EM_ERROR eEMOriBaudrate(void);
 void vEMDisableAllOutput(void);
 EM_ERROR eEMPing(unsigned char ucId);
 EM_ERROR eEMGetModel(unsigned char ucId, EM_MODEL *peModel);
