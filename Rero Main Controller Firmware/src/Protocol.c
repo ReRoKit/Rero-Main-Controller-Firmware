@@ -60,7 +60,7 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
     static PROCESS_STATE eProcessState = RECEIVING_COMMAND;
     static unsigned char ucCommand = 0;
     static unsigned short usNumberOfTxPacket;
-    static unsigned short usNumberOfRxPacket;
+    static unsigned long ulNumberOfRxPacket;    // 32-bit
     unsigned char ucTransmitDataLength;
 
     unsigned char ucId = 0;
@@ -71,7 +71,7 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
 
     const char* szFileName;
     const char* szFilenameHead;
-    unsigned short usFileSize;  // 16-bit
+    unsigned short usFileSize;      // 16-bit
     unsigned long ulLargeFileSize;  // 32-bit
     static char szFullFilePath[MAX_FILENAME_LENGTH * 3];
     static FSFILE *pxFile = NULL;
@@ -132,7 +132,7 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
                     xSemaphoreGive(xSdCardMutex);
 
                     // Calculate the packet length.
-                    usNumberOfRxPacket = (usFileSize / 64) + 1;
+                    ulNumberOfRxPacket = (usFileSize / 64) + 1;
 
                     // Set next state as receiving data.
                     eProcessState = RECEIVING_DATA;
@@ -406,7 +406,7 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
                     xSemaphoreGive(xSdCardMutex);
 
                     // Calculate the packet length.
-                    usNumberOfRxPacket = (usFileSize / 64) + 1;
+                    ulNumberOfRxPacket = (usFileSize / 64) + 1;
 
                     // Set next state as receiving data.
                     eProcessState = RECEIVING_DATA;
@@ -416,8 +416,10 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
                 // Save large data to file (with file name).
                 case 0xa6: {
                     // Get the file size.
-                    ulLargeFileSize = (unsigned short)pucReceivedPacket[1] + ((unsigned short)pucReceivedPacket[2] << 8)
-                             + ((unsigned short)pucReceivedPacket[3] << 16) + ((unsigned short)pucReceivedPacket[4] << 32);
+                    ulLargeFileSize = (unsigned long)pucReceivedPacket[1] + 
+                            ((unsigned long)pucReceivedPacket[2] << 8) + 
+                            ((unsigned long)pucReceivedPacket[3] << 16) + 
+                            ((unsigned long)pucReceivedPacket[4] << 32);
 
                     // Get the date and time.
                     vSetClock((unsigned int)pucReceivedPacket[5] + 2000, pucReceivedPacket[6], pucReceivedPacket[7], pucReceivedPacket[8], pucReceivedPacket[9], pucReceivedPacket[10]);
@@ -436,7 +438,7 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
                     xSemaphoreGive(xSdCardMutex);
 
                     // Calculate the packet length.
-                    usNumberOfRxPacket = (ulLargeFileSize / 64) + 1;
+                    ulNumberOfRxPacket = (ulLargeFileSize / 64) + 1;
 
                     // Set next state as receiving data.
                     eProcessState = RECEIVING_DATA;
@@ -597,7 +599,7 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
                     }
 
                     // If there is no more data to receive...
-                    if (--usNumberOfRxPacket == 0) {
+                    if (--ulNumberOfRxPacket == 0) {
                         // Close the file.
                         FSfclose(pxFile);
                         pxFile = NULL;
