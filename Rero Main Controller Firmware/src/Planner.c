@@ -845,6 +845,29 @@ void taskPlanner(void *pvParameters)
 
 
 
+            // Control Light Module.
+            case CONTROL_RGB_LIGHT_BLOCK: {
+                // Update the message text in play page.
+                vUpdateMotionPageMsg2("Control RGB light");
+
+                // Get the light module ID and indicate that it's used.
+                unsigned char ucModuleId = pucBuffer[1];
+                prv_peUsedOutputModule[ucModuleId] = EM_MODEL_RGBLIGHT;
+
+                // Set the RGB LED colour for light module.
+                unsigned char ucRed = pucBuffer[2];
+                unsigned char ucGreen = pucBuffer[3];
+                unsigned char ucBlue = pucBuffer[4];
+                eRgbLightModuleSetRgb(ucModuleId, ucRed, ucGreen, ucBlue);
+
+                // Get the next block address.
+                ulBlockAddress = ((unsigned long)pucBuffer[5] << 16) + ((unsigned long)pucBuffer[6] << 8) + (unsigned long)pucBuffer[7];
+                
+                break;
+            }
+
+
+
             // Control Servo block.
             case CONTROL_2WD_BLOCK: {
                 // Update the message text in play page.
