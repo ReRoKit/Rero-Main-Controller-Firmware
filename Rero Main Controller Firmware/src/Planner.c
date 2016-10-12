@@ -44,6 +44,7 @@ typedef enum __attribute__((packed)) {
     SENSOR_BLOCK_TACTILE    = 0x29,
     SENSOR_BLOCK_ANALOG_IN  = 0x2a,
     COUNTER_BLOCK           = 0x40,
+    COUNTER_BLOCK_2         = 0x41,
     DELAY_BLOCK             = 0x60,
     CONTROL_SERVO_BLOCK     = 0x80,
     CONTROL_HEAD_BLOCK      = 0x81,
@@ -726,6 +727,33 @@ void taskPlanner(void *pvParameters)
             
             // Counter block.
             case COUNTER_BLOCK: {
+                // Update the message text in play page.
+                vUpdateMotionPageMsg2("Counter");
+                
+                // Get the counter ID and limit.
+                unsigned char ucCounterId = pucBuffer[1];
+                unsigned short usLimit = ((unsigned short)pucBuffer[2] << 8) + (unsigned short)pucBuffer[3];
+                
+                // Increase the counter value.
+                usCounter[ucCounterId]++;
+                
+                // Get the next block address.
+                if (usCounter[ucCounterId] > usLimit) {
+                    ulBlockAddress = ((unsigned long)pucBuffer[4] << 16) + ((unsigned long)pucBuffer[5] << 8) + (unsigned long)pucBuffer[6];
+                    
+                    // Reset the counter value.
+                    usCounter[ucCounterId] = 0;
+                } else {
+                    ulBlockAddress = ((unsigned long)pucBuffer[7] << 16) + ((unsigned long)pucBuffer[8] << 8) + (unsigned long)pucBuffer[9];
+                }
+                
+                break;
+            }
+            
+            
+            
+            // Counter block 2 (with Reset option).
+            case COUNTER_BLOCK_2: {
                 // Update the message text in play page.
                 vUpdateMotionPageMsg2("Counter");
                 
