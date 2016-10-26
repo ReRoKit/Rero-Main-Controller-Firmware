@@ -250,7 +250,7 @@ void vCreateShutdownErrorMessage(void)
 
 
     // The contact support message.
-    char *szContact = "Support Email: support@cytron.com.my";
+    char *szContact = "Support Email: support@rero.io";
 
     // Calculate the center position.
     SHORT sContactLeft = (GetMaxX() + 1 - GetTextWidth(szContact, (void *)ptrMediumFont)) / 2;
