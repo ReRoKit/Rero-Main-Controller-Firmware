@@ -559,10 +559,9 @@ void vConfigureBluetooth(void)
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
 
-        // Enable dual mode. Both EDR and BLE can be connected at the same time.
-        // This is required for firmware version v3.12 and above.
-        // Command: AT+DUAL0
-        const unsigned char pucDualCommand[] = "AT+DUAL0";
+        // Disable dual mode. Only either EDR or BLE can be connected at one time.
+        // Command: AT+DUAL1
+        const unsigned char pucDualCommand[] = "AT+DUAL1";
         while (uiUART2GetTxSpace() < (sizeof(pucDualCommand) - 1));
         uiUART2Write(pucDualCommand, sizeof(pucDualCommand) - 1);
 
