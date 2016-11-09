@@ -352,11 +352,12 @@ void taskPowerOff (void *pvParameters)
     DelayMs(200);
     
     // Try to ping the external module and see whether the Sub-PCB is already off.
-    // We will ping with broadcast ID. If there is multiple module connected, the response will be corrupted.
-    // But this doesn't matter. We just want to check is there any respond from the module.
+    // Validate the checksum too as garbage data might be received.
     unsigned char ucId;
     for (ucId = 0; ucId <= EM_MAX_ID; ucId++) {
-        if (eEMPing(ucId) != EM_ERR_RX_TIMEOUT) {
+        EM_ERROR eErrorCode = eEMPing(ucId);
+        if ((eErrorCode != EM_ERR_RX_TIMEOUT) &&
+            ((eErrorCode & EM_ERR_RX_CHECKSUM) == 0)) {
             // We still get the response from external module.
             // Ask the user to unplug the battery instead.
             vCreateShutdownErrorMessage();
