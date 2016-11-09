@@ -190,7 +190,7 @@ void vCreateNumericKeypadPage(void)
             break;
             
         case PAGE_SET_BT_PIN:
-            szPageTitle = "SET BLUETOOTH PIN";
+            szPageTitle = "SET BLUETOOTH PIN (EDR)";
             szReadButton = "Read PIN";
             szTitle2 = "Set PIN to :";
             szRange = "( 0000 - 9999 )";

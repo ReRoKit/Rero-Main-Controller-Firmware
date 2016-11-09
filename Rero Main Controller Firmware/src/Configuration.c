@@ -78,15 +78,6 @@ void vInitConfig(void)
     
     
     
-    // Read the Bluetooth mode.
-    // Write the default value if the file is not found or empty.
-    usActualLength = usReadConfig(pucBt4ModeFilePath, (void*)&eBt4Mode, sizeof(eBt4Mode));
-    if (usActualLength == 0) {
-        usWriteConfig(pucBt4ModeFilePath, (void*)&eBt4Mode, sizeof(eBt4Mode));
-    }
-    
-    
-    
     // Read the auto sleep setting.
     // Write the default value if the file is not found or empty.
     usActualLength = usReadConfig(pucSleepFilePath, (void*)&eAutoSleep, sizeof(eAutoSleep));

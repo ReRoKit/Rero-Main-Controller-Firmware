@@ -28,9 +28,6 @@ volatile unsigned short BLight = 6500;
 // Volume value.
 volatile unsigned char ucVolume = 30;
 
-// Bluetooth 4.0 mode.
-volatile BT4_MODE eBt4Mode = EDR;
-
 // Auto sleep value.
 volatile AUTO_SLEEP_SETTING eAutoSleep = AUTO_SLEEP_2_MIN;
 
@@ -83,7 +80,6 @@ const unsigned char pucLogFilePath[] = "Log.txt";
 const unsigned char pucRobotNameFilePath[] = "/Config/RobotName.txt";
 const unsigned char pucBacklightFilePath[] = "/Config/Backlight.bin";
 const unsigned char pucVolumeFilePath[] = "/Config/Volume.bin";
-const unsigned char pucBt4ModeFilePath[] = "/Config/Bt4Mode.bin";
 const unsigned char pucSleepFilePath[] = "/Config/Sleep.bin";
 const unsigned char pucShutdownFilePath[] = "/Config/Shutdown.bin";
 const unsigned char pucImuCalFilePath[] = "/Config/IMUCal.bin";

@@ -64,14 +64,6 @@ typedef struct {
 
 
 
-// Bluetooth 4.0 mode.
-typedef enum __attribute__((packed)) {
-    EDR,
-    BLE
-} BT4_MODE;
-
-
-
 // Auto sleep settings.
 typedef enum __attribute__((packed)) {
     AUTO_SLEEP_15_SEC = 0,
@@ -130,9 +122,6 @@ extern volatile unsigned short BLight;
 // Volume value.
 extern volatile unsigned char ucVolume;
 
-// Bluetooth 4.0 mode.
-extern volatile BT4_MODE eBt4Mode;
-
 // Auto sleep value.
 extern volatile AUTO_SLEEP_SETTING eAutoSleep;
 
@@ -182,7 +171,6 @@ extern const unsigned char pucLogFilePath[];
 extern const unsigned char pucRobotNameFilePath[];
 extern const unsigned char pucBacklightFilePath[];
 extern const unsigned char pucVolumeFilePath[];
-extern const unsigned char pucBt4ModeFilePath[];
 extern const unsigned char pucSleepFilePath[];
 extern const unsigned char pucShutdownFilePath[];
 extern const unsigned char pucImuCalFilePath[];

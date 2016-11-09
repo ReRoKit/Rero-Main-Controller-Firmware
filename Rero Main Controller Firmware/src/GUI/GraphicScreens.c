@@ -22,7 +22,6 @@
 #include "GUI/SensorPage.h"
 #include "GUI/LockScreen.h"
 #include "GUI/UsbPage.h"
-#include "GUI/BtSettingsPage.h"
 #include "GUI/BluetoothPage.h"
 #include "GUI/SetBtPinPage.h"
 #include "GUI/WallpaperPage.h"
@@ -726,7 +725,6 @@ WORD GOLDrawCallback(void)
                 case PAGE_WALLPAPER:    vCreateWallpaperPage();     break;
                 case PAGE_SETTINGS:     vCreateSettingsPage();      break;
                 case PAGE_SET_ID:       vCreateSetIdPage();         break;
-                case PAGE_BT_SETTINGS:  vCreateBtSettingsPage();    break;
                 case PAGE_SET_BT_PIN:   vCreateSetBtPinPage();      break;
                 
                 case PAGE_USB:          vCreateUsbPage();           break;
@@ -803,7 +801,6 @@ WORD GOLMsgCallback(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
             case PAGE_WALLPAPER:    return usMsgWallpaperPage(objMsg, pObj, pMsg);
             case PAGE_SETTINGS:     return usMsgSettingsPage(objMsg, pObj, pMsg);
             case PAGE_SET_ID:       return usMsgSetIdPage(objMsg, pObj, pMsg);
-            case PAGE_BT_SETTINGS:  return usMsgBtSettingsPage(objMsg, pObj, pMsg);
             case PAGE_SET_BT_PIN:   return usMsgSetBtPinPage(objMsg, pObj, pMsg);
             
             case PAGE_USER_PROGRAM: return usMsgUserProgramPage(objMsg, pObj, pMsg);
