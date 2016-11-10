@@ -590,6 +590,9 @@ void taskPlanner(void *pvParameters)
                 vPlayWaveFile(prv_szMotionFilename);
                 vTaskExitCritical();
                 
+                // Delay for the audio to start playing.
+                vTaskDelay(20 / portTICK_RATE_MS);
+                
                 // Get the next block address.
                 ulBlockAddress = ((unsigned long)pucBuffer[17] << 16) + ((unsigned long)pucBuffer[18] << 8) + (unsigned long)pucBuffer[19];
                 break;
