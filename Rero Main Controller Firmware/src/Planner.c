@@ -512,13 +512,8 @@ void taskPlanner(void *pvParameters)
 
             // Play audio block.
             case AUDIO_BLOCK: {
-                // Make sure the semaphore is taken.
-                // It will be given when the motion finish playing.
-                xSemaphoreTake(xPlayingMotionSemaphore, 0);
-
-
-                // Motion file name starts with the planner file name.
-                // Ex: Planner = File1.rpl, Motion = File1_Motion1.rmo.
+                // Audio file name starts with the planner file name.
+                // Ex: Planner = File1.rpl, Audio = File1_Audio1.wav.
                 // Make sure it doesn't switch task when creating the file name until start playing the motion file.
                 vTaskEnterCritical();
                 char *szAudioBlockName = &pucBuffer[1];
@@ -530,7 +525,7 @@ void taskPlanner(void *pvParameters)
                 // Update the message text in play page.
                 vUpdateMotionPageMsg2(szAudioBlockName);
                 
-                // Play the motion file.
+                // Play the audio file.
                 vPlayWaveFile(prv_szMotionFilename);
                 vTaskExitCritical();
                 
