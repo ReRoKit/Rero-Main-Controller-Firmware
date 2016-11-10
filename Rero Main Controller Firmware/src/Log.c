@@ -93,13 +93,15 @@ void vLogStackWatermark(const char* szTaskName, unsigned short usWatermark)
     // Write the message.
     const char szTxt1[] = "[Stack Error] ";
     FSfwrite(szTxt1, 1, sizeof(szTxt1) - 1, pxLogFile);
-
     FSfwrite(szTaskName, 1, strlen(szTaskName), pxLogFile);
 
     const char szTxt2[] = "    Watermark: ";
     FSfwrite(szTxt2, 1, sizeof(szTxt2) - 1, pxLogFile);
-
     FSfwrite(szWatermark, 1, strlen(szWatermark), pxLogFile);
+    
+    const char szTxt3[] = "    Firmware: ";
+    FSfwrite(szTxt3, 1, sizeof(szTxt3) - 1, pxLogFile);
+    FSfwrite(szFirmwareVersion, 1, strlen(szFirmwareVersion), pxLogFile);
     
     const char szCrLf[] = "\r\n";
     FSfwrite(szCrLf, 1, sizeof(szCrLf) - 1, pxLogFile);
@@ -128,11 +130,16 @@ void vLogStackWatermark(const char* szTaskName, unsigned short usWatermark)
  *******************************************************************************/
 void vLogStackOverflow(const char* szTaskName)
 {
-    const char szLogMsg[] = "[Severe Stack Error] Task Name: ";
-
     FSFILE *pxLogFile = FSfopen(pucLogFilePath, "a");
+    
+    const char szLogMsg[] = "[Severe Stack Error] Task Name: ";
     FSfwrite(szLogMsg, 1, sizeof(szLogMsg) - 1, pxLogFile);
     FSfwrite(szTaskName, 1, strlen(szTaskName), pxLogFile);
+    
+    const char szFirmwareTitle[] = "    Firmware: ";
+    FSfwrite(szFirmwareTitle, 1, sizeof(szFirmwareTitle) - 1, pxLogFile);
+    FSfwrite(szFirmwareVersion, 1, strlen(szFirmwareVersion), pxLogFile);
+    
     FSfwrite("\r\n", 1, 2, pxLogFile);
     FSfclose(pxLogFile);
 }
@@ -163,8 +170,11 @@ void vLogMallocError(const char* szSource)
     // Write the message.
     const char szTxt1[] = "[Malloc Error] ";
     FSfwrite(szTxt1, 1, sizeof(szTxt1) - 1, pxLogFile);
-
     FSfwrite(szSource, 1, strlen(szSource), pxLogFile);
+    
+    const char szTxt2[] = "    Firmware: ";
+    FSfwrite(szTxt2, 1, sizeof(szTxt2) - 1, pxLogFile);
+    FSfwrite(szFirmwareVersion, 1, strlen(szFirmwareVersion), pxLogFile);
 
     const char szCrLf[] = "\r\n";
     FSfwrite(szCrLf, 1, sizeof(szCrLf) - 1, pxLogFile);
@@ -208,8 +218,11 @@ void vLogGeneralException(unsigned char ucExcCode)
     // Write the message.
     const char szTxt1[] = "[General Exception] Cause: ";
     FSfwrite(szTxt1, 1, sizeof(szTxt1) - 1, pxLogFile);
-
     FSfwrite(&ucExcCode, 1, 1, pxLogFile);
+    
+    const char szTxt2[] = "    Firmware: ";
+    FSfwrite(szTxt2, 1, sizeof(szTxt2) - 1, pxLogFile);
+    FSfwrite(szFirmwareVersion, 1, strlen(szFirmwareVersion), pxLogFile);
 
     const char szCrLf[] = "\r\n";
     FSfwrite(szCrLf, 1, sizeof(szCrLf) - 1, pxLogFile);
