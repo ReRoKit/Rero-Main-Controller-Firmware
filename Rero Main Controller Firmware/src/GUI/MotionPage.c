@@ -407,21 +407,23 @@ static void prv_vToggleFileLock(SELECTED_BUTTON eSelectedButton)
     // Get the file information.
     prv_vUpdateFileInfo(eSelectedButton);
     
-    // Toggle the read only flag.
-    xSemaphoreTake(xSdCardMutex, portMAX_DELAY);
-    if (xFSSetReadOnlyFlag(prv_xSelectedFileInfo.szFullFilePath, !prv_xSelectedFileInfo.ucLock) == FR_OK) {
-        prv_xSelectedFileInfo.ucLock ^= 1;
-        
-        // Clear the error message.
-        vUpdateMotionPageMsg1("");
-        vUpdateMotionPageMsg2("");
-    }
-    else {
-        // Show the error message if failed to toggle the flag.
+    // Show the error message if the file is empty.
+    if (prv_xSelectedFileInfo.eFileType == NOT_AVAILABLE) {
         vUpdateMotionPageMsg1("Error:");
         vUpdateMotionPageMsg2("Empty file");
     }
-    xSemaphoreGive(xSdCardMutex);
+    
+    // File is available.
+    else {
+        // Clear the error message.
+        vUpdateMotionPageMsg1("");
+        vUpdateMotionPageMsg2("");
+        
+        // Toggle the read only flag.
+        prv_xSelectedFileInfo.ucLock = !prv_xSelectedFileInfo.ucLock;
+
+        vSetProgramFilesReadOnlyFlag(prv_xSelectedFileInfo.szFileName, prv_xSelectedFileInfo.ucLock);
+    }
 }
 
 

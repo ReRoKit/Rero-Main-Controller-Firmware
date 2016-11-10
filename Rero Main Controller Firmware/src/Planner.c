@@ -380,6 +380,67 @@ unsigned char ucDeleteProgramFiles(const char *szFilenameHead)
 
 
 /*******************************************************************************
+ * PUBLIC FUNCTION: vSetProgramFilesReadOnlyFlag
+ *
+ * PARAMETERS:
+ * ~ szFilenameHead     - Begining of the file name that we want to set the flag.
+ * ~ ucReadOnlyFlag     - The state of the read only flag.
+ *
+ * RETURN:
+ * ~ void
+ *
+ * DESCRIPTIONS:
+ * Set the read only flag for all the files in the program folder start with
+ * the specified file name.
+ *
+ *******************************************************************************/
+void vSetProgramFilesReadOnlyFlag(const char *szFilenameHead, unsigned char ucReadOnlyFlag)
+{
+    static char szLongFileName[(MAX_FILENAME_LENGTH * 2) + 4] = {0};
+    static char szFullFilePath[(MAX_FILENAME_LENGTH * 3) + 4] = {0};
+
+    static DIR xDirectory;
+    static FILINFO xFileInfo;
+    xFileInfo.lfname = szLongFileName;
+    xFileInfo.lfsize = sizeof(szLongFileName);
+
+    xSemaphoreTake(xSdCardMutex, portMAX_DELAY);
+    
+    // Open the directory of the program file and make sure there is no error.
+    if (f_opendir(&xDirectory, szProgramFolder) == FR_OK) {
+        // Loop through the list of file and set the read only flag.
+        do {
+            // Read the file list.
+            if (f_readdir(&xDirectory, &xFileInfo) != FR_OK) {
+                break;
+            }
+
+            // Get the filename.
+            char *szFileName = (xFileInfo.lfname[0] != 0)? xFileInfo.lfname : xFileInfo.fname;
+
+            // If the begining of the file name matched.
+            // Set the read-only flag.
+            if (strncmp(szFilenameHead, szFileName, strlen(szFilenameHead)) == 0) {
+                // Get the full path for the file.
+                strcpy(szFullFilePath, szProgramFolder);
+                strcat(szFullFilePath, "/");
+                strcat(szFullFilePath, szFileName);
+                
+                // Set the flag.
+                xFSSetReadOnlyFlag(szFullFilePath, ucReadOnlyFlag);
+            }
+            
+        } while (xFileInfo.fname[0] != 0);
+        
+        f_closedir(&xDirectory);
+    }
+
+    xSemaphoreGive(xSdCardMutex);
+}
+
+
+
+/*******************************************************************************
  * PUBLIC FUNCTION: ucIsPlannerPlaying
  *
  * PARAMETERS:
