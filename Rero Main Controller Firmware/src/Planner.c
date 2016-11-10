@@ -250,9 +250,6 @@ void vPlannerStop(const char* szPlannerFileName, MOTION_STATE eStopMode)
 
             // Stop the playing motion.
             vPlayMotionStop(prv_szMotionFilename, eStopMode);
-            
-            // Stop playing audio.
-            vStopPlayingAudio();
         }
     }
 }
@@ -1059,6 +1056,9 @@ void taskPlanner(void *pvParameters)
     FSfclose(prv_pxOpenedFile);
     prv_pxOpenedFile = NULL;
     xSemaphoreGive(xSdCardMutex);
+    
+    // Stop playing audio.
+    vStopPlayingAudio();
 
     // Update the play page GUI when finish playing.
     vUpdateMotionPageEndPlaying(PLANNER_FILE);
