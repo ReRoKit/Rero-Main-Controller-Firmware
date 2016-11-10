@@ -250,6 +250,9 @@ void vPlannerStop(const char* szPlannerFileName, MOTION_STATE eStopMode)
 
             // Stop the playing motion.
             vPlayMotionStop(prv_szMotionFilename, eStopMode);
+            
+            // Stop playing audio.
+            vStopPlayingAudio();
         }
     }
 }

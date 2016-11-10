@@ -4,13 +4,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/GitHub%20Projects/Rero-Main-Controller-Firmware/Rero%20Main%20Controller%20Firmware/src/Bluetooth/BluetoothControl.c</file>
-            <file>file:/F:/GitHub%20Projects/Rero-Main-Controller-Firmware/Rero%20Main%20Controller%20Firmware/src/PlayMotion.c</file>
+            <file>file:/F:/GitHub%20Projects/Rero-Main-Controller-Firmware/Rero%20Main%20Controller%20Firmware/include/GUI/MotionPage.h</file>
             <file>file:/F:/GitHub%20Projects/Rero-Main-Controller-Firmware/Rero%20Main%20Controller%20Firmware/include/Variables.h</file>
-            <file>file:/F:/GitHub%20Projects/Rero-Main-Controller-Firmware/Rero%20Main%20Controller%20Firmware/src/GUI/PopUpMessagePage.c</file>
-            <file>file:/F:/GitHub%20Projects/Rero-Main-Controller-Firmware/Rero%20Main%20Controller%20Firmware/src/G15%20and%20Sensors/ExtModule.c</file>
-            <file>file:/F:/GitHub%20Projects/Rero-Main-Controller-Firmware/Rero%20Main%20Controller%20Firmware/include/G15%20and%20Sensors/ExtModule.h</file>
-            <file>file:/F:/GitHub%20Projects/Rero-Main-Controller-Firmware/Rero%20Main%20Controller%20Firmware/src/Power.c</file>
+            <file>file:/F:/GitHub%20Projects/Rero-Main-Controller-Firmware/Rero%20Main%20Controller%20Firmware/src/GUI/MotionPage.c</file>
+            <file>file:/F:/GitHub%20Projects/Rero-Main-Controller-Firmware/Rero%20Main%20Controller%20Firmware/src/Protocol.c</file>
+            <file>file:/F:/GitHub%20Projects/Rero-Main-Controller-Firmware/Rero%20Main%20Controller%20Firmware/src/Planner.c</file>
+            <file>file:/F:/GitHub%20Projects/Rero-Main-Controller-Firmware/Rero%20Main%20Controller%20Firmware/include/Planner.h</file>
         </group>
     </open-files>
 </project-private>
