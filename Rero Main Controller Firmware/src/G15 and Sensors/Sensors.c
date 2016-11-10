@@ -134,6 +134,20 @@ typedef enum __attribute__((packed)) {
 } LN_CT_ADD;
 
 
+// RGB Light Module Control Table Address.
+typedef enum __attribute__((packed)) {
+    RL_ADD_RETURN_ENABLE    = 0x06,
+    RL_ADD_RESERVED         = 0x07,
+    RL_ADD_ALARM_LED        = 0x08,
+    RL_ADD_LED              = 0x09,
+    RL_ADD_RED              = 0x0a,
+    RL_ADD_GREEN            = 0x0b,
+    RL_ADD_BLUE             = 0x0c,
+    RL_ADD_BRIGHTNESS       = 0x0d, // Currently not used.
+    RL_ADD_LOCK             = 0x0e
+} RL_CT_ADD;
+
+
 
 /*******************************************************************************
  * FUNCTION: eSensorSetLed
@@ -165,6 +179,7 @@ EM_ERROR eSensorSetLed(unsigned char ucId, EM_MODEL eModuleType, unsigned char u
         case EM_MODEL_TACTILE:  pucTxParam[0] = TT_ADD_LED;     break;
         case EM_MODEL_COLOUR:   pucTxParam[0] = CL_ADD_LED;     break;
         case EM_MODEL_LINE:     pucTxParam[0] = LN_ADD_LED;     break;
+        case EM_MODEL_RGBLIGHT: pucTxParam[0] = RL_ADD_LED;     break;
         default:                return EM_NO_ERROR;             break;
     }
 
@@ -879,3 +894,135 @@ EM_ERROR eColourSensorGetColour(unsigned char ucId, CL_SENSOR_COLOUR *peColour)
     // Return the error code.
     return eErrorCode;
 }
+
+
+
+/*******************************************************************************
+ * FUNCTION: eRgbLightModuleSetRgb
+ *
+ * PARAMETERS:
+ * ~ ucId           - Sensor ID.
+ * ~ ucRed          - Red value for the RGB LED.
+ * ~ ucGreen        - Green value for the RGB LED.
+ * ~ ucBlue         - Blue value for the RGB LED.
+ *
+ *
+ * RETURN:
+ * ~ Error Code.
+ *
+ * DESCRIPTIONS:
+ * Set the LED colour of the RGB Light Module.
+ *
+ *******************************************************************************/
+EM_ERROR eRgbLightModuleSetRgb(unsigned char ucId, unsigned char ucRed, unsigned char ucGreen, unsigned char ucBlue)
+{
+    unsigned char pucTxParam[4];
+
+    // Set the RGB value and left-right LED control value.
+    pucTxParam[0] = RL_ADD_RED;         // Control table address for Red value.
+    pucTxParam[1] = ucRed;              // Red value.
+    pucTxParam[2] = ucGreen;            // Green value.
+    pucTxParam[3] = ucBlue;             // Blue value.
+    
+    return eEMSendReceivePacket(ucId, EM_INST_WRITE_DATA, sizeof(pucTxParam), pucTxParam, NULL);
+}
+
+
+
+/*******************************************************************************
+ * FUNCTION: eRgbLightModuleGetRgb
+ *
+ * PARAMETERS:
+ * ~ ucId           - Sensor ID.
+ * ~ pucRed         - Buffer to return the red value.
+ * ~ pucGreen       - Buffer to return the green value.
+ * ~ pucBlue        - Buffer to return the blue value.
+ *
+ * RETURN:
+ * ~ Error Code.
+ *
+ * DESCRIPTIONS:
+ * Get the RGB value from RGB Light Module.
+ *
+ *******************************************************************************/
+EM_ERROR eRgbLightModuleGetRgb(unsigned char ucId, unsigned char *pucRed, unsigned char *pucGreen, unsigned char *pucBlue)
+{
+    unsigned char pucTxParam[2];
+    unsigned char pucRxBuffer[3];
+
+    // Control table address.
+    pucTxParam[0] = RL_ADD_RED;
+    
+    // Number of bytes to read.
+    pucTxParam[1] = 3;
+
+    // Send the packet and 
+    EM_ERROR eErrorCode = eEMSendReceivePacket(ucId, EM_INST_READ_DATA, sizeof(pucTxParam), pucTxParam, pucRxBuffer);
+    
+    // Save the RGB value.
+    *pucRed = pucRxBuffer[0];
+    *pucGreen = pucRxBuffer[1];
+    *pucBlue = pucRxBuffer[2];
+    
+    // Return the error code.
+    return eErrorCode;
+}
+
+
+
+///*******************************************************************************
+// * FUNCTION: eRgbLightModuleSetBrightness
+// *
+// * PARAMETERS:
+// * ~ ucId           - Sensor ID.
+// * ~ ucValue        - Brightness value.
+// *
+// * RETURN:
+// * ~ Error Code.
+// *
+// * DESCRIPTIONS:
+// * Set the brightness value of RGB Light Module.
+// *
+// *******************************************************************************/
+//EM_ERROR eRgbLightModuleSetBrightness(unsigned char ucId, unsigned char ucValue)
+//{
+//    unsigned char pucTxParam[2];
+//
+//    // Control table address.
+//    pucTxParam[0] = LM_ADD_BRIGHTNESS;
+//
+//    // Value.
+//    pucTxParam[1] = ucValue;
+//
+//    return eEMSendReceivePacket(ucId, EM_INST_WRITE_DATA, sizeof(pucTxParam), pucTxParam, NULL);
+//}
+//
+//
+//
+///*******************************************************************************
+// * FUNCTION: eRgbLightModuleGetBrightness
+// *
+// * PARAMETERS:
+// * ~ ucId           - Sensor ID.
+// * ~ pucValue       - Buffer to return the value.
+// *
+// * RETURN:
+// * ~ Error Code.
+// *
+// * DESCRIPTIONS:
+// * Get the brightness value from RGB Light Module.
+// *
+// *******************************************************************************/
+//EM_ERROR eRgbLightModuleGetBrightness(unsigned char ucId, unsigned char *pucValue)
+//{
+//    unsigned char pucTxParam[2];
+//
+//    // Control table address.
+//    pucTxParam[0] = LM_ADD_BRIGHTNESS;
+//    
+//    // Number of bytes to read.
+//    pucTxParam[1] = 1;
+//
+//    // Send the packet and return the error code.
+//    return eEMSendReceivePacket(ucId, EM_INST_READ_DATA, sizeof(pucTxParam), pucTxParam, pucValue);
+//}

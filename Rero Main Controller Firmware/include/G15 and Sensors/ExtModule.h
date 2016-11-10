@@ -35,7 +35,8 @@ typedef enum __attribute__((packed)) {
     EM_MODEL_HM_IR,                 // Infrared sensor on head module.
     EM_MODEL_TACTILE    = 0x5453,   // Tactile sensor.
     EM_MODEL_COLOUR     = 0x4353,   // Colour sensor.
-    EM_MODEL_LINE       = 0x4c53    // Line sensor.
+    EM_MODEL_LINE       = 0x4c53,   // Line sensor.
+    EM_MODEL_RGBLIGHT   = 0x4c4d    // RGB Light Module.
 } EM_MODEL;
 
 
@@ -107,6 +108,7 @@ typedef enum __attribute__((packed)) {
 
 void vEMInitWorkaround(void);
 EM_ERROR eEMBoostBaudrate(void);
+EM_ERROR eEMOriBaudrate(void);
 void vEMDisableAllOutput(void);
 EM_ERROR eEMPing(unsigned char ucId);
 EM_ERROR eEMGetModel(unsigned char ucId, EM_MODEL *peModel);

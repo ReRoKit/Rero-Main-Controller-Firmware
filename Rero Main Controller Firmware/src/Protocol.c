@@ -60,7 +60,7 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
     static PROCESS_STATE eProcessState = RECEIVING_COMMAND;
     static unsigned char ucCommand = 0;
     static unsigned short usNumberOfTxPacket;
-    static unsigned short usNumberOfRxPacket;
+    static unsigned long ulNumberOfRxPacket;    // 32-bit
     unsigned char ucTransmitDataLength;
 
     unsigned char ucId = 0;
@@ -71,7 +71,8 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
 
     const char* szFileName;
     const char* szFilenameHead;
-    unsigned short usFileSize;
+    unsigned short usFileSize;      // 16-bit
+    unsigned long ulLargeFileSize;  // 32-bit
     static char szFullFilePath[MAX_FILENAME_LENGTH * 3];
     static FSFILE *pxFile = NULL;
 
@@ -131,7 +132,7 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
                     xSemaphoreGive(xSdCardMutex);
 
                     // Calculate the packet length.
-                    usNumberOfRxPacket = (usFileSize / 64) + 1;
+                    ulNumberOfRxPacket = (unsigned long)((usFileSize / 64) + 1);
 
                     // Set next state as receiving data.
                     eProcessState = RECEIVING_DATA;
@@ -405,7 +406,39 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
                     xSemaphoreGive(xSdCardMutex);
 
                     // Calculate the packet length.
-                    usNumberOfRxPacket = (usFileSize / 64) + 1;
+                    ulNumberOfRxPacket = (unsigned long)((usFileSize / 64) + 1);
+
+                    // Set next state as receiving data.
+                    eProcessState = RECEIVING_DATA;
+                    break;
+                }
+
+                // Save large data to file (with file name).
+                case 0xa6: {
+                    // Get the file size.
+                    ulLargeFileSize = (unsigned long)pucReceivedPacket[1] + 
+                            ((unsigned long)pucReceivedPacket[2] << 8) + 
+                            ((unsigned long)pucReceivedPacket[3] << 16) + 
+                            ((unsigned long)pucReceivedPacket[4] << 32);
+
+                    // Get the date and time.
+                    vSetClock((unsigned int)pucReceivedPacket[5] + 2000, pucReceivedPacket[6], pucReceivedPacket[7], pucReceivedPacket[8], pucReceivedPacket[9], pucReceivedPacket[10]);
+
+                    // File name.
+                    szFileName = &pucReceivedPacket[11];
+
+                    // Get the full file path.
+                    strcpy(szFullFilePath, szProgramFolder);
+                    strcat(szFullFilePath, "/");
+                    strcat(szFullFilePath, szFileName);
+
+                    // Open the file for write.
+                    xSemaphoreTake(xSdCardMutex, portMAX_DELAY);
+                    pxFile = FSfopen(szFullFilePath, "w");
+                    xSemaphoreGive(xSdCardMutex);
+
+                    // Calculate the packet length.
+                    ulNumberOfRxPacket = (ulLargeFileSize / 64) + 1;
 
                     // Set next state as receiving data.
                     eProcessState = RECEIVING_DATA;
@@ -556,7 +589,8 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
                 // Save data to file.
                 // The file must be opened.
                 case 0x80:
-                case 0xa1: {
+                case 0xa1: 
+                case 0xa6: {
                     xSemaphoreTake(xSdCardMutex, portMAX_DELAY);
                     
                     // Write data into the file
@@ -565,7 +599,7 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
                     }
 
                     // If there is no more data to receive...
-                    if (--usNumberOfRxPacket == 0) {
+                    if (--ulNumberOfRxPacket == 0) {
                         // Close the file.
                         FSfclose(pxFile);
                         pxFile = NULL;

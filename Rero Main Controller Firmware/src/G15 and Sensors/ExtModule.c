@@ -121,7 +121,7 @@ void vEMInitWorkaround(void)
  *
  * DESCRIPTIONS:
  * Send a command to change the default baudrate for external module from
- * 19200 to 250000.
+ * 19200 to 115200.
  *
  *******************************************************************************/
 EM_ERROR eEMBoostBaudrate(void)
@@ -145,6 +145,58 @@ EM_ERROR eEMBoostBaudrate(void)
 
     // Reset to new Baudrate.
     vUART5SetBaudrate(EXT_UART_BOOSTED_BAUDRATE);
+    DelayMs(10);
+
+    // Reset the external module by power cycling them.
+    POWER_SUB = 0;
+    DelayMs(100);
+    POWER_SUB = 1;
+    DelayMs(700);
+
+    // Clear the UART error if there is any.
+    xSystemError.bUartError = 0;
+
+    // Return the error code.
+    return eErrorCode;
+}
+
+
+
+/*******************************************************************************
+ * FUNCTION: eEMOriBaudrate
+ *
+ * PARAMETERS:
+ * ~ void
+ *
+ * RETURN:
+ * ~ Error Code.
+ *
+ * DESCRIPTIONS:
+ * Send a command to change the default baudrate for external module from
+ * 115200 to 19200.
+ *
+ *******************************************************************************/
+EM_ERROR eEMOriBaudrate(void)
+{
+    unsigned char pucTxParam[2];
+
+
+    // The command is to be sent in original baudrate.
+    vUART5SetBaudrate(EXT_UART_BOOSTED_BAUDRATE);
+
+
+    // Control table address.
+    pucTxParam[0] = (unsigned char)EM_ADD_BAUD_RATE;
+
+    // New baud rate.
+    pucTxParam[1] = (unsigned char)(2000000 / EXT_UART_ORI_BAUDRATE) - 1;
+
+    // Send the packet.
+    EM_ERROR eErrorCode = eEMSendReceivePacket(EM_BROADCAST_ID, EM_INST_WRITE_DATA, sizeof(pucTxParam), pucTxParam, NULL);
+
+
+    // Reset to new Baudrate.
+    vUART5SetBaudrate(EXT_UART_ORI_BAUDRATE);
     DelayMs(10);
 
     // Reset the external module by power cycling them.

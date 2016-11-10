@@ -23,6 +23,7 @@
 #define RERO_DARK_BLUE      RGBConvert(0x15, 0x24, 0x35)
 #define RERO_DARK_GREY      RGBConvert(0x50, 0x50, 0x50)
 #define RERO_LIGHT_GREY     RGBConvert(0x75, 0x75, 0x75)
+#define PRODUCTION_RED      RGBConvert(0xef, 0x45, 0x45)
 
 
 
