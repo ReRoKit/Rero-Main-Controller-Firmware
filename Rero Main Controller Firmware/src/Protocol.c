@@ -419,7 +419,7 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
                     ulLargeFileSize = (unsigned long)pucReceivedPacket[1] + 
                             ((unsigned long)pucReceivedPacket[2] << 8) + 
                             ((unsigned long)pucReceivedPacket[3] << 16) + 
-                            ((unsigned long)pucReceivedPacket[4] << 32);
+                            ((unsigned long)pucReceivedPacket[4] << 24);
 
                     // Get the date and time.
                     vSetClock((unsigned int)pucReceivedPacket[5] + 2000, pucReceivedPacket[6], pucReceivedPacket[7], pucReceivedPacket[8], pucReceivedPacket[9], pucReceivedPacket[10]);
