@@ -65,11 +65,11 @@ void vCreateScheme(void)
     pxDefaultScheme = GOLCreateScheme();
 
 #ifdef PRODUCTION
-    pxDefaultScheme->EmbossDkColor      = PRODUCTION_RED;     // Outline colour when not pressed / selected.
-    pxDefaultScheme->EmbossLtColor      = PRODUCTION_RED;     // Outline colour when pressed / selected.
+    pxDefaultScheme->EmbossDkColor      = PRODUCTION_RED;     	// Outline colour when not pressed / selected.
+    pxDefaultScheme->EmbossLtColor      = PRODUCTION_RED;     	// Outline colour when pressed / selected.
 #else  
-    pxDefaultScheme->EmbossDkColor      = RERO_LIGHT_GREEN;      // Fill colour when not pressed / selected.
-    pxDefaultScheme->EmbossLtColor      = RERO_LIGHT_GREEN;      // Fill colour when pressed / selected.
+    pxDefaultScheme->EmbossDkColor      = RERO_LIGHT_GREEN;     // Outline colour when not pressed / selected.
+    pxDefaultScheme->EmbossLtColor      = RERO_LIGHT_GREEN;     // Outline colour when pressed / selected.
 #endif
 
     pxDefaultScheme->TextColor0         = WHITE;                // Text colour when not pressed / selected.

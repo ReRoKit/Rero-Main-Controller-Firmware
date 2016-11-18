@@ -110,7 +110,17 @@ WORD usMsgSetBtPinPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
 
             // Exit button.
             case GID_BTN_EXIT:
-                vSetGuiPage(PAGE_BT_SETTINGS);
+                // Reconfigure the bluetooth.
+                vConfigureBluetooth();
+                
+                // Show the message and reset Bluetooth in TRANSPARENT mode.
+                vCreateGenericMessagePage("Resetting bluetooth module...");
+                vResetBluetooth(TRANSPARENT);
+
+                // Release the Bluetooth mutex.
+                xSemaphoreGive(xBluetoothMutex);
+
+                vSetGuiPage(PAGE_SETTINGS);
                 break;
         }
 

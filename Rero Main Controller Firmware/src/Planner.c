@@ -896,7 +896,7 @@ void taskPlanner(void *pvParameters)
 
 
 
-            // Control Servo block.
+            // Control 2WD block.
             case CONTROL_2WD_BLOCK: {
                 // Update the message text in play page.
                 vUpdateMotionPageMsg2("Control 2WD");

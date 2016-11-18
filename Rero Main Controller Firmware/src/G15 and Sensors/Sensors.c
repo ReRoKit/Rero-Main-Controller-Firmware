@@ -143,7 +143,7 @@ typedef enum __attribute__((packed)) {
     RL_ADD_RED              = 0x0a,
     RL_ADD_GREEN            = 0x0b,
     RL_ADD_BLUE             = 0x0c,
-    RL_ADD_BRIGHTNESS       = 0x0d, // currently not in use
+    RL_ADD_BRIGHTNESS       = 0x0d, // Currently not used.
     RL_ADD_LOCK             = 0x0e
 } RL_CT_ADD;
 

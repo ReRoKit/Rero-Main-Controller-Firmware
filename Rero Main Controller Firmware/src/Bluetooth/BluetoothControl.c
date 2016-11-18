@@ -335,44 +335,6 @@ void vEnableBluetooth(BLUETOOTH_MODE eBtMode)
             // Disable the bluetooth module.
             vDisableBluetooth();
         }
-        
-        // We received the response from bluetooth module.
-        else {
-            // If we are entering transparent mode, start the EDR / BLE module accordingly.
-            if (eBtMode == TRANSPARENT) {
-                // Determine the start command base on the bluetooth 4.0 mode.
-                unsigned char *szStartCommand;
-                switch (eBt4Mode) {
-                    case EDR:   szStartCommand = "AT+STARE";    break;
-                    case BLE:   szStartCommand = "AT+STARB";    break;
-                    default:    szStartCommand = "AT+STARE";    break;
-                }
-                
-                
-                // Flush the Rx FIFO.
-                vUART2FlushRxBuffer();
-
-                // Start the EDR / BLE module.
-                while (uiUART2GetTxSpace() < strlen(szStartCommand));
-                uiUART2Write(szStartCommand, strlen(szStartCommand));
-
-                // Wait until the respond is received.
-                // Response: OK+STARE or OK+STARB
-                // We don't check the received string here. We only make sure the number of bytes received is correct.
-                if (prv_uiReadBluetooth(prv_pucRxBuffer, 8, BT_RX_TIMEOUT) < 8) {
-                    // This command is not compatible with old BT4.0 firmware, thus just ignore it if timeout occured.
-                    
-//                    // Timeout occurred.
-//                    // Set the error flag.
-//                    xSystemError.bBluetoothError = 1;
-//
-//                    // Disable the bluetooth module.
-//                    vDisableBluetooth();
-//
-//                    return;
-                }
-            }
-        }
     }
 
     // Can't communicate with bluetooth module.
@@ -597,10 +559,9 @@ void vConfigureBluetooth(void)
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
 
-        // Enable dual mode. Both EDR and BLE can be connected at the same time.
-        // This is required for firmware version v3.12 and above.
-        // Command: AT+DUAL0
-        const unsigned char pucDualCommand[] = "AT+DUAL0";
+        // Disable dual mode. Only either EDR or BLE can be connected at one time.
+        // Command: AT+DUAL1
+        const unsigned char pucDualCommand[] = "AT+DUAL1";
         while (uiUART2GetTxSpace() < (sizeof(pucDualCommand) - 1));
         uiUART2Write(pucDualCommand, sizeof(pucDualCommand) - 1);
 
@@ -622,9 +583,9 @@ void vConfigureBluetooth(void)
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
 
-        // Do not start the EDR mode automatically after power on.
-        // Command: AT+IMME1
-        const unsigned char pucImmeCommand[] = "AT+IMME1";
+        // Start the EDR mode automatically after power on.
+        // Command: AT+IMME0
+        const unsigned char pucImmeCommand[] = "AT+IMME0";
         while (uiUART2GetTxSpace() < (sizeof(pucImmeCommand) - 1));
         uiUART2Write(pucImmeCommand, sizeof(pucImmeCommand) - 1);
 
@@ -633,24 +594,15 @@ void vConfigureBluetooth(void)
         // We don't check the received string here. We only make sure the number of bytes received is correct.
         if (prv_uiReadBluetooth(prv_pucRxBuffer, 8, BT_RX_TIMEOUT) < 8) {
             // This command is not compatible with old BT4.0 firmware, thus just ignore it if timeout occured.
-            
-//            // Timeout occurred.
-//            // Set the error flag.
-//            xSystemError.bBluetoothError = 1;
-//
-//            // Disable the bluetooth module.
-//            vDisableBluetooth();
-//
-//            return;
         }
         
         
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
 
-        // Do not start the BLE mode automatically after power on.
-        // Command: AT+IMMB1
-        const unsigned char pucImmbCommand[] = "AT+IMMB1";
+        // Start the BLE mode automatically after power on.
+        // Command: AT+IMMB0
+        const unsigned char pucImmbCommand[] = "AT+IMMB0";
         while (uiUART2GetTxSpace() < (sizeof(pucImmbCommand) - 1));
         uiUART2Write(pucImmbCommand, sizeof(pucImmbCommand) - 1);
 
@@ -659,15 +611,6 @@ void vConfigureBluetooth(void)
         // We don't check the received string here. We only make sure the number of bytes received is correct.
         if (prv_uiReadBluetooth(prv_pucRxBuffer, 8, BT_RX_TIMEOUT) < 8) {
             // This command is not compatible with old BT4.0 firmware, thus just ignore it if timeout occured.
-            
-//            // Timeout occurred.
-//            // Set the error flag.
-//            xSystemError.bBluetoothError = 1;
-//
-//            // Disable the bluetooth module.
-//            vDisableBluetooth();
-//
-//            return;
         }
 
 
@@ -731,14 +674,9 @@ void vConfigureBluetooth(void)
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
 
-        // Read the MAC address.
-        // Determine the start command base on the bluetooth 4.0 mode.
-        unsigned char *pucReadAddressCommand;
-        switch (eBt4Mode) {
-            case EDR:   pucReadAddressCommand = "AT+ADDE?";    break;
-            case BLE:   pucReadAddressCommand = "AT+ADDB?";    break;
-            default:    pucReadAddressCommand = "AT+ADDE?";    break;
-        }
+        // Read the MAC address for BLE.
+        // Command: AT+ADDB?
+        unsigned char pucReadAddressCommand[] = "AT+ADDB?";
         while (uiUART2GetTxSpace() < strlen(pucReadAddressCommand));
         uiUART2Write(pucReadAddressCommand, strlen(pucReadAddressCommand));
 

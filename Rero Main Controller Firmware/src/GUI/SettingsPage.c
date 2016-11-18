@@ -598,7 +598,7 @@ WORD usMsgSettingsPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                 vCreateGenericMessagePage("Resetting bluetooth module...");
                 vResetBluetooth(AT);
                 
-                vSetGuiPage(PAGE_BT_SETTINGS);
+                vSetGuiPage(PAGE_SET_BT_PIN);
                 break;
                 
             case GID_SETTINGS_BTN_PREV:

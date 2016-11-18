@@ -60,7 +60,6 @@
         <itemPath>../include/GUI/UsbPage.h</itemPath>
         <itemPath>../include/GUI/SetBtPinPage.h</itemPath>
         <itemPath>../include/GUI/NumbericKeypad.h</itemPath>
-        <itemPath>../include/GUI/BtSettingsPage.h</itemPath>
         <itemPath>../include/GUI/LockScreen.h</itemPath>
         <itemPath>../include/GUI/MainMenu.h</itemPath>
         <itemPath>../include/GUI/Scheme.h</itemPath>
@@ -226,7 +225,6 @@
         <itemPath>../src/GUI/UsbPage.c</itemPath>
         <itemPath>../src/GUI/SetBtPinPage.c</itemPath>
         <itemPath>../src/GUI/NumbericKeypad.c</itemPath>
-        <itemPath>../src/GUI/BtSettingsPage.c</itemPath>
         <itemPath>../src/GUI/LockScreen.c</itemPath>
         <itemPath>../src/GUI/MainMenu.c</itemPath>
         <itemPath>../src/GUI/Scheme.c</itemPath>

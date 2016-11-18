@@ -132,7 +132,7 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
                     xSemaphoreGive(xSdCardMutex);
 
                     // Calculate the packet length.
-                    ulNumberOfRxPacket = (usFileSize / 64) + 1;
+                    ulNumberOfRxPacket = (unsigned long)((usFileSize / 64) + 1);
 
                     // Set next state as receiving data.
                     eProcessState = RECEIVING_DATA;
@@ -406,7 +406,7 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
                     xSemaphoreGive(xSdCardMutex);
 
                     // Calculate the packet length.
-                    ulNumberOfRxPacket = (usFileSize / 64) + 1;
+                    ulNumberOfRxPacket = (unsigned long)((usFileSize / 64) + 1);
 
                     // Set next state as receiving data.
                     eProcessState = RECEIVING_DATA;

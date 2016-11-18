@@ -64,7 +64,6 @@ typedef enum __attribute__((packed)) {
     PAGE_WALLPAPER,
     PAGE_SETTINGS,
     PAGE_SET_ID,
-    PAGE_BT_SETTINGS,
     PAGE_SET_BT_PIN,
     
     PAGE_USB,
