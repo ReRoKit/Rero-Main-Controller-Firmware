@@ -46,6 +46,7 @@ typedef enum __attribute__((packed)) {
     COUNTER_BLOCK           = 0x40,
     COUNTER_BLOCK_2         = 0x41,
     DELAY_BLOCK             = 0x60,
+    LINE_FOLLOW_BLOCK       = 0x70,
     CONTROL_SERVO_BLOCK     = 0x80,
     CONTROL_HEAD_BLOCK      = 0x81,
     CONTROL_RGB_LIGHT_BLOCK = 0x82,
@@ -952,6 +953,123 @@ void taskPlanner(void *pvParameters)
                 
                 eG15SetSpeed(ucLeftServoId, WRITE_NOW, usSpeed, eLeftSpeedMode);
                 eG15SetSpeed(ucRightServoId, WRITE_NOW, usSpeed, eRightSpeedMode);
+                
+                // Get the next block address.
+                ulBlockAddress = ((unsigned long)pucBuffer[8] << 16) + ((unsigned long)pucBuffer[9] << 8) + (unsigned long)pucBuffer[10];
+
+                break;
+            }
+
+
+
+            // Line Follow block.
+            case LINE_FOLLOW_BLOCK: {
+                // Update the message text in play page.
+                vUpdateMotionPageMsg2("Line Follow");
+
+                // Get the servo IDs and indicate that it's used.
+                unsigned char ucLineSensorId = pucBuffer[1];
+                unsigned char ucLeftServoId = pucBuffer[2];
+                unsigned char ucRightServoId = pucBuffer[3];
+                prv_peUsedOutputModule[ucLeftServoId] = EM_MODEL_G15;
+                prv_peUsedOutputModule[ucRightServoId] = EM_MODEL_G15;
+
+                // Get the desired max speed
+                unsigned short usSpeed_Max = ((unsigned short)pucBuffer[4] << 8) + (unsigned short)pucBuffer[5];
+                
+                // Turn On/Off Torque & LED.
+                eG15SetTorqueLed(ucLeftServoId, WRITE_NOW, 1, pucBuffer[6]);
+                eG15SetTorqueLed(ucRightServoId, WRITE_NOW, 1, pucBuffer[6]);
+
+                // Set servos direction.
+                G15_SPEED_CONTROL_MODE eLeftSpeedMode = WHEEL_CCW;
+                G15_SPEED_CONTROL_MODE eRightSpeedMode = WHEEL_CW;
+                        
+                // Set junction counter
+                unsigned char ucStopAtJunction = pucBuffer[7];
+                unsigned char ucJunctionCount = 0;
+                _Bool bJunctionFlag = 0;
+                
+                do{
+                    unsigned short usSpeed_Left, usSpeed_Right;
+                
+                    // Read the digital value for each sensor from line sensor.
+                    unsigned char ucLineValue;
+                    eLineSensorGetDigital(ucLineSensorId, &ucLineValue);
+
+                    // sensor:  1   2   3   4
+                    // bit:     0   1   2   3
+                    if (ucLineValue == 0b00001111)
+                    {   // at junction
+                        bJunctionFlag = 1;
+
+                        if ((ucStopAtJunction != 0) && (ucJunctionCount >= (ucStopAtJunction - 1)))
+                        {
+                            usSpeed_Left = 0;
+                            usSpeed_Right = 0;
+                            ucJunctionCount = 0;
+
+                            eG15SetSpeed(ucLeftServoId, WRITE_NOW, usSpeed_Left, WHEEL_CCW);
+                            eG15SetSpeed(ucRightServoId, WRITE_NOW, usSpeed_Right, WHEEL_CW);
+                            break;
+                        }
+                        else
+                        {
+                            usSpeed_Left = usSpeed_Max;
+                            usSpeed_Right = usSpeed_Max;
+                        }
+                    }
+                    else
+                    {
+                        if (bJunctionFlag == 1)
+                        {
+                            bJunctionFlag = 0;
+                            ucJunctionCount++;
+                        }
+
+                        if (ucLineValue == 0b00000110)
+                        {   // at the center of the line
+                            usSpeed_Left = usSpeed_Max;
+                            usSpeed_Right = usSpeed_Max;
+                        }
+                        else if (ucLineValue == 0b00000111)
+                        {   // robot slightly on the right
+                            usSpeed_Left = (usSpeed_Max >> 1) + (usSpeed_Max >> 3);
+                            usSpeed_Right = usSpeed_Max;
+                        }
+                        else if (ucLineValue == 0b00001110)
+                        {   // robot slightly on the left
+                            usSpeed_Left = usSpeed_Max;
+                            usSpeed_Right = (usSpeed_Max >> 1) + (usSpeed_Max >> 3);
+                        }
+                        else if (ucLineValue == 0b00000011)
+                        {   // robot on the right
+                            usSpeed_Left = (usSpeed_Max >> 1) - (usSpeed_Max >> 3);
+                            usSpeed_Right = usSpeed_Max;
+                        }
+                        else if (ucLineValue == 0b00001100)
+                        {   // robot on the left
+                            usSpeed_Left = usSpeed_Max;
+                            usSpeed_Right = (usSpeed_Max >> 1) - (usSpeed_Max >> 3);
+                        }
+                        else if (ucLineValue == 0b00000001)
+                        {   // robot on far right
+                            usSpeed_Left = 0;
+                            usSpeed_Right = usSpeed_Max;
+                        }
+                        else if (ucLineValue == 0b00001000)
+                        {   // robot on far left
+                            usSpeed_Left = usSpeed_Max;
+                            usSpeed_Right = 0;
+                        }
+                    }
+                    eG15SetSpeed(ucLeftServoId, WRITE_NOW, usSpeed_Left, WHEEL_CCW);
+                    eG15SetSpeed(ucRightServoId, WRITE_NOW, usSpeed_Right, WHEEL_CW);
+
+                    // Delay for 20ms.
+                    vTaskDelay(20 / portTICK_RATE_MS);
+                
+                } while (ucStopAtJunction > 0);
                 
                 // Get the next block address.
                 ulBlockAddress = ((unsigned long)pucBuffer[8] << 16) + ((unsigned long)pucBuffer[9] << 8) + (unsigned long)pucBuffer[10];
