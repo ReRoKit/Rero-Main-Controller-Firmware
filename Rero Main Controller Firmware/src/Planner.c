@@ -1069,6 +1069,10 @@ void taskPlanner(void *pvParameters)
                     // Delay for 20ms.
                     vTaskDelay(20 / portTICK_RATE_MS);
                 
+                    // Break if stop playing.
+                    if (prv_ucPlaying == 0) {
+                        break;
+                    }
                 } while (ucStopAtJunction > 0);
                 
                 // Get the next block address.
@@ -1077,7 +1081,6 @@ void taskPlanner(void *pvParameters)
                 break;
             }
 
-            
             
             default: {
                 ulBlockAddress = 0x00ffffff;
