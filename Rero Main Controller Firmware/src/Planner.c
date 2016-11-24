@@ -138,6 +138,11 @@ static void prv_vDisableUsedOutput(void)
         else if (prv_peUsedOutputModule[i] == EM_MODEL_HEAD) {
             eHeadSetLed(i, 0, 0);
         }
+		
+        // Turn off RGB LED for Light module.
+        else if (prv_peUsedOutputModule[i] == EM_MODEL_RGBLIGHT) {
+            eRgbLightModuleSetRgb(i, 0, 0, 0);
+        }
     }
 }
 

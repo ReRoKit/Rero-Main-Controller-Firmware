@@ -61,6 +61,10 @@ EM_ERROR eColourSensorGetBrightness(unsigned char ucId, unsigned char *pucValue)
 EM_ERROR eColourSensorGetAmbient(unsigned char ucId, unsigned char *pucValue);
 EM_ERROR eColourSensorGetColour(unsigned char ucId, CL_SENSOR_COLOUR *peColour);
 
+EM_ERROR eRgbLightModuleSetRgb(unsigned char ucId, unsigned char ucRed, unsigned char ucGreen, unsigned char ucBlue);
+EM_ERROR eRgbLightModuleGetRgb(unsigned char ucId, unsigned char *pucRed, unsigned char *pucGreen, unsigned char *pucBlue);
+//EM_ERROR eRgbLightModuleSetBrightness(unsigned char ucId, unsigned char ucValue);
+//EM_ERROR eRgbLightModuleGetBrightness(unsigned char ucId, unsigned char *pucValue);
 
 
 #endif	/* SENSORS_H */

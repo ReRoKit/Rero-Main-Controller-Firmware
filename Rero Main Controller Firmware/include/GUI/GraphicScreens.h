@@ -64,6 +64,7 @@ typedef enum __attribute__((packed)) {
     PAGE_WALLPAPER,
     PAGE_SETTINGS,
     PAGE_SET_ID,
+    PAGE_BT_SETTINGS,
     PAGE_SET_BT_PIN,
     
     PAGE_USB,
@@ -277,6 +278,14 @@ typedef enum __attribute__((packed)) {
             
     GID_SENSOR_BTN_CAL,
     GID_SENSOR_BTN_DONE,
+            
+    GID_RGBLIGHTMODULE_SLD_VALUE1,
+    GID_RGBLIGHTMODULE_TXT_VALUE1,
+    GID_RGBLIGHTMODULE_SLD_VALUE2,
+    GID_RGBLIGHTMODULE_TXT_VALUE2,
+    GID_RGBLIGHTMODULE_SLD_VALUE3,
+    GID_RGBLIGHTMODULE_TXT_VALUE3,
+    
 
 
     // Bluetooth settings page.

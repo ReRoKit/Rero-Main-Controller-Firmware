@@ -12,6 +12,11 @@
 #include "Microchip/Graphics/Graphics.h"
 
 
+volatile unsigned char ucRgbLmRed;
+volatile unsigned char ucRgbLmGreen;
+volatile unsigned char ucRgbLmBlue;
+//volatile unsigned char ucRgbLmBrightness;
+
 
 /*******************************************************************************
  * PUBLIC FUNCTION PROTOTYPES

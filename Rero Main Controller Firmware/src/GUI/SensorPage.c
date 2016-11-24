@@ -15,6 +15,7 @@
 #include "GUI/ScrollbarListbox.h"
 #include "G15 and Sensors/Sensors.h"
 #include "IMU/imu.h"
+#include "GUI/SensorPage.h"
 
 
 
@@ -354,6 +355,76 @@
 #define PGIMU_TXT_VALUE6_Y1     PGIMU_TXT_VALUE3_Y1
 
 
+// RGB light module subpage.
+#define PGLM_SLD_VALUE_WIDTH    100
+#define PGLM_SLD_VALUE_HEIGHT   25
+#define PGLM_OBJ_GRP_C2C_Y      40      // Center to center distance between each object group.
+#define PGLM_TXT_SLD_GAP        5
+
+#define PGLM_TXT_TITLE1_X1      SENSOR_LIMIT_LEFT
+#define PGLM_TXT_TITLE1_X2      SENSOR_LIMIT_LEFT + 45
+#define PGLM_TXT_TITLE1_Y1      PGLM_SLD_VALUE1_Y1
+#define PGLM_TXT_TITLE1_Y2      PGLM_SLD_VALUE1_Y2
+
+#define PGLM_SLD_VALUE1_X1      PGLM_TXT_TITLE1_X2
+#define PGLM_SLD_VALUE1_X2      (PGLM_SLD_VALUE1_X1 + PGLM_SLD_VALUE_WIDTH) 
+#define PGLM_SLD_VALUE1_Y1      (SENSOR_PAGE_CENTER_Y - PGLM_OBJ_GRP_C2C_Y - (PGLM_SLD_VALUE_HEIGHT / 2))
+#define PGLM_SLD_VALUE1_Y2      (PGLM_SLD_VALUE1_Y1 + PGLM_SLD_VALUE_HEIGHT)
+
+#define PGLM_TXT_VALUE1_X1      (PGLM_SLD_VALUE1_X2 + PGLM_TXT_SLD_GAP)
+#define PGLM_TXT_VALUE1_X2      SENSOR_LIMIT_RIGHT
+#define PGLM_TXT_VALUE1_Y1      PGLM_SLD_VALUE1_Y1
+#define PGLM_TXT_VALUE1_Y2      PGLM_SLD_VALUE1_Y2
+
+
+#define PGLM_TXT_TITLE2_X1      PGLM_TXT_TITLE1_X1
+#define PGLM_TXT_TITLE2_X2      PGLM_TXT_TITLE1_X2
+#define PGLM_TXT_TITLE2_Y1      PGLM_SLD_VALUE2_Y1
+#define PGLM_TXT_TITLE2_Y2      PGLM_SLD_VALUE2_Y2
+
+#define PGLM_SLD_VALUE2_X1      PGLM_SLD_VALUE1_X1
+#define PGLM_SLD_VALUE2_X2      PGLM_SLD_VALUE1_X2
+#define PGLM_SLD_VALUE2_Y1      (SENSOR_PAGE_CENTER_Y - (PGLM_SLD_VALUE_HEIGHT / 2))
+#define PGLM_SLD_VALUE2_Y2      (PGLM_SLD_VALUE2_Y1 + PGLM_SLD_VALUE_HEIGHT)
+
+#define PGLM_TXT_VALUE2_X1      PGLM_TXT_VALUE1_X1
+#define PGLM_TXT_VALUE2_X2      PGLM_TXT_VALUE1_X2
+#define PGLM_TXT_VALUE2_Y1      PGLM_SLD_VALUE2_Y1
+#define PGLM_TXT_VALUE2_Y2      PGLM_SLD_VALUE2_Y2
+
+
+#define PGLM_TXT_TITLE3_X1      PGLM_TXT_TITLE1_X1
+#define PGLM_TXT_TITLE3_X2      PGLM_TXT_TITLE1_X2
+#define PGLM_TXT_TITLE3_Y1      PGLM_SLD_VALUE3_Y1
+#define PGLM_TXT_TITLE3_Y2      PGLM_SLD_VALUE3_Y2
+
+#define PGLM_SLD_VALUE3_X1      PGLM_SLD_VALUE1_X1
+#define PGLM_SLD_VALUE3_X2      PGLM_SLD_VALUE1_X2
+#define PGLM_SLD_VALUE3_Y1      (SENSOR_PAGE_CENTER_Y + PGLM_OBJ_GRP_C2C_Y - (PGLM_SLD_VALUE_HEIGHT / 2))
+#define PGLM_SLD_VALUE3_Y2      (PGLM_SLD_VALUE3_Y1 + PGLM_SLD_VALUE_HEIGHT)
+
+#define PGLM_TXT_VALUE3_X1      PGLM_TXT_VALUE1_X1
+#define PGLM_TXT_VALUE3_X2      PGLM_TXT_VALUE1_X2
+#define PGLM_TXT_VALUE3_Y1      PGLM_SLD_VALUE3_Y1
+#define PGLM_TXT_VALUE3_Y2      PGLM_SLD_VALUE3_Y2
+
+
+//#define PGLM_TXT_TITLE4_X1      PGLM_TXT_TITLE1_X1
+//#define PGLM_TXT_TITLE4_X2      PGLM_TXT_TITLE1_X2
+//#define PGLM_TXT_TITLE4_Y1      PGLM_SLD_VALUE4_Y1
+//#define PGLM_TXT_TITLE4_Y2      PGLM_SLD_VALUE4_Y2
+//
+//#define PGLM_SLD_VALUE4_X1      PGLM_SLD_VALUE1_X1
+//#define PGLM_SLD_VALUE4_X2      PGLM_SLD_VALUE1_X2
+//#define PGLM_SLD_VALUE4_Y1      (SENSOR_PAGE_CENTER_Y + (PGLM_OBJ_GRP_C2C_Y / 2) + PGLM_OBJ_GRP_C2C_Y - (PGLM_SLD_VALUE_HEIGHT / 2))
+//#define PGLM_SLD_VALUE4_Y2      (PGLM_SLD_VALUE4_Y1 + PGLM_SLD_VALUE_HEIGHT)
+//
+//#define PGLM_TXT_VALUE4_X1      PGLM_TXT_VALUE1_X1
+//#define PGLM_TXT_VALUE4_X2      PGLM_TXT_VALUE1_X2
+//#define PGLM_TXT_VALUE4_Y1      PGLM_SLD_VALUE4_Y1
+//#define PGLM_TXT_VALUE4_Y2      PGLM_SLD_VALUE4_Y2
+
+
 
 /*******************************************************************************
 * PRIVATE GLOBAL VARIABLES
@@ -369,6 +440,7 @@ static char prv_szValue4[] = "Value: 000cm   ";
 static char prv_szValue5[] = "Value: 000cm   ";
 static char prv_szValue6[] = "Value: 000cm   ";
 
+static unsigned char prv_ucLighModuleFirstSelected = 0;
 
 
 /*******************************************************************************
@@ -381,6 +453,7 @@ static void prv_vCreateHeadModuleSubpage(void);
 static void prv_vCreateImuSubpage(void);
 static void prv_vCreateColourSensorSubpage(void);
 static void prv_vCreateLineSensorSubpage(void);
+static void prv_vCreateRgbLightModuleSubpage(void);
 
 
 
@@ -411,6 +484,7 @@ static void prv_vCreateSensorSubpage(void)
         case EM_MODEL_LINE:     prv_vCreateLineSensorSubpage();                             break;
         case EM_MODEL_HEAD:     prv_vCreateHeadModuleSubpage();                             break;
         case EM_MODEL_IMU:      prv_vCreateImuSubpage();                                    break;
+        case EM_MODEL_RGBLIGHT: prv_vCreateRgbLightModuleSubpage();                         break;
     }
 }
 
@@ -873,6 +947,103 @@ static void prv_vCreateImuSubpage(void)
 
 
 /*******************************************************************************
+ * FUNCTION: prv_vCreateRgbLightModuleSubpage
+ *
+ * PARAMETERS:
+ * ~ void
+ *
+ * RETURN:
+ * ~ void
+ *
+ * DESCRIPTIONS:
+ * Create the module subpage for RGB Light Module.
+ *
+ *******************************************************************************/
+static void prv_vCreateRgbLightModuleSubpage(void)
+{
+    // Create text for sensor type.
+    StCreate( GID_SENSOR_TXT_TYPE,
+              TXT_TYPE_X1, TXT_TYPE_Y1,
+              TXT_TYPE_X2, TXT_TYPE_Y2,
+              ST_DRAW, "RGB LIGHT MODULE", pxLightGreenTxtScheme );
+    
+    
+
+    // Create text and slider for sensor value 1.
+    StCreate( GID_SENSOR_TXT_TITLE1,
+              PGLM_TXT_TITLE1_X1, PGLM_TXT_TITLE1_Y1,
+              PGLM_TXT_TITLE1_X2, PGLM_TXT_TITLE1_Y2,
+              ST_DRAW, "Red", pxDefaultScheme );
+    
+    SldCreate( GID_RGBLIGHTMODULE_SLD_VALUE1,
+               PGLM_SLD_VALUE1_X1, PGLM_SLD_VALUE1_Y1,
+               PGLM_SLD_VALUE1_X2, PGLM_SLD_VALUE1_Y2,
+               SLD_DRAW, 255, 1, 0, pxSliderScheme );
+    
+    StCreate( GID_RGBLIGHTMODULE_TXT_VALUE1,
+              PGLM_TXT_VALUE1_X1, PGLM_TXT_VALUE1_Y1,
+              PGLM_TXT_VALUE1_X2, PGLM_TXT_VALUE1_Y2,
+              ST_DRAW, prv_szValue1, pxDefaultScheme );
+    
+    
+    // Create text and slider for sensor value 2.
+    StCreate( GID_SENSOR_TXT_TITLE2,
+              PGLM_TXT_TITLE2_X1, PGLM_TXT_TITLE2_Y1,
+              PGLM_TXT_TITLE2_X2, PGLM_TXT_TITLE2_Y2,
+              ST_DRAW, "Green", pxDefaultScheme );
+    
+    SldCreate( GID_RGBLIGHTMODULE_SLD_VALUE2,
+               PGLM_SLD_VALUE2_X1, PGLM_SLD_VALUE2_Y1,
+               PGLM_SLD_VALUE2_X2, PGLM_SLD_VALUE2_Y2,
+               SLD_DRAW, 255, 1, 0, pxSliderScheme );
+    
+    StCreate( GID_RGBLIGHTMODULE_TXT_VALUE2,
+              PGLM_TXT_VALUE2_X1, PGLM_TXT_VALUE2_Y1,
+              PGLM_TXT_VALUE2_X2, PGLM_TXT_VALUE2_Y2,
+              ST_DRAW, prv_szValue2, pxDefaultScheme );
+    
+    
+    // Create text and slider for sensor value 3.
+    StCreate( GID_SENSOR_TXT_TITLE3,
+              PGLM_TXT_TITLE3_X1, PGLM_TXT_TITLE3_Y1,
+              PGLM_TXT_TITLE3_X2, PGLM_TXT_TITLE3_Y2,
+              ST_DRAW, "Blue", pxDefaultScheme );
+    
+    SldCreate( GID_RGBLIGHTMODULE_SLD_VALUE3,
+               PGLM_SLD_VALUE3_X1, PGLM_SLD_VALUE3_Y1,
+               PGLM_SLD_VALUE3_X2, PGLM_SLD_VALUE3_Y2,
+               SLD_DRAW, 255, 1, 0, pxSliderScheme );
+    
+    StCreate( GID_RGBLIGHTMODULE_TXT_VALUE3,
+              PGLM_TXT_VALUE3_X1, PGLM_TXT_VALUE3_Y1,
+              PGLM_TXT_VALUE3_X2, PGLM_TXT_VALUE3_Y2,
+              ST_DRAW, prv_szValue3, pxDefaultScheme );
+    
+    
+//    // Create text and slider for sensor value 4.
+//    StCreate( GID_SENSOR_TXT_TITLE4,
+//              PGLM_TXT_TITLE4_X1, PGLM_TXT_TITLE4_Y1,
+//              PGLM_TXT_TITLE4_X2, PGLM_TXT_TITLE4_Y2,
+//              ST_DRAW, "BRT.", pxDefaultScheme );
+//    
+//    SldCreate( GID_SENSOR_SLD_VALUE4,
+//               PGLM_SLD_VALUE4_X1, PGLM_SLD_VALUE4_Y1,
+//               PGLM_SLD_VALUE4_X2, PGLM_SLD_VALUE4_Y2,
+//               SLD_DRAW, 255, 1, 255, pxSliderScheme );
+//    
+//    StCreate( GID_SENSOR_TXT_VALUE4,
+//              PGLM_TXT_VALUE4_X1, PGLM_TXT_VALUE4_Y1,
+//              PGLM_TXT_VALUE4_X2, PGLM_TXT_VALUE4_Y2,
+//              ST_DRAW, prv_szValue4, pxDefaultScheme );
+    
+    
+    // Reset the custom scheme.
+    memcpy(pxCustomScheme1, pxDefaultScheme, sizeof(GOL_SCHEME));
+}
+
+
+
+/*******************************************************************************
  * FUNCTION: vCreateSensorPage
  *
  * PARAMETERS:
@@ -954,6 +1125,7 @@ WORD usMsgSensorPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                         case EM_MODEL_HEAD:
                             eHeadSetLed(prv_ucSelectedSensorId, 0, 0b11);
                             break;
+                        case EM_MODEL_RGBLIGHT:
                         case EM_MODEL_TACTILE:
                         case EM_MODEL_COLOUR:
                         case EM_MODEL_LINE:
@@ -990,6 +1162,11 @@ WORD usMsgSensorPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                             case EM_MODEL_HEAD:
                                 eHeadSetLed(prv_ucSelectedSensorId, 0xff, 0b11);
                                 break;
+                            case EM_MODEL_RGBLIGHT:
+                                // read the current RGB values and update to UI page
+                                eRgbLightModuleGetRgb(prv_ucSelectedSensorId, &ucRgbLmRed, &ucRgbLmGreen, &ucRgbLmBlue);
+                                eRgbLightModuleSetRgb(prv_ucSelectedSensorId, ucRgbLmRed, ucRgbLmGreen, ucRgbLmBlue);
+                                prv_ucLighModuleFirstSelected = 1;
                             case EM_MODEL_TACTILE:
                             case EM_MODEL_COLOUR:
                             case EM_MODEL_LINE:
@@ -1045,6 +1222,32 @@ WORD usMsgSensorPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
             break;
             
             
+            
+        // Red slider (RGB Light Module).
+        case GID_RGBLIGHTMODULE_SLD_VALUE1:
+                ucRgbLmRed = SldGetPos(pObj);
+                eRgbLightModuleSetRgb(prv_ucSelectedSensorId, ucRgbLmRed, ucRgbLmGreen, ucRgbLmBlue);
+            break;
+
+        // Green slider (RGB Light Module).
+        case GID_RGBLIGHTMODULE_SLD_VALUE2:
+                ucRgbLmGreen = SldGetPos(pObj);
+                eRgbLightModuleSetRgb(prv_ucSelectedSensorId, ucRgbLmRed, ucRgbLmGreen, ucRgbLmBlue);
+            break;
+
+        // Blue slider (RGB Light Module).
+        case GID_RGBLIGHTMODULE_SLD_VALUE3:
+                ucRgbLmBlue = SldGetPos(pObj);
+                eRgbLightModuleSetRgb(prv_ucSelectedSensorId, ucRgbLmRed, ucRgbLmGreen, ucRgbLmBlue);
+            break;
+            
+//        // Brightness slider (RGB Light Module).
+//        case GID_SENSOR_SLD_VALUE4:
+//                ucRgbLmBrightness = SldGetPos(pObj);
+//                eRgbLightModuleSetBrightness(prv_ucSelectedSensorId, ucRgbLmBrightness);
+//            break;
+            
+    
             
         // Dark radio button.
         case GID_SENSOR_RB_DARK:
@@ -1120,7 +1323,7 @@ WORD usMsgSensorPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
         case GID_BTN_EXIT:
             if (objMsg == BTN_MSG_RELEASED) {
                 // Turn off LED for previous selection.
-                // Do not turn off Head LED.
+                // Do not turn off Head LED and RGB Light Module's LED.
                 if (prv_ucSelectedSensorId <= EM_MAX_ID) {
                     switch (prv_eSelectedSensorType) {
                         case EM_MODEL_IR:
@@ -1130,6 +1333,7 @@ WORD usMsgSensorPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                         case EM_MODEL_TACTILE:
                         case EM_MODEL_COLOUR:
                         case EM_MODEL_LINE:
+                        case EM_MODEL_RGBLIGHT:
                             eSensorSetLed(prv_ucSelectedSensorId, prv_eSelectedSensorType, 0);
                             vTaskDelay(10 / portTICK_RATE_MS);
                             eSensorSetLed(prv_ucSelectedSensorId, prv_eSelectedSensorType, 2);
@@ -1146,7 +1350,8 @@ WORD usMsgSensorPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                 // Deselect the sensor.
                 prv_eSelectedSensorType = EM_MODEL_NONE;
                 prv_ucSelectedSensorId = 0xff;
-
+                prv_ucLighModuleFirstSelected = 0;
+                
                 // Go back to main menu.
                 vSetGuiPage(PAGE_MAIN_MENU);
             }
@@ -1499,6 +1704,38 @@ void vUpdateSensorPage(void)
 
             break;
         }
+        
+        
+        case EM_MODEL_RGBLIGHT: {
+            // Update the RGB and Brightness values.
+            if(prv_ucLighModuleFirstSelected == 1){
+                vSliderUpdatePosition((SLIDER*)GOLFindObject(GID_RGBLIGHTMODULE_SLD_VALUE1), (short)ucRgbLmRed);
+            }
+            snprintf(prv_szValue1, sizeof(prv_szValue1), "%03u", ucRgbLmRed);
+            SetState(GOLFindObject(GID_RGBLIGHTMODULE_TXT_VALUE1), ST_UPDATE);
+            
+            if(prv_ucLighModuleFirstSelected == 1){
+                vSliderUpdatePosition((SLIDER*)GOLFindObject(GID_RGBLIGHTMODULE_SLD_VALUE2), (short)ucRgbLmGreen);
+            }
+            snprintf(prv_szValue2, sizeof(prv_szValue2), "%03u", ucRgbLmGreen);
+            SetState(GOLFindObject(GID_RGBLIGHTMODULE_TXT_VALUE2), ST_UPDATE);
+            
+            if(prv_ucLighModuleFirstSelected == 1){
+                vSliderUpdatePosition((SLIDER*)GOLFindObject(GID_RGBLIGHTMODULE_SLD_VALUE3), (short)ucRgbLmBlue);
+            }
+            snprintf(prv_szValue3, sizeof(prv_szValue3), "%03u", ucRgbLmBlue);
+            SetState(GOLFindObject(GID_RGBLIGHTMODULE_TXT_VALUE3), ST_UPDATE);
+            
+//            vSliderUpdatePosition((SLIDER*)GOLFindObject(GID_SENSOR_SLD_VALUE4), (short)ucRgbLmBrightness);
+//            snprintf(prv_szValue4, sizeof(prv_szValue4), "%03u", ucRgbLmBrightness);
+//            SetState(GOLFindObject(GID_SENSOR_TXT_VALUE4), ST_UPDATE);
+
+            prv_ucLighModuleFirstSelected = 0;
+            
+            break;
+        }
+        
+
     }
 }
 

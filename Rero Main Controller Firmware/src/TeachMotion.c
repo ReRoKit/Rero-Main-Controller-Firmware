@@ -11,6 +11,7 @@
 #include "HardwareProfile.h"
 #include "FatFs/FatFsWrapper.h"
 #include "G15 and Sensors/G15.h"
+#include "G15 and Sensors/ExtModule.h"
 #include "GUI/MotionPage.h"
 #include "Sound Stream/Beep.h"
 

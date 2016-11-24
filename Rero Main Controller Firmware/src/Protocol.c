@@ -170,7 +170,8 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
                         case EM_MODEL_US:
                         case EM_MODEL_TACTILE:
                         case EM_MODEL_COLOUR:
-                        case EM_MODEL_LINE: {
+                        case EM_MODEL_LINE: 
+						case EM_MODEL_RGBLIGHT: {
                             eSensorSetLed(ucId, eModel, ucLed);
                             break;
                         }
@@ -234,6 +235,16 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
                     unsigned short usLimitCw = (unsigned short)pucReceivedPacket[2] + (unsigned short)(pucReceivedPacket[3] << 8);
                     unsigned short usLimitCcw = (unsigned short)pucReceivedPacket[4] + (unsigned short)(pucReceivedPacket[5] << 8);
                     eG15SetAngleLimit(ucId, usLimitCw, usLimitCcw);
+                    break;
+                }
+
+                // Set RGB Colour (RGB Light Module).
+                case 0x88: {
+                    ucId = pucReceivedPacket[1];
+                    unsigned char ucRed = pucReceivedPacket[2];
+                    unsigned char ucGreen = pucReceivedPacket[3];
+                    unsigned char ucBlue = pucReceivedPacket[4];
+                    eRgbLightModuleSetRgb(ucId, ucRed, ucGreen, ucBlue);
                     break;
                 }
 

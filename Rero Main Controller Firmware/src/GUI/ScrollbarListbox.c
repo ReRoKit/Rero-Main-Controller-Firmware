@@ -485,6 +485,7 @@ void taskSeekExtModule(void *pvParameters)
                         case EM_MODEL_TACTILE:
                         case EM_MODEL_COLOUR:
                         case EM_MODEL_LINE:
+                        case EM_MODEL_RGBLIGHT:
                             ucFilterMatched = 1;
                             break;
                     }
@@ -505,6 +506,7 @@ void taskSeekExtModule(void *pvParameters)
                     case EM_MODEL_TACTILE:
                     case EM_MODEL_COLOUR:
                     case EM_MODEL_LINE:
+                    case EM_MODEL_RGBLIGHT:
                         eSensorSetLed(ucId, eModel, 0);
                         vTaskDelay(10 / portTICK_RATE_MS);
                         eSensorSetLed(ucId, eModel, 2);

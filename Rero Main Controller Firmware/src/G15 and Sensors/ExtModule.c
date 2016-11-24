@@ -240,6 +240,10 @@ void vEMDisableAllOutput(void)
                 eG15SetTorqueLed(i, WRITE_NOW, 0, 0);
                 eG15SetSpeed(i, WRITE_NOW, 0, POSITION_SPEED_CONTROL);
             }
+			else if (eModel == EM_MODEL_RGBLIGHT) {
+                // Turn off RGB LED for Light module.
+                eRgbLightModuleSetRgb(i, 0, 0, 0);
+            }
         }
     }
 }
