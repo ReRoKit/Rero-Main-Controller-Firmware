@@ -34,6 +34,10 @@
 #define TXT_Y1                  (WND_LIMIT_BOTTOM - TXT_HEIGHT)
 #define TXT_Y2                  WND_LIMIT_BOTTOM
 
+// Text for bluetooth firmware version.
+#define TXT_Y3                  WND_LIMIT_TOP
+#define TXT_Y4                  (WND_LIMIT_TOP + TXT_HEIGHT)
+
 // Bluetooth logo.
 #define IMG_BTLOGO_WIDTH        200
 #define IMG_BTLOGO_HEIGHT       160
@@ -78,7 +82,6 @@ void vCreateBluetoothPage(void)
     vCreatePageWindow("BLUETOOTH");
     
     
-
     // Create the bluetooth logo.
     PictCreate( GID_BT_IMG_LOGO,
                 IMG_BTLOGO_X1, IMG_BTLOGO_Y1,
@@ -86,6 +89,23 @@ void vCreateBluetoothPage(void)
                 PICT_DRAW, 1, "/Theme/BluetoothPage/BluetoothBackground.bmp", pxDefaultScheme );
     
     
+    // Create text for Bluetooth module firmware version.
+    char *szBTVer = "Ver:";
+    sLeft = WND_LIMIT_LEFT;
+    sRight = sLeft + GetTextWidth(szBTVer, pxDefaultScheme->pFont) + (ST_INDENT * 2);
+    StCreate( GID_BT_TXT_BTFIRMWAREVERSION1,
+              sLeft,  TXT_Y3,
+              sRight, TXT_Y4,
+              ST_DRAW, szBTVer, pxDefaultScheme );
+    
+    sLeft = sRight;
+    sRight = sLeft + GetTextWidth(szBTFirmwareVersion, pxLightBlueTxtScheme->pFont) + (ST_INDENT * 2);
+    StCreate( GID_BT_TXT_BTFIRMWAREVERSION2,
+              sLeft,  TXT_Y3,
+              sRight, TXT_Y4,
+              ST_DRAW, szBTFirmwareVersion, pxLightBlueTxtScheme );
+    
+        
     // Create text for robot name.
     char *szName = "Name:";
     sLeft = WND_LIMIT_LEFT;

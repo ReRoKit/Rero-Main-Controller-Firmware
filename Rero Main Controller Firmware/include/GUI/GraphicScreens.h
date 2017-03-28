@@ -352,6 +352,8 @@ typedef enum __attribute__((packed)) {
 
     // Bluetooth page.
     GID_BT_IMG_LOGO,
+    GID_BT_TXT_BTFIRMWAREVERSION1,
+    GID_BT_TXT_BTFIRMWAREVERSION2,
     GID_BT_TXT_NAME1,
     GID_BT_TXT_NAME2,
     GID_BT_TXT_ADDR1,

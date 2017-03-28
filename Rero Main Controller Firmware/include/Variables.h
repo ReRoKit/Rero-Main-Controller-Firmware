@@ -165,7 +165,11 @@ extern unsigned char pucRobotName[20];
 // Bluetooth address.
 extern char szBluetoothAddress[20];
 
-// Firmware version.
+// Bluetooth module firmware version.
+extern char szBTFirmwareVersion[20];
+
+
+// rero Controller Firmware version.
 extern const char szFirmwareVersion[];
 
 // Files path.
