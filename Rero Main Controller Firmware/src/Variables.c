@@ -71,7 +71,10 @@ unsigned char pucRobotName[20] = "rero";
 // Bluetooth address.
 char szBluetoothAddress[20] = {0};
 
-// Firmware version.
+// Bluetooth module firmware version.
+char szBTFirmwareVersion[20] = {0};
+
+// rero Controller Firmware version.
 const char szFirmwareVersion[] = __DATE__;
 
 // Files path.

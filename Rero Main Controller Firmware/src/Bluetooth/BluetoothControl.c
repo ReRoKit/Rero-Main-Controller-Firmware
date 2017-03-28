@@ -512,7 +512,7 @@ void vConfigureBluetooth(void)
         }
         
         // The response will be in this format: "+ADDR:abcd:ee:fdfd9b".
-        // Extract the address from the buffer wihout the header and deliminator.
+        // Extract the address from the buffer without the header and deliminator.
         strncpy(&szBluetoothAddress[0], &pucAddressBuffer[6], 4);
         strncpy(&szBluetoothAddress[4], &pucAddressBuffer[11], 2);
         strncpy(&szBluetoothAddress[6], &pucAddressBuffer[14], 6);
@@ -526,6 +526,35 @@ void vConfigureBluetooth(void)
                 szBluetoothAddress[i] -= 32;
             }
         }
+        
+        
+        // Flush the Rx FIFO.
+        vUART2FlushRxBuffer();
+
+        // Read the bluetooth firmware version.
+        const unsigned char pucReadFirmwareVersionCommand[] = "AT+VERSION?\r\n";
+        while (uiUART2GetTxSpace() < (sizeof(pucReadFirmwareVersionCommand) - 1));
+        uiUART2Write(pucReadFirmwareVersionCommand, sizeof(pucReadFirmwareVersionCommand) - 1);
+
+        // Read the firmware version.
+        unsigned char pucFirmwareVersionBuffer[23];
+        if (prv_uiReadBluetooth(pucFirmwareVersionBuffer, 23, BT_RX_TIMEOUT) < 23) {
+            // Timeout occurred.
+            // Set the error flag.
+            xSystemError.bBluetoothError = 1;
+
+            // Disable the bluetooth module.
+            vDisableBluetooth();
+
+            return;
+        }
+        
+        // The response will be in this format: "+VERSION:2.0-20100601".
+        // Extract the address from the buffer without the header and delimiter.
+        strncpy(&szBTFirmwareVersion[0], &pucFirmwareVersionBuffer[9], 22);
+        szBTFirmwareVersion[13] = 0;
+        
+        
     }
 
 
@@ -708,6 +737,48 @@ void vConfigureBluetooth(void)
 
         // Terminate with null.
         szBluetoothAddress[12] = 0;
+        
+        
+
+        // Flush the Rx FIFO.
+        vUART2FlushRxBuffer();
+
+        // Read the firmware vesion for Bluetooth module.
+        // Command: AT+VERS?
+        unsigned char pucReadBTFirmwareVersionCommand[] = "AT+VERS?";
+        while (uiUART2GetTxSpace() < strlen(pucReadBTFirmwareVersionCommand));
+        uiUART2Write(pucReadBTFirmwareVersionCommand, strlen(pucReadBTFirmwareVersionCommand));
+
+        
+        // Read the firmware version.
+        // Response: OK+Get:<firmware ver>, eg: OK+Get:HMSoftV312
+        // Read and discard the "OK+Get:HMSoft".
+        if (prv_uiReadBluetooth(prv_pucRxBuffer, 13, BT_RX_TIMEOUT) < 13) {
+            // Timeout occurred.
+            // Set the error flag.
+            xSystemError.bBluetoothError = 1;
+
+            // Disable the bluetooth module.
+            vDisableBluetooth();
+
+            return;
+        }
+
+        // Read the firmware version.
+        if (prv_uiReadBluetooth((unsigned char*)szBTFirmwareVersion, 4, BT_RX_TIMEOUT) < 4) {
+            // Timeout occurred.
+            // Set the error flag.
+            xSystemError.bBluetoothError = 1;
+
+            // Disable the bluetooth module.
+            vDisableBluetooth();
+
+            return;
+        }
+
+        // Terminate with null.
+        szBTFirmwareVersion[5] = 0;
+
     }
 
 

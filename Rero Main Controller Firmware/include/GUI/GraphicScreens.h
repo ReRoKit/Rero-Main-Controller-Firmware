@@ -348,7 +348,8 @@ typedef enum __attribute__((packed)) {
     GID_SETTINGS_IMG_RERO,
     GID_SETTINGS_TXT_FIRMWARE,
     GID_SETTINGS_TXT_DATE,
-    
+    GID_SETTINGS_TXT_BTFIRMWARE,
+    GID_SETTINGS_TXT_BTVERSION,
 
     // Bluetooth page.
     GID_BT_IMG_LOGO,

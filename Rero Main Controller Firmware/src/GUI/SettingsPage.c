@@ -39,6 +39,7 @@
 #define SETTINGS_SUBPAGE_RIGHT      WND_SUBPAGE_RIGHT
 #define SETTINGS_SUBPAGE_CENTER_X   ((SETTINGS_SUBPAGE_LEFT + SETTINGS_SUBPAGE_RIGHT) / 2)
 #define SETTINGS_SUBPAGE_CENTER_Y   ((SETTINGS_SUBPAGE_TOP + SETTINGS_SUBPAGE_BOTTOM) / 2)
+#define SETTINGS_SUBPAGE_TWOTHIRD_X   ((SETTINGS_SUBPAGE_LEFT + SETTINGS_SUBPAGE_RIGHT) * 2 / 3)
 
 
 // Position and size for graphic objects in page 1.
@@ -411,17 +412,34 @@ static void prv_vCreateSubpage4(void)
                 SETTINGS_SUBPAGE_CENTER_X + (PAGE4_IMG_WIDTH / 2), PAGE4_IMG_Y + PAGE4_IMG_HEIGHT,
                 PICT_DRAW | PICT_DISABLED, 1, "/Theme/SettingsPage/Rero.bmp", pxDefaultScheme );
     
-    // Title.
-    StCreate( GID_SETTINGS_TXT_FIRMWARE,
-              SETTINGS_SUBPAGE_LEFT,  PAGE4_TXT_Y1,
-              SETTINGS_SUBPAGE_RIGHT, PAGE4_TXT_Y1 + PAGE4_TXT_HEIGHT,
-              ST_CENTER_ALIGN | ST_DRAW, "Firmware Version :", pxLightBlueTxtScheme );
     
-    // Firmware version.
+    short sTwoThirdX = SETTINGS_SUBPAGE_TWOTHIRD_X;
+    
+    // rero Firmware version Title.
+    StCreate( GID_SETTINGS_TXT_FIRMWARE,
+              SETTINGS_SUBPAGE_LEFT + 20,  PAGE4_TXT_Y1,
+              sTwoThirdX, PAGE4_TXT_Y1 + PAGE4_TXT_HEIGHT,
+              ST_DRAW, "rero Firmware Version :", pxLightBlueTxtScheme );
+    
     StCreate( GID_SETTINGS_TXT_DATE,
-              SETTINGS_SUBPAGE_LEFT,  PAGE4_TXT_Y2,
+              sTwoThirdX,  PAGE4_TXT_Y1,
+              SETTINGS_SUBPAGE_RIGHT, PAGE4_TXT_Y1 + PAGE4_TXT_HEIGHT,
+              ST_DRAW, (char *)szFirmwareVersion, pxLightGreenTxtScheme );
+    
+    
+    // Bluetooth module firmware version title.
+    StCreate( GID_SETTINGS_TXT_BTFIRMWARE,
+              SETTINGS_SUBPAGE_LEFT + 20,  PAGE4_TXT_Y2,
+              sTwoThirdX, PAGE4_TXT_Y2 + PAGE4_TXT_HEIGHT,
+              ST_DRAW, "Bluetooth Firmware Version :", pxLightBlueTxtScheme );
+
+    // Bluetooth module firmware version 
+    StCreate( GID_SETTINGS_TXT_BTVERSION,
+              sTwoThirdX,  PAGE4_TXT_Y2,
               SETTINGS_SUBPAGE_RIGHT, PAGE4_TXT_Y2 + PAGE4_TXT_HEIGHT,
-              ST_CENTER_ALIGN | ST_DRAW, (char *)szFirmwareVersion, pxLightGreenTxtScheme );
+              ST_DRAW, szBTFirmwareVersion, pxLightGreenTxtScheme );
+    
+        
 }
 
 

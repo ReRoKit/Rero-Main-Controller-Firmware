@@ -34,6 +34,10 @@
 #define TXT_Y1                  (WND_LIMIT_BOTTOM - TXT_HEIGHT)
 #define TXT_Y2                  WND_LIMIT_BOTTOM
 
+// Text for bluetooth firmware version.
+#define TXT_Y3                  WND_LIMIT_TOP
+#define TXT_Y4                  (WND_LIMIT_TOP + TXT_HEIGHT)
+
 // Bluetooth logo.
 #define IMG_BTLOGO_WIDTH        200
 #define IMG_BTLOGO_HEIGHT       160
@@ -78,12 +82,12 @@ void vCreateBluetoothPage(void)
     vCreatePageWindow("BLUETOOTH");
     
     
-
     // Create the bluetooth logo.
     PictCreate( GID_BT_IMG_LOGO,
                 IMG_BTLOGO_X1, IMG_BTLOGO_Y1,
                 IMG_BTLOGO_X2, IMG_BTLOGO_Y2,
                 PICT_DRAW, 1, "/Theme/BluetoothPage/BluetoothBackground.bmp", pxDefaultScheme );
+    
     
     
     // Create text for robot name.
