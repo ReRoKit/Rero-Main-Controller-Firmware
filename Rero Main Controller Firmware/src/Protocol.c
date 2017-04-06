@@ -550,6 +550,10 @@ unsigned char ucProcessCommandPacket(const unsigned char* pucReceivedPacket, uns
                         case 1: eErrorCode = eUltrasonicSensorGetValue(ucId, &usSensorValue);               break;
                         case 2: eErrorCode = eHeadGetIrValue(ucId, (unsigned char*)&usSensorValue);         break;
                         case 3: eErrorCode = eHeadGetMicValue(ucId, (unsigned char*)&usSensorValue);        break;
+                        case 4: eErrorCode = eTactileSensorGetValue(ucId, (unsigned char*)&usSensorValue);  break;
+                        case 5: eErrorCode = eLineSensorGetDigital(ucId, (unsigned char*)&usSensorValue);   break;
+                        case 6: eErrorCode = eColourSensorGetColour(ucId, (unsigned char*)&usSensorValue);  break;
+                        case 7: eErrorCode = eColourSensorGetAmbient(ucId, (unsigned char*)&usSensorValue);  break;
                     }
                     
                     // Error state.

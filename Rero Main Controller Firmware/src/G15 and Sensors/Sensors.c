@@ -510,46 +510,6 @@ EM_ERROR eTactileSensorGetValue(unsigned char ucId, unsigned char *pucValue)
 
 
 /*******************************************************************************
- * FUNCTION: eAnalogInputModuleGetValue
- *
- * PARAMETERS:
- * ~ ucId           - Sensor ID.
- * ~ ucChannel      - Input channel.
- * ~ pucValue       - Buffer to return the value.
- *
- * RETURN:
- * ~ Error Code.
- *
- * DESCRIPTIONS:
- * Get the analog input module value.
- *
- *******************************************************************************/
-EM_ERROR eAnalogInputModuleGetValue(unsigned char ucId, unsigned char ucChannel, unsigned char *pucValue)
-{
-    unsigned char pucTxParam[2];
-
-    // Control table address.
-    switch (ucChannel) {
-        case 1: pucTxParam[0] = AI_ADD_AN_S1; break;
-        case 2: pucTxParam[0] = AI_ADD_AN_S2; break;
-        case 3: pucTxParam[0] = AI_ADD_AN_S3; break;
-        case 4: pucTxParam[0] = AI_ADD_AN_S4; break;
-        
-        default:
-            return EM_ERR_INSTRUCTION;
-    }
-    
-    
-    // Number of bytes to read.
-    pucTxParam[1] = 1;
-
-    // Send the packet and return the error code.
-    return eEMSendReceivePacket(ucId, EM_INST_READ_DATA, sizeof(pucTxParam), pucTxParam, pucValue);
-}
-
-
-
-/*******************************************************************************
  * FUNCTION: eLineSensorGetAnalog
  *
  * PARAMETERS:
@@ -897,6 +857,46 @@ EM_ERROR eColourSensorGetColour(unsigned char ucId, CL_SENSOR_COLOUR *peColour)
 
 
 /*******************************************************************************
+ * FUNCTION: eAnalogInputModuleGetValue
+ *
+ * PARAMETERS:
+ * ~ ucId           - Sensor ID.
+ * ~ ucChannel      - Input channel.
+ * ~ pucValue       - Buffer to return the value.
+ *
+ * RETURN:
+ * ~ Error Code.
+ *
+ * DESCRIPTIONS:
+ * Get the analog input module value.
+ *
+ *******************************************************************************/
+EM_ERROR eAnalogInputModuleGetValue(unsigned char ucId, unsigned char ucChannel, unsigned char *pucValue)
+{
+    unsigned char pucTxParam[2];
+
+    // Control table address.
+    switch (ucChannel) {
+        case 1: pucTxParam[0] = AI_ADD_AN_S1; break;
+        case 2: pucTxParam[0] = AI_ADD_AN_S2; break;
+        case 3: pucTxParam[0] = AI_ADD_AN_S3; break;
+        case 4: pucTxParam[0] = AI_ADD_AN_S4; break;
+        
+        default:
+            return EM_ERR_INSTRUCTION;
+    }
+    
+    
+    // Number of bytes to read.
+    pucTxParam[1] = 1;
+
+    // Send the packet and return the error code.
+    return eEMSendReceivePacket(ucId, EM_INST_READ_DATA, sizeof(pucTxParam), pucTxParam, pucValue);
+}
+
+
+
+/*******************************************************************************
  * FUNCTION: eRgbLightModuleSetRgb
  *
  * PARAMETERS:
@@ -1025,3 +1025,5 @@ EM_ERROR eRgbLightModuleGetRgb(unsigned char ucId, unsigned char *pucRed, unsign
 //    // Send the packet and return the error code.
 //    return eEMSendReceivePacket(ucId, EM_INST_READ_DATA, sizeof(pucTxParam), pucTxParam, pucValue);
 //}
+
+
