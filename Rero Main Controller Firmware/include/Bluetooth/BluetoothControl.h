@@ -25,7 +25,8 @@ typedef enum __attribute__((packed)) {
 typedef enum __attribute__((packed)) {
     UNKNOWN,
     BT_V20,
-    BT_V40
+    BT_V40_DUAL,
+    BT_V40_BLE
 } BLUETOOTH_VERSION;
 
 

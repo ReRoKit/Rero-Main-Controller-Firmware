@@ -178,15 +178,15 @@ BLUETOOTH_VERSION eGetBluetoothVersion(void)
         // Now, check whether we have received any response from the bluetooth module using v2.0 protocol.
         // If timeout occurred, means we didn't receive any response.
         if (ucLoopCount == 0) {
-            // So now we will try to use the v4.0 protocol.
-            vUART2SetBaudRate(BT4_BAUDRATE);
+            // So now we will try to use the v4.0 dual protocol.
+            vUART2SetBaudRate(BT4_DUAL_BAUDRATE);
 
 
             // Flush the Rx FIFO.
             vUART2FlushRxBuffer();
 
             // Keep pinging the bluetooth module using v4.0 protocol for up to 10 seconds or response is received.
-            ucLoopCount = 100;
+            ucLoopCount = 50;
             do {
                 // Ping the bluetooth module.
                 const unsigned char szPingCommand[] = "AT";
@@ -199,34 +199,66 @@ BLUETOOTH_VERSION eGetBluetoothVersion(void)
             // We don't check the received string here. We only expect to receive 2 bytes of data.
             } while ((--ucLoopCount > 0) && (uiUART2GetRxDataCount() < 2));
 
-            // Now, check whether we have received any response from the bluetooth module using v4.0 protocol.
+            
+            
+            // Now, check whether we have received any response from the bluetooth module using v4.0 dual protocol.
             // If timeout occurred, means we didn't receive any response.
             if (ucLoopCount == 0) {
-                // Set the bluetooth error flag as we didn't receive response from the bluetooth module using either v2.0 or v4.0 protocol.
-                xSystemError.bBluetoothError = 1;
+                // So now we will try to use the v4.0 ble protocol.
+                vUART2SetBaudRate(BT4_BLE_BAUDRATE);
 
-                // Disable the bluetooth module.
-                vDisableBluetooth();
+
+                // Flush the Rx FIFO.
+                vUART2FlushRxBuffer();
+
+                // Keep pinging the bluetooth module using v4.0 ble protocol for up to 10 seconds or response is received.
+                ucLoopCount = 50;
+                do {
+                    // Ping the bluetooth module.
+                    const unsigned char szPingCommand[] = "AT";
+                    while (uiUART2GetTxSpace() < (sizeof(szPingCommand) - 1));
+                    uiUART2Write(szPingCommand, sizeof(szPingCommand) - 1);
+
+                    vTaskDelay(100 / portTICK_RATE_MS);
+
+                // Loop for 10 seconds if "OK" is not received.
+                // We don't check the received string here. We only expect to receive 2 bytes of data.
+                } while ((--ucLoopCount > 0) && (uiUART2GetRxDataCount() < 2));
+
+                // Now, check whether we have received any response from the bluetooth module using v4.0 protocol.
+                // If timeout occurred, means we didn't receive any response.
+                if (ucLoopCount == 0) {
+                    // Set the bluetooth error flag as we didn't receive response from the bluetooth module using either v2.0 or v4.0 protocol.
+                    xSystemError.bBluetoothError = 1;
+
+                    // Disable the bluetooth module.
+                    vDisableBluetooth();
+                }
+                // Timeout did not occur.
+                // This means the bluetooth module is v4.0 ble.
+                else {
+                    eBtVersion = BT_V40_BLE;
+
+                    // Disable the AT MODE selection pin.
+                    BT_AT_MODE_TRIS = 1;
+                }
             }
-
             // Timeout did not occur.
-            // This means the bluetooth module is v4.0.
+            // This means the bluetooth module is v4.0 dual mode.
             else {
-                eBtVersion = BT_V40;
+                eBtVersion = BT_V40_DUAL;
 
                 // Disable the AT MODE selection pin.
                 BT_AT_MODE_TRIS = 1;
             }
-        }
 
+        }
         // Timeout did not occur.
         // This means the bluetooth module is v2.0.
         else {
             eBtVersion = BT_V20;
-        }
+        } 
     }
-
-    
     return eBtVersion;
 }
 
@@ -302,19 +334,54 @@ void vEnableBluetooth(BLUETOOTH_MODE eBtMode)
         }
     }
 
-    // Bluetooth v4.0.
-    else if (eBtVersion == BT_V40) {
+    // Bluetooth v4.0 dual mode.
+    else if (eBtVersion == BT_V40_DUAL) {
         // Enable the bluetooth module.
         BT_RESET = 1;
-        vUART2SetBaudRate(BT4_BAUDRATE);
+        vUART2SetBaudRate(BT4_DUAL_BAUDRATE);
         vTaskDelay(100 / portTICK_RATE_MS);
 
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
 
 
-        // Keep pinging the bluetooth module for up to 10 seconds or response is received.
-        ucLoopCount = 100;
+        // Keep pinging the bluetooth module for up to 5 seconds or response is received.
+        ucLoopCount = 50;
+        do {
+            // Ping the bluetooth module.
+            const unsigned char szPingCommand[] = "AT";
+            while (uiUART2GetTxSpace() < (sizeof(szPingCommand) - 1));
+            uiUART2Write(szPingCommand, sizeof(szPingCommand) - 1);
+
+            vTaskDelay(100 / portTICK_RATE_MS);
+
+        // Loop for 10 seconds if "OK" is not received.
+        // We don't check the received string here. We only expect to receive 2 bytes of data.
+        } while ((--ucLoopCount > 0) && (uiUART2GetRxDataCount() < 2));
+
+        // If timeout occurred, means we didn't receive any response.
+        if (ucLoopCount == 0) {
+            // Set the bluetooth error flag.
+            xSystemError.bBluetoothError = 1;
+
+            // Disable the bluetooth module.
+            vDisableBluetooth();
+        }
+    }
+
+    // Bluetooth v4.0 BLE.
+    else if (eBtVersion == BT_V40_BLE) {
+        // Enable the bluetooth module.
+        BT_RESET = 1;
+        vUART2SetBaudRate(BT4_BLE_BAUDRATE);
+        vTaskDelay(100 / portTICK_RATE_MS);
+
+        // Flush the Rx FIFO.
+        vUART2FlushRxBuffer();
+
+
+        // Keep pinging the bluetooth module for up to 5 seconds or response is received.
+        ucLoopCount = 50;
         do {
             // Ping the bluetooth module.
             const unsigned char szPingCommand[] = "AT";
@@ -559,8 +626,8 @@ void vConfigureBluetooth(void)
 
 
 
-    // Bluetooth v4.0.
-    else if (eBtVersion == BT_V40) {
+    // Bluetooth v4.0 Dual Mode (EDR+BLE) or BLE Mode only.
+    else if (eBtVersion == BT_V40_DUAL || eBtVersion == BT_V40_BLE) {
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
 
@@ -588,65 +655,7 @@ void vConfigureBluetooth(void)
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
 
-        // Disable dual mode. Only either EDR or BLE can be connected at one time.
-        // Command: AT+DUAL1
-        const unsigned char pucDualCommand[] = "AT+DUAL1";
-        while (uiUART2GetTxSpace() < (sizeof(pucDualCommand) - 1));
-        uiUART2Write(pucDualCommand, sizeof(pucDualCommand) - 1);
-
-        // Wait until the respond is received.
-        // Response: OK+Set:1
-        // We don't check the received string here. We only make sure the number of bytes received is correct.
-        if (prv_uiReadBluetooth(prv_pucRxBuffer, 8, BT_RX_TIMEOUT) < 8) {
-            // Timeout occurred.
-            // Set the error flag.
-            xSystemError.bBluetoothError = 1;
-
-            // Disable the bluetooth module.
-            vDisableBluetooth();
-
-            return;
-        }
-        
-        
-        // Flush the Rx FIFO.
-        vUART2FlushRxBuffer();
-
-        // Start the EDR mode automatically after power on.
-        // Command: AT+IMME0
-        const unsigned char pucImmeCommand[] = "AT+IMME0";
-        while (uiUART2GetTxSpace() < (sizeof(pucImmeCommand) - 1));
-        uiUART2Write(pucImmeCommand, sizeof(pucImmeCommand) - 1);
-
-        // Wait until the respond is received.
-        // Response: OK+Set:1
-        // We don't check the received string here. We only make sure the number of bytes received is correct.
-        if (prv_uiReadBluetooth(prv_pucRxBuffer, 8, BT_RX_TIMEOUT) < 8) {
-            // This command is not compatible with old BT4.0 firmware, thus just ignore it if timeout occured.
-        }
-        
-        
-        // Flush the Rx FIFO.
-        vUART2FlushRxBuffer();
-
-        // Start the BLE mode automatically after power on.
-        // Command: AT+IMMB0
-        const unsigned char pucImmbCommand[] = "AT+IMMB0";
-        while (uiUART2GetTxSpace() < (sizeof(pucImmbCommand) - 1));
-        uiUART2Write(pucImmbCommand, sizeof(pucImmbCommand) - 1);
-
-        // Wait until the respond is received.
-        // Response: OK+Set:1
-        // We don't check the received string here. We only make sure the number of bytes received is correct.
-        if (prv_uiReadBluetooth(prv_pucRxBuffer, 8, BT_RX_TIMEOUT) < 8) {
-            // This command is not compatible with old BT4.0 firmware, thus just ignore it if timeout occured.
-        }
-
-
-        // Flush the Rx FIFO.
-        vUART2FlushRxBuffer();
-
-        // Change the bluetooth name for EDR mode.
+        // Change the bluetooth name for BLE module or EDR mode.
         // Command: AT+NAME<name>
         const unsigned char pucSetEdrNameCommand[] = "AT+NAME";
         while (uiUART2GetTxSpace() < (sizeof(pucSetEdrNameCommand) - 1));
@@ -655,9 +664,6 @@ void vConfigureBluetooth(void)
         while (uiUART2GetTxSpace() < strlen(pucRobotName));
         uiUART2Write(pucRobotName, strlen(pucRobotName));
 
-        // Wait until the respond is received.
-        // Response: OK+Set:<name>
-        // We don't check the received string here. We only make sure the number of bytes received is correct.
         unsigned char ucResponseLength = 7 + strlen(pucRobotName);
         if (prv_uiReadBluetooth(prv_pucRxBuffer, ucResponseLength, BT_RX_TIMEOUT) < ucResponseLength) {
             // Timeout occurred.
@@ -672,72 +678,150 @@ void vConfigureBluetooth(void)
         
 
 
-        // Flush the Rx FIFO.
-        vUART2FlushRxBuffer();
+        if (eBtVersion == BT_V40_DUAL) {
+            // Flush the Rx FIFO.
+            vUART2FlushRxBuffer();
 
-        // Change the bluetooth name for BLE mode.
-        // Command: AT+NAMB<name>
-        const unsigned char pucSetBleNameCommand[] = "AT+NAMB";
-        while (uiUART2GetTxSpace() < (sizeof(pucSetBleNameCommand) - 1));
-        uiUART2Write(pucSetBleNameCommand, sizeof(pucSetBleNameCommand) - 1);
+            // Start the EDR mode automatically after power on.
+            // Command: AT+IMME0
+            const unsigned char pucImmeCommand[] = "AT+IMME0";
+            while (uiUART2GetTxSpace() < (sizeof(pucImmeCommand) - 1));
+            uiUART2Write(pucImmeCommand, sizeof(pucImmeCommand) - 1);
 
-        while (uiUART2GetTxSpace() < strlen(pucRobotName));
-        uiUART2Write(pucRobotName, strlen(pucRobotName));
+            // Wait until the respond is received.
+            // Response: OK+Set:1
+            // We don't check the received string here. We only make sure the number of bytes received is correct.
+            if (prv_uiReadBluetooth(prv_pucRxBuffer, 8, BT_RX_TIMEOUT) < 8) {
+                // This command is not compatible with old BT4.0 firmware, thus just ignore it if timeout occurred.
+            }
 
-        // Wait until the respond is received.
-        // Response: OK+Set:<name>
-        // We don't check the received string here. We only make sure the number of bytes received is correct.
-        ucResponseLength = 7 + strlen(pucRobotName);
-        if (prv_uiReadBluetooth(prv_pucRxBuffer, ucResponseLength, BT_RX_TIMEOUT) < ucResponseLength) {
-            // Timeout occurred.
-            // Set the error flag.
-            xSystemError.bBluetoothError = 1;
+            
+            // Flush the Rx FIFO.
+            vUART2FlushRxBuffer();
 
-            // Disable the bluetooth module.
-            vDisableBluetooth();
+            // Start the BLE mode automatically after power on.
+            // Command: AT+IMMB0
+            const unsigned char pucImmbCommand[] = "AT+IMMB0";
+            while (uiUART2GetTxSpace() < (sizeof(pucImmbCommand) - 1));
+            uiUART2Write(pucImmbCommand, sizeof(pucImmbCommand) - 1);
 
-            return;
-        }
+            // Wait until the respond is received.
+            // Response: OK+Set:1
+            // We don't check the received string here. We only make sure the number of bytes received is correct.
+            if (prv_uiReadBluetooth(prv_pucRxBuffer, 8, BT_RX_TIMEOUT) < 8) {
+                // This command is not compatible with old BT4.0 firmware, thus just ignore it if timeout occured.
+            }
 
 
-        // Flush the Rx FIFO.
-        vUART2FlushRxBuffer();
+            // Flush the Rx FIFO.
+            vUART2FlushRxBuffer();
 
-        // Read the MAC address for BLE.
-        // Command: AT+ADDB?
-        unsigned char pucReadAddressCommand[] = "AT+ADDB?";
-        while (uiUART2GetTxSpace() < strlen(pucReadAddressCommand));
-        uiUART2Write(pucReadAddressCommand, strlen(pucReadAddressCommand));
+            // Change the bluetooth name for BLE mode.
+            // Command: AT+NAMB<name>
+            const unsigned char pucSetBleNameCommand[] = "AT+NAMB";
+            while (uiUART2GetTxSpace() < (sizeof(pucSetBleNameCommand) - 1));
+            uiUART2Write(pucSetBleNameCommand, sizeof(pucSetBleNameCommand) - 1);
 
-        // Read the MAC address.
-        // Response: OK+Get:<address>
-        // Read and discard the "OK+Get:".
-        if (prv_uiReadBluetooth(prv_pucRxBuffer, 7, BT_RX_TIMEOUT) < 7) {
-            // Timeout occurred.
-            // Set the error flag.
-            xSystemError.bBluetoothError = 1;
+            while (uiUART2GetTxSpace() < strlen(pucRobotName));
+            uiUART2Write(pucRobotName, strlen(pucRobotName));
 
-            // Disable the bluetooth module.
-            vDisableBluetooth();
+            // Wait until the respond is received.
+            // Response: OK+Set:<name>
+            // We don't check the received string here. We only make sure the number of bytes received is correct.
+            ucResponseLength = 7 + strlen(pucRobotName);
+            if (prv_uiReadBluetooth(prv_pucRxBuffer, ucResponseLength, BT_RX_TIMEOUT) < ucResponseLength) {
+                // Timeout occurred.
+                // Set the error flag.
+                xSystemError.bBluetoothError = 1;
 
-            return;
-        }
+                // Disable the bluetooth module.
+                vDisableBluetooth();
 
-        // Read the address.
-        if (prv_uiReadBluetooth((unsigned char*)szBluetoothAddress, 12, BT_RX_TIMEOUT) < 12) {
-            // Timeout occurred.
-            // Set the error flag.
-            xSystemError.bBluetoothError = 1;
+                return;
+            }
+            
+            
+            // Flush the Rx FIFO.
+            vUART2FlushRxBuffer();
 
-            // Disable the bluetooth module.
-            vDisableBluetooth();
+            // Read the MAC address for BLE.
+            // Command: AT+ADDB?
+            unsigned char pucReadAddressCommand[] = "AT+ADDB?";
 
-            return;
-        }
+            while (uiUART2GetTxSpace() < strlen(pucReadAddressCommand));
+            uiUART2Write(pucReadAddressCommand, strlen(pucReadAddressCommand));
 
-        // Terminate with null.
-        szBluetoothAddress[12] = 0;
+            // Read the MAC address.
+            // Response: OK+Get:<address>
+            // Read and discard the "OK+Get:".
+            if (prv_uiReadBluetooth(prv_pucRxBuffer, 7, BT_RX_TIMEOUT) < 7) {
+                // Timeout occurred.
+                // Set the error flag.
+                xSystemError.bBluetoothError = 1;
+
+                // Disable the bluetooth module.
+                vDisableBluetooth();
+
+                return;
+            }
+            
+            // Read the address.
+            if (prv_uiReadBluetooth((unsigned char*)szBluetoothAddress, 12, BT_RX_TIMEOUT) < 12) {
+                // Timeout occurred.
+                // Set the error flag.
+                xSystemError.bBluetoothError = 1;
+
+                // Disable the bluetooth module.
+                vDisableBluetooth();
+
+                return;
+            }
         
+            // Terminate with null.
+            szBluetoothAddress[12] = 0;
+        }
+
+
+        if (eBtVersion == BT_V40_BLE) {
+            // Flush the Rx FIFO.
+            vUART2FlushRxBuffer();
+
+            // Read the MAC address.
+            // Command: AT+ADDR?
+            unsigned char pucReadAddressCommand[] = "AT+ADDR?";
+        
+            while (uiUART2GetTxSpace() < strlen(pucReadAddressCommand));
+            uiUART2Write(pucReadAddressCommand, strlen(pucReadAddressCommand));
+
+            // Read the MAC address.
+            // Response: OK+ADDR:<address>
+            // Read and discard the "OK+ADDR:".
+            if (prv_uiReadBluetooth(prv_pucRxBuffer, 8, BT_RX_TIMEOUT) < 8) {
+                // Timeout occurred.
+                // Set the error flag.
+                xSystemError.bBluetoothError = 1;
+
+                // Disable the bluetooth module.
+                vDisableBluetooth();
+
+                return;
+            }
+        
+            // Read the address.
+            if (prv_uiReadBluetooth((unsigned char*)szBluetoothAddress, 12, BT_RX_TIMEOUT) < 12) {
+                // Timeout occurred.
+                // Set the error flag.
+                xSystemError.bBluetoothError = 1;
+
+                // Disable the bluetooth module.
+                vDisableBluetooth();
+
+                return;
+            }
+        
+            // Terminate with null.
+            szBluetoothAddress[12] = 0;
+        }
         
 
         // Flush the Rx FIFO.
@@ -749,21 +833,38 @@ void vConfigureBluetooth(void)
         while (uiUART2GetTxSpace() < strlen(pucReadBTFirmwareVersionCommand));
         uiUART2Write(pucReadBTFirmwareVersionCommand, strlen(pucReadBTFirmwareVersionCommand));
 
-        
-        // Read the firmware version.
-        // Response: OK+Get:<firmware ver>, eg: OK+Get:HMSoftV312
-        // Read and discard the "OK+Get:HMSoft".
-        if (prv_uiReadBluetooth(prv_pucRxBuffer, 13, BT_RX_TIMEOUT) < 13) {
-            // Timeout occurred.
-            // Set the error flag.
-            xSystemError.bBluetoothError = 1;
 
-            // Disable the bluetooth module.
-            vDisableBluetooth();
+        if (eBtVersion == BT_V40_DUAL) {
+            // Read the firmware version.
+            // Response: OK+Get:<firmware ver>, eg: OK+Get:HMSoftV312
+            // Read and discard the "OK+Get:HMSoft".
+            if (prv_uiReadBluetooth(prv_pucRxBuffer, 13, BT_RX_TIMEOUT) < 13) {
+                // Timeout occurred.
+                // Set the error flag.
+                xSystemError.bBluetoothError = 1;
 
-            return;
+                // Disable the bluetooth module.
+                vDisableBluetooth();
+
+                return;
+            }
         }
+        else {  // BLE Module
+            // Read the firmware version.
+            // Response: HMSoft <firmware ver>, eg: HMSoft V547
+            // Read and discard the "HMSoft ".
+            if (prv_uiReadBluetooth(prv_pucRxBuffer, 7, BT_RX_TIMEOUT) < 7) {
+                // Timeout occurred.
+                // Set the error flag.
+                xSystemError.bBluetoothError = 1;
 
+                // Disable the bluetooth module.
+                vDisableBluetooth();
+
+                return;
+            }
+        }
+        
         // Read the firmware version.
         if (prv_uiReadBluetooth((unsigned char*)szBTFirmwareVersion, 4, BT_RX_TIMEOUT) < 4) {
             // Timeout occurred.
@@ -780,7 +881,6 @@ void vConfigureBluetooth(void)
         szBTFirmwareVersion[5] = 0;
 
     }
-
 
 
     // Can't communicate with bluetooth module.
@@ -852,7 +952,7 @@ void vGetBluetoothPin(char* pszPin)
 
 
     // Bluetooth v4.0.
-    else if (eBtVersion == BT_V40) {
+    else if (eBtVersion == BT_V40_DUAL) {
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
 
@@ -967,7 +1067,7 @@ unsigned char ucSetBluetoothPin(const char* szPin)
 
 
     // Bluetooth v4.0.
-    else if (eBtVersion == BT_V40) {
+    else if (eBtVersion == BT_V40_DUAL) {
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
 
