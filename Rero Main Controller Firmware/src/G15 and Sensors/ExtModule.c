@@ -302,6 +302,36 @@ EM_ERROR eEMGetModel(unsigned char ucId, EM_MODEL *peModel)
 
 
 /*******************************************************************************
+ * FUNCTION: eEMGetFirmwareRevision
+ *
+ * PARAMETERS:
+ * ~ ucId                   - External Module ID.
+ * ~ pucFirmwareRevision    - Buffer to return the firmware revision (1 byte).
+ *
+ * RETURN:
+ * ~ Error Code.
+ *
+ * DESCRIPTIONS:
+ * Get the external module firmware revision.
+ *
+ *******************************************************************************/
+EM_ERROR eEMGetFirmwareRevision(unsigned char ucId, unsigned char *pucFirmwareRevision)
+{
+    unsigned char pucTxParam[2];
+
+    // Control table address.
+    pucTxParam[0] = EM_ADD_VERSION;
+
+    // Number of bytes to read.
+    pucTxParam[1] = 1;
+
+    // Send the packet and return the error code.
+    return eEMSendReceivePacket(ucId, EM_INST_READ_DATA, sizeof(pucTxParam), pucTxParam, (unsigned char*)pucFirmwareRevision);
+}
+
+
+
+/*******************************************************************************
  * FUNCTION: eEMSetId
  *
  * PARAMETERS:

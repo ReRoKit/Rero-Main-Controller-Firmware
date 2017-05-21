@@ -37,6 +37,11 @@ const unsigned short G15_WHEEL_SPEED = 250;
 #define G15_LIMIT_TOP               (EM_SUBPAGE_TOP + G15_MARGIN_TOP)
 #define G15_LIMIT_BOTTOM            (EM_SUBPAGE_BOTTOM - G15_MARGIN_BOTTOM)
 
+#define TXT_HEIGHT                  20
+#define TXT_TYPE_X1                 G15_LIMIT_LEFT
+#define TXT_TYPE_X2                 G15_LIMIT_RIGHT
+#define TXT_TYPE_Y1                 G15_LIMIT_TOP
+#define TXT_TYPE_Y2                 (TXT_TYPE_Y1 + TXT_HEIGHT)
 
 
 // Graphic objects size and position.
@@ -134,6 +139,7 @@ const unsigned short G15_WHEEL_SPEED = 250;
 
 static unsigned char prv_ucSelectedG15Id = 0xff;
 static unsigned char prv_ucWheelMode = 0;
+static char prv_szFirmwareRevision[] = "rev:--";
 
 
 
@@ -198,6 +204,12 @@ static void prv_vSelectServo(unsigned char ucServoId)
         } else {
             prv_ucWheelMode = 1;
         }
+        
+        // Get Firmware version
+        unsigned char ucFirmwareRevision = 0xff;
+        eEMGetFirmwareRevision(prv_ucSelectedG15Id, &ucFirmwareRevision);
+        // Update the text with selected sensor firmware revision.
+        snprintf(prv_szFirmwareRevision, sizeof(prv_szFirmwareRevision), "rev:%02X", ucFirmwareRevision);
     }
 }
 
@@ -527,6 +539,12 @@ static void prv_vCreateG15Subpage(void)
     
     // Create the increase, decrease and set path button.
     prv_vCreateTestServoPageButtons();
+    
+    // Create text for sensor firmware revision.
+    StCreate( GID_G15_TXT_FIRMWAREREVISION,
+              TXT_TYPE_X2 - 40, TXT_TYPE_Y1,
+              TXT_TYPE_X2, TXT_TYPE_Y2,
+              ST_DRAW, prv_szFirmwareRevision, pxDefaultScheme );
 }
 
 

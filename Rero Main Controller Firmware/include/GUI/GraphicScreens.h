@@ -237,11 +237,13 @@ typedef enum __attribute__((packed)) {
     GID_G15_BTN_NEXT,
     GID_G15_BTN_SAVE,
     GID_G15_BTN_CANCEL,
+    GID_G15_TXT_FIRMWAREREVISION,
 
-
+            
     // Sensor page.
     GID_SENSOR_TXT_TYPE,
-            
+    GID_SENSOR_TXT_FIRMWAREREVISION,
+    
     GID_SENSOR_SLD_VALUE1,
     GID_SENSOR_TXT_VALUE1,
     GID_SENSOR_TXT_TITLE1,

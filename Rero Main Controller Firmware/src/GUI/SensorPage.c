@@ -433,6 +433,8 @@
 static unsigned char prv_ucSelectedSensorId = 0xff;
 static EM_MODEL prv_eSelectedSensorType = EM_MODEL_NONE;
 
+static char prv_szFirmwareRevision[] = "rev:--";
+
 static char prv_szValue1[] = "Value: 000cm   ";
 static char prv_szValue2[] = "Value: 000cm   ";
 static char prv_szValue3[] = "Value: 000cm   ";
@@ -511,8 +513,12 @@ static void prv_vCreateSingleSliderSubpage(char *szSensorType, unsigned short us
               TXT_TYPE_X1, TXT_TYPE_Y1,
               TXT_TYPE_X2, TXT_TYPE_Y2,
               ST_DRAW, szSensorType, pxLightGreenTxtScheme );
-    
-    
+   
+    // Create text for sensor firmware revision.
+    StCreate( GID_SENSOR_TXT_FIRMWAREREVISION,
+              TXT_TYPE_X2 - 40, TXT_TYPE_Y1,
+              TXT_TYPE_X2, TXT_TYPE_Y2,
+              ST_DRAW, prv_szFirmwareRevision, pxDefaultScheme );
     
     // Create text for sensor value.
     StCreate( GID_SENSOR_TXT_VALUE1,
@@ -550,6 +556,11 @@ static void prv_vCreateHeadModuleSubpage(void)
               TXT_TYPE_X2, TXT_TYPE_Y2,
               ST_DRAW, "HEAD MODULE", pxLightGreenTxtScheme );
 
+    // Create text for sensor firmware revision.
+    StCreate( GID_SENSOR_TXT_FIRMWAREREVISION,
+              TXT_TYPE_X2 - 40, TXT_TYPE_Y1,
+              TXT_TYPE_X2, TXT_TYPE_Y2,
+              ST_DRAW, prv_szFirmwareRevision, pxDefaultScheme );
     
     // Create text for sensor value 1.
     StCreate( GID_SENSOR_TXT_VALUE1,
@@ -626,8 +637,12 @@ static void prv_vCreateColourSensorSubpage(void)
               TXT_TYPE_X2, TXT_TYPE_Y2,
               ST_DRAW, "COLOUR SENSOR", pxLightGreenTxtScheme );
     
+    // Create text for sensor firmware revision.
+    StCreate( GID_SENSOR_TXT_FIRMWAREREVISION,
+              TXT_TYPE_X2 - 40, TXT_TYPE_Y1,
+              TXT_TYPE_X2, TXT_TYPE_Y2,
+              ST_DRAW, prv_szFirmwareRevision, pxDefaultScheme );
     
-
     // Create text and slider for sensor value 1.
     StCreate( GID_SENSOR_TXT_VALUE1,
               PGCL_TXT_VALUE1_X1, PGCL_TXT_VALUE1_Y1,
@@ -726,7 +741,11 @@ static void prv_vCreateLineSensorSubpage(void)
               TXT_TYPE_X2, TXT_TYPE_Y2,
               ST_DRAW, "LINE SENSOR", pxLightGreenTxtScheme );
     
-    
+    // Create text for sensor firmware revision.
+    StCreate( GID_SENSOR_TXT_FIRMWAREREVISION,
+              TXT_TYPE_X2 - 40, TXT_TYPE_Y1,
+              TXT_TYPE_X2, TXT_TYPE_Y2,
+              ST_DRAW, prv_szFirmwareRevision, pxDefaultScheme );
     
     // Create objects for sensor value 1.
     StCreate( GID_SENSOR_TXT_VALUE1,
@@ -967,8 +986,12 @@ static void prv_vCreateRgbLightModuleSubpage(void)
               TXT_TYPE_X2, TXT_TYPE_Y2,
               ST_DRAW, "RGB LIGHT MODULE", pxLightGreenTxtScheme );
     
+    // Create text for sensor firmware revision.
+    StCreate( GID_SENSOR_TXT_FIRMWAREREVISION,
+              TXT_TYPE_X2 - 40, TXT_TYPE_Y1,
+              TXT_TYPE_X2, TXT_TYPE_Y2,
+              ST_DRAW, prv_szFirmwareRevision, pxDefaultScheme );
     
-
     // Create text and slider for sensor value 1.
     StCreate( GID_SENSOR_TXT_TITLE1,
               PGLM_TXT_TITLE1_X1, PGLM_TXT_TITLE1_Y1,
@@ -1149,9 +1172,14 @@ WORD usMsgSensorPage(WORD objMsg, OBJ_HEADER *pObj, GOL_MSG *pMsg)
                         // Read the sensor model.
                         EM_MODEL eModel;
                         eEMGetModel(prv_ucSelectedSensorId, &eModel);
-
                         // Save the selected sensor type.
                         prv_eSelectedSensorType = eModel;
+                        
+                        // Get Firmware version
+                        unsigned char ucFirmwareRevision = 0xff;
+                        eEMGetFirmwareRevision(prv_ucSelectedSensorId, &ucFirmwareRevision);
+                        // Update the text with selected sensor firmware revision.
+                        snprintf(prv_szFirmwareRevision, sizeof(prv_szFirmwareRevision), "rev:%02X", ucFirmwareRevision);
                         
                         // Turn on LED for selected sensor.
                         switch (prv_eSelectedSensorType) {

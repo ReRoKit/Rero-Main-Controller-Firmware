@@ -165,7 +165,7 @@ state according to the definition in the USB specification.
 /* Device Descriptor */
 ROM USB_DEVICE_DESCRIPTOR device_dsc=
 {
-    0x12,    // Size of this descriptor in bytes
+    0x12,                   // Size of this descriptor in bytes = 18
     USB_DESCRIPTOR_DEVICE,  // DEVICE descriptor type
     0x0200,                 // USB Spec Release Number in BCD format
     0x00,                   // Class Code "MISC_DEVICE" (ex: uses IAD descriptor)

@@ -112,6 +112,7 @@ EM_ERROR eEMOriBaudrate(void);
 void vEMDisableAllOutput(void);
 EM_ERROR eEMPing(unsigned char ucId);
 EM_ERROR eEMGetModel(unsigned char ucId, EM_MODEL *peModel);
+EM_ERROR eEMGetFirmwareRevision(unsigned char ucId, unsigned char *pucFirmwareRevision);
 EM_ERROR eEMSetId(unsigned char ucCurrentId, unsigned char ucNewId);
 EM_ERROR eEMSetAction(void);
 EM_ERROR eEMFactoryReset(unsigned char ucId);
