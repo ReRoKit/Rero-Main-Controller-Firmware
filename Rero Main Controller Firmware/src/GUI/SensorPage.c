@@ -516,7 +516,7 @@ static void prv_vCreateSingleSliderSubpage(char *szSensorType, unsigned short us
    
     // Create text for sensor firmware revision.
     StCreate( GID_SENSOR_TXT_FIRMWAREREVISION,
-              TXT_TYPE_X2 - 40, TXT_TYPE_Y1,
+              TXT_TYPE_X2 - 42, TXT_TYPE_Y1,
               TXT_TYPE_X2, TXT_TYPE_Y2,
               ST_DRAW, prv_szFirmwareRevision, pxDefaultScheme );
     
@@ -558,7 +558,7 @@ static void prv_vCreateHeadModuleSubpage(void)
 
     // Create text for sensor firmware revision.
     StCreate( GID_SENSOR_TXT_FIRMWAREREVISION,
-              TXT_TYPE_X2 - 40, TXT_TYPE_Y1,
+              TXT_TYPE_X2 - 42, TXT_TYPE_Y1,
               TXT_TYPE_X2, TXT_TYPE_Y2,
               ST_DRAW, prv_szFirmwareRevision, pxDefaultScheme );
     
@@ -639,7 +639,7 @@ static void prv_vCreateColourSensorSubpage(void)
     
     // Create text for sensor firmware revision.
     StCreate( GID_SENSOR_TXT_FIRMWAREREVISION,
-              TXT_TYPE_X2 - 40, TXT_TYPE_Y1,
+              TXT_TYPE_X2 - 42, TXT_TYPE_Y1,
               TXT_TYPE_X2, TXT_TYPE_Y2,
               ST_DRAW, prv_szFirmwareRevision, pxDefaultScheme );
     
@@ -743,7 +743,7 @@ static void prv_vCreateLineSensorSubpage(void)
     
     // Create text for sensor firmware revision.
     StCreate( GID_SENSOR_TXT_FIRMWAREREVISION,
-              TXT_TYPE_X2 - 40, TXT_TYPE_Y1,
+              TXT_TYPE_X2 - 42, TXT_TYPE_Y1,
               TXT_TYPE_X2, TXT_TYPE_Y2,
               ST_DRAW, prv_szFirmwareRevision, pxDefaultScheme );
     
@@ -988,7 +988,7 @@ static void prv_vCreateRgbLightModuleSubpage(void)
     
     // Create text for sensor firmware revision.
     StCreate( GID_SENSOR_TXT_FIRMWAREREVISION,
-              TXT_TYPE_X2 - 40, TXT_TYPE_Y1,
+              TXT_TYPE_X2 - 42, TXT_TYPE_Y1,
               TXT_TYPE_X2, TXT_TYPE_Y2,
               ST_DRAW, prv_szFirmwareRevision, pxDefaultScheme );
     

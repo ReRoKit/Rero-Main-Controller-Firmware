@@ -542,7 +542,7 @@ static void prv_vCreateG15Subpage(void)
     
     // Create text for sensor firmware revision.
     StCreate( GID_G15_TXT_FIRMWAREREVISION,
-              TXT_TYPE_X2 - 40, TXT_TYPE_Y1,
+              TXT_TYPE_X2 - 42, TXT_TYPE_Y1,
               TXT_TYPE_X2, TXT_TYPE_Y2,
               ST_DRAW, prv_szFirmwareRevision, pxDefaultScheme );
 }
