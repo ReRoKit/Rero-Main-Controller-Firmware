@@ -153,7 +153,7 @@ BLUETOOTH_VERSION eGetBluetoothVersion(void)
         // The baudrate will always be 38400.
         BT_AT_MODE = AT;
         BT_RESET = 1;
-        vUART2SetBaudRate(BT2_BAUDRATE);
+        vUART2SetBaudRate(BT2_HC05_BAUDRATE);
 
 
         // Flush the Rx FIFO.
@@ -179,7 +179,7 @@ BLUETOOTH_VERSION eGetBluetoothVersion(void)
         // If timeout occurred, means we didn't receive any response.
         if (ucLoopCount == 0) {
             // So now we will try to use the v4.0 dual protocol.
-            vUART2SetBaudRate(BT4_DUAL_BAUDRATE);
+            vUART2SetBaudRate(BT4_HM12_BAUDRATE);
 
 
             // Flush the Rx FIFO.
@@ -205,7 +205,7 @@ BLUETOOTH_VERSION eGetBluetoothVersion(void)
             // If timeout occurred, means we didn't receive any response.
             if (ucLoopCount == 0) {
                 // So now we will try to use the v4.0 ble protocol.
-                vUART2SetBaudRate(BT4_BLE_BAUDRATE);
+                vUART2SetBaudRate(BT4_HM10_BAUDRATE);
 
 
                 // Flush the Rx FIFO.
@@ -237,7 +237,7 @@ BLUETOOTH_VERSION eGetBluetoothVersion(void)
                 // Timeout did not occur.
                 // This means the bluetooth module is v4.0 ble.
                 else {
-                    eBtVersion = BT_V40_BLE;
+                    eBtVersion = BT_V40_HM10;
 
                     // Disable the AT MODE selection pin.
                     BT_AT_MODE_TRIS = 1;
@@ -246,7 +246,7 @@ BLUETOOTH_VERSION eGetBluetoothVersion(void)
             // Timeout did not occur.
             // This means the bluetooth module is v4.0 dual mode.
             else {
-                eBtVersion = BT_V40_DUAL;
+                eBtVersion = BT_V40_HM12;
 
                 // Disable the AT MODE selection pin.
                 BT_AT_MODE_TRIS = 1;
@@ -256,7 +256,7 @@ BLUETOOTH_VERSION eGetBluetoothVersion(void)
         // Timeout did not occur.
         // This means the bluetooth module is v2.0.
         else {
-            eBtVersion = BT_V20;
+            eBtVersion = BT_V20_HC05;
         } 
     }
     return eBtVersion;
@@ -292,11 +292,11 @@ void vEnableBluetooth(BLUETOOTH_MODE eBtMode)
     BLUETOOTH_VERSION eBtVersion = eGetBluetoothVersion();
 
     // Bluetooth v2.0.
-    if (eBtVersion == BT_V20) {
+    if (eBtVersion == BT_V20_HC05) {
         // Enable the bluetooth module.
         BT_AT_MODE = eBtMode;
         BT_RESET = 1;
-        vUART2SetBaudRate(BT2_BAUDRATE);
+        vUART2SetBaudRate(BT2_HC05_BAUDRATE);
         vTaskDelay(100 / portTICK_RATE_MS);
 
         // Only ping the bluetooth module in AT mode.
@@ -335,10 +335,10 @@ void vEnableBluetooth(BLUETOOTH_MODE eBtMode)
     }
 
     // Bluetooth v4.0 dual mode.
-    else if (eBtVersion == BT_V40_DUAL) {
+    else if (eBtVersion == BT_V40_HM12) {
         // Enable the bluetooth module.
         BT_RESET = 1;
-        vUART2SetBaudRate(BT4_DUAL_BAUDRATE);
+        vUART2SetBaudRate(BT4_HM12_BAUDRATE);
         vTaskDelay(100 / portTICK_RATE_MS);
 
         // Flush the Rx FIFO.
@@ -370,10 +370,10 @@ void vEnableBluetooth(BLUETOOTH_MODE eBtMode)
     }
 
     // Bluetooth v4.0 BLE.
-    else if (eBtVersion == BT_V40_BLE) {
+    else if (eBtVersion == BT_V40_HM10) {
         // Enable the bluetooth module.
         BT_RESET = 1;
-        vUART2SetBaudRate(BT4_BLE_BAUDRATE);
+        vUART2SetBaudRate(BT4_HM10_BAUDRATE);
         vTaskDelay(100 / portTICK_RATE_MS);
 
         // Flush the Rx FIFO.
@@ -484,7 +484,7 @@ void vConfigureBluetooth(void)
     BLUETOOTH_VERSION eBtVersion = eGetBluetoothVersion();
 
     // Bluetooth v2.0.
-    if (eBtVersion == BT_V20) {
+    if (eBtVersion == BT_V20_HC05) {
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
 
@@ -627,7 +627,7 @@ void vConfigureBluetooth(void)
 
 
     // Bluetooth v4.0 Dual Mode (EDR+BLE) or BLE Mode only.
-    else if (eBtVersion == BT_V40_DUAL || eBtVersion == BT_V40_BLE) {
+    else if (eBtVersion == BT_V40_HM12 || eBtVersion == BT_V40_HM10) {
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
 
@@ -678,7 +678,7 @@ void vConfigureBluetooth(void)
         
 
 
-        if (eBtVersion == BT_V40_DUAL) {
+        if (eBtVersion == BT_V40_HM12) {
             // Flush the Rx FIFO.
             vUART2FlushRxBuffer();
 
@@ -782,7 +782,7 @@ void vConfigureBluetooth(void)
         }
 
 
-        if (eBtVersion == BT_V40_BLE) {
+        if (eBtVersion == BT_V40_HM10) {
             // Flush the Rx FIFO.
             vUART2FlushRxBuffer();
 
@@ -834,7 +834,7 @@ void vConfigureBluetooth(void)
         uiUART2Write(pucReadBTFirmwareVersionCommand, strlen(pucReadBTFirmwareVersionCommand));
 
 
-        if (eBtVersion == BT_V40_DUAL) {
+        if (eBtVersion == BT_V40_HM12) {
             // Read the firmware version.
             // Response: OK+Get:<firmware ver>, eg: OK+Get:HMSoftV312
             // Read and discard the "OK+Get:HMSoft".
@@ -916,7 +916,7 @@ void vGetBluetoothPin(char* pszPin)
     BLUETOOTH_VERSION eBtVersion = eGetBluetoothVersion();
 
     // Bluetooth v2.0.
-    if (eBtVersion == BT_V20) {
+    if (eBtVersion == BT_V20_HC05) {
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
 
@@ -952,7 +952,7 @@ void vGetBluetoothPin(char* pszPin)
 
 
     // Bluetooth v4.0.
-    else if (eBtVersion == BT_V40_DUAL) {
+    else if (eBtVersion == BT_V40_HM12) {
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
 
@@ -1023,7 +1023,7 @@ unsigned char ucSetBluetoothPin(const char* szPin)
     BLUETOOTH_VERSION eBtVersion = eGetBluetoothVersion();
 
     // Bluetooth v2.0.
-    if (eBtVersion == BT_V20) {
+    if (eBtVersion == BT_V20_HC05) {
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
 
@@ -1067,7 +1067,7 @@ unsigned char ucSetBluetoothPin(const char* szPin)
 
 
     // Bluetooth v4.0.
-    else if (eBtVersion == BT_V40_DUAL) {
+    else if (eBtVersion == BT_V40_HM12) {
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
 
