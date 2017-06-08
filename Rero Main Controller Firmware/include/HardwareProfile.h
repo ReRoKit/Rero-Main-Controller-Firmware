@@ -126,9 +126,9 @@
 /*******************************************************************************
  * Bluetooth module
  *******************************************************************************/
-#define BT4_DUAL_BAUDRATE   115200              // For Bluetooth 4.0 Dual Mode.
-#define BT4_BLE_BAUDRATE    9600                // For Bluetooth 4.0 BLE.
-#define BT2_BAUDRATE        38400               // For Bluetooth 2.1
+#define BT4_HM12_BAUDRATE   115200              // For Bluetooth 4.0 Dual Mode.
+#define BT4_HM10_BAUDRATE   9600                // For Bluetooth 4.0 BLE.
+#define BT2_HC05_BAUDRATE   38400               // For Bluetooth 2.1
 
 #define BT_CONNECTED        PORTAbits.RA0       // Indicate the bluetooth status.
 #define BT_CONNECTED_TRIS   TRISAbits.TRISA0
