@@ -126,9 +126,11 @@
 /*******************************************************************************
  * Bluetooth module
  *******************************************************************************/
-#define BT4_HM12_BAUDRATE   115200              // For Bluetooth 4.0 Dual Mode.
-#define BT4_HM10_BAUDRATE   9600                // For Bluetooth 4.0 BLE.
-#define BT2_HC05_BAUDRATE   38400               // For Bluetooth 2.1
+#define BT2_HC05_BAUDRATE   38400               // For Bluetooth 2.1 HC05
+#define BT4_HM12_BAUDRATE   115200              // For Bluetooth 4.0 HM12 Dual Mode (CSR) from HuaMao.
+#define BT4_HM10_BAUDRATE   9600                // For Bluetooth 4.0 HM10 BLE (TI CC2541) from HuaMao.
+#define BT4_BT05_BAUDRATE   9600                // For Bluetooth 4.0 DX-BT05 BLE (TI CC2541) from Risym.
+#define BT4_USRBLE100_BAUDRATE   57600          // For Bluetooth 4.0 USR-BLE100 (Cypress) from USR.
 
 #define BT_CONNECTED        PORTAbits.RA0       // Indicate the bluetooth status.
 #define BT_CONNECTED_TRIS   TRISAbits.TRISA0

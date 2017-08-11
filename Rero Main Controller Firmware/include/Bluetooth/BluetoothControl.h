@@ -26,7 +26,9 @@ typedef enum __attribute__((packed)) {
     UNKNOWN,
     BT_V20_HC05,    //Classic EDR
     BT_V40_HM12,    //Dual Mode EDR+BLE
-    BT_V40_HM10     //BLE
+    BT_V40_HM10,    //BLE
+    BT_V40_BT05,    //BLE
+    BT_V40_USRBLE100    //BLE
 } BLUETOOTH_VERSION;
 
 
