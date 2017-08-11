@@ -535,14 +535,14 @@ void taskPlayMotion (void *pvParameters)
         // Reset the timer tick.
         usPlayTimer = 0;
 
-        // Go to the begining of the first time frame and read the start time.
+        // Go to the beginning of the first time frame and read the start time.
         xSemaphoreTake(xSdCardMutex, portMAX_DELAY);
         FSfseek(pxMotionObject->pxMotionFile, ucTotalServo + MAX_FILENAME_LENGTH + 5, SEEK_SET);
         FSfread (pucBuffer, 1, 2, pxMotionObject->pxMotionFile);
         usStartTime = (unsigned short)pucBuffer[0] << 8 ;
         usStartTime |= (unsigned short)pucBuffer[1];
         xSemaphoreGive(xSdCardMutex);
-
+        
 
 
         // Loop for each time frame.
@@ -622,34 +622,37 @@ void taskPlayMotion (void *pvParameters)
                     // Do not wait for action command.
                     eG15SetTorqueLed(pucG15Id[ucServoCount], WRITE_NOW, xControl.TORQUE, xControl.LED);
 
-                    // Wheel mode.
-                    if (xControl.WHEEL == 1) {
-                        // Set the servo speed and direction.
-                        unsigned short usSpeed = (unsigned short)pucBuffer[2] + ((unsigned short)xControl.DEST_HIGH << 8);
-                        G15_SPEED_CONTROL_MODE eSpeedMode = (xControl.DIR == 1)? WHEEL_CW : WHEEL_CCW;
+                    // Only update the other parameters if Torque is turned on.
+                    if(xControl.TORQUE) {
+                        // Wheel mode.
+                        if (xControl.WHEEL == 1) {
+                            // Set the servo speed and direction.
+                            unsigned short usSpeed = (unsigned short)pucBuffer[2] + ((unsigned short)xControl.DEST_HIGH << 8);
+                            G15_SPEED_CONTROL_MODE eSpeedMode = (xControl.DIR == 1)? WHEEL_CW : WHEEL_CCW;
 
-                        eG15SetSpeed(pucG15Id[ucServoCount], WAIT_ACTION, usSpeed, eSpeedMode);
-                    }
+                            eG15SetSpeed(pucG15Id[ucServoCount], WAIT_ACTION, usSpeed, eSpeedMode);
+                        }
 
-                    // Position mode.
-                    else {
-                        // Indicate we have servo which is not wheel mode.
-                        ucIsAllServoWheelMode = 0;
+                        // Position mode.
+                        else {
+                            // Indicate we have servo which is not wheel mode.
+                            ucIsAllServoWheelMode = 0;
 
-                        // Get the destination in degree.
-                        unsigned short usDestination;
-                        usDestination = (unsigned short)xControl.DEST_HIGH << 8;
-                        usDestination |= (unsigned short)pucBuffer[2];
+                            // Get the destination in degree.
+                            unsigned short usDestination;
+                            usDestination = (unsigned short)xControl.DEST_HIGH << 8;
+                            usDestination |= (unsigned short)pucBuffer[2];
 
-                        // Convert it to 11-bit data.
-                        usDestination = (unsigned short)((unsigned long)usDestination * 1088ul / 360ul);
+                            // Convert it to 11-bit data.
+                            usDestination = (unsigned short)((unsigned long)usDestination * 1088ul / 360ul);
 
-                        // Set the position and speed.
-                        // Write to register and wait for action command.
-                        eG15SetPositionSpeed(   pucG15Id[ucServoCount], WAIT_ACTION,
-                                                usDestination, NORMAL_POSITIONING,
-                                                usDuration, POSITION_TIME_CONTROL   );
+                            // Set the position and speed.
+                            // Write to register and wait for action command.
+                            eG15SetPositionSpeed(   pucG15Id[ucServoCount], WAIT_ACTION,
+                                                    usDestination, NORMAL_POSITIONING,
+                                                    usDuration, POSITION_TIME_CONTROL   );
 
+                        }
                     }
                 }
 
