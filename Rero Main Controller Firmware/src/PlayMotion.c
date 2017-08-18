@@ -79,6 +79,7 @@ static volatile MOTION_OBJ *prv_pxFirstMotionObj = NULL;
 // Flag to indicate whether the G15 is currently in use.
 static volatile unsigned char prv_pucG15Lock[EM_MAX_ID + 1] = {0};
 
+static unsigned char prv_ucPlaying = 0;
 
 
 /*******************************************************************************
@@ -89,6 +90,8 @@ static void prv_vAddMotionObj(MOTION_OBJ* pxNewMotionObj);
 static MOTION_OBJ* prv_pxFindMotionObj(const char* szFileName);
 static void prv_vRemoveMotionObj(MOTION_OBJ* pxMotionObj);
 
+static void prv_vTrapServoError(unsigned char ucId);
+static void prv_vDisableUsedOutput(void);
 
 
 /*******************************************************************************
@@ -211,6 +214,69 @@ static void prv_vRemoveMotionObj(MOTION_OBJ* pxMotionObj)
 
 
 /*******************************************************************************
+ * FUNCTION: prv_vTrapServoError
+ *
+ * PARAMETERS:
+ * ~ ucId   - ID for the servo that causes the error.
+ *
+ * RETURN:
+ * ~ void
+ *
+ * DESCRIPTIONS:
+ * Display the error message and trap the servo error until stop button
+ * is pressed.
+ *
+ *******************************************************************************/
+static void prv_vTrapServoError(unsigned char ucId)
+{
+    static char cIdText[] = "ID: 000";
+    sprintf(cIdText, "ID = %03u", ucId);
+
+    vUpdateMotionPageMsg1("Servo Error:");
+    vUpdateMotionPageMsg2(cIdText);
+
+    // Turn off torque and LED for used output modules.
+    prv_vDisableUsedOutput();
+
+    // Wait until no more motion is playing - stop button is pressed?
+    while (prv_ucPlaying != 0) {
+        vTaskDelay(100 / portTICK_RATE_MS);
+    }
+}
+
+
+
+/*******************************************************************************
+ * FUNCTION: prv_vDisableUsedOutput
+ *
+ * PARAMETERS:
+ * ~ void
+ *
+ * RETURN:
+ * ~ void
+ *
+ * DESCRIPTIONS:
+ * Turn off torque and LED for used output module.
+ *
+ *******************************************************************************/
+static void prv_vDisableUsedOutput(void)
+{
+    unsigned char i;
+    for (i = 0; i <= EM_MAX_ID; i++) {
+        if (prv_pucG15Lock[i] == 1) {
+            // Turn off torque and LED for servo.
+            eG15SetTorqueLed(i, WRITE_NOW, 0, 0);
+            eG15SetSpeed(i, WRITE_NOW, 0, POSITION_SPEED_CONTROL);
+            
+            // We don't check for other output modules here because Animator 
+            // only supports Cube Servos at the time of writing this function.
+        }
+    }
+}
+
+
+
+/*******************************************************************************
  * PUBLIC FUNCTION: ePlayMotionStart
  *
  * PARAMETERS:
@@ -275,6 +341,8 @@ PLAY_RESULT ePlayMotionStart(const char* szMotionFileName)
         return PLAY_CANT_CREATE_TASK;
     }
 
+    prv_ucPlaying = 1;
+    
     return PLAY_NO_ERROR;
 }
 
@@ -307,6 +375,7 @@ void vPlayMotionStop(const char* szMotionFileName, MOTION_STATE eStopMode)
         if (pxMotionObject != NULL) {
             pxMotionObject->eMotionState = eStopMode;
         }
+        prv_ucPlaying = 0;
     }
 }
 
@@ -339,6 +408,7 @@ void vPlayMotionStopAll(MOTION_STATE eStopMode)
 
         pxMotionObject = pxMotionObject->pvNextObj;
     }
+    prv_ucPlaying = 0;
 }
 
 
@@ -402,7 +472,7 @@ void taskPlayMotion (void *pvParameters)
     // The timer tick needed to read from SD card and send command to G15.
     portTickType ulProcessingTick = 0;
 
-
+    
     
 
     // Read the first 2 bytes of data (Header, Command).
@@ -485,7 +555,7 @@ void taskPlayMotion (void *pvParameters)
 
     // Read the servo ID.
     FSfread (pucG15Id, 1, ucTotalServo, pxMotionObject->pxMotionFile);
-
+    
     // Read the # of time frame.
     FSfread (pucBuffer, 1, 2, pxMotionObject->pxMotionFile);
     usTotalTimeFrame = (unsigned short)pucBuffer[0] << 8 ;
@@ -542,7 +612,7 @@ void taskPlayMotion (void *pvParameters)
         usStartTime = (unsigned short)pucBuffer[0] << 8 ;
         usStartTime |= (unsigned short)pucBuffer[1];
         xSemaphoreGive(xSdCardMutex);
-        
+
 
 
         // Loop for each time frame.
@@ -648,10 +718,21 @@ void taskPlayMotion (void *pvParameters)
 
                             // Set the position and speed.
                             // Write to register and wait for action command.
-                            eG15SetPositionSpeed(   pucG15Id[ucServoCount], WAIT_ACTION,
-                                                    usDestination, NORMAL_POSITIONING,
-                                                    usDuration, POSITION_TIME_CONTROL   );
-
+#ifdef SHOWCASE_ROBOT
+                            // The error checking only applies to servos in position mode.
+                            EM_ERROR eErrorCode = EM_ERR_INVALID_MODULE;
+                            eErrorCode = eG15SetPositionSpeed(  pucG15Id[ucServoCount], WAIT_ACTION,
+                                                                usDestination, NORMAL_POSITIONING,
+                                                                usDuration, POSITION_TIME_CONTROL   );
+                            // If there is error, stop playing and display error message until stop button is pressed.
+                            if (eErrorCode != EM_NO_ERROR) {
+                                prv_vTrapServoError(pucG15Id[ucServoCount]);
+                            }
+#else
+                            eG15SetPositionSpeed(  pucG15Id[ucServoCount], WAIT_ACTION,
+                                                                usDestination, NORMAL_POSITIONING,
+                                                                usDuration, POSITION_TIME_CONTROL   );
+#endif
                         }
                     }
                 }
@@ -663,7 +744,7 @@ void taskPlayMotion (void *pvParameters)
                 }
 
             }   // End of loop for each servo.
-
+ 
             // Run all servos.
             eEMSetAction();
 
@@ -818,7 +899,7 @@ void taskPlayMotion (void *pvParameters)
     // Remove the object from the playing list.
     prv_vRemoveMotionObj(pxMotionObject);
 
-
+    prv_ucPlaying = 0;
     
     // Delete this task after complete.
     vTaskDelete(NULL);
