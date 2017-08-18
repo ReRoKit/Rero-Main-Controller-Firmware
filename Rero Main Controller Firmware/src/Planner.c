@@ -74,6 +74,7 @@ static EM_MODEL prv_peUsedOutputModule[EM_MAX_ID + 1] = {0};
  *******************************************************************************/
 
 static void prv_vTrapSensorError(unsigned char ucId);
+static void prv_vTrapServoError(unsigned char ucId);
 static void prv_vDisableUsedOutput(void);
 
 
@@ -98,6 +99,39 @@ static void prv_vTrapSensorError(unsigned char ucId)
     sprintf(cIdText, "ID = %03u", ucId);
 
     vUpdateMotionPageMsg1("SensorError:");
+    vUpdateMotionPageMsg2(cIdText);
+
+    // Turn off torque and LED for used output modules.
+    prv_vDisableUsedOutput();
+
+    // Wait until stop button is pressed.
+    while (prv_ucPlaying != 0) {
+        vTaskDelay(100 / portTICK_RATE_MS);
+    }
+}
+
+
+
+/*******************************************************************************
+ * FUNCTION: prv_vTrapServoError
+ *
+ * PARAMETERS:
+ * ~ ucId   - ID for the servo that causes the error.
+ *
+ * RETURN:
+ * ~ void
+ *
+ * DESCRIPTIONS:
+ * Display the error message and trap the servo error until stop button
+ * is pressed.
+ *
+ *******************************************************************************/
+static void prv_vTrapServoError(unsigned char ucId)
+{
+    static char cIdText[] = "ID: 000";
+    sprintf(cIdText, "ID = %03u", ucId);
+
+    vUpdateMotionPageMsg1("Servo Error:");
     vUpdateMotionPageMsg2(cIdText);
 
     // Turn off torque and LED for used output modules.
@@ -320,7 +354,7 @@ unsigned char ucDeleteProgramFiles(const char *szFilenameHead)
 
     xSemaphoreTake(xSdCardMutex, portMAX_DELAY);
 
-    // Search for and delete the assosiated motion file.
+    // Search for and delete the associated motion file.
     // The motion file name starts with the planner file name.
     // Open the directory of the planner file and make sure there is no error.
     if (f_opendir(&xDirectory, szProgramFolder) == FR_OK) {
@@ -826,8 +860,17 @@ void taskPlanner(void *pvParameters)
                 prv_peUsedOutputModule[ucServoId] = EM_MODEL_G15;
 
                 // Turn On/Off Torque & LED.
-                eG15SetTorqueLed(ucServoId, WRITE_NOW, pucBuffer[4], pucBuffer[5]);
-
+                EM_ERROR eErrorCode = EM_ERR_INVALID_MODULE;
+                eErrorCode = eG15SetTorqueLed(ucServoId, WRITE_NOW, pucBuffer[4], pucBuffer[5]);
+                
+#ifdef SHOWCASE_ROBOT
+                // The error checking only applies to servos in position mode.
+                // If there is error, stop playing and display error message until stop button is pressed.
+                if (eErrorCode != EM_NO_ERROR) {
+                    prv_vTrapServoError(ucServoId);
+                }
+#endif
+                
                 // Wheel mode.
                 if (pucBuffer[2] == 1) {
                     // Set the servo speed and direction.
