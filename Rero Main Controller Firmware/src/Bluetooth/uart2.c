@@ -348,7 +348,12 @@ void __ISR(_UART_2_VECTOR, IPL7AUTO) UART2Interrupt(void)
                 xSemaphoreGiveFromISR(xBluetoothRxSemaphore, &xHigherPriorityTaskWoken);
             }
             else {
-                xSystemError.bBluetoothError = 1;
+#warning TESTING
+//                xSystemError.bBluetoothError = 1;
+                U2STAbits.OERR = 0; // The data in the receive FIFO should be read prior to clearing the OERR bit. 
+                                    // The FIFO is reset when OERR is cleared, which causes all data in the buffer to be lost.
+                
+                // stop all motion/planner files or stop all modules
             }
         }
     }
