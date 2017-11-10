@@ -37,6 +37,7 @@ extern GOL_SCHEME *pxMainWndScheme;
 extern GOL_SCHEME *pxBtnScheme;
 extern GOL_SCHEME *pxExitBtnScheme;
 extern GOL_SCHEME *pxTransBtnScheme;
+extern GOL_SCHEME *pxHideBtnScheme;
 extern GOL_SCHEME *pxListboxScheme;
 extern GOL_SCHEME *pxAnMeterScheme;
 extern GOL_SCHEME *pxCheckboxScheme;

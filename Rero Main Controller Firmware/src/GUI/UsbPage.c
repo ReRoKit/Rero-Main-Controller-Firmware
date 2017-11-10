@@ -73,7 +73,7 @@ void vCreateUsbPage(void)
     BtnCreate( GID_USB_BTN_MSD,
                BTN_L, BTN_T,
                BTN_R, BTN_B,
-               BTN_RADIUS, BTN_HIDE, NULL, "Turn on USB storage", pxBtnScheme );
+               BTN_RADIUS, BTN_HIDE, NULL, "USB Connected", pxHideBtnScheme );
 }
 
 
@@ -122,13 +122,13 @@ void vDisplayUsbPage(void)
         // Mass storage enabled.
         if (xSystemState.bUsbMassStorage == 1) {
             // Change the button text, disable the button and redraw.
-            BtnSetText((BUTTON*)pObj, "USB storage turned on");
+            BtnSetText((BUTTON*)pObj, "USB Storage Mode");
             vGraphicsObjectDisable(pObj);
         }
         // Mass storage disabled.
         else {
             // Change the button text, enable the button and redraw.
-            BtnSetText((BUTTON*)pObj, "Turn on USB storage");
+            BtnSetText((BUTTON*)pObj, "USB Connected");
             vGraphicsObjectEnable(pObj);
         }
 

@@ -23,6 +23,7 @@ GOL_SCHEME *pxMainWndScheme;
 GOL_SCHEME *pxBtnScheme;
 GOL_SCHEME *pxExitBtnScheme;
 GOL_SCHEME *pxTransBtnScheme;
+GOL_SCHEME *pxHideBtnScheme;
 GOL_SCHEME *pxListboxScheme;
 GOL_SCHEME *pxAnMeterScheme;
 GOL_SCHEME *pxCheckboxScheme;
@@ -127,6 +128,19 @@ void vCreateScheme(void)
     pxTransBtnScheme->Color0               = pxDefaultScheme->CommonBkColor;
     pxTransBtnScheme->Color1               = RERO_LIGHT_BLUE;
     pxTransBtnScheme->ColorDisabled        = pxDefaultScheme->CommonBkColor;
+
+
+    // Hide button scheme.
+    pxHideBtnScheme = GOLCreateScheme();
+    memcpy(pxHideBtnScheme, pxDefaultScheme, sizeof(GOL_SCHEME));
+    pxHideBtnScheme->EmbossDkColor        = pxDefaultScheme->CommonBkColor;
+    pxHideBtnScheme->EmbossLtColor        = pxDefaultScheme->CommonBkColor;
+    pxHideBtnScheme->TextColor0           = WHITE;
+    pxHideBtnScheme->TextColor1           = pxDefaultScheme->CommonBkColor;
+    pxHideBtnScheme->TextColorDisabled    = RERO_LIGHT_BLUE;
+    pxHideBtnScheme->Color0               = pxDefaultScheme->CommonBkColor;
+    pxHideBtnScheme->Color1               = pxDefaultScheme->CommonBkColor;
+    pxHideBtnScheme->ColorDisabled        = pxDefaultScheme->CommonBkColor;
 
 
     // Listbox scheme.
