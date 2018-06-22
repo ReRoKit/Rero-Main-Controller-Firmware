@@ -858,9 +858,11 @@ void vConfigureBluetooth(void)
 
     // Bluetooth v4.0 Dual Mode (EDR+BLE) or BLE Mode only.
     else if (eBtVersion == BT_V40_HM12 || eBtVersion == BT_V40_HM10) {
+        unsigned char ucResponseLength;
+        
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
-
+        
         // Change the PIO1 to indicate the connection status.
         // Command: AT+PIO11
         const unsigned char pucPio1Command[] = "AT+PIO11";
@@ -882,32 +884,7 @@ void vConfigureBluetooth(void)
         }
 
 
-        // Flush the Rx FIFO.
-        vUART2FlushRxBuffer();
-
-        // Change the bluetooth name for BLE module or EDR mode.
-        // Command: AT+NAME<name>
-        const unsigned char pucSetEdrNameCommand[] = "AT+NAME";
-        while (uiUART2GetTxSpace() < (sizeof(pucSetEdrNameCommand) - 1));
-        uiUART2Write(pucSetEdrNameCommand, sizeof(pucSetEdrNameCommand) - 1);
-
-        while (uiUART2GetTxSpace() < strlen(pucRobotName));
-        uiUART2Write(pucRobotName, strlen(pucRobotName));
-
-        unsigned char ucResponseLength = 7 + strlen(pucRobotName);
-        if (prv_uiReadBluetooth(prv_pucRxBuffer, ucResponseLength, BT_RX_TIMEOUT) < ucResponseLength) {
-            // Timeout occurred.
-            // Set the error flag.
-            xSystemError.bBluetoothError = 1;
-
-            // Disable the bluetooth module.
-            vDisableBluetooth();
-
-            return;
-        }
         
-
-
         if (eBtVersion == BT_V40_HM12) {
             // Flush the Rx FIFO.
             vUART2FlushRxBuffer();
@@ -1053,6 +1030,45 @@ void vConfigureBluetooth(void)
             szBluetoothAddress[12] = 0;
         }
         
+
+        // Flush the Rx FIFO.
+        vUART2FlushRxBuffer();
+
+        // Change the bluetooth name for BLE module or EDR mode.
+        
+        
+#warning === TEST AUTO WRITE ADDRESS TO NAME ======================================
+        
+        // check for "rero_" and auto append Bluetooth Address last 4 characters,
+        if(strcmp(pucRobotName, "rero_") == 0) {
+            // Append Bluetooth address last 4 characters
+            strncpy(&pucRobotName[5], &szBluetoothAddress[8], 5);
+            
+            // Write to RobotName.txt
+            usWriteConfig(pucRobotNameFilePath, (void*)&pucRobotName, strlen(pucRobotName));
+        }
+        
+        // Command: AT+NAME<name>
+        const unsigned char pucSetEdrNameCommand[] = "AT+NAME";
+        while (uiUART2GetTxSpace() < (sizeof(pucSetEdrNameCommand) - 1));
+        uiUART2Write(pucSetEdrNameCommand, sizeof(pucSetEdrNameCommand) - 1);
+
+        while (uiUART2GetTxSpace() < strlen(pucRobotName));
+        uiUART2Write(pucRobotName, strlen(pucRobotName));
+
+        ucResponseLength = 7 + strlen(pucRobotName);
+        if (prv_uiReadBluetooth(prv_pucRxBuffer, ucResponseLength, BT_RX_TIMEOUT) < ucResponseLength) {
+            // Timeout occurred.
+            // Set the error flag.
+            xSystemError.bBluetoothError = 1;
+
+            // Disable the bluetooth module.
+            vDisableBluetooth();
+
+            return;
+        }
+        
+
 
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();

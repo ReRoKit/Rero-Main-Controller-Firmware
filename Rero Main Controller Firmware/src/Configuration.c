@@ -44,11 +44,13 @@ void vInitConfig(void)
     
     // Read the robot name.
     // Write the default value if the file is not found or empty.
-    // Else, terminate the string with null.
+    // Else terminate the string with null.
     usActualLength = usReadConfig(pucRobotNameFilePath, (void*)&pucRobotName, sizeof(pucRobotName) - 1);
     if (usActualLength == 0) {
         usWriteConfig(pucRobotNameFilePath, (void*)&pucRobotName, strlen(pucRobotName));
-    } else {
+    } 
+    else {
+        //terminate the string with null.
         pucRobotName[usActualLength] = 0;
     }
     
