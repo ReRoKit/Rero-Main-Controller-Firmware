@@ -920,40 +920,40 @@ void vConfigureBluetooth(void)
             }
 
 
-            // Flush the Rx FIFO.
-            vUART2FlushRxBuffer();
-
-            // Change the bluetooth name for BLE mode.
-            // Command: AT+NAMB<name>
-            const unsigned char pucSetBleNameCommand[] = "AT+NAMB";
-            while (uiUART2GetTxSpace() < (sizeof(pucSetBleNameCommand) - 1));
-            uiUART2Write(pucSetBleNameCommand, sizeof(pucSetBleNameCommand) - 1);
-
-            while (uiUART2GetTxSpace() < strlen(pucRobotName));
-            uiUART2Write(pucRobotName, strlen(pucRobotName));
-
-            // Wait until the respond is received.
-            // Response: OK+Set:<name>
-            // We don't check the received string here. We only make sure the number of bytes received is correct.
-            ucResponseLength = 7 + strlen(pucRobotName);
-            if (prv_uiReadBluetooth(prv_pucRxBuffer, ucResponseLength, BT_RX_TIMEOUT) < ucResponseLength) {
-                // Timeout occurred.
-                // Set the error flag.
-                xSystemError.bBluetoothError = 1;
-
-                // Disable the bluetooth module.
-                vDisableBluetooth();
-
-                return;
-            }
+//            // Flush the Rx FIFO.
+//            vUART2FlushRxBuffer();
+//
+//            // Change the bluetooth name for BLE mode.
+//            // Command: AT+NAMB<name>
+//            const unsigned char pucSetBleNameCommand[] = "AT+NAMB";
+//            while (uiUART2GetTxSpace() < (sizeof(pucSetBleNameCommand) - 1));
+//            uiUART2Write(pucSetBleNameCommand, sizeof(pucSetBleNameCommand) - 1);
+//
+//            while (uiUART2GetTxSpace() < strlen(pucRobotName));
+//            uiUART2Write(pucRobotName, strlen(pucRobotName));
+//
+//            // Wait until the respond is received.
+//            // Response: OK+Set:<name>
+//            // We don't check the received string here. We only make sure the number of bytes received is correct.
+//            ucResponseLength = 7 + strlen(pucRobotName);
+//            if (prv_uiReadBluetooth(prv_pucRxBuffer, ucResponseLength, BT_RX_TIMEOUT) < ucResponseLength) {
+//                // Timeout occurred.
+//                // Set the error flag.
+//                xSystemError.bBluetoothError = 1;
+//
+//                // Disable the bluetooth module.
+//                vDisableBluetooth();
+//
+//                return;
+//            }
             
             
             // Flush the Rx FIFO.
             vUART2FlushRxBuffer();
 
-            // Read the MAC address for BLE.
-            // Command: AT+ADDB?
-            unsigned char pucReadAddressCommand[] = "AT+ADDB?";
+            // Read the MAC address for EDR.
+            // Command: AT+ADDE?
+            unsigned char pucReadAddressCommand[] = "AT+ADDE?";
 
             while (uiUART2GetTxSpace() < strlen(pucReadAddressCommand));
             uiUART2Write(pucReadAddressCommand, strlen(pucReadAddressCommand));
@@ -1036,12 +1036,10 @@ void vConfigureBluetooth(void)
 
         // Change the bluetooth name for BLE module or EDR mode.
         
-        
-#warning === TEST AUTO WRITE ADDRESS TO NAME ======================================
-        
+        // --- AUTO WRITE ADDRESS TO NAME ---
         // check for "rero_" and auto append Bluetooth Address last 4 characters,
-        if(strcmp(pucRobotName, "rero_") == 0) {
-            // Append Bluetooth address last 4 characters
+        if(strcmp(pucRobotName, "rero_?") == 0) {
+            // Remove '?' and append Bluetooth address last 4 characters + null terminator
             strncpy(&pucRobotName[5], &szBluetoothAddress[8], 5);
             
             // Write to RobotName.txt
