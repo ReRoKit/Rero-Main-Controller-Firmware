@@ -762,34 +762,6 @@ void vConfigureBluetooth(void)
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
 
-        // Change the bluetooth name.
-        const unsigned char pucSetNameCommand[] = "AT+NAME=";
-        while (uiUART2GetTxSpace() < (sizeof(pucSetNameCommand) - 1));
-        uiUART2Write(pucSetNameCommand, sizeof(pucSetNameCommand) - 1);
-
-        while (uiUART2GetTxSpace() < strlen(pucRobotName));
-        uiUART2Write(pucRobotName, strlen(pucRobotName));
-
-        while (uiUART2GetTxSpace() < 2);
-        uiUART2Write("\r\n", 2);
-
-        // Wait until OK\r\n is received.
-        // We don't check the received string here. We only expect to receive 4 bytes of data.
-        if (prv_uiReadBluetooth(prv_pucRxBuffer, 4, BT_RX_TIMEOUT) < 4) {
-            // Timeout occurred.
-            // Set the error flag.
-            xSystemError.bBluetoothError = 1;
-
-            // Disable the bluetooth module.
-            vDisableBluetooth();
-
-            return;
-        }
-
-
-        // Flush the Rx FIFO.
-        vUART2FlushRxBuffer();
-
         // Read the bluetooth address.
         const unsigned char pucReadAddressCommand[] = "AT+ADDR?\r\n";
         while (uiUART2GetTxSpace() < (sizeof(pucReadAddressCommand) - 1));
@@ -825,6 +797,44 @@ void vConfigureBluetooth(void)
         }
         
         
+        // Flush the Rx FIFO.
+        vUART2FlushRxBuffer();
+
+        // Change the bluetooth name for EDR mode.
+        // check for "rero_" and auto append Bluetooth Address last 4 characters,
+        if(strcmp(pucRobotName, "rero_?") == 0) {
+            // Remove '?' and append Bluetooth address last 4 characters + null terminator
+            strncpy(&pucRobotName[5], &szBluetoothAddress[8], 5);
+            
+            // Write to RobotName.txt
+            usWriteConfig(pucRobotNameFilePath, (void*)&pucRobotName, strlen(pucRobotName));
+        }
+        
+        // Change the bluetooth name.
+        const unsigned char pucSetNameCommand[] = "AT+NAME=";
+        while (uiUART2GetTxSpace() < (sizeof(pucSetNameCommand) - 1));
+        uiUART2Write(pucSetNameCommand, sizeof(pucSetNameCommand) - 1);
+
+        while (uiUART2GetTxSpace() < strlen(pucRobotName));
+        uiUART2Write(pucRobotName, strlen(pucRobotName));
+
+        while (uiUART2GetTxSpace() < 2);
+        uiUART2Write("\r\n", 2);
+
+        // Wait until OK\r\n is received.
+        // We don't check the received string here. We only expect to receive 4 bytes of data.
+        if (prv_uiReadBluetooth(prv_pucRxBuffer, 4, BT_RX_TIMEOUT) < 4) {
+            // Timeout occurred.
+            // Set the error flag.
+            xSystemError.bBluetoothError = 1;
+
+            // Disable the bluetooth module.
+            vDisableBluetooth();
+
+            return;
+        }
+
+
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
 
@@ -920,33 +930,6 @@ void vConfigureBluetooth(void)
             }
 
 
-//            // Flush the Rx FIFO.
-//            vUART2FlushRxBuffer();
-//
-//            // Change the bluetooth name for BLE mode.
-//            // Command: AT+NAMB<name>
-//            const unsigned char pucSetBleNameCommand[] = "AT+NAMB";
-//            while (uiUART2GetTxSpace() < (sizeof(pucSetBleNameCommand) - 1));
-//            uiUART2Write(pucSetBleNameCommand, sizeof(pucSetBleNameCommand) - 1);
-//
-//            while (uiUART2GetTxSpace() < strlen(pucRobotName));
-//            uiUART2Write(pucRobotName, strlen(pucRobotName));
-//
-//            // Wait until the respond is received.
-//            // Response: OK+Set:<name>
-//            // We don't check the received string here. We only make sure the number of bytes received is correct.
-//            ucResponseLength = 7 + strlen(pucRobotName);
-//            if (prv_uiReadBluetooth(prv_pucRxBuffer, ucResponseLength, BT_RX_TIMEOUT) < ucResponseLength) {
-//                // Timeout occurred.
-//                // Set the error flag.
-//                xSystemError.bBluetoothError = 1;
-//
-//                // Disable the bluetooth module.
-//                vDisableBluetooth();
-//
-//                return;
-//            }
-            
             
             // Flush the Rx FIFO.
             vUART2FlushRxBuffer();
@@ -1031,12 +1014,12 @@ void vConfigureBluetooth(void)
         }
         
 
+        // --- AUTO WRITE ADDRESS TO NAME ---
+        
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
 
-        // Change the bluetooth name for BLE module or EDR mode.
-        
-        // --- AUTO WRITE ADDRESS TO NAME ---
+        // Change the bluetooth name for EDR mode.
         // check for "rero_" and auto append Bluetooth Address last 4 characters,
         if(strcmp(pucRobotName, "rero_?") == 0) {
             // Remove '?' and append Bluetooth address last 4 characters + null terminator
@@ -1067,7 +1050,37 @@ void vConfigureBluetooth(void)
         }
         
 
+        if (eBtVersion == BT_V40_HM12) {       
+            // Flush the Rx FIFO.
+            vUART2FlushRxBuffer();
 
+            // Change the bluetooth name for BLE mode.
+            // Command: AT+NAMB<name>
+            const unsigned char pucSetBleNameCommand[] = "AT+NAMB";
+            while (uiUART2GetTxSpace() < (sizeof(pucSetBleNameCommand) - 1));
+            uiUART2Write(pucSetBleNameCommand, sizeof(pucSetBleNameCommand) - 1);
+
+            while (uiUART2GetTxSpace() < strlen(pucRobotName));
+            uiUART2Write(pucRobotName, strlen(pucRobotName));
+
+            // Wait until the respond is received.
+            // Response: OK+Set:<name>
+            // We don't check the received string here. We only make sure the number of bytes received is correct.
+            ucResponseLength = 7 + strlen(pucRobotName);
+            if (prv_uiReadBluetooth(prv_pucRxBuffer, ucResponseLength, BT_RX_TIMEOUT) < ucResponseLength) {
+                // Timeout occurred.
+                // Set the error flag.
+                xSystemError.bBluetoothError = 1;
+
+                // Disable the bluetooth module.
+                vDisableBluetooth();
+
+                return;
+            }
+        }    
+        // --- END: AUTO WRITE ADDRESS TO NAME ---
+        
+        
         // Flush the Rx FIFO.
         vUART2FlushRxBuffer();
 
