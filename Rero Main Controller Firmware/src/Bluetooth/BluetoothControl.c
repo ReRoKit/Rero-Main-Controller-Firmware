@@ -569,14 +569,14 @@ void vConfigureBluetooth(void)
         // Response: OK+Set:1
         // We don't check the received string here. We only make sure the number of bytes received is correct.
         if (prv_uiReadBluetooth(prv_pucRxBuffer, 8, BT_RX_TIMEOUT) < 8) {
-            // Timeout occurred.
-            // Set the error flag.
-            xSystemError.bBluetoothError = 1;
-
-            // Disable the bluetooth module.
-            vDisableBluetooth();
-
-            return;
+////            // Timeout occurred.
+////            // Set the error flag.
+////            xSystemError.bBluetoothError = 1;
+////
+////            // Disable the bluetooth module.
+////            vDisableBluetooth();
+////
+////            return;
         }
         
         
